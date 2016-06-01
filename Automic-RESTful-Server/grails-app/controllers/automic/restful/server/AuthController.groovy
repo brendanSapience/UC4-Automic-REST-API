@@ -19,7 +19,8 @@ class AuthController {
 		String CONNECTIONNAME = params.connection;
 		
 		if(!LOGIN || !PWD || !CLIENTSTR || !CONNECTIONNAME){
-			render "{'status':'error','message':'wrong parameters or parameters missing'}"
+			String txt = '{"status":"error","message":"wrong parameters or parameters missing"}';
+			render(text: txt , contentType: "text/json", encoding: "UTF-8")
 		}else{
 			
 			String DEPT;
@@ -54,10 +55,14 @@ class AuthController {
 			String token = ConnectionManager.connectToClient(creds);
 	
 			if(token == null){
-				render "{'status':'error','message':'authentication failed'}"
+				String txt = '{"status":"error","message":"authentication failed"}';
+				render(text:  txt, contentType: "text/json", encoding: "UTF-8");
+				
 			}else{
 				String ExpDate = ConnectionManager.getExpDateFromToken(token);
-				render "{'status':'success','token':'"+token+"','expdate':'"+ExpDate+"'}"
+				String txt = '{"status":"success","token":"'+token+'","expdate":"'+ExpDate+'"}';
+				render(text:  txt, contentType: "text/json", encoding: "UTF-8");
+
 			}
 			
 			//Connection conn = ConnectionManager.getConnectionFromToken(token);

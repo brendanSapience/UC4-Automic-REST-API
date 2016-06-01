@@ -18,9 +18,8 @@ class UrlMappings {
 		// http://localhost:8080/Automic-RESTful-Server/api/awa/auth/v1?login=BSP&pwd=Un1ver$e&connection=AEPROD&client=200
         "/api/$product/auth/$version"(controller:'Auth', action: 'authenticate', method: 'GET')
 		
-		
-		// http://localhost:8080/Automic-RESTful-Server/api/awa/display/v1/Jobs?filters=[name:"NOVA.*"]&token=esnq3jvgb1q8dkrrl75m9c3lmq
-		"/api/$product/display/$version/Jobs"(controller:'Jobs', action: 'display', method: 'GET')
+		// ex: http://localhost:8080/Automic-RESTful-Server/api/awa/display/v1/Jobs?filters=[name:"NOVA.*"]&token=6uu78lnmoh3em4tfa300pdlcoo
+		"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action: {"${params.operation}"}, method: 'GET')
 		
    }
 }

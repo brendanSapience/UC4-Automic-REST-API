@@ -1,5 +1,6 @@
 package automic.restful.server
 
+import com.automic.AECredentials
 import com.automic.ConnectionManager
 import com.automic.ConnectionPoolItem
 import com.automic.DisplayFilters
@@ -16,26 +17,17 @@ class JobsController {
 
     def index() { }
 	
-	def runTokenChecks(String token) {
-		int CheckTokenRes = ConnectionManager.checkTokenValidity(token);
-		if(CheckTokenRes == 0){
-			return true;
-		}else{
-			if(CheckTokenRes == -1){render "{'status':'error','message':'no token passed'}"};
-			if(CheckTokenRes == -2){render "{'status':'error','message':'token invalid'}"};
-			if(CheckTokenRes == -3){render "{'status':'error','message':'token expired'}"};
-			return false;
-		}
-	}
-	
-	def display = {
+	def search = {
 	
 		String PRODUCT = params.product;
 		String APIVERSION = params.version;
 		String TOKEN = params.token;
 		String FILTERS = params.filters;
 		
-		if(runTokenChecks(TOKEN)){
+		//Temp For Tests
+		if(TOKEN == "DEV"){TOKEN = ConnectionManager.bypassAuth();}
+		
+		if(ConnectionManager.runTokenChecks(TOKEN)){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
  
 			DisplayFilters dispFilters = new DisplayFilters(FILTERS);
@@ -48,7 +40,8 @@ class JobsController {
 			
 			JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(JobList);
 			
-			render json;
+			render(text:  json, contentType: "text/json", encoding: "UTF-8")
+			
 		}
 
 	}

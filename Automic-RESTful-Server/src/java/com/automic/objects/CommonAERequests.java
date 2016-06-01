@@ -6,9 +6,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.uc4.api.SearchResultItem;
+import com.uc4.api.Task;
+import com.uc4.api.TaskFilter;
 import com.uc4.communication.Connection;
 import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
+import com.uc4.communication.requests.ActivityList;
 import com.uc4.communication.requests.SearchObject;
 import com.uc4.communication.requests.XMLRequest;
 
@@ -54,5 +57,16 @@ public class CommonAERequests {
 			results.add(item);
 		}
 	return results;
+	}
+	
+	public static List<Task> getActivityWindowContent(Connection conn, TaskFilter taskFilter) throws IOException {		
+		ActivityList req = new ActivityList(taskFilter);
+		CommonAERequests.sendSyncRequest(conn, req, false);
+		
+		List<Task> tasks = new ArrayList<Task>();
+		for (Task t : req) {
+			tasks.add(t);
+		}
+		return tasks;
 	}
 }
