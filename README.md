@@ -1,7 +1,35 @@
 # UC4-Automic-REST-API
-REST API Server for Automic
 
-Exactly what it sounds like.
+REST API Server for Automic: VERY EARLY version. 
+
+In fact, it currently only handles authentication & display of JOBS objects based on a search criteria.
+
+ex:
+
+Authentication:
+
+http://localhost:8080/Automic-RESTful-Server/api/awa/auth/v1?login=BSP&pwd=Un1ver$e&connection=AEPROD&client=200
+
+returns: {'status':'success','token':'s9dpur80s8rtvharifrm531387','expdate':'20161231235959'}
+
+Get JOBS List:
+
+http://localhost:8080/Automic-RESTful-Server/api/awa/display/v1/Jobs?filters=[name:"NOVA.*"]&token=s9dpur80s8rtvharifrm531387
+
+returns:
+
+{
+"success":true
+"count":2,
+"data":
+    [
+    {"name":"INTERNAL.EC2.CHECK.HOST.REACHABLE","folder":"0200/INTEGRATIONS/EC2/EC2.TEMPLATES","title":"Check that a given host is reachable","type":"JOBS","open":""}
+    ,
+    {"name":"INTERNAL.EC2.CHECK.INSTANCE.STATUS","folder":"0200/INTEGRATIONS/EC2/EC2.TEMPLATES","title":"Internal - Check Instance Status","type":"JOBS","open":""}
+    ]
+}
+
+More to come!
 
 Here are the Raw Notes on REST API Design:
 
