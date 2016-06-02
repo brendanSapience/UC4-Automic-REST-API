@@ -30,6 +30,21 @@ class CommonJSONRequests {
 		return json;
 	}
 	
+	public static JsonBuilder getSupportedThingsAsJSONFormat(ObjList){
+		def data = [
+			success: true,
+			required_parameters: ObjList.required_parameters,
+			optional_parameters: ObjList.optional_parameters,
+			filters: ObjList.filters,
+			methods: ObjList.methods
+			
+		  ]
+		
+		//, folder:it.folder, modified:it.modified, type: it.title
+		def json = new JsonBuilder(data)
+		return json;
+	}
+	
 	public static JsonBuilder getActivityListAsJSONFormat(List<Task> ObjList){
 		def data = [
 			success: true,

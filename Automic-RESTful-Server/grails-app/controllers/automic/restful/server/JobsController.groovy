@@ -17,7 +17,7 @@ class JobsController {
 
     def index() { }
 	
-	def search = {
+	def searchv1 = {
 	
 		String PRODUCT = params.product;
 		String APIVERSION = params.version;

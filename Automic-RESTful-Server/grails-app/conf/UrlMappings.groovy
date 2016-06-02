@@ -19,7 +19,8 @@ class UrlMappings {
         "/api/$product/auth/$version"(controller:'Auth', action: 'authenticate', method: 'GET')
 		
 		// ex: http://localhost:8080/Automic-RESTful-Server/api/awa/display/v1/Jobs?filters=[name:"NOVA.*"]&token=6uu78lnmoh3em4tfa300pdlcoo
-		"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action: {"${params.operation}"}, method: 'GET')
 		
+		"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action: {"${params.operation}${params.version}"}, method: 'GET')
+		"/api/$product/help/$version/$object"(controller:{"${params.object}"}, action: 'help', method: 'GET')
    }
 }
