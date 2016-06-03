@@ -1,16 +1,32 @@
 # UC4-Automic-REST-API
 
-REST API Server for Automic: VERY EARLY version. 
+REST API Server for Automic's ONE Automation Platform
 
-In fact, it currently only handles authentication & display of JOBS objects based on a search criteria.
+**Structure proposed:**
 
-ex:
+     http://<server name>:<port>/api/<product>/<api category>/<version>/<object type (if needed)>?method=<method>&parameters=<all required parameters>
 
-Authentication:
+* **with:**
 
-http://localhost:8080/Automic-RESTful-Server/api/awa/auth/v1?login=BSP&pwd=Un1ver$e&connection=AEPROD&client=200
+     <server name>: hostname of server hosting the REST API app
+     <port>: port number of the REST API app
+     <api>: api (generic placeholder in case something else needs to sit on the same server / port)
+     <product>: automic product line: ara | awa | aso | etc. (makes the api more extensible)
+     <api category>: type of methods. Ex: display / update / delete / find / move etc. 
+     <version>: version of the API + Product + API category (allows more granular releases)
+     <object type>: type of objects to be considered. Ex: JOBS / JOBP / JSCH etc. NOT mandatory (depends on the api category).
+     <method>: method to execute. Can be the same as <api category> for simple stuff (display), otherwise specifies an individual operation: method=u_title (update title), method=u_restore_previous (restore previous version of object), etc.
+     <parameters>: parameters required for the <method>. ex: parameters=['status'=true], parameters=['oldpattern','newpattern'], etc.
+     
 
-returns: {'status':'success','token':'s9dpur80s8rtvharifrm531387','expdate':'20161231235959'}
+**Methods / api categories**
+
+* **Authentication:**
+
+    => http://localhost:8080/Automic-RESTful-Server/api/awa/auth/v1?login=BSP&pwd=Un1ver$e&connection=AEPROD&client=200
+
+* * **returns:**
+*   {'status':'success','token':'s9dpur80s8rtvharifrm531387','expdate':'20161231235959'}
 
 Get JOBS List:
 
@@ -44,22 +60,6 @@ Mandatory & Optional General Parameters:
 -All calls (including authentication) can (optional) contain a parameter to specify the output format: => this should be specified in the Request Header !!
      (ideally we'd implement JSON and XML .. but let's start with JSON only ;))
 
-Structure proposed:
-
-     http://<server name>:<port>/api/<product>/<api category>/<version>/<object type (if needed)>?method=<method>&parameters=<all required parameters>
-
-with:
-
-     <server name>: hostname of server hosting the REST API app
-     <port>: port number of the REST API app
-     <api>: api (generic placeholder in case something else needs to sit on the same server / port)
-     <product>: automic product line: ara | awa | aso | etc. (makes the api more extensible)
-     <api category>: type of methods. Ex: display / update / delete / find / move etc. 
-     <version>: version of the API + Product + API category (allows more granular releases)
-     <object type>: type of objects to be considered. Ex: JOBS / JOBP / JSCH etc. NOT mandatory (depends on the api category).
-     <method>: method to execute. Can be the same as <api category> for simple stuff (display), otherwise specifies an individual operation: method=u_title (update title), method=u_restore_previous (restore previous version of object), etc.
-     <parameters>: parameters required for the <method>. ex: parameters=['status'=true], parameters=['oldpattern','newpattern'], etc.
-     
 Authentication call:
 
 http://<server name>:<port>/api/awa/auth/v1?method=auth&conn=AEPPROD&login=bsp&dept=automic&client=200&pwd=Un1ver$e
