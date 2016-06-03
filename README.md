@@ -36,12 +36,12 @@ REST API Server for Automic's ONE Automation Platform
      
     Ex: /api/awa/**auth**/v1?**login**=BSP&**pwd**=Un1ver$e&**connection**=AEPROD&**client**=200
 
-     * Mandatory Parameters:
+     * **Mandatory Parameters:**
      
-          * login (AE Connection login)
-          * pwd (AE Connection password)
-          * client (AE Client number)
-          * connection (AE Connection Name as specified in the REST API configuration file)
+          * _login_ (AE Connection login)
+          * _pwd_ (AE Connection password)
+          * _client_ (AE Client number)
+          * _connection_ (AE Connection Name as specified in the REST API configuration file called connection_config.json)
           
      * Returns:
      
@@ -96,3 +96,6 @@ REST API Server for Automic's ONE Automation Platform
      * returns:
 
           JSON
+
+
+!! The current scope is very limited, but the basics are in place and it should be extensible fairly easily & quickly.
