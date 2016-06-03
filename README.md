@@ -8,15 +8,15 @@ REST API Server for Automic's ONE Automation Platform
 
 * **with:**
 
-     *<server name>: hostname of server hosting the REST API app
-     *<port>: port number of the REST API app
-     *<api>: api (generic placeholder in case something else needs to sit on the same server / port)
-     *<product>: automic product line: ara | awa | aso | etc. (makes the api more extensible)
-     *<api category>: type of methods. Ex: display / update / delete / find / move etc. 
-     *<version>: version of the API + Product + API category (allows more granular releases)
-     *<object type>: type of objects to be considered. Ex: JOBS / JOBP / JSCH etc. NOT mandatory (depends on the api category).
-     *<method>: method to execute. Can be the same as <api category> for simple stuff (display), otherwise specifies an individual *operation: method=u_title (update title), method=u_restore_previous (restore previous version of object), etc.
-     *<parameters>: parameters required for the <method>. ex: parameters=['status'=true], parameters=['oldpattern','newpattern'], etc.
+     * <server name>: hostname of server hosting the REST API app
+     * <port>: port number of the REST API app
+     * <api>: api (generic placeholder in case something else needs to sit on the same server / port)
+     * <product>: automic product line: ara | awa | aso | etc. (makes the api more extensible)
+     * <api category>: type of methods. Ex: display / update / delete / find / move etc. 
+     * <version>: version of the API + Product + API category (allows more granular releases)
+     * <object type>: type of objects to be considered. Ex: JOBS / JOBP / JSCH etc. NOT mandatory (depends on the api category).
+     * <method>: method to execute. Can be the same as <api category> for simple stuff (display), otherwise specifies an individual operation: method=u_title (update title), method=u_restore_previous (restore previous version of object), etc.
+     * <parameters>: parameters required for the <method>. ex: parameters=['status'=true], parameters=['oldpattern','newpattern'], etc.
      
 
 **Methods / api categories**
