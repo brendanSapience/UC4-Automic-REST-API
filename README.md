@@ -8,114 +8,91 @@ REST API Server for Automic's ONE Automation Platform
 
 * **with:**
 
-     - server name: hostname of server hosting the REST API app
-     - port: port number of the REST API app
-     - api: api (generic placeholder in case something else needs to sit on the same server / port)
-     - product: automic product line: ara | awa | aso | etc. (makes the api more extensible)
-     - api category: type of methods. Ex: display / update / delete / find / move etc. 
-     - version: version of the API + Product + API category (allows more granular releases)
-     - object type: type of objects to be considered. Ex: JOBS / JOBP / JSCH etc. NOT mandatory (depends on the api category).
-     - method: method to execute. Can be the same as <api category> for simple stuff (display), otherwise specifies an individual operation: method=u_title (update title), method=u_restore_previous (restore previous version of object), etc.
-     - parameters: parameters required for the <method>. ex: parameters=['status'=true], parameters=['oldpattern','newpattern'], etc.
+     - **server name**: hostname of server hosting the REST API app
+     - **port**: port number of the REST API app
+     - **api**: api (generic placeholder in case something else needs to sit on the same server / port)
+     - **product**: automic product line: ara | awa | aso | etc. (makes the api more extensible)
+     - **api category**: type of methods. Ex: display / update / delete / find / move etc. 
+     - **version**: version of the API + Product + API category (allows more granular releases)
+     - **object type**: type of objects to be considered. Ex: JOBS / JOBP / JSCH etc. NOT mandatory (depends on the api category).
+     - **method**: method to execute. Can be the same as <api category> for simple stuff (display), otherwise specifies an individual operation: method=u_title (update title), method=u_restore_previous (restore previous version of object), etc.
+     - **parameters**: parameters required for the <method>. ex: parameters=['status'=true], parameters=['oldpattern','newpattern'], etc.
      
-**Available Methods & api categories:**
+**Important Additional Design Aspects:**
+
+     - An authentication token must be passed in every call as a URL parameter (except for the authentication call itself).
+     - Ideally the token will be moved to the request header (to be done..)
+     - Tokens are non-persistent (they are not kept if the Server shuts down)
+     - Tokens expire after a certain configurable period
+     - Ideally the server should be able to return XML responses as well as JSON (JSON only for now) depending on the header content of the request
+     - Tokens are uniquely & randomly generated and do not encode any information
+     - There needs to be calls dedicated to retrieving available methods / objects & parameters as this REST API will rapidly get more and more complex
+     - There needs to be a "commit" mechanism to prevent accidental changes in objects
+     
+     
+**Available Methods & API Categories:**
 
 * **Authentication:**
+     
+    Ex: /api/awa/**auth**/v1?**login**=BSP&**pwd**=Un1ver$e&**connection**=AEPROD&**client**=200
 
-    => http://localhost:8080/Automic-RESTful-Server/api/awa/auth/v1?login=BSP&pwd=Un1ver$e&connection=AEPROD&client=200
-
-* * **returns:**
+     * Mandatory Parameters:
+     
+          * login (AE Connection login)
+          * pwd (AE Connection password)
+          * client (AE Client number)
+          * connection (AE Connection Name as specified in the REST API configuration file)
+          
+     * Returns:
+     
         {'status':'success','token':'s9dpur80s8rtvharifrm531387','expdate':'20161231235959'}
 
 * **Search:**
-* * **Supported Objects:
-*  - Jobs
-*  - Activities
 
-http://localhost:8080/Automic-RESTful-Server/api/awa/display/v1/Jobs?filters=[name:"NOVA.*"]&token=s9dpur80s8rtvharifrm531387
-
-returns:
-
-{
-"success":true
-"count":2,
-"data":
-    [
-    {"name":"INTERNAL.EC2.CHECK.HOST.REACHABLE","folder":"0200/INTEGRATIONS/EC2/EC2.TEMPLATES","title":"Check that a given host is reachable","type":"JOBS","open":""}
-    ,
-    {"name":"INTERNAL.EC2.CHECK.INSTANCE.STATUS","folder":"0200/INTEGRATIONS/EC2/EC2.TEMPLATES","title":"Internal - Check Instance Status","type":"JOBS","open":""}
-    ]
-}
-
-More to come!
-
-Here are the Raw Notes on REST API Design:
-
-General Structure:
-
-Mandatory & Optional General Parameters:
-
--All calls (except authentication) must contain a auth token parameter for secure use: => this will be a parameter in the URL
-
-    =>  &token=dsfgsdfgfasdfa
-
--All calls (including authentication) can (optional) contain a parameter to specify the output format: => this should be specified in the Request Header !!
-     (ideally we'd implement JSON and XML .. but let's start with JSON only ;))
-
-Authentication call:
-
-http://<server name>:<port>/api/awa/auth/v1?method=auth&conn=AEPPROD&login=bsp&dept=automic&client=200&pwd=Un1ver$e
-     => conn parameter is a name. it should be mapped to a list of ports and hostname (similar to what is in the xml config file of ECC). Hostname & ports should be shielded from users.
-    // Not for now: => lang parameter should be optional (Defaults to EN)
-    // Not for now:  => validity is an optional parameter, it should be customizable, but should not exceed a certain threshold (60 minutes?)
-     => should we allow client 0 auth? Prob, yes.
-   
-this should return a unique auth token:
-     {‘code’:200,’message’:’ok’,’token’:324mhgjhf234kh234,’expires’:'20160601235900'}
-
-     => Return an auth token if successful. Backend saves connection in pool and uniquely identifies it to the token.
-     => the token should NOT contain any info: ex: conn name, user, dept, client (randomly generated and unique)
-
-Getting Help:
-
-     ideally there should be a way to retrieve, per <api category>, a list of available:
-          - Objects
-          - Methods
-          - Parameters
+     * Supported Objects:
+          * **Jobs**
+               * Filters: name (Format: _filters=[name="NOVA.*"]_)
+          * **Activities**
+               * Filters: status (Format: _filters=[status=1800]_)
+          * **All**
+               * Filters: name (Format: _filters=[name="NOVA.*"]_) 
+               
+     * Examples:
      
-     perhaps:
-     /api/awa/help/v1? => show list of <api categories>
-     /api/awa/admin/v1/show_objects? => show list of available objects
-     /api/awa/admin/v1/AGENTS?method=show_methods => show list of methods
+          * /api/awa/search/v1/Jobs?filters=[name:"NOVA."]&token=s9dpur80s8rtvharifrm531387
+          * /api/awa/search/v1/All?filters=[name:"NOVA."]&token=s9dpur80s8rtvharifrm531387
+          * /api/awa/search/v1/Activities?filters=[status:1900]&token=s9dpur80s8rtvharifrm531387
 
-Commit Flag:
+     * returns:
 
-     should we add a simulation mode ? or a commit flag ? or neither ?
+          JSON
 
-Examples:
+* **Rerun:**
 
-     ADMIN:
-/api/awa/admin/v1/AGENTS?method=u_delete&filters=[‘category’:’RA’]
-/api/awa/admin/v1/AGENTS?method=u_setauth&filters=[‘category’:’RA’]&parameters=[‘*’,’Y’,’Y’,’Y’,N']
-/api/awa/admin/v1/CHANGES?method=list
+     * Supported Objects:
+          * **Activities**
+               * Mandatory Parameters: runid (Format: _runid=12344556_)
+               
+     * Examples:
+     
+          * /api/awa/rerun/v1/Activities?runid=12345678&token=s9dpur80s8rtvharifrm531387
 
-     JOBS:
-/api/awa/display/v1/JOBS?method=getinfo&filters=[‘name’:’*.ABC.*’, ’type’:’JOBS’]&additional[‘LOGIN']&token=dsfgsdfgfasdfa
-/api/awa/update/v1/JOBS?method=display_methods&token=dsfgsdfgfasdfa
-/api/awa/update/v1/JOBS?method=u_active&parameters=['status'=true]&token=dsfgsdfgfasdfa
-/api/awa/update/v1/JOBS?method=u_title&parameters=['oldpattern','newpattern']&token=dsfgsdfgfasdfa
 
-     CONN:
-          /api/awa/update/v1/CONN?method=db_type&parameters=[’MS_SQL']&token=dsfgsdfgfasdfa
-/api/awa/update/v1/CONN?method=ra_updval&parameters=[’name’=‘val']&token=dsfgsdfgfasdfa
-/api/awa/update/v1/CONN?method=u_title&parameters=['oldpattern','newpattern']&token=dsfgsdfgfasdfa
+     * returns:
 
-     ALL:
-          /api/awa/general/v1?method=create&parameters=[’type’:’JOBS’,’name’:’JOBS.EX.1']&token=dsfgsdfgfasdfa
-          /api/awa/general/v1?method=delete&parameters=[’name’:’*JOBS.EX.1*']&token=dsfgsdfgfasdfa
-          /api/awa/general/v1?method=move&parameters=[’name’:’*JOBS.EX.1*']&token=dsfgsdfgfasdfa
+          JSON
 
-     RUNS:
-          /api/awa/display/v1/RUNS?method=display&filters=[’name’:’*JOBS.EX.1*']&token=dsfgsdfgfasdfa
-         /api/awa/runs/v1?method=cancel&parameters=[’name’:’*JOBS.EX.1*']&token=dsfgsdfgfasdfa
+* **Unblock:**
 
+     * Supported Objects:
+          * **Activities**
+               * Mandatory Parameters: runid (Format: _runid=12344556_)
+               
+     * Examples:
+     
+          * /api/awa/unblock/v1/Activities?runid=12345678&token=s9dpur80s8rtvharifrm531387
+
+
+     * returns:
+
+          JSON
