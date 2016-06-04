@@ -34,9 +34,9 @@ REST API Server for Automic's ONE Automation Platform
      		=> the FilterValues also depend on the filterName. Some takes only Integers, some UC4Regex, some actual Regex, some have more specific formats
      		=> FilterNames & FilterValues can be easily chained (as long as they are separated by commas). Ex: filters=[name=NOVA*,status=1800,type=JOBF|JOBS]
      
-   **How to Get Help:**
-
-     - there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type:
+   **How to Get Help (and get started):**
+   
+	1- there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type:
      	
      	ex: http://localhost:8080/Automic-RESTful-Server/api/awa/help/v1/Activities
      	
@@ -60,7 +60,7 @@ REST API Server for Automic's ONE Automation Platform
      	
      	=> this means that there are **3 < api categories >** you can use with Activities (search, rerun & unblock).
      	
-     	- There is a special **< method >** called **"usage"** you can always use in order to retrieve the **list of parameters / filters required** for a given Object Type & < api category > combination:
+	2- There is a special **< method >** called **"usage"** you can always use in order to retrieve the **list of parameters / filters required** for a given Object Type & < api category > combination:
      	
      	ex: http://localhost:8080/Automic-RESTful-Server/api/awa/search/v1/Activities?method=usage
      	
