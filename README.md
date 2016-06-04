@@ -4,7 +4,7 @@ REST API Server for Automic's ONE Automation Platform
 
 **Structure proposed:**
 
-     http://<server name>:<port>/api/<product>/<api category>/<version>/<object type (if needed)>?method=<method>&parameters=<all required parameters>
+     http://<server name>:<port>/api/<product>/<api category>/<version>/<object type>?method=<method>&<all required URL parameters>
 
 * **with:**
 
@@ -15,25 +15,75 @@ REST API Server for Automic's ONE Automation Platform
      - **api category**: type of methods. Ex: display / update / delete / find / move etc. 
      - **version**: version of the API + Product + API category (allows more granular releases)
      - **object type**: type of objects to be considered. Ex: JOBS / JOBP / JSCH etc. NOT mandatory (depends on the api category).
-     - **method**: method to execute. Can be the same as <api category> for simple stuff (display), otherwise specifies an individual operation: method=u_title (update title), method=u_restore_previous (restore previous version of object), etc.
-     - **parameters**: parameters required for the <method>. ex: parameters=['status'=true], parameters=['oldpattern','newpattern'], etc.
+     - **method**: method to execute. Only used when the 'api category' isnt enough to define the action that is being taken.
+     - **URL parameters**: parameters required for the <method> & <api category> combination. ex: filters=[status:1800,type:JOBP] or search_usage=Y, etc.
      
 **Important Additional Design Aspects:**
 
-     - An authentication token must be passed in every call as a URL parameter (except for the authentication call itself).
-     - The Auth Token can be specified in the request http header (as 'token' parameter), in which case the 'token' url parameter becomes unecessary
-     - Tokens are non-persistent (they are not kept if the Server shuts down)
-     - Tokens expire after a certain configurable period
-     - Ideally the server should be able to return XML responses as well as JSON (JSON only for now) depending on the header content of the request
-     - Tokens are uniquely & randomly generated and do not encode any information
-     - There needs to be calls dedicated to retrieving available methods / objects & parameters as this REST API will rapidly get more and more complex
-     - There needs to be a "commit" mechanism to prevent accidental changes in objects
+     - The authentication token can be either passed in every call as a URL parameter ("token=") or passed as a request header parameter (as 'token').
+     - IF the Auth token is specified in the request header 'token' url parameter becomes unnecessary.
+     - Tokens are non-persistent (they are not kept if the Server shuts down as they are tied to individual connection objects).
+     - Tokens expire after a certain configurable period (should be in a config file somewhere).
+     - Ideally the server should be able to return XML responses as well as JSON (JSON only for now) depending on the header content of the request.
+     - Tokens are uniquely & randomly generated and do not encode any specific information.
+     - There are "helpers" url parameters that can be used to retrieve more info on certain calls.
+     - There needs to be a "commit" mechanism to prevent accidental changes in objects (not implemented yet).
      - Filters are designed in a specific way and provided as a url parameter called filters:
      		filters=[FilterName:FilterValue]
      		=> the FilterNames available obviously depend on the Object & Action you are working with
      		=> the FilterValues also depend on the filterName. Some takes only Integers, some UC4Regex, some actual Regex, some have more specific formats
+     		=> FilterNames & FilterValues can be easily chained (as long as they are separated by commas). Ex: filters=[name=NOVA*,status=1800,type=JOBF|JOBS]
      
-     
+   **How to Get Help:**
+
+     - there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type:
+     	
+     	ex: http://localhost:8080/Automic-RESTful-Server/api/awa/help/v1/Activities
+     	
+     	Returns:
+     	
+     	{
+			"success": true,
+			"count": 3,
+			"data": [
+				{
+					"operation": "search"
+				},
+				{
+					"operation": "rerun"
+				},
+				{
+					"operation": "unblock"
+				}
+			]
+		}
+     	
+     	=> this means that there are **3 < api categories >** you can use with Activities (search, rerun & unblock).
+     	
+     	- There is a special **< method >** called **"usage"** you can always use in order to retrieve the **list of parameters / filters required** for a given Object Type & < api category > combination:
+     	
+     	ex: http://localhost:8080/Automic-RESTful-Server/api/awa/search/v1/Activities?method=usage
+     	
+     	Returns:
+     	
+     	{
+			"success": true,
+			"required_parameters": [],
+			"optional_parameters": [],
+			"optional_filters": [
+				"status (format: filters=[status:1900])",
+				"key1 (format: filters=[key1:*.*]",
+				"type (format: filters=[type:JOBF])"
+			],
+			"required_methods": [],
+			"optional_methods": [
+				"usage"
+			]
+		}
+
+		=> This means that the **search < api category >** in combination with object **Activities** has **no required parameters** and **3 optional filters** you can use.
+		
+       
 **Available Methods & API Categories:**
 
 * **Authentication:**

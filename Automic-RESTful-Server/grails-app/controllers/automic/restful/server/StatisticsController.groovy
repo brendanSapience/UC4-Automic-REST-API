@@ -51,7 +51,7 @@ class StatisticsController {
 				
 				],
 			'required_methods': [],
-			'optional_methods': []
+			'optional_methods': ['usage']
 			]
 		
 		String FILTERS = params.filters;

@@ -33,7 +33,7 @@ class JobsController {
 			'optional_parameters': ['search_usage (format: search_usage=Y)'],
 			'optional_filters': [],
 			'required_methods': [],
-			'optional_methods': []
+			'optional_methods': ['usage']
 			]
 		
 		String FILTERS = params.filters;

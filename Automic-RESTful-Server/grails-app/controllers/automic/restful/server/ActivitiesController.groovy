@@ -37,7 +37,7 @@ class ActivitiesController {
 			'optional_parameters': [],
 			'optional_filters': ['status (format: filters=[status:1900])','key1 (format: filters=[key1:*.*]','type (format: filters=[type:JOBF])'],
 			'required_methods': [],
-			'optional_methods': []
+			'optional_methods': ['usage']
 			]
 		
 		String FILTERS = params.filters;
@@ -106,7 +106,7 @@ class ActivitiesController {
 			'optional_parameters': [],
 			'optional_filters': [],
 			'required_methods': [],
-			'optional_methods': []
+			'optional_methods': ['usage']
 			]
 
 		String FILTERS = params.filters;
@@ -157,7 +157,7 @@ class ActivitiesController {
 			'optional_parameters': ['lnr (format: lnr= < integer >'],
 			'optional_filters': [],
 			'required_methods': [],
-			'optional_methods': []
+			'optional_methods': ['usage']
 			]
 
 		String FILTERS = params.filters;
