@@ -128,7 +128,7 @@ public final class ConnectionManager {
 			if(CheckTokenRes == -1){txt = '{"status":"error","message":"no token passed"}'};
 			if(CheckTokenRes == -2){txt = '{"status":"error","message":"token invalid"}'};
 			if(CheckTokenRes == -3){txt = '{"status":"error","message":"token expired"}'};
-			//render(text:  txt, contentType: "text/json", encoding: "UTF-8")
+			render(text:  txt, contentType: "text/json", encoding: "UTF-8")
 			return false;
 		}
 	}

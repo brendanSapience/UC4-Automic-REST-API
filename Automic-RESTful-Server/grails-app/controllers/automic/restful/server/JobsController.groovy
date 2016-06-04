@@ -12,38 +12,64 @@ import com.uc4.communication.requests.TemplateList
 import com.automic.objects.CommonAERequests
 import com.automic.CommonJSONRequests
 import groovy.json.JsonBuilder
+import com.automic.MiscUtils
 
 class JobsController {
 
     def index() { }
 	
+	String[] SupportedOperations=['search'];
+	
+	def help = {
+		JsonBuilder json = CommonJSONRequests.getStringListAsJSONFormat("operation",SupportedOperations);
+		render(text: json, contentType: "text/json", encoding: "UTF-8")
+	}
+	
 	def searchv1 = {
 	
-		String PRODUCT = params.product;
-		String APIVERSION = params.version;
-		String TOKEN = params.token;
+		def SupportedThings = [:]
+		SupportedThings = [
+			'required_parameters': ['name (format: name= < UC4RegEx > )'],
+			'optional_parameters': ['search_usage (format: search_usage=Y)'],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': []
+			]
+		
 		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
 		
-		//Temp For Tests
-		if(TOKEN == "DEV"){TOKEN = ConnectionManager.bypassAuth();}
-		
-		if(ConnectionManager.runTokenChecks(TOKEN)){
-			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
- 
-			DisplayFilters dispFilters = new DisplayFilters(FILTERS);
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			render(text: json, contentType: "text/json", encoding: "UTF-8")
+		}else{
+			if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
+			if(TOKEN == "DEV"){TOKEN = ConnectionManager.bypassAuth();}
 			
-			SearchObject req = new SearchObject();
-			req.unselectAllObjectTypes();
-			req.setTypeJOBS(true);
-			
-			List<SearchResultItem> JobList = CommonAERequests.GenericSearchObjects(conn, dispFilters.getValueFromKey("name"), req);
-			
-			JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(JobList);
-			
-			render(text:  json, contentType: "text/json", encoding: "UTF-8")
-			
+			if(ConnectionManager.runTokenChecks(TOKEN)){
+				com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
+				
+				// check mandatory stuff here
+				if(MiscUtils.checkParams(SupportedThings, params)){
+					
+					//DisplayFilters dispFilters = new DisplayFilters(FILTERS);
+					
+					SearchObject req = new SearchObject();
+					req.unselectAllObjectTypes();
+					req.setTypeJOBS(true);
+					if(params.search_usage.equals('Y')){req.setSearchUseOfObjects(true);}
+					
+					List<SearchResultItem> JobList = CommonAERequests.GenericSearchObjects(conn, params.name, req);
+					
+					JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(JobList);
+					render(text:  json, contentType: "text/json", encoding: "UTF-8")
+				}else{
+					String json =  '{"status":"error","message":"missing mandatory parameters"}'
+					render(text:  json, contentType: "text/json", encoding: "UTF-8")
+				}
+			}
 		}
-
 	}
 	
 }

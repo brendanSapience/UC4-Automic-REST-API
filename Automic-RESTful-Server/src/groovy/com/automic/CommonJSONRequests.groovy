@@ -1,16 +1,38 @@
 package com.automic
 
 import com.uc4.api.SearchResultItem
+import com.uc4.api.StatisticSearchItem
 import com.uc4.api.Task
 import groovy.json.JsonBuilder
 
 class CommonJSONRequests {
 
+	public static JsonBuilder getStatisticResultListAsJSONFormat(List<StatisticSearchItem> ObjList){
+		
+		def data = [
+			success: true,
+			count: ObjList.size(),
+			data: ObjList.collect {[name: it.name, type:it.type, desc:it.periodDescription,
+				 platform:it.platform, runid:it.runID, parent:it.parentRunID, user:it.userName, 
+				 starttime:it.startTime.toString(), status:it.status,
+				 statuscode:it.statusCode, statusdesc:it.statusText,
+				 archive1:it.archive1, archive2:it.archive2, endtime:it.endTime.toString(), 
+				 runtime:it.runtime, 
+				 host:it.host,desc:it.periodDescription, 
+				 queue:it.queue,starttype:it.startType, activation_time:it.activationTime.toString(), client:it.client, comment:it.comment.toString(),
+				 message:it.message, version:it.getVersion()]}
+			//properties:it.getProperties().toMapString()
+		  ]
+
+		def json = new JsonBuilder(data)
+		return json;
+	}
+	
 	public static JsonBuilder getResultListAsJSONFormat(List<SearchResultItem> ObjList){
 		def data = [
 			success: true,
 			count: ObjList.size(),
-			data: ObjList.collect {[name: it.name, folder:it.folder, title:it.title, type:it.objectType, open:it.open]}
+			data: ObjList.collect {[name: it.name, folder: it.folder, title: it.title, type: it.objectType, open: it.open]}
 		  ]
 		
 		//, folder:it.folder, modified:it.modified, type: it.title
@@ -35,8 +57,9 @@ class CommonJSONRequests {
 			success: true,
 			required_parameters: ObjList.required_parameters,
 			optional_parameters: ObjList.optional_parameters,
-			filters: ObjList.filters,
-			methods: ObjList.methods
+			optional_filters: ObjList.optional_filters,
+			required_methods: ObjList.required_methods,
+			optional_methods: ObjList.optional_methods
 			
 		  ]
 		

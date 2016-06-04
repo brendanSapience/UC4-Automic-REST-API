@@ -12,6 +12,7 @@ import com.uc4.communication.Connection;
 import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
 import com.uc4.communication.requests.ActivityList;
+import com.uc4.communication.requests.GenericStatistics;
 import com.uc4.communication.requests.SearchObject;
 import com.uc4.communication.requests.XMLRequest;
 
@@ -28,6 +29,17 @@ public class CommonAERequests {
 		return req;
 	}
 	
+	public static String sendSyncRequestWithMsgReturn(Connection connection, GenericStatistics req) throws TimeoutException, IOException{
+		
+		connection.sendRequestAndWait(req);
+		
+		if (req.getMessageBox() != null) {
+			return req.getMessageBox().getText().toString().replace("\n", "");
+		}else{
+			return "";
+		}
+	}
+	
 	public static XMLRequest sendAsyncRequest(Connection connection, XMLRequest req, IResponseHandler resHandler, boolean verbose) throws TimeoutException, IOException{
 		
 		connection.sendRequest(req, resHandler);
@@ -37,6 +49,18 @@ public class CommonAERequests {
 			return null;
 		}
 		return req;
+	}
+	
+	public static String sendAsyncRequestWithMsgReturn(Connection connection, XMLRequest req, IResponseHandler resHandler) throws TimeoutException, IOException{
+		
+		connection.sendRequest(req, resHandler);
+		
+		if (req.getMessageBox() != null) {
+			return req.getMessageBox().getText().toString().replace("\n", "");
+		}else{
+			return "";
+		}
+
 	}
 	
 	public static List<SearchResultItem> SearchJobs(Connection conn, String ObjName) throws IOException{
@@ -69,4 +93,5 @@ public class CommonAERequests {
 		}
 		return tasks;
 	}
+	
 }
