@@ -16,9 +16,14 @@ public class DisplayFilters {
 			String[] RawFilters = RawFilterParams.substring(1,RawFilterParams.length()-1).split(",");
 			for(int i=0;i<RawFilters.length;i++){
 				String IndividualVal = RawFilters[i];
-				
+				String HashVal = "";
 				String HashKey = IndividualVal.split(":")[0].replaceAll("\"", "").toUpperCase();
-				String HashVal = IndividualVal.split(":")[1].replaceAll("\"", "").toUpperCase(); 
+				if(IndividualVal.split(":").length>1){
+					HashVal = IndividualVal.split(":")[1].replaceAll("\"", "").toUpperCase(); 
+				}else{
+					HashVal = ""; 
+				}
+
 				
 				FilterValues.put(HashKey, HashVal);
 			}

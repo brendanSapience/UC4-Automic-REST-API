@@ -48,7 +48,6 @@ class StatisticsController {
 				'runid (format: filters=[runid:*])','status (format: filters=[status:1900])','activation (format: filters=[activation:YYYYMMDDHHMM-YYYYMMDDHHMM])',
 				'start (format: filters=[start:YYYYMMDDHHMM-YYYYMMDDHHMM])','end (format: filters=[end:YYYYMMDDHHMM-YYYYMMDDHHMM])',
 				'platform (format: filters=[platform:WIN|UNIX])',
-				
 				],
 			'required_methods': [],
 			'optional_methods': ['usage']
@@ -78,12 +77,12 @@ class StatisticsController {
 				
 				if(dispFilters.doesKeyExistInFilter("key1")){req.setArchiveKey1(dispFilters.getValueFromKey("key1"));}
 				if(dispFilters.doesKeyExistInFilter("key2")){req.setArchiveKey2(dispFilters.getValueFromKey("key2"));}
-				if(dispFilters.doesKeyExistInFilter("alias")){req.setArchiveKey1(dispFilters.getValueFromKey("alias"));}
-				if(dispFilters.doesKeyExistInFilter("client")){req.setArchiveKey1(dispFilters.getValueFromKey("client"));}
-				if(dispFilters.doesKeyExistInFilter("name")){req.setArchiveKey1(dispFilters.getValueFromKey("name"));}
-				if(dispFilters.doesKeyExistInFilter("queue")){req.setArchiveKey1(dispFilters.getValueFromKey("queue"));}
-				if(dispFilters.doesKeyExistInFilter("runid")){req.setArchiveKey1(dispFilters.getValueFromKey("runid"));}
-				if(dispFilters.doesKeyExistInFilter("status")){req.setArchiveKey1(dispFilters.getValueFromKey("status"));}
+				if(dispFilters.doesKeyExistInFilter("alias")){req.setAlias(dispFilters.getValueFromKey("alias"));}
+				if(dispFilters.doesKeyExistInFilter("client")){req.setClient(dispFilters.getValueFromKey("client"));}
+				if(dispFilters.doesKeyExistInFilter("name")){req.setObjectName(dispFilters.getValueFromKey("name"));}
+				if(dispFilters.doesKeyExistInFilter("queue")){req.setQueue(dispFilters.getValueFromKey("queue"));}
+				if(dispFilters.doesKeyExistInFilter("runid")){req.setRunID(dispFilters.getValueFromKey("runid"));}
+				if(dispFilters.doesKeyExistInFilter("status")){req.setStatus(dispFilters.getValueFromKey("status"));}
 				
 				if(dispFilters.doesKeyExistInFilter("activation")){
 					String RawDate = dispFilters.getValueFromKey("activation");
