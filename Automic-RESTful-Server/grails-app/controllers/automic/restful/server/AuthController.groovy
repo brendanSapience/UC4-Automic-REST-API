@@ -1,14 +1,32 @@
 package automic.restful.server
 
-import com.automic.AECredentials
-import com.automic.ConnectionManager
+import com.automic.connection.AECredentials;
+import com.automic.connection.ConnectionManager;
 import com.uc4.communication.Connection
+
+import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 
 class AuthController {
 
     def index() { }
 	
+	def logout = {
+		
+		String TOKEN = params.token;
+		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
+		
+		boolean wasTokenFound = ConnectionManager.removeToken(TOKEN);
+		if(wasTokenFound){
+			JsonBuilder json = new JsonBuilder([status: "success", message: "token "+ TOKEN+" was removed successfully"])
+			render(text: json , contentType: "text/json", encoding: "UTF-8")
+		}else{
+			JsonBuilder json = new JsonBuilder([status: "success", message: "token "+ TOKEN+" was not found"])
+			render(text: json , contentType: "text/json", encoding: "UTF-8")
+		}
+		
+		
+	}
 	def authenticate = {
 		
 		String PRODUCT = params.product;
@@ -19,8 +37,8 @@ class AuthController {
 		String CONNECTIONNAME = params.connection;
 		
 		if(!LOGIN || !PWD || !CLIENTSTR || !CONNECTIONNAME){
-			String txt = '{"status":"error","message":"wrong parameters or parameters missing"}';
-			render(text: txt , contentType: "text/json", encoding: "UTF-8")
+			JsonBuilder json = new JsonBuilder([status: "error", message: "wrong parameters or parameters missing"])
+			render(text: json , contentType: "text/json", encoding: "UTF-8")
 		}else{
 			
 			String DEPT;
@@ -39,12 +57,12 @@ class AuthController {
 			println InputJSON.connections.each{
 				//println it.name
 				if(it.name == CONNECTIONNAME){
-					println "DEBUG: Connection Found!";
+					//println "DEBUG: Connection Found!";
 					DEPT = it.dept;
 					HOST = it.host;
 					PORT = it.ports[0].toInteger();
 					LANG = 'E';
-					println "DEBUG: Connection Params:" + DEPT +":"+ HOST +":"+PORT;
+					//println "DEBUG: Connection Params:" + DEPT +":"+ HOST +":"+PORT;
 				}
 				
 			}
@@ -55,23 +73,17 @@ class AuthController {
 			String token = ConnectionManager.connectToClient(creds);
 	
 			if(token == null){
-				String txt = '{"status":"error","message":"authentication failed"}';
-				render(text:  txt, contentType: "text/json", encoding: "UTF-8");
+				JsonBuilder json = new JsonBuilder([status: "error", message: "authentication failed"])
+				render(text:  json, contentType: "text/json", encoding: "UTF-8");
 				
 			}else{
 				String ExpDate = ConnectionManager.getExpDateFromToken(token);
-				String txt = '{"status":"success","token":"'+token+'","expdate":"'+ExpDate+'"}';
-				render(text:  txt, contentType: "text/json", encoding: "UTF-8");
+
+				JsonBuilder json = new JsonBuilder([status: "success", token:token, expdate: ExpDate])
+				render(text:  json, contentType: "text/json", encoding: "UTF-8");
 
 			}
-			
-			//Connection conn = ConnectionManager.getConnectionFromToken(token);
-
-		
-		
 		}
-		
-
 	}
 	
 }
