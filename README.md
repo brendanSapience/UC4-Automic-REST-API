@@ -130,7 +130,22 @@ REST API Server for Automic's ONE Automation Platform
           * **Activities** (Activity Window Content)
                * Optional Filters:          
                	* status <Integer|list of Integers|range of Integers> (ex: status:1800 or status:1800,1801,1802 or status:1800-1900)
-               
+               	* name   <UC4Regex>  (ex: ABC.*)
+               	* key1   <UC4Regex>  (ex: ABC.*)
+               	* key2   <UC4Regex>  (ex: ABC.*)
+               	* type   <List of Object Types separated by "|"> (ex: JOBS|JOBP|JOBF)
+               	* queue  <UC4Regex>  (ex: ABC.*)
+               	* parentrunid  <Integer>   (ex: 123456789001)
+               	* toprunid  <Integer>   (ex: 123456789001)
+               	* user  <UC4Regex>   (ex: BSP*)
+               	* platform <List of Platforms separated by "|"> (ex: WIN|UNIX|CIT)
+               	* activation <((YYYYMMDD|YYYYMMDDHHMM)-(YYYYMMDD|YYYYMMDDHHMM|NOW))|LAST<Integer>(YEARS|MONTHS|DAYS|HOURS|MINUTES|SECONDS)> (ex: 20160601-NOW or 201606012359-201606040000 or LAST45MINUTES or LAST4DAYS)
+               	* exkey1    (ex: exkey1) (exclude rather than include pattern in key1)
+               	* exkey2    (ex: exkey2) (exclude rather than include pattern in key2)
+               	* exhost    (ex: exhost) (exclude rather than include pattern in host)
+               	* exname    (ex: exname) (exclude rather than include pattern in name)
+               	* exuser    (ex: exuser) (exclude rather than include pattern in user)
+               	
           	ex: * /api/awa/search/v1/Activities?filters=[status:1900]&token=s9dpur80s8rtvharifrm531387
           
           * **All** (All Objects)
@@ -162,10 +177,41 @@ REST API Server for Automic's ONE Automation Platform
           ex: * /api/awa/search/v1/Statistics?filters=[platform:WIN|UNIX,type:EVNT|JOBS,name:*,activation:LAST4DAYS]&token=s9dpur80s8rtvharifrm531387
           ex: * /api/awa/search/v1/Statistics?filters=[platform:WIN,type:JOBS|JOBP,activation:LAST30MINUTES]&token=s9dpur80s8rtvharifrm531387   
                  
+     * returns: JSON
+
+* **Deactivate:**
+
+     * Supported Objects:
+     
+          * **Activities**
+               * Mandatory Parameters: 
+               	* runid <Integer> (ex: runid=1234567891000)
+					
+               * Optional Parameters: 
+					* force Y|N (ex: force=Y) (Force Deactivation, default is N)
+                             
+     * Examples:
+     
+          * /api/awa/deactivate/v1/Activities?runid=12345678&force=Y&token=s9dpur80s8rtvharifrm531387
+
+     * returns: JSON
+
+* **Quit:**
+
+     * Supported Objects:
+     
+          * **Activities**
+               * Mandatory Parameters: 
+               	* runid <Integer> (ex: runid=1234567891000)
+               
+     * Examples:
+     
+          * /api/awa/quit/v1/Activities?runid=12345678&token=s9dpur80s8rtvharifrm531387
+
      * returns:
 
           JSON
-
+          
 * **Rerun:**
 
      * Supported Objects:
@@ -179,9 +225,7 @@ REST API Server for Automic's ONE Automation Platform
           * /api/awa/rerun/v1/Activities?runid=12345678&token=s9dpur80s8rtvharifrm531387
 
 
-     * returns:
-
-          JSON
+     * returns: JSON
 
 * **Unblock:**
 
@@ -198,9 +242,8 @@ REST API Server for Automic's ONE Automation Platform
           ex: * /api/awa/unblock/v1/Activities?runid=12345678&token=s9dpur80s8rtvharifrm531387
 
 
-     * returns:
+     * returns: JSON
 
-          JSON
 
 
 !! The current scope is very limited, but the basics are in place and it should be extensible fairly easily & quickly.
