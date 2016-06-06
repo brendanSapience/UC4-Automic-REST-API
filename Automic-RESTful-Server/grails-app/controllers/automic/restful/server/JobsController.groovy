@@ -1,6 +1,7 @@
 package automic.restful.server
 
 import com.automic.DisplayFilters
+import com.automic.actions.JobsActions
 import com.automic.connection.AECredentials;
 import com.automic.connection.ConnectionManager;
 import com.automic.connection.ConnectionPoolItem;
@@ -9,6 +10,7 @@ import com.uc4.communication.Connection
 import com.uc4.communication.requests.SearchObject
 import com.uc4.communication.requests.TemplateList
 import com.automic.objects.CommonAERequests
+import com.automic.utils.ActionClassUtils
 import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
 
@@ -18,11 +20,10 @@ class JobsController {
 
     def index() { }
 	
-	String[] SupportedOperations=['search'];
-	
 	def help = {
-		JsonBuilder json = CommonJSONRequests.getStringListAsJSONFormat("operation",SupportedOperations);
-		render(text: json, contentType: "text/json", encoding: "UTF-8")
+		// all operations and all versions available - no list to maintained.. its dynamically calculated :)
+		ActionClassUtils utils = new ActionClassUtils(new JobsActions().metaClass.methods*.name.unique())
+		render(text: utils.getOpsAndVersionsAsJSON(), contentType: "text/json", encoding: "UTF-8")
 	}
 	
 	def router = {
@@ -41,9 +42,12 @@ class JobsController {
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
 			
 			// go to JobsActions and trigger $OPERATION$VERSION(params, conn)
-			
-			JsonBuilder myRes = com.automic.actions.JobsActions."${OPERATION}"(VERSION,params,conn);
-			render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
+			JsonBuilder myRes;
+			try{
+				myRes = com.automic.actions.JobsActions."${OPERATION}"(VERSION,params,conn);
+			}catch(MissingMethodException){
+				myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
+			}
 		}
 		
 	}

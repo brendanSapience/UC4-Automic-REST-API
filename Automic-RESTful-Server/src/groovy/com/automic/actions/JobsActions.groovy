@@ -12,10 +12,10 @@ import com.automic.utils.MiscUtils;
 
 class JobsActions {
 	
-	String[] SearchAvailableVersions = ['v1']
 	public static def search(String version, params,Connection conn){return "search${version}"(params,conn)}
+	public static def delete(String version, params,Connection conn){return "delete${version}"(params,conn)}
 	
-	private static def searchv1(params,Connection conn) {
+	public static def searchv1(params,Connection conn) {
 		
 			def SupportedThings = [:]
 			SupportedThings = [
@@ -57,4 +57,49 @@ class JobsActions {
 				
 			}
 		}
+	public static def searchv2(params,Connection conn) {
+		
+			def SupportedThings = [:]
+			SupportedThings = [
+				'required_parameters': ['name (format: name= < UC4RegEx > )'],
+				'optional_parameters': ['search_usage (format: search_usage=Y)'],
+				'optional_filters': [],
+				'required_methods': [],
+				'optional_methods': ['usage']
+				]
+			
+			String FILTERS = params.filters;
+			String TOKEN = params.token;
+			String METHOD = params.method;
+			String SEARCHUSAGE = params.search_usage;
+			
+			if(METHOD == "usage"){
+				JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+				return json
+			}else{
+					// check mandatory stuff here
+					if(MiscUtils.checkParams(SupportedThings, params)){
+						
+						//DisplayFilters dispFilters = new DisplayFilters(FILTERS);
+						
+						SearchObject req = new SearchObject();
+						req.unselectAllObjectTypes();
+						req.setTypeJOBS(true);
+						if(SEARCHUSAGE!=null && SEARCHUSAGE.toUpperCase() =~/Y|YES|OK|O/){req.setSearchUseOfObjects(true);}
+						
+						List<SearchResultItem> JobList = CommonAERequests.GenericSearchObjects(conn, params.name, req);
+						
+						JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(JobList);
+						return json
+						
+					}else{
+						JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+						return json
+					}
+				
+			}
+		}
+	public static def deletev1(params,Connection conn) {
+		
+	}
 }

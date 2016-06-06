@@ -7,6 +7,23 @@ import groovy.json.JsonBuilder
 
 class CommonJSONRequests {
 	
+	public static JsonBuilder getHashMapAsJSONFormat(HashMap<String,String[]> ObjList){
+		
+		def data = [
+			success: true,
+			count: ObjList.size(),
+			data: ObjList.collect {k,v ->
+				//println "key is: " + k
+				//println "values is: " + v
+				["operation": k, "versions":v]
+			}
+			//properties:it.getProperties().toMapString()
+		  ]
+
+		def json = new JsonBuilder(data)
+		return json;
+	}
+	
 	public static JsonBuilder getStatisticResultListAsJSONFormat(List<StatisticSearchItem> ObjList){
 		
 		def data = [

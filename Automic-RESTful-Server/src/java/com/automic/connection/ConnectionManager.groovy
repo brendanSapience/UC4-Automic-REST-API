@@ -1,5 +1,6 @@
 package com.automic.connection;
 
+import groovy.json.JsonBuilder
 import java.io.IOException;
 import java.net.ConnectException;
 import java.nio.channels.UnresolvedAddressException;
@@ -126,17 +127,18 @@ public final class ConnectionManager {
 	      }
 	}
 
-	public static boolean runTokenChecks(String token) {
+	public static JsonBuilder runTokenChecks(String token) {
 		int CheckTokenRes = ConnectionManager.checkTokenValidity(token);
 		if(CheckTokenRes == 0){
-			return true;
+			return null;
 		}else{ 
-		String txt =''; 
-			if(CheckTokenRes == -1){txt = '{"status":"error","message":"no token passed"}'};
-			if(CheckTokenRes == -2){txt = '{"status":"error","message":"token invalid"}'};
-			if(CheckTokenRes == -3){txt = '{"status":"error","message":"token expired"}'};
-			render(text:  txt, contentType: "text/json", encoding: "UTF-8")
-			return false;
+			JsonBuilder txt; 
+			//JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+			if(CheckTokenRes == -1){txt = new JsonBuilder([status: "error", message: "no token passed"])};
+			if(CheckTokenRes == -2){txt = new JsonBuilder([status: "error", message: "token invalid"])};
+			if(CheckTokenRes == -3){txt = new JsonBuilder([status: "error", message: "token expired"])};
+			//render(text:  txt, contentType: "text/json", encoding: "UTF-8")
+			return txt;
 		}
 	}
 	
