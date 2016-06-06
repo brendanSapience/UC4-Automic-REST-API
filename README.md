@@ -36,9 +36,9 @@ REST API Server for Automic's ONE Automation Platform
      
    **How to Get Help (and get started):**
    
-	1- there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type (and the list of versions available):
+* there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type (and the list of versions available):
      	
-     	ex: http://localhost:8080/Automic-RESTful-Server/api/awa/**help**/v1/Activities
+  ex: http://localhost:8080/Automic-RESTful-Server/api/awa/**help**/v1/Activities
      	
      	Returns:
      	
@@ -61,11 +61,11 @@ REST API Server for Automic's ONE Automation Platform
 			]
 		}
      	
-     	=> this means that there are **3 < api categories >** you can use with Activities (search, rerun & unblock), where the search category has 2 version available.
+     => this means that there are **3 < api categories >** you can use with Activities (search, rerun & unblock), where the search category has 2 version available.
      	
-	2- There is a special **< method >** called **"usage"** you can always use in order to retrieve the **list of parameters / filters required** for a given **Object Type**, **version** & **api category** combination:
+* There is a special **< method >** called **"usage"** you can always use in order to retrieve the **list of parameters / filters required** for a given **Object Type**, **version** & **api category** combination:
      	
-     	ex: http://localhost:8080/Automic-RESTful-Server/api/awa/search/v1/Activities?method=usage
+  ex: http://localhost:8080/Automic-RESTful-Server/api/awa/search/v1/Activities?**method=usage**
      	
      	Returns:
      	
@@ -84,7 +84,7 @@ REST API Server for Automic's ONE Automation Platform
 			]
 		}
 
-		=> This means that the **search < api category >** in combination with object **Activities** for **version 1** has **no required parameters** and **3 optional filters** you can use.
+	=> This means that the **search < api category >** in combination with object **Activities** for **version 1** has **no required parameters** and **3 optional filters** you can use.
 		
        
 **Available Methods & API Categories:**
