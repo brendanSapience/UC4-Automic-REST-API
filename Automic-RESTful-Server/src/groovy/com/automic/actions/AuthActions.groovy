@@ -33,7 +33,7 @@ class AuthActions {
 		String PWD = params.pwd;
 		String CLIENTSTR = params.client;
 		String CONNECTIONNAME = params.connection;
-		String METHOD = params.method ?: '' // infamous Elvis Operator. if params.method is null then give METHOD ''
+		String METHOD = params.method ?: ''  // // infamous Elvis Operator. if params.method is null then give METHOD ''
 		
 		if(METHOD.equalsIgnoreCase("usage")){
 			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);

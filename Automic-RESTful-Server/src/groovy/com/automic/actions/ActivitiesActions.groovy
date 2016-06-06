@@ -9,6 +9,7 @@ import com.uc4.api.UC4ObjectName
 import com.uc4.api.TaskFilter.TimeFrame;
 import com.uc4.communication.Connection
 import com.uc4.communication.requests.ActivityList
+import com.uc4.communication.requests.CancelTask
 import com.uc4.communication.requests.DeactivateTask
 import com.uc4.communication.requests.GenericStatistics;
 import com.uc4.communication.requests.QuitTask
@@ -28,16 +29,17 @@ import com.automic.utils.MiscUtils;
 
 class ActivitiesActions {
 
-	String[] SearchAvailableVersions = ['v1']
 	public static def search(String version, params,Connection conn){return "search${version}"(params,conn)}
 	public static def deactivate(String version, params,Connection conn){return "deactivate${version}"(params,conn)}
 	public static def rerun(String version, params,Connection conn){return "rerun${version}"(params,conn)}
 	public static def quit(String version, params,Connection conn){return "quit${version}"(params,conn)}
 	public static def unblock(String version, params,Connection conn){return "unblock${version}"(params,conn)}
+	public static def cancel(String version, params,Connection conn){return "cancel${version}"(params,conn)}
 	
+	// cancel, resume, rollback, suspend
 	
 	// Each function is versioned..
-	private static def searchv1(params,Connection conn){
+	public static def searchv1(params,Connection conn){
 	
 		def AllParamMap = [:]
 		AllParamMap = [
@@ -178,14 +180,12 @@ class ActivitiesActions {
 					return json
 					//render(text: json, contentType: "text/json", encoding: "UTF-8")
 				}else{
-					
-					String RUNIDASSTR = params.runid;
-					int RUNID = RUNIDASSTR.toInteger();
-						
-					//String FILTERS = params.filters;
 
 						if(MiscUtils.checkParams(AllParamMap, params)){
 							
+							String RUNIDASSTR = params.runid;
+							int RUNID = RUNIDASSTR.toInteger();
+
 							boolean ForceDeactivate = false;
 							if(FORCE.toUpperCase() =~/Y|YES|OK|TRUE/){
 								ForceDeactivate=true;
@@ -203,51 +203,85 @@ class ActivitiesActions {
 						}
 				}
 		}
+	public static def cancelv1(params,Connection conn){
+		
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['runid (format: runid= <integer>'],
+			'optional_parameters': ['recursive (format: recursive=[Y|N])'],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
 	
-	public static def quitv1(params,Connection conn){
-		
-				def AllParamMap = [:]
-				AllParamMap = [
-					'required_parameters': ['runid (format: runid= < integer >'],
-					'optional_parameters': [],
-					'optional_filters': [],
-					'required_methods': [],
-					'optional_methods': ['usage']
-					]
-		
-				String FILTERS = params.filters;
-				String TOKEN = params.token;
-				String METHOD = params.method;
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
 				
-				// Helper Methods
-				if(METHOD == "usage"){
-					JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			return json
+		}else{
+			if(MiscUtils.checkParams(AllParamMap, params)){
+				String RUNIDASSTR = params.runid;
+				int RUNID = RUNIDASSTR.toInteger();
+				String RECURSIVEASSTR = params.recursive
+				boolean RECURSIVE = false;
+				if(RECURSIVEASSTR != null && RECURSIVEASSTR.toUpperCase() =~/Y|YES|OK/){RECURSIVE=true;}
+	
+				CancelTask req = new CancelTask(RUNID,RECURSIVE);
+				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+				if(res == null){
+					JsonBuilder json = new JsonBuilder([status: "error", message: "could not cancel task"])
 					return json
-					//render(text: json, contentType: "text/json", encoding: "UTF-8")
 				}else{
-					
-					String RUNIDASSTR = params.runid;
-					int RUNID = RUNIDASSTR.toInteger();
-						
-					//String FILTERS = params.filters;
-						if(MiscUtils.checkParams(AllParamMap, params)){
-
-							QuitTask req = new QuitTask(RUNID);
-					
-							XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
-							if(res == null){
-								JsonBuilder json = new JsonBuilder([status: "error", message: "could not quit task"])
-								return json
-							}else{
-								JsonBuilder json = new JsonBuilder([status: "success", message: "task quit done"])
-								return json
-							}
-							
-							//render(text:  json, contentType: "text/json", encoding: "UTF-8")
-							
-						}
+					JsonBuilder json = new JsonBuilder([status: "success", message: "task cancelled"])
+					return json
 				}
+			}else{
+						JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+						return json
 			}
+		}
+	}
+	public static def quitv1(params,Connection conn){
+
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['runid (format: runid= < integer >'],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+	
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+				
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			return json
+		}else{		
+			if(MiscUtils.checkParams(AllParamMap, params)){
+				String RUNIDASSTR = params.runid;
+				int RUNID = RUNIDASSTR.toInteger();
+	
+				QuitTask req = new QuitTask(RUNID);
+					
+				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+				if(res == null){
+					JsonBuilder json = new JsonBuilder([status: "error", message: "could not quit task"])
+					return json
+				}else{
+					JsonBuilder json = new JsonBuilder([status: "success", message: "task quit done"])
+					return json
+				}		
+			}
+		}
+	}
 	
 	public static def rerunv1(params,Connection conn){
 
@@ -270,12 +304,9 @@ class ActivitiesActions {
 			//render(text: json, contentType: "text/json", encoding: "UTF-8")
 			return json
 		}else{
-			
-			String RUNIDASSTR = params.runid;
-			int RUNID = RUNIDASSTR.toInteger();
-				
 				if(MiscUtils.checkParams(AllParamMap, params)){
-					
+					String RUNIDASSTR = params.runid;
+					int RUNID = RUNIDASSTR.toInteger();
 					RestartTask req = new RestartTask(RUNID);
 			
 					XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
@@ -313,43 +344,44 @@ class ActivitiesActions {
 			return json
 			//render(text: json, contentType: "text/json", encoding: "UTF-8")
 		}else{
+			if(MiscUtils.checkParams(AllParamMap, params)){
+				String RUNIDASSTR = params.runid;
+				String LNRASSTR = params.lnr;
+				String TYPE = params.type;
 			
-			String RUNIDASSTR = params.runid;
-			String LNRASSTR = params.lnr;
-			String TYPE = params.type;
+				int RUNID = -1;
+				int LNR = -1;
 			
-			int RUNID = -1;
-			int LNR = -1;
+				if(RUNIDASSTR != null){RUNID = RUNIDASSTR.toInteger();}
+				if(LNRASSTR != null){LNR = LNRASSTR.toInteger();}
 			
-			if(RUNIDASSTR != null){RUNID = RUNIDASSTR.toInteger();}
-			if(LNRASSTR != null){LNR = LNRASSTR.toInteger();}
-			
-			if((TYPE.toUpperCase() != "JOBS" && TYPE.toUpperCase() != "JOBP") || RUNID == -1){
-				JsonBuilder json = new JsonBuilder([status: "error", message: "mandatory parameter missing"])
-				return json
-			}else{
+				if((TYPE.toUpperCase() != "JOBS" && TYPE.toUpperCase() != "JOBP") || RUNID == -1){
+					JsonBuilder json = new JsonBuilder([status: "error", message: "mandatory parameter missing"])
+					return json
+				}else{
 					
-					XMLRequest req;
+						XMLRequest req;
 					
-					if(TYPE.toUpperCase() == "JOBS"){
-						if(LNR != -1){
-							req = (UnblockJobPlanTask) new UnblockJobPlanTask(RUNID,LNR);
-						}else{
-							req = (UnblockJobPlanTask) new UnblockJobPlanTask(RUNID);
+						if(TYPE.toUpperCase() == "JOBS"){
+							if(LNR != -1){
+								req = (UnblockJobPlanTask) new UnblockJobPlanTask(RUNID,LNR);
+							}else{
+								req = (UnblockJobPlanTask) new UnblockJobPlanTask(RUNID);
+							}
+						}else if(TYPE.toUpperCase() == "JOBP"){
+							req = (UnblockWorkflow) new UnblockWorkflow(RUNID);
 						}
-					}else if(TYPE.toUpperCase() == "JOBP"){
-						req = (UnblockWorkflow) new UnblockWorkflow(RUNID);
-					}
 			
-					XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+						XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 					
-					if(res == null){
-						JsonBuilder json = new JsonBuilder([status: "error", message: "could not unblock task"])
-						return json
-					}else{
-						JsonBuilder json = new JsonBuilder([status: "success", message: "task unblocked"])
-						return json
-					}
+						if(res == null){
+							JsonBuilder json = new JsonBuilder([status: "error", message: "could not unblock task"])
+							return json
+						}else{
+							JsonBuilder json = new JsonBuilder([status: "success", message: "task unblocked"])
+							return json
+						}
+				}
 			}
 		}
 	}

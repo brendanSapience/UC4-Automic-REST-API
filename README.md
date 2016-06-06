@@ -28,6 +28,7 @@ REST API Server for Automic's ONE Automation Platform
      - Tokens are uniquely & randomly generated and do not encode any specific information.
      - There are "helpers" url parameters that can be used to retrieve more info on certain calls.
      - There needs to be a "commit" mechanism to prevent accidental changes in objects (not implemented yet).
+     - Every api category is versionned: this is to facilitate backwards compatibility in the future 
      - Filters are designed in a specific way and provided as a url parameter called filters:
      		filters=[FilterName:FilterValue]
      		=> the FilterNames available obviously depend on the Object & Action you are working with

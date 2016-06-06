@@ -219,19 +219,9 @@ class StatisticsActions {
 				}
 			}
 			
-			
-			// 20160101 2100 -201701012100
-			// 20160101-20170101
-			// 201601012100-NOW
-			// LASTNHOURS
-			
-			//println "Begin: " + BeginDate.toString()
-			//println "End: " + EndDate.toString()
 			req.setFromDate(BeginDate);
 			req.setToDate(EndDate);
 
-			
-			
 		}else{ //LASTNHOURS / LASTNMINUTES / LASTNDAYS |  type
 			
 		if(RawDate.toUpperCase() =~ /LAST[0-9]+(YEARS|YEAR|YR|Y|MONTHS|MONTH|MTH|DAYS|DAY|D|HOURS|HR|HOUR|H|MIN|MINUTE|MINUTES|SECONDS|SECOND|SEC|S|)/){

@@ -37,11 +37,11 @@ class AuthController {
 				
 				// go to Actions and trigger $OPERATION$VERSION(params, conn)
 				JsonBuilder myRes;
-				//try{
+				try{
 					myRes = com.automic.actions.AuthActions."${OPERATION}"(VERSION,params,conn);
-				//}catch(MissingMethodException){
-				//	myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
-				//}
+				}catch(MissingMethodException){
+					myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
+				}
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
 			
