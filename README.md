@@ -36,9 +36,9 @@ REST API Server for Automic's ONE Automation Platform
      
    **How to Get Help (and get started):**
    
-	1- there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type:
+	1- there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type (and the list of versions available):
      	
-     	ex: http://localhost:8080/Automic-RESTful-Server/api/awa/help/v1/Activities
+     	ex: http://localhost:8080/Automic-RESTful-Server/api/awa/**help**/v1/Activities
      	
      	Returns:
      	
@@ -47,20 +47,23 @@ REST API Server for Automic's ONE Automation Platform
 			"count": 3,
 			"data": [
 				{
-					"operation": "search"
+					"operation": "search",
+					"versions" : ["searchv1","searchv2"]
 				},
 				{
-					"operation": "rerun"
+					"operation": "rerun",
+					"versions" : ["rerunv1"]
 				},
 				{
-					"operation": "unblock"
+					"operation": "unblock",
+					"versions" : ["unblockv1"]
 				}
 			]
 		}
      	
-     	=> this means that there are **3 < api categories >** you can use with Activities (search, rerun & unblock).
+     	=> this means that there are **3 < api categories >** you can use with Activities (search, rerun & unblock), where the search category has 2 version available.
      	
-	2- There is a special **< method >** called **"usage"** you can always use in order to retrieve the **list of parameters / filters required** for a given Object Type & < api category > combination:
+	2- There is a special **< method >** called **"usage"** you can always use in order to retrieve the **list of parameters / filters required** for a given **Object Type**, **version** & **api category** combination:
      	
      	ex: http://localhost:8080/Automic-RESTful-Server/api/awa/search/v1/Activities?method=usage
      	
@@ -81,14 +84,14 @@ REST API Server for Automic's ONE Automation Platform
 			]
 		}
 
-		=> This means that the **search < api category >** in combination with object **Activities** has **no required parameters** and **3 optional filters** you can use.
+		=> This means that the **search < api category >** in combination with object **Activities** for **version 1** has **no required parameters** and **3 optional filters** you can use.
 		
        
 **Available Methods & API Categories:**
 
-* **Authentication:**
+* **Authentication (login):**
      
-    Ex: /api/awa/**auth**/v1?**login**=BSP&**pwd**=Un1ver$e&**connection**=AEPROD&**client**=200
+    Ex: /api/awa/**login**/v1/**Auth**?**login**=BSP&**pwd**=Un1ver$e&**connection**=AEPROD&**client**=200
 
      * **Mandatory Parameters:**
      
@@ -100,6 +103,15 @@ REST API Server for Automic's ONE Automation Platform
      * Returns:
      
         {'status':'success','token':'s9dpur80s8rtvharifrm531387','expdate':'20161231235959'}
+        
+* **Authentication (logout):**
+     
+    Ex: /api/awa/**logout**/v1/**Auth**?**token**=123fjh324gf234k234
+
+     * **Mandatory Parameters:**
+     
+          * _token_ (your auth token)
+          
 
 * **Search:**
 
