@@ -38,7 +38,6 @@ public final class ConnectionManager {
 			System.out.println(" -- ERROR: Could Not Connect to Host: " + credentials.getAEHostnameOrIp());
 			System.out.println(" --     Hint: is the host or IP reachable?");
 			return null;
-			
 		}
 		
 		CreateSession sess = conn.login(credentials.getAEClientToConnect(), credentials.getAEUserLogin(), 
@@ -133,11 +132,9 @@ public final class ConnectionManager {
 			return null;
 		}else{ 
 			JsonBuilder txt; 
-			//JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
 			if(CheckTokenRes == -1){txt = new JsonBuilder([status: "error", message: "no token passed"])};
 			if(CheckTokenRes == -2){txt = new JsonBuilder([status: "error", message: "token invalid"])};
 			if(CheckTokenRes == -3){txt = new JsonBuilder([status: "error", message: "token expired"])};
-			//render(text:  txt, contentType: "text/json", encoding: "UTF-8")
 			return txt;
 		}
 	}
