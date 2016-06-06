@@ -124,8 +124,8 @@ REST API Server for Automic's ONE Automation Platform
                * Optional Parameters: 
                	* search_usage <Y|N> (ex: search_usage=Y)
             
-				ex: * /api/awa/search/v1/Jobs?name="NOVA.*"&token=s9dpur80s8rtvharifrm531387
-				ex: * /api/awa/search/v1/Jobs?name="NOVA.*"&search_usage=Y&token=s9dpur80s8rtvharifrm531387
+			ex: * /api/awa/search/v1/Jobs?name="NOVA.*"&token=s9dpur80s8rtvharifrm531387
+			ex: * /api/awa/search/v1/Jobs?name="NOVA.*"&search_usage=Y&token=s9dpur80s8rtvharifrm531387
                               
           * **Activities** (Activity Window Content)
                * Optional Filters:          
@@ -155,8 +155,8 @@ REST API Server for Automic's ONE Automation Platform
                * Optional Parameters: 
                	* search_usage <Y|N> (ex: search_usage=Y)  
                	
-				ex: * /api/awa/search/v1/All?name="NOVA.*"&token=s9dpur80s8rtvharifrm531387
-				ex: * /api/awa/search/v1/All?name="NOVA.*"&search_usage=Y&token=s9dpur80s8rtvharifrm531387   
+			ex: * /api/awa/search/v1/All?name="NOVA.*"&token=s9dpur80s8rtvharifrm531387
+			ex: * /api/awa/search/v1/All?name="NOVA.*"&search_usage=Y&token=s9dpur80s8rtvharifrm531387   
 					             	
           * **Statistics** (period Window Content)
                * Optional Filters: 
@@ -188,7 +188,7 @@ REST API Server for Automic's ONE Automation Platform
                	* runid <Integer> (ex: runid=1234567891000)
 					
                * Optional Parameters: 
-					* force Y|N (ex: force=Y) (Force Deactivation, default is N)
+		* force Y|N (ex: force=Y) (Force Deactivation, default is N)
                              
      * Examples:
      
