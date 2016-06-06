@@ -14,7 +14,10 @@ import com.uc4.communication.requests.DeactivateTask
 import com.uc4.communication.requests.GenericStatistics;
 import com.uc4.communication.requests.QuitTask
 import com.uc4.communication.requests.RestartTask
+import com.uc4.communication.requests.ResumeTask
+import com.uc4.communication.requests.RollbackTask
 import com.uc4.communication.requests.SearchObject
+import com.uc4.communication.requests.SuspendTask
 import com.uc4.communication.requests.UnblockJobPlanTask
 import com.uc4.communication.requests.UnblockWorkflow
 import com.uc4.communication.requests.XMLRequest
@@ -35,9 +38,10 @@ class ActivitiesActions {
 	public static def quit(String version, params,Connection conn){return "quit${version}"(params,conn)}
 	public static def unblock(String version, params,Connection conn){return "unblock${version}"(params,conn)}
 	public static def cancel(String version, params,Connection conn){return "cancel${version}"(params,conn)}
-	
-	// cancel, resume, rollback, suspend
-	
+	public static def resume(String version, params,Connection conn){return "resume${version}"(params,conn)}
+	public static def rollback(String version, params,Connection conn){return "rollback${version}"(params,conn)}
+	public static def suspend(String version, params,Connection conn){return "suspend${version}"(params,conn)}
+
 	// Each function is versioned..
 	public static def searchv1(params,Connection conn){
 	
@@ -160,49 +164,175 @@ class ActivitiesActions {
 
 	}
 	public static def deactivatev1(params,Connection conn) {
-		
-				def AllParamMap = [:]
-				AllParamMap = [
-					'required_parameters': ['runid (format: runid= < integer >'],
-					'optional_parameters': ['force (format: force=Y)'],
-					'optional_filters': [],
-					'required_methods': [],
-					'optional_methods': ['usage']
-					]
-		
-				String FILTERS = params.filters;
-				String METHOD = params.method;
-				String FORCE = params.force;
-				
-				// Helper Methods
-				if(METHOD == "usage"){
-					JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
-					return json
-					//render(text: json, contentType: "text/json", encoding: "UTF-8")
-				}else{
 
-						if(MiscUtils.checkParams(AllParamMap, params)){
-							
-							String RUNIDASSTR = params.runid;
-							int RUNID = RUNIDASSTR.toInteger();
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['runid (format: runid= < integer >'],
+			'optional_parameters': ['force (format: force=Y)'],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
 
-							boolean ForceDeactivate = false;
-							if(FORCE.toUpperCase() =~/Y|YES|OK|TRUE/){
-								ForceDeactivate=true;
-							}
-							DeactivateTask req = new DeactivateTask(RUNID,ForceDeactivate);
+		String FILTERS = params.filters;
+		String METHOD = params.method;
+		String FORCE = params.force;
+		
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			return json
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+		}else{
+
+				if(MiscUtils.checkParams(AllParamMap, params)){
 					
-							XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
-							if(res == null){
-								JsonBuilder json = new JsonBuilder([status: "error", message: "could not deactivate task"])
-								return json
-							}else{
-								JsonBuilder json = new JsonBuilder([status: "success", message: "task deactivated"])
-								return json
-							}					
-						}
+					String RUNIDASSTR = params.runid;
+					int RUNID = RUNIDASSTR.toInteger();
+
+					boolean ForceDeactivate = false;
+					if(FORCE.toUpperCase() =~/Y|YES|OK|TRUE/){
+						ForceDeactivate=true;
+					}
+					DeactivateTask req = new DeactivateTask(RUNID,ForceDeactivate);
+			
+					XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+					if(res == null){
+						JsonBuilder json = new JsonBuilder([status: "error", message: "could not deactivate task"])
+						return json
+					}else{
+						JsonBuilder json = new JsonBuilder([status: "success", message: "task deactivated"])
+						return json
+					}					
 				}
 		}
+	}
+	public static def rollbackv1(params,Connection conn){
+		
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['runid (format: runid= <integer>'],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+	
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+				
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			return json
+		}else{
+			if(MiscUtils.checkParams(AllParamMap, params)){
+				String RUNIDASSTR = params.runid;
+				int RUNID = RUNIDASSTR.toInteger();
+				String RECURSIVEASSTR = params.recursive
+				boolean RECURSIVE = false;
+				if(RECURSIVEASSTR != null && RECURSIVEASSTR.toUpperCase() =~/Y|YES|OK/){RECURSIVE=true;}
+	
+				RollbackTask req = new RollbackTask(RUNID,RECURSIVE);
+				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+				if(res == null){
+					JsonBuilder json = new JsonBuilder([status: "error", message: "could not rollback task"])
+					return json
+				}else{
+					JsonBuilder json = new JsonBuilder([status: "success", message: "task rolled back"])
+					return json
+				}
+			}else{
+				JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+				return json
+			}
+		}
+	}
+	public static def suspendv1(params,Connection conn){
+		
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['runid (format: runid= <integer>'],
+			'optional_parameters': ['recursive (format: recursive=[Y|N])'],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+	
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+				
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			return json
+		}else{
+			if(MiscUtils.checkParams(AllParamMap, params)){
+				String RUNIDASSTR = params.runid;
+				int RUNID = RUNIDASSTR.toInteger();
+				String RECURSIVEASSTR = params.recursive
+				boolean RECURSIVE = false;
+				if(RECURSIVEASSTR != null && RECURSIVEASSTR.toUpperCase() =~/Y|YES|OK/){RECURSIVE=true;}
+	
+				SuspendTask req = new SuspendTask(RUNID,RECURSIVE);
+				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+				if(res == null){
+					JsonBuilder json = new JsonBuilder([status: "error", message: "could not resume task"])
+					return json
+				}else{
+					JsonBuilder json = new JsonBuilder([status: "success", message: "task resumed"])
+					return json
+				}
+			}else{
+				JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+				return json
+			}
+		}
+	}
+	public static def resumev1(params,Connection conn){
+		
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['runid (format: runid= <integer>'],
+			'optional_parameters': ['recursive (format: recursive=[Y|N])'],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+	
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+				
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			return json
+		}else{
+			if(MiscUtils.checkParams(AllParamMap, params)){
+				String RUNIDASSTR = params.runid;
+				int RUNID = RUNIDASSTR.toInteger();
+				String RECURSIVEASSTR = params.recursive
+				boolean RECURSIVE = false;
+				if(RECURSIVEASSTR != null && RECURSIVEASSTR.toUpperCase() =~/Y|YES|OK/){RECURSIVE=true;}
+	
+				ResumeTask req = new ResumeTask(RUNID,RECURSIVE);
+				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+				if(res == null){
+					JsonBuilder json = new JsonBuilder([status: "error", message: "could not resume task"])
+					return json
+				}else{
+					JsonBuilder json = new JsonBuilder([status: "success", message: "task resumed"])
+					return json
+				}
+			}else{
+				JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+				return json
+			}
+		}
+	}
 	public static def cancelv1(params,Connection conn){
 		
 		def AllParamMap = [:]
