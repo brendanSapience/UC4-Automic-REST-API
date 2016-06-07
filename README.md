@@ -118,7 +118,7 @@ REST API Server for Automic's ONE Automation Platform
 
      * Supported Objects:
      
-          * **Jobs** 
+          * **Jobs** (Replaced by All!!!)
                * Required Parameters: 
                	* name <UC4Regex> (ex: name="NOVA.*")
                	
@@ -155,6 +155,7 @@ REST API Server for Automic's ONE Automation Platform
                	
                * Optional Parameters: 
                	* search_usage <Y|N> (ex: search_usage=Y)  
+               	* LOTS more.. see help through REST Call
                	
 			ex: * /api/awa/search/v1/All?name="NOVA.*"&token=s9dpur80s8rtvharifrm531387
 			ex: * /api/awa/search/v1/All?name="NOVA.*"&search_usage=Y&token=s9dpur80s8rtvharifrm531387   
