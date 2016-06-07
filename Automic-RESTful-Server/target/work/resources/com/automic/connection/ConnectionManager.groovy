@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import com.uc4.api.DateTime
 import com.uc4.communication.Connection;
 import com.uc4.communication.requests.CreateSession;
 
@@ -21,12 +22,12 @@ public final class ConnectionManager {
 	//public ArrayList<Connection> ConnectionList = new ArrayList<Connection>();
 	
 	public static HashMap<String, ConnectionPoolItem> ConnectionMap = new HashMap<String, ConnectionPoolItem>();
-	public static String GlobalExpDate = "20161231235959";
+//	public static String GlobalExpDate = "20161231235959";
 	public ConnectionManager(){ 
 		
 	} 
 	
-	public static String connectToClient(AECredentials credentials) throws IOException{ 
+	public static String connectToClient(AECredentials credentials, int ValidityMinutes) throws IOException{ 
 		Connection conn = null;
 		//System.out.println("Authenticating to Client "+credentials.getAEClientToConnect()+" with user "+credentials.getAEUserLogin());
 		try{ 
@@ -38,7 +39,6 @@ public final class ConnectionManager {
 			System.out.println(" -- ERROR: Could Not Connect to Host: " + credentials.getAEHostnameOrIp());
 			System.out.println(" --     Hint: is the host or IP reachable?");
 			return null;
-			
 		}
 		
 		CreateSession sess = conn.login(credentials.getAEClientToConnect(), credentials.getAEUserLogin(), 
@@ -46,25 +46,21 @@ public final class ConnectionManager {
 		
 		if(sess.getMessageBox()!=null){
 			System.out.println("-- Error: " + sess.getMessageBox()); 
-			//System.exit(990);
 			return null;
 		}
-		// Check Server Version:
-//		String serverVersion = conn.getSessionInfo().getServerVersion();
-//		if(! SupportedAEVersions.SupportedVersions.contains(serverVersion)){
-//			System.err.println( " -- Error! Version of the Automation Engine does not seem supported.");
-//			System.err.println( " -- current version is: "+serverVersion);
-//			System.err.println( " -- versions supported: "+SupportedAEVersions.SupportedVersions.toString());
-//			System.exit(1);
-//		}
 		
 		SessionIdentifierGenerator sig = new SessionIdentifierGenerator();
 		String CONNTOKEN = sig.nextSessionId();
 		
 		ConnectionPoolItem ConnItem = new ConnectionPoolItem(conn);
-		ConnItem.setExpirationDate(GlobalExpDate);
+		
+		DateTime NOW = DateTime.now()
+		DateTime EXPDATE = DateTime.now().addMinutes(ValidityMinutes)
+		String ExpDate = EXPDATE.getYear().toString()+EXPDATE.getMonth().toString()+EXPDATE.getDay().toString()+EXPDATE.getHour().toString()+EXPDATE.getMinute().toString()+EXPDATE.getSecond().toString()
+		ConnItem.setExpirationDate(EXPDATE.toString());
 
 		ConnectionMap.put(CONNTOKEN,ConnItem);
+		//showConnectionPoolContent();
 		return CONNTOKEN;
 		
 	}
@@ -81,16 +77,20 @@ public final class ConnectionManager {
 			return -1;
 		}else{
 			if(!isTokenValid(token)){
+				//token doesnt exist
 				return -2;
 			}else{
 				// token none null & token actually known in hash
 				String ExpDate = getExpDateFromToken(token);
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 				Date ExpDateAsDate = sdf.parse(ExpDate);
 				Date now = new Date();
 				if(now.before(ExpDateAsDate)){
+					// token ok
 					return 0;
 				}else{
+				// expired
+					removeToken(token)
 					return -3;
 				}
 			}
@@ -133,11 +133,9 @@ public final class ConnectionManager {
 			return null;
 		}else{ 
 			JsonBuilder txt; 
-			//JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
 			if(CheckTokenRes == -1){txt = new JsonBuilder([status: "error", message: "no token passed"])};
 			if(CheckTokenRes == -2){txt = new JsonBuilder([status: "error", message: "token invalid"])};
 			if(CheckTokenRes == -3){txt = new JsonBuilder([status: "error", message: "token expired"])};
-			//render(text:  txt, contentType: "text/json", encoding: "UTF-8")
 			return txt;
 		}
 	}
@@ -145,7 +143,7 @@ public final class ConnectionManager {
 	public static String bypassAuth(){
 		char LANG = 'E';
 		AECredentials creds = new AECredentials("192.168.1.60",2217,200,"BSP","AUTOMIC",'Un1ver$e',LANG);
-		String TOKEN = ConnectionManager.connectToClient(creds);
+		String TOKEN = ConnectionManager.connectToClient(creds,525600);
 		return TOKEN;
 	}
 }

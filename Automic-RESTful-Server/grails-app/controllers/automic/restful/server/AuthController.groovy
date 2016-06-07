@@ -11,6 +11,8 @@ import groovy.json.JsonSlurper
 
 class AuthController {
 
+	static String ConnectionSettingsFileName = "ConnectionConfig.json"
+	
     def index() { }
 	
 	def help = {
@@ -26,6 +28,8 @@ class AuthController {
 		String METHOD = params.method;
 		String OPERATION = params.operation;
 		
+		
+		
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
 		
 			boolean NeedToken = true;
@@ -38,7 +42,13 @@ class AuthController {
 				// go to Actions and trigger $OPERATION$VERSION(params, conn)
 				JsonBuilder myRes;
 				try{
-					myRes = com.automic.actions.AuthActions."${OPERATION}"(VERSION,params,conn);
+					if(OPERATION.equalsIgnoreCase("login")){
+						def ConnectonFile = grailsAttributes.getApplicationContext().getResource(ConnectionSettingsFileName).getFile()
+						myRes = com.automic.actions.AuthActions."${OPERATION}"(VERSION,params,ConnectonFile);
+					}else{
+						myRes = com.automic.actions.AuthActions."${OPERATION}"(VERSION,params,conn);
+					}
+					
 				}catch(MissingMethodException){
 					myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
 				}

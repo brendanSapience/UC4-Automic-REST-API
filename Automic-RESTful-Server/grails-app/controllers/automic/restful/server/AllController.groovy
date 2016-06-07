@@ -13,6 +13,7 @@ import com.automic.objects.CommonAERequests
 import com.automic.utils.ActionClassUtils
 import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
+import grails.util.Environment
 
 class AllController {
 	
@@ -32,20 +33,20 @@ class AllController {
 		String OPERATION = params.operation;
 		
 		//OPERATION = 'search';
-		
+		//
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
-		if(TOKEN == "DEV"){TOKEN = ConnectionManager.bypassAuth();}
+		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
 		
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
 			
 			// go to JobsActions and trigger $OPERATION$VERSION(params, conn)
 			JsonBuilder myRes;
-			try{
+			//try{
 				myRes = com.automic.actions.AllActions."${OPERATION}"(VERSION,params,conn);
-			}catch(MissingMethodException){
-				myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
-			}
+			//}catch(MissingMethodException){
+			//	myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
+			//}
 			render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
 		

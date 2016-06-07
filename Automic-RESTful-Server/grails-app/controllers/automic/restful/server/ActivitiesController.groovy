@@ -16,9 +16,8 @@ import com.uc4.communication.requests.SearchObject
 import com.uc4.communication.requests.UnblockJobPlanTask
 import com.uc4.communication.requests.UnblockWorkflow
 import com.uc4.communication.requests.XMLRequest
-
+import grails.util.Environment
 import groovy.json.JsonBuilder
-
 import com.automic.actions.ActivitiesActions;
 import com.automic.connection.AECredentials;
 import com.automic.connection.ConnectionManager;
@@ -43,11 +42,9 @@ class ActivitiesController {
 		String VERSION = params.version;
 		String METHOD = params.method;
 		String OPERATION = params.operation;
-		
-		//OPERATION = 'search';
-		
+
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
-		if(TOKEN == "DEV"){TOKEN = ConnectionManager.bypassAuth();}
+		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
 			// go to ActivitiesActions and trigger $OPERATION$VERSION(params, conn)

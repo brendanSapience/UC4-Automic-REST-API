@@ -10,7 +10,7 @@
 	{
 		"name":"AEDEV",
 		"host":"192.168.1.61",
-		"dept":"AUTOMIc",
+		"dept":"AUTOMIC",
 		"lang":"E",
 		"ports":["2317","2318"]
 	}

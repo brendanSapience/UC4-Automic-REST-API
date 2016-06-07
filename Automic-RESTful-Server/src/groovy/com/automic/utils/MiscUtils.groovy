@@ -16,7 +16,7 @@ class MiscUtils {
 				
 				if(v.size() > 0){
 					v.each { s -> String ParamName = s.split(/ /)[0];
-						println "Param: " + ParamName +"=" +params."${ParamName}";
+						//println "Param: " + ParamName +"=" +params."${ParamName}";
 						//println "Param: " + ParamName +" : " +params.name;
 						if(params."${ParamName}" == null || params."${ParamName}" == "" ){
 							isError = true;

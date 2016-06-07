@@ -26,6 +26,7 @@ import com.automic.objects.CommonAERequests
 import com.automic.utils.ActionClassUtils
 import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
+import grails.util.Environment
 
 class StatisticsController {
 	
@@ -47,7 +48,7 @@ class StatisticsController {
 		//OPERATION = 'search';
 		
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
-		if(TOKEN == "DEV"){TOKEN = ConnectionManager.bypassAuth();}
+		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
 		
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);

@@ -76,7 +76,8 @@ class CommonJSONRequests {
 			optional_parameters: ObjList.optional_parameters,
 			optional_filters: ObjList.optional_filters,
 			required_methods: ObjList.required_methods,
-			optional_methods: ObjList.optional_methods
+			optional_methods: ObjList.optional_methods,
+			developer_comment: ObjList.developer_comment
 			
 		  ]
 		

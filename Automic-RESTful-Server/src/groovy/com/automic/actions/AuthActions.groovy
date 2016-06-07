@@ -15,10 +15,10 @@ import com.automic.utils.MiscUtils;
 
 class AuthActions {
 
-	public static def login(String version, params,Connection conn){return "login${version}"(params)}
+	public static def login(String version, params,File connFile){return "login${version}"(params,connFile)}
 	public static def logout(String version, params,Connection conn){return "logout${version}"(params,conn)}
 
-	public static def loginv1(params){
+	public static def loginv1(params, File ConnectionFile){
 		
 		def SupportedThings = [:]
 		SupportedThings = [
@@ -45,33 +45,33 @@ class AuthActions {
 				return json
 			}else{
 				
-				String DEPT;
+			// should test for this..
+				int CLIENTINT = CLIENTSTR.toInteger();
+			
+				String DEPT = '';
 				char LANG;
 				int PORT = 0;
-				int CLIENTINT = CLIENTSTR.toInteger();
 				String HOST = '';
+				int VALIDITY = 0;
 				
-				//def inputFile = new File("C:\\Users\\bsp\\Documents\\workspace-ggts-3.6.4.RELEASE\\Automic-RESTful-Server\\connection_config.json")
-				def inputFile = new File("connection_config.json")
-				def InputJSON = new JsonSlurper().parseText(inputFile.text)
+				def InputJSON = new JsonSlurper().parseText(ConnectionFile.text)
 				def ConnFoundInConfigFile = false;
 				
 				println InputJSON.connections.each{
-					//println it.name
 					if(it.name == CONNECTIONNAME){
-						//println "DEBUG: Connection Found!";
-						DEPT = it.dept;
-						HOST = it.host;
-						PORT = it.ports[0].toInteger();
-						LANG = 'E';
+						if(it.dept!=null){DEPT = it.dept;}
+						if(it.host!=null){HOST = it.host;}
+						if(it.ports[0] != null && it.ports[0].isInteger()){PORT = it.ports[0].toInteger();}
+						LANG = it.lang.toCharArray()[0];
+						if(it.validity != null && it.validity.toInteger()){VALIDITY = it.validity.toInteger();}
+						
 					}
 					
 				}
-				
 				// connecting to AE Engine
 				//String AEHostnameOrIp,int AECPPort,int AEClientToConnect,String AEUserLogin, String AEDepartment,String AEUserPassword,char AEMessageLanguage
 				AECredentials creds = new AECredentials(HOST,PORT,CLIENTINT,LOGIN,DEPT,PWD,LANG);
-				String token = ConnectionManager.connectToClient(creds);
+				String token = ConnectionManager.connectToClient(creds,VALIDITY);
 		
 				if(token == null){
 					JsonBuilder json = new JsonBuilder([status: "error", message: "authentication failed"])

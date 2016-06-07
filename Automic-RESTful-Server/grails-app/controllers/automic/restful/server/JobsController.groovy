@@ -15,6 +15,7 @@ import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
 
 import groovy.json.JsonBuilder
+import grails.util.Environment
 
 class JobsController {
 
@@ -36,7 +37,7 @@ class JobsController {
 		//OPERATION = 'search';
 		
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
-		if(TOKEN == "DEV"){TOKEN = ConnectionManager.bypassAuth();}
+		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
 		
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);

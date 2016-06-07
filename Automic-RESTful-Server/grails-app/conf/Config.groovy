@@ -31,8 +31,12 @@ grails.mime.types = [ // the first one is the default format
     xml:           ['text/xml', 'application/xml']
 ]
 
+// external config files
+//grails.config.locations = [ "file:${userHome}/.grails/apps-config/${appName}-connections.config"]
+//grails.config.connectionprops = "file:${userHome}/.grails/apps-config/${appName}-connections.config"
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
+
 
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"

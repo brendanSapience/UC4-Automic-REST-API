@@ -23,7 +23,8 @@ class JobsActions {
 				'optional_parameters': ['search_usage (format: search_usage=Y)'],
 				'optional_filters': [],
 				'required_methods': [],
-				'optional_methods': ['usage']
+				'optional_methods': ['usage'],
+				'developer_comment': 'Deprecated. Use api category "All" instead of "Jobs" and apply a filter on "JOBS" type instead.'
 				]
 			
 			String FILTERS = params.filters;
@@ -65,7 +66,8 @@ class JobsActions {
 				'optional_parameters': ['search_usage (format: search_usage=Y)'],
 				'optional_filters': [],
 				'required_methods': [],
-				'optional_methods': ['usage']
+				'optional_methods': ['usage'],
+				'developer_comment': 'Deprecated. Use api category "All" instead of "Jobs" and apply a filter on "JOBS" type instead.'
 				]
 			
 			String FILTERS = params.filters;
