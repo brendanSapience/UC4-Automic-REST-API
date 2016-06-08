@@ -16,44 +16,62 @@ import com.uc4.api.DateTime
 import com.uc4.communication.Connection;
 import com.uc4.communication.requests.CreateSession;
 
+/**
+ *
+ * @author bsp
+ * @purpose Static class (it needs to be accessible in multiple places). This is what actively handles the pool of connections.
+ * => Connections, when successfully established, are stored in a HashMap (ConnectionMap) with the key being the token itself (unique) and the value being a ConnectionPoolItem (itself containing the Connection object)
+ *
+ */
+
 public final class ConnectionManager {
 
-
-	//public ArrayList<Connection> ConnectionList = new ArrayList<Connection>();
-	
+	// main HashMap containing all ConnectionPoolItems
 	public static HashMap<String, ConnectionPoolItem> ConnectionMap = new HashMap<String, ConnectionPoolItem>();
-//	public static String GlobalExpDate = "20161231235959";
+
+	
+	public static String DEVHOST = "192.168.1.60";
+	public static int DEVPORT = 2217;
+	public static int DEVCLIENT = 200;
+	public static String DEVLOGIN = "BSP";
+	public static String DEVDEPT = "AUTOMIC";
+	public static String DEVPWD = 'Un1ver$e';
+	public static char LANG = 'E';
+	public static int DEVEXPIRYPERIOD = 525600;
+	
 	public ConnectionManager(){ 
-		
+		// leave empty
 	} 
 	
-	public static String connectToClient(AECredentials credentials, int ValidityMinutes) throws IOException{ 
+	// Establish a connection to AE: if successful, a new ConnectionPoolItem is stored and the corresponding token is returned
+	// IF Fails: returns an error message with details.
+	public static String connectToClient(AECredentials credentials, int ValidityMinutes,boolean IsAdmin) throws IOException{ 
 		Connection conn = null;
-		//System.out.println("Authenticating to Client "+credentials.getAEClientToConnect()+" with user "+credentials.getAEUserLogin());
+		//should try the list of ports
 		try{ 
 			conn = Connection.open(credentials.getAEHostnameOrIp(), credentials.getAECPPort());
 		}catch (UnresolvedAddressException e){
-			System.out.println(" -- ERROR: Could Not Resolve Host or IP: "+credentials.getAEHostnameOrIp());
-			return null;
+			//System.out.println(" -- ERROR: Could Not Resolve Host or IP: "+credentials.getAEHostnameOrIp());
+			return "--MESSAGE: Could Not Resolve Host or IP: "+credentials.getAEHostnameOrIp()
 		}catch (ConnectException c){
-			System.out.println(" -- ERROR: Could Not Connect to Host: " + credentials.getAEHostnameOrIp());
-			System.out.println(" --     Hint: is the host or IP reachable?");
-			return null;
+			//System.out.println(" -- ERROR: Could Not Connect to Host: " + credentials.getAEHostnameOrIp());
+			//System.out.println(" --     Hint: is the host or IP reachable?");
+			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
 		}
 		
 		CreateSession sess = conn.login(credentials.getAEClientToConnect(), credentials.getAEUserLogin(), 
 				credentials.getAEDepartment(), credentials.getAEUserPassword(), credentials.getAEMessageLanguage());
 		
 		if(sess.getMessageBox()!=null){
-			System.out.println("-- Error: " + sess.getMessageBox()); 
-			return null;
+			return "--MESSAGE: " + sess.getMessageBox(); 
+			//return null;
 		}
 		
 		SessionIdentifierGenerator sig = new SessionIdentifierGenerator();
 		String CONNTOKEN = sig.nextSessionId();
 		
 		ConnectionPoolItem ConnItem = new ConnectionPoolItem(conn);
-		
+
 		DateTime NOW = DateTime.now()
 		DateTime EXPDATE = DateTime.now().addMinutes(ValidityMinutes)
 		String ExpDate = EXPDATE.getYear().toString()+EXPDATE.getMonth().toString()+EXPDATE.getDay().toString()+EXPDATE.getHour().toString()+EXPDATE.getMinute().toString()+EXPDATE.getSecond().toString()
@@ -63,13 +81,17 @@ public final class ConnectionManager {
 		ConnItem.setDept(credentials.getAEDepartment());
 		ConnItem.setHost(credentials.getAEHostnameOrIp());
 		ConnItem.setLanguage(credentials.getAEMessageLanguage().toString());
-		
+		ConnItem.setCreationDate(DateTime.now().toString());
+		ConnItem.setPassword(credentials.getAEUserPassword());
+		ConnItem.setAdmin(IsAdmin);
 		
 		ConnectionMap.put(CONNTOKEN,ConnItem);
-		//showConnectionPoolContent();
+
 		return CONNTOKEN;
 		
 	}
+	
+	//on logout operations, the token needs to be removed from the Hash and the Connection needs to be closed
 	public static boolean removeToken(String token){
 		ConnectionPoolItem item = ConnectionMap.remove(token);
 		if(item == null){
@@ -78,7 +100,9 @@ public final class ConnectionManager {
 			return true;
 		}
 	}
-	public static int checkTokenValidity(String token) throws IOException, ParseException{
+	
+	// Check the status of a token: no token or Valid or expired or inexistant. should be a private method?
+	private static int checkTokenValidity(String token) throws IOException, ParseException{
 		if(token == null || token == ""){
 			return -1;
 		}else{
@@ -103,6 +127,7 @@ public final class ConnectionManager {
 		}
 	}
 	
+	// checks if token is known regardless of status
 	public static boolean isTokenValid(String token){
 		if(ConnectionMap.get(token)!=null){
 			return true;
@@ -110,6 +135,7 @@ public final class ConnectionManager {
 			return false;
 		}
 	}
+	
 	public static ConnectionPoolItem getConnectionItemFromToken(String token) throws IOException{
 		return ConnectionMap.get(token);
 	}
@@ -122,6 +148,7 @@ public final class ConnectionManager {
 		return ConnectionMap.get(token).getExpirationDate();
 	}
 	
+	// this is more of a debug method.. it isnt used anywhere actively.
 	public static void showConnectionPoolContent(){
 		 Set set = ConnectionMap.entrySet();
 	      Iterator iterator = set.iterator();
@@ -133,14 +160,14 @@ public final class ConnectionManager {
 	      }
 	}
 
+	// returns a JSON formatted message with all ConnectionMap Hash info
 	public static JsonBuilder getJSONFromConnectionPoolContent(){
 			def data = [
 			success: true,
 			count: ConnectionMap.size(),
 			data: ConnectionMap.collect {k,v ->
-				["token": k, "expdate":v.getExpirationDate(),"host":v.getHost(),"user":v.getUser(),"client":v.getClient(),"dept":v.getDept()]
+				["token": k, "expdate":v.getExpirationDate(), "host":v.getHost(),"user":v.getUser(),"client":v.getClient(),"dept":v.getDept(), "created" : v.getCreationDate()]
 			}
-			//properties:it.getProperties().toMapString()
 		  ]
 
 		def json = new JsonBuilder(data)
@@ -161,10 +188,9 @@ public final class ConnectionManager {
 		}
 	}
 	
+	// this method is only used in Dev
 	public static String bypassAuth(){
-		char LANG = 'E';
-		AECredentials creds = new AECredentials("192.168.1.60",2217,200,"BSP","AUTOMIC",'Un1ver$e',LANG);
-		String TOKEN = ConnectionManager.connectToClient(creds,525600);
-		return TOKEN;
+		AECredentials creds = new AECredentials(DEVHOST,DEVPORT,DEVCLIENT,DEVLOGIN,DEVDEPT,DEVPWD,LANG);
+		return ConnectionManager.connectToClient(creds,DEVEXPIRYPERIOD,true);
 	}
 }

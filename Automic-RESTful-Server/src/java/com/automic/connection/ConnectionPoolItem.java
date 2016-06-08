@@ -1,16 +1,50 @@
 package com.automic.connection;
 
+/**
+ * 
+ * @author bsp
+ * @purpose this class represents one single item of the active pool of connections opened to AE by the REST server (including the actual Connection object)
+ * 
+ *
+ */
+
 public class ConnectionPoolItem {
 
 	private com.uc4.communication.Connection Connection;
-	public String ExpirationDate;
-	public String User;
-	public String Client;
-	public String Dept;
-	public String Host;
-	public String Language;
+	private String ExpirationDate;
+	private String User;
+	private String Client;
+	private String Dept;
+	private String Host;
+	private String Language;
+	private String CreationDate;
+	private String Password;
+	private boolean isAdmin = false;
 	
-	
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public String getCreationDate() {
+		return CreationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		CreationDate = creationDate;
+	}
+
+	private String getPassword() {
+		return Password;
+	}
+
+	public void setPassword(String password) {
+		Password = password;
+	}
+
 	public String getHost() {
 		return Host;
 	}

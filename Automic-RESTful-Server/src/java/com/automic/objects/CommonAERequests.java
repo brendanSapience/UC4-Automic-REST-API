@@ -16,6 +16,13 @@ import com.uc4.communication.requests.GenericStatistics;
 import com.uc4.communication.requests.SearchObject;
 import com.uc4.communication.requests.XMLRequest;
 
+/**
+ * 
+ * @author bsp
+ * @purpose handle common XML Requests to AE
+ *
+ */
+
 public class CommonAERequests {
 
 	public static XMLRequest sendSyncRequest(Connection connection, XMLRequest req, boolean verbose) throws TimeoutException, IOException{
@@ -63,6 +70,7 @@ public class CommonAERequests {
 
 	}
 	
+	// Deprecated?
 	public static List<SearchResultItem> SearchJobs(Connection conn, String ObjName) throws IOException{
 		SearchObject req = new SearchObject();
 		req.unselectAllObjectTypes();

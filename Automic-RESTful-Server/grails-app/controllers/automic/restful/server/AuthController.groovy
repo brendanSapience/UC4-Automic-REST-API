@@ -13,7 +13,11 @@ class AuthController {
 
 	static String ConnectionSettingsFileName = "ConnectionConfig.json"
 	
-    def index() { }
+	/**
+	 * @name help
+	 * @purpose return a JSON structure containing the list of available operations for a given Object Type
+	 * @note this method should be in all controllers
+	 */
 	
 	def help = {
 		// all operations and all versions available - no list to maintained.. its dynamically calculated :)
@@ -21,14 +25,19 @@ class AuthController {
 		render(text: utils.getOpsAndVersionsAsJSON(), contentType: "text/json", encoding: "UTF-8")
 	}
 	
+	/**
+	 * @name router
+	 * @purpose checks authentication & token validity
+	 * @purpose dynamically calls the appropriate method corresponding to the url param api category (all methods should be in *Actions classes)
+	 * @note this method should be in all controllers
+	 */
+	
 	def router = {
 		String FILTERS = params.filters;
 		String TOKEN = params.token;
 		String VERSION = params.version;
 		String METHOD = params.method;
 		String OPERATION = params.operation;
-		
-		
 		
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
 		
@@ -41,7 +50,7 @@ class AuthController {
 				
 				// go to Actions and trigger $OPERATION$VERSION(params, conn)
 				JsonBuilder myRes;
-				try{
+				//try{
 					if(OPERATION.equalsIgnoreCase("login")){
 						def ConnectonFile = grailsAttributes.getApplicationContext().getResource(ConnectionSettingsFileName).getFile()
 						myRes = com.automic.actions.AuthActions."${OPERATION}"(VERSION,params,ConnectonFile);
@@ -49,9 +58,9 @@ class AuthController {
 						myRes = com.automic.actions.AuthActions."${OPERATION}"(VERSION,params,conn);
 					}
 					
-				}catch(MissingMethodException){
-					myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
-				}
+				//}catch(MissingMethodException){
+				//	myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
+				//}
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}else if(ConnectionManager.runTokenChecks(TOKEN)!=null && NeedToken){render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
 	}

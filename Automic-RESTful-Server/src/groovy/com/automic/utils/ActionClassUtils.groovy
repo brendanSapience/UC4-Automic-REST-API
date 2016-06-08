@@ -2,14 +2,23 @@ package com.automic.utils
 
 import groovy.json.JsonBuilder
 
+/**
+ * 
+ * @author bsp
+ * @purpose dynamically calculate the list of operations (ex: search, unblock, login etc.) from any *Actions class.
+ * @param Array of public methods from the *Actions class
+ * @returns a HashMap with structure: key = unique operation name (ex: search) value = list of versions for the unique operation name (ex: ['searchv1','searchv2','searchv3']) 
+ * 
+ */
+
 class ActionClassUtils {
 
-	ArrayList<String> UniqueListOfOperations;
-	HashMap<String,String[]> allVersions = new HashMap<String, String[]>();
+	private ArrayList<String> UniqueListOfOperations;
+	public HashMap<String,String[]> allVersions = new HashMap<String, String[]>();
 	
 	ActionClassUtils (ArrayList<String> RawOperationsList){
 		
-		// only keeps methods that match a pattern of xxxxxxvnn (with xxxx:letters, nn: a number)
+		// only keeps methods that match a pattern of xxxxxxvnn (with xxxx:letters, nn: a number) ex: searchv4 or unblockv10
 		def ListOfAllVersionnedOperations = RawOperationsList.findAll { it =~/[a-zA-Z]+v\d+/ }
 
 		// takes the filtered list of methods, removes the version from the names and uniques them
@@ -24,9 +33,6 @@ class ActionClassUtils {
 			ArrayList<String> TempArrayWithVersions = ListOfAllVersionnedOperations.findAll {it =~/^$Op/}
 			this.allVersions.put(Op, TempArrayWithVersions)
 		}
-		
-		//println allVersions
-		
 	}
 		
 	public JsonBuilder getOpsAndVersionsAsJSON(){

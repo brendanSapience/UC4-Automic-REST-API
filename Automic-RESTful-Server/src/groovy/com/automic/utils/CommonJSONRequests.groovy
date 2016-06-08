@@ -5,6 +5,13 @@ import com.uc4.api.StatisticSearchItem
 import com.uc4.api.Task
 import groovy.json.JsonBuilder
 
+/**
+ * 
+ * @author bsp
+ * @purpose returns JsonBuilder objects from various hash, lists, arrays..
+ *
+ */
+
 class CommonJSONRequests {
 	
 	public static JsonBuilder getHashMapAsJSONFormat(HashMap<String,String[]> ObjList){

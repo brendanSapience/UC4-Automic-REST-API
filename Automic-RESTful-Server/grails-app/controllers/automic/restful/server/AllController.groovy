@@ -17,13 +17,24 @@ import grails.util.Environment
 
 class AllController {
 	
-	def index() { }
+	/**
+	 * @name help
+	 * @purpose return a JSON structure containing the list of available operations for a given Object Type
+	 * @note this method should be in all controllers
+	 */
 	
 	def help = {
 		// all operations and all versions available - no list to maintained.. its dynamically calculated :)
 		ActionClassUtils utils = new ActionClassUtils(new AllActions().metaClass.methods*.name.unique())
 		render(text: utils.getOpsAndVersionsAsJSON(), contentType: "text/json", encoding: "UTF-8")
 	}
+	
+	/**
+	 * @name router
+	 * @purpose checks authentication & token validity
+	 * @purpose dynamically calls the appropriate method corresponding to the url param api category (all methods should be in *Actions classes)
+	 * @note this method should be in all controllers
+	 */
 	
 	def router = {
 		String FILTERS = params.filters;
@@ -40,14 +51,20 @@ class AllController {
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
 			
-			// go to JobsActions and trigger $OPERATION$VERSION(params, conn)
 			JsonBuilder myRes;
-			//try{
+			// if not in Prod we are ok to show stacktrace
+			if(Environment.current == Environment.DEVELOPMENT){
 				myRes = com.automic.actions.AllActions."${OPERATION}"(VERSION,params,conn);
-			//}catch(MissingMethodException){
-			//	myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
-			//}
+			}else{
+			// otherwise it needs to be caught
+				try{
+					myRes = com.automic.actions.AllActions."${OPERATION}"(VERSION,params,conn);
+				}catch(MissingMethodException){
+					myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
+				}
+			}
 			render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
+			
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
 		
 	}

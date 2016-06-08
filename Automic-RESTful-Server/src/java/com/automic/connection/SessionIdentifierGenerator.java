@@ -1,5 +1,12 @@
 package com.automic.connection;
 
+/**
+ * 
+ * @author bsp
+ * @purpose simply generates a random 32 char as a String (used as a token)
+ *
+ */
+
 import java.math.BigInteger;
 import java.security.SecureRandom;
 

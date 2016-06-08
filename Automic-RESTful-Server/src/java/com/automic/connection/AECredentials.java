@@ -1,11 +1,14 @@
 package com.automic.connection;
 
+/**
+ * 
+ * @author bsp
+ * @purpose this class represents one complete set of AE credentials (host, login, pwd, dept, language, port etc.)
+ *
+ */
+
 public class AECredentials {
 
-	/** 
-	 *    !!! Change the credentials below to your own system !!!
-	 **/
-	
 	private String AEHostnameOrIp;  // Automation Engine IP Adr 
 	private int AECPPort; 		    // "Primary" Communication Process port
 	private int AEClientToConnect;  // AE Client Number (0 - 9999)

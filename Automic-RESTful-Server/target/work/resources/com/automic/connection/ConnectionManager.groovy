@@ -27,26 +27,28 @@ public final class ConnectionManager {
 		
 	} 
 	
-	public static String connectToClient(AECredentials credentials, int ValidityMinutes) throws IOException{ 
+	public static String connectToClient(AECredentials credentials, int ValidityMinutes,boolean IsAdmin) throws IOException{ 
 		Connection conn = null;
-		//System.out.println("Authenticating to Client "+credentials.getAEClientToConnect()+" with user "+credentials.getAEUserLogin());
+		//should try the list of ports
 		try{ 
 			conn = Connection.open(credentials.getAEHostnameOrIp(), credentials.getAECPPort());
 		}catch (UnresolvedAddressException e){
 			System.out.println(" -- ERROR: Could Not Resolve Host or IP: "+credentials.getAEHostnameOrIp());
-			return null;
+			return "--MESSAGE: Could Not Resolve Host or IP: "+credentials.getAEHostnameOrIp()
+			//return null;
 		}catch (ConnectException c){
 			System.out.println(" -- ERROR: Could Not Connect to Host: " + credentials.getAEHostnameOrIp());
 			System.out.println(" --     Hint: is the host or IP reachable?");
-			return null;
+			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
+			//return null;
 		}
 		
 		CreateSession sess = conn.login(credentials.getAEClientToConnect(), credentials.getAEUserLogin(), 
 				credentials.getAEDepartment(), credentials.getAEUserPassword(), credentials.getAEMessageLanguage());
 		
 		if(sess.getMessageBox()!=null){
-			System.out.println("-- Error: " + sess.getMessageBox()); 
-			return null;
+			return "--MESSAGE: " + sess.getMessageBox(); 
+			//return null;
 		}
 		
 		SessionIdentifierGenerator sig = new SessionIdentifierGenerator();
@@ -63,7 +65,9 @@ public final class ConnectionManager {
 		ConnItem.setDept(credentials.getAEDepartment());
 		ConnItem.setHost(credentials.getAEHostnameOrIp());
 		ConnItem.setLanguage(credentials.getAEMessageLanguage().toString());
-		
+		ConnItem.setCreationDate(DateTime.now().toString());
+		ConnItem.setPassword(credentials.getAEUserPassword());
+		ConnItem.setAdmin(IsAdmin);
 		
 		ConnectionMap.put(CONNTOKEN,ConnItem);
 		//showConnectionPoolContent();
@@ -138,11 +142,9 @@ public final class ConnectionManager {
 			success: true,
 			count: ConnectionMap.size(),
 			data: ConnectionMap.collect {k,v ->
-				println "token is: " + k
-				println "expdate is: " + v.getExpirationDate()
-				["token": k, "expdate":v.getExpirationDate(),"host":v.getHost()]
+				["token": k, "expdate":v.getExpirationDate(), "host":v.getHost(),"user":v.getUser(),"client":v.getClient(),"dept":v.getDept(), "created" : v.getCreationDate()]
+				
 			}
-			//properties:it.getProperties().toMapString()
 		  ]
 
 		def json = new JsonBuilder(data)

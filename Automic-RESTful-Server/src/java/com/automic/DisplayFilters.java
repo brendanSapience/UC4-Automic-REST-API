@@ -1,13 +1,22 @@
 package com.automic;
 
 import java.util.HashMap;
+import java.util.Iterator;
+
+/**
+ * 
+ * @author bsp
+ * @purpose process the filters URL parameter. 
+ * @param String RawFilterParams: [name:.*F,filter2:1234,filter3:JOBP|JOBG]
+ * it allows the quick retrieval of a filter value when given the corresponding key.
+ */
 
 public class DisplayFilters {
 
-	private String RawFilterParams;
+	public String RawFilterParams;
 	public HashMap<String,String> FilterValues = new HashMap<String,String>();
 	
-	//[name:"NOVA.*"]
+	// ex: [name:.*F,filter2:1234,filter3:JOBP|JOBG]
 	public DisplayFilters(String RawFilterParams){
 		
 		if(RawFilterParams == null){RawFilterParams="";}
@@ -23,13 +32,16 @@ public class DisplayFilters {
 				}else{
 					HashVal = ""; 
 				}
-
-				
 				FilterValues.put(HashKey, HashVal);
 			}
+			
+//			Iterator<String> keys = FilterValues.keySet().iterator();
+//			while(keys.hasNext()){
+//				String KEY = keys.next();
+//				String VALUE = FilterValues.get(KEY);
+//				System.out.println("DEBUG: " + KEY + " : " + VALUE);
+//			}
 		}
-
-		
 	}
 	
 	public String getValueFromKey(String Key){

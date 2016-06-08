@@ -19,11 +19,22 @@ import com.automic.utils.MiscUtils;
 
 class StatisticsActions {
 
+	/**
+	 * @purpose this section contains all "routing" methods: routing methods call internal versionned methods. ex: "search" can call searchv1 or searchv2 etc. depending on the version in URL params
+	 * @param version: action version to use to call the proper method
+	 * @param params: all URL params
+	 * @param conn: Connection object to AE
+	 * @return JsonBuilder object
+	 */
 	
-	String[] SearchAvailableVersions = ['v1']
 	public static def search(String version, params,Connection conn){return "search${version}"(params,conn)}
 
-	// Each function is versioned..
+	
+	/**
+	 * @purpose search statistics (Period window) against filters
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
 	private static def searchv1(params,Connection conn){
 	
 		def AllParamMap = [:]
@@ -79,19 +90,28 @@ class StatisticsActions {
 				if(dispFilters.doesKeyExistInFilter("activation")){
 					String RawDate = dispFilters.getValueFromKey("activation");
 					req.setDateSelectionActivation();
-					HandleDateFilter(req, RawDate);
+					//HandleDateFilter(req, RawDate);
+					DateTime[] DTs = MiscUtils.HandleDateFilter(RawDate);
+					req.setFromDate(DTs[0]);
+					req.setToDate(DTs[1]);
 				}
 				
 				if(dispFilters.doesKeyExistInFilter("end")){
 					String RawDate = dispFilters.getValueFromKey("end");
 					req.setDateSelectionEnd();
-					HandleDateFilter(req, RawDate);
+					//HandleDateFilter(req, RawDate);
+					DateTime[] DTs = MiscUtils.HandleDateFilter(RawDate);
+					req.setFromDate(DTs[0]);
+					req.setToDate(DTs[1]);
 				}
 				
 				if(dispFilters.doesKeyExistInFilter("start")){
 					String RawDate = dispFilters.getValueFromKey("start");
 					req.setDateSelectionStart();
-					HandleDateFilter(req, RawDate);
+					//HandleDateFilter(req, RawDate);
+					DateTime[] DTs = MiscUtils.HandleDateFilter(RawDate);
+					req.setFromDate(DTs[0]);
+					req.setToDate(DTs[1]);
 				}
 				
 				// filters=[platform:UNIX|WIN|CIT]
@@ -182,91 +202,5 @@ class StatisticsActions {
 				}
 		}
 
-	}
-	
-	private static def HandleDateFilter(GenericStatistics req, String RawDate){
-		if(RawDate.contains('-')){
-			String RawBeginDate = RawDate.split("-")[0];
-			String RawEndDate = RawDate.split("-")[1];
-			DateTime BeginDate = null;
-			DateTime EndDate = null;
-			
-			String BeginNumberExtracted = RawBeginDate.findAll( /\d+/ )[0] //makes sure we have no other character
-			
-			// Adjusting the length to 14 char
-			if(BeginNumberExtracted.length() == 8){
-				BeginNumberExtracted = BeginNumberExtracted + '000000'
-			}else if(BeginNumberExtracted.length() == 12){
-				BeginNumberExtracted = BeginNumberExtracted + '00'
-			}
-			// if the length is still incorrect.. we just give an arbitrary window. Why? Because..
-			if(BeginNumberExtracted.length() != 14){
-				BeginDate = DateTime.now().addMinutes(-4*60);
-			}else{
-				BeginDate = new DateTime(BeginNumberExtracted.substring(0, 4).toInteger(),BeginNumberExtracted.substring(4, 6).toInteger(),BeginNumberExtracted.substring(6, 8).toInteger(),
-					BeginNumberExtracted.substring(8, 10).toInteger(),BeginNumberExtracted.substring(10, 12).toInteger(),BeginNumberExtracted.substring(12, 14).toInteger())
-			
-			
-			}
-			
-			if(RawEndDate.toUpperCase() =~/NOW/){
-				EndDate = DateTime.now();
-			} else{
-				String EndNumberExtracted = RawEndDate.findAll( /\d+/ )[0] //makes sure we have no other character
-				
-				// Adjusting the length to 14 char
-				if(EndNumberExtracted.length() == 8){
-					EndNumberExtracted = EndNumberExtracted + '000000'
-				}else if(EndNumberExtracted.length() == 12){
-					EndNumberExtracted = EndNumberExtracted + '00'
-				}
-				// if the length is still incorrect.. we just give an arbitrary window. Why? Because..
-				if(EndNumberExtracted.length() != 14){
-					EndDate = DateTime.now();
-				}else{
-					EndDate = new DateTime(EndNumberExtracted.substring(0, 4).toInteger(),EndNumberExtracted.substring(4, 6).toInteger(),EndNumberExtracted.substring(6, 8).toInteger(),
-						EndNumberExtracted.substring(8, 10).toInteger(),EndNumberExtracted.substring(10, 12).toInteger(),EndNumberExtracted.substring(12, 14).toInteger())
-				}
-			}
-			
-			req.setFromDate(BeginDate);
-			req.setToDate(EndDate);
-
-		}else{ //LASTNHOURS / LASTNMINUTES / LASTNDAYS |  type
-			
-		if(RawDate.toUpperCase() =~ /LAST[0-9]+(YEARS|YEAR|YR|Y|MONTHS|MONTH|MTH|DAYS|DAY|D|HOURS|HR|HOUR|H|MIN|MINUTE|MINUTES|SECONDS|SECOND|SEC|S|)/){
-			
-			String NumberOfUnits = RawDate.findAll( /\d+/ )[0]
-			
-			int Number = NumberOfUnits.toInteger()
-			String Type = RawDate.split(NumberOfUnits)[1]
-			
-			DateTime NOW = DateTime.now()
-			DateTime BEGINNING = DateTime.now()
-			
-			if(Type.toUpperCase() =~/YEARS|YEAR|YR|Y/){
-				BEGINNING.addYears(-Number)
-			}
-			if(Type.toUpperCase() =~/MONTHS|MONTH|MTH/){
-				BEGINNING.addMonth(-Number)
-			}
-			if(Type.toUpperCase() =~/DAY|DAYS|D/){
-				BEGINNING.addDays(-Number)
-			}
-			if(Type.toUpperCase() =~/HOURS|HOUR|HR|H/){
-				BEGINNING.addMinutes(-60*Number)
-			}
-			if(Type.toUpperCase() =~/MIN|MINUTE|MINUTES/){
-				BEGINNING.addMinutes(-Number)
-			}
-			if(Type.toUpperCase() =~/SECONDS|SECOND|SEC|S/){
-				BEGINNING.addSeconds(-Number)
-			}
-
-			req.setFromDate(BEGINNING);
-			req.setToDate(NOW);
-		}
-
-	}
 	}
 }
