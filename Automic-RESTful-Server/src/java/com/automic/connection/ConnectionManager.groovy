@@ -58,7 +58,13 @@ public final class ConnectionManager {
 		DateTime EXPDATE = DateTime.now().addMinutes(ValidityMinutes)
 		String ExpDate = EXPDATE.getYear().toString()+EXPDATE.getMonth().toString()+EXPDATE.getDay().toString()+EXPDATE.getHour().toString()+EXPDATE.getMinute().toString()+EXPDATE.getSecond().toString()
 		ConnItem.setExpirationDate(EXPDATE.toString());
-
+		ConnItem.setUser(credentials.getAEUserLogin());
+		ConnItem.setClient(credentials.getAEClientToConnect().toString());
+		ConnItem.setDept(credentials.getAEDepartment());
+		ConnItem.setHost(credentials.getAEHostnameOrIp());
+		ConnItem.setLanguage(credentials.getAEMessageLanguage().toString());
+		
+		
 		ConnectionMap.put(CONNTOKEN,ConnItem);
 		//showConnectionPoolContent();
 		return CONNTOKEN;
@@ -127,6 +133,21 @@ public final class ConnectionManager {
 	      }
 	}
 
+	public static JsonBuilder getJSONFromConnectionPoolContent(){
+			def data = [
+			success: true,
+			count: ConnectionMap.size(),
+			data: ConnectionMap.collect {k,v ->
+				["token": k, "expdate":v.getExpirationDate(),"host":v.getHost(),"user":v.getUser(),"client":v.getClient(),"dept":v.getDept()]
+			}
+			//properties:it.getProperties().toMapString()
+		  ]
+
+		def json = new JsonBuilder(data)
+		return json;
+
+   }
+	
 	public static JsonBuilder runTokenChecks(String token) {
 		int CheckTokenRes = ConnectionManager.checkTokenValidity(token);
 		if(CheckTokenRes == 0){

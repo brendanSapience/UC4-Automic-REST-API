@@ -15,9 +15,12 @@ import com.automic.utils.MiscUtils;
 
 class AuthActions {
 
+	public static String ADMINKEYFORCONNDISPLAY = "@dm1nK3y@dm1n"
+	
 	public static def login(String version, params,File connFile){return "login${version}"(params,connFile)}
 	public static def logout(String version, params,Connection conn){return "logout${version}"(params,conn)}
-
+	public static def admin(String version, params,Connection conn){return "admin${version}"(params,conn)}
+	
 	public static def loginv1(params, File ConnectionFile){
 		
 		def SupportedThings = [:]
@@ -155,6 +158,36 @@ class AuthActions {
 		}
 	}
 	
+	// !! this method is dangerous, it retrieves the list of all tokens!! this should be locked down or deleted.
+	public static def adminv1(params,Connection conn){
+		def SupportedThings = [:]
+		SupportedThings = [
+			'required_parameters': ['token (format: token= < text > )'],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+		
+		String TOKEN = params.token;
+		String METHOD = params.method;
+		String ADMINKEY = params.key;
+		
+		if( METHOD != null && METHOD.equalsIgnoreCase("usage")){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			return json
+		}else{
+			if(ADMINKEY != null && ADMINKEY.equals(ADMINKEYFORCONNDISPLAY)){
+					JsonBuilder json = ConnectionManager.getJSONFromConnectionPoolContent()
+					return json
+				
+			}else{
+				JsonBuilder json = new JsonBuilder([status: "error", message: "wrong parameters"])
+				return json
+			}
+		}
+	}
+	
 	public static def logoutv1(params,Connection conn){
 		def SupportedThings = [:]
 		SupportedThings = [
@@ -168,7 +201,7 @@ class AuthActions {
 		String TOKEN = params.token;
 		String METHOD = params.method;
 		
-		if(METHOD.equalsIgnoreCase("usage")){
+		if( METHOD != null && METHOD.equalsIgnoreCase("usage")){
 			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
 			return json
 		}else{

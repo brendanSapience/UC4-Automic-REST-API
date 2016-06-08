@@ -53,8 +53,6 @@ class AuthController {
 					myRes = new JsonBuilder([status: "error", message: "version "+VERSION+" does not exist for operation: "+OPERATION])
 				}
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
-			}
-			
-			if(ConnectionManager.runTokenChecks(TOKEN)!=null && NeedToken){render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
+			}else if(ConnectionManager.runTokenChecks(TOKEN)!=null && NeedToken){render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
 	}
 }
