@@ -39,6 +39,27 @@ class MiscUtils {
 		
 	}
 	
+	
+	def public static DateTime HandleDateText(String Date){
+		String BeginNumberExtracted = Date.replace(':', '').replace("/","").replace(" ","").findAll( /\d+/ )[0] //makes sure we have no other character
+		
+		// Adjusting the length to 14 char
+		if(BeginNumberExtracted.length() == 8){ //YYYYMMDD
+			BeginNumberExtracted = BeginNumberExtracted + '000000'
+		}else if(BeginNumberExtracted.length() == 12){ //YYYYMMDDhhmm
+			BeginNumberExtracted = BeginNumberExtracted + '00'
+		}else if(BeginNumberExtracted.length() == 4){ //hhmm
+			BeginNumberExtracted = DateTime.now().getYear().toString()+ DateTime.now().getMonth().toString()+ DateTime.now().getDay().toString()+ BeginNumberExtracted + '00'
+		}
+		// if the length is still incorrect.. we just give an arbitrary window. Why? Because..
+		if(BeginNumberExtracted.length() == 14){
+			return new DateTime(BeginNumberExtracted.substring(0, 4).toInteger(),BeginNumberExtracted.substring(4, 6).toInteger(),BeginNumberExtracted.substring(6, 8).toInteger(),
+				BeginNumberExtracted.substring(8, 10).toInteger(),BeginNumberExtracted.substring(10, 12).toInteger(),BeginNumberExtracted.substring(12, 14).toInteger())
+
+		}
+		
+		
+	}
 	/**
 	 * @purpose Handle Time / Date Filters. Input is treated as multiple possible formats:
 	 * 			=> YYYYMMDDhhmm-YYYYMMDDhhmm

@@ -13,6 +13,7 @@ import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
 import com.uc4.communication.requests.ActivityList;
 import com.uc4.communication.requests.GenericStatistics;
+import com.uc4.communication.requests.GetSessionTZ;
 import com.uc4.communication.requests.SearchObject;
 import com.uc4.communication.requests.XMLRequest;
 
@@ -25,10 +26,20 @@ import com.uc4.communication.requests.XMLRequest;
 
 public class CommonAERequests {
 
+	public static String getSessionTZ(Connection connection) throws TimeoutException, IOException{
+		GetSessionTZ reqTZ = new GetSessionTZ();
+		connection.sendRequestAndWait(reqTZ);
+
+		if (reqTZ.getMessageBox() != null) {
+			
+			return null;
+		}
+		return reqTZ.getTimeZone().getDisplayName();
+	}
 	public static XMLRequest sendSyncRequest(Connection connection, XMLRequest req, boolean verbose) throws TimeoutException, IOException{
-		
+
 		connection.sendRequestAndWait(req);
-		
+
 		if (req.getMessageBox() != null) {
 			if(verbose){System.out.println(" -- "+req.getMessageBox().getText().toString().replace("\n", ""));}
 			return null;

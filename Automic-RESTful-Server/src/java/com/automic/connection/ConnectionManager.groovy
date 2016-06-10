@@ -33,7 +33,7 @@ public final class ConnectionManager {
 	public static String DEVHOST = "192.168.1.60";
 	public static int DEVPORT = 2217;
 	public static int DEVCLIENT = 200;
-	public static String DEVLOGIN = "BSP";
+	public static String DEVLOGIN = "BSP"; //"BSP";
 	public static String DEVDEPT = "AUTOMIC";
 	public static String DEVPWD = 'Un1ver$e';
 	public static char LANG = 'E';

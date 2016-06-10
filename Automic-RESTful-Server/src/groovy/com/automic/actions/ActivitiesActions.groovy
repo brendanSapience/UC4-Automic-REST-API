@@ -4,15 +4,21 @@ import com.automic.DisplayFilters
 import com.uc4.api.DateTime
 import com.uc4.api.SearchResultItem
 import com.uc4.api.Task
-import com.uc4.api.TaskFilter;
+import com.uc4.api.TaskFilter
 import com.uc4.api.UC4ObjectName
-import com.uc4.api.TaskFilter.TimeFrame;
+import com.uc4.api.UC4TimezoneName
+import com.uc4.api.TaskFilter.TimeFrame
 import com.uc4.communication.Connection
 import com.uc4.communication.requests.ActivityList
+import com.uc4.communication.requests.AdoptTask
 import com.uc4.communication.requests.CancelTask
 import com.uc4.communication.requests.DeactivateTask
-import com.uc4.communication.requests.GenericStatistics;
+import com.uc4.communication.requests.ExecuteObject
+import com.uc4.communication.requests.GenericStatistics
+import com.uc4.communication.requests.GetComments
+import com.uc4.communication.requests.GetSessionTZ
 import com.uc4.communication.requests.QuitTask
+import com.uc4.communication.requests.Report
 import com.uc4.communication.requests.RestartTask
 import com.uc4.communication.requests.ResumeTask
 import com.uc4.communication.requests.RollbackTask
@@ -24,11 +30,12 @@ import com.uc4.communication.requests.XMLRequest
 
 import groovy.json.JsonBuilder
 
-import com.automic.connection.AECredentials;
-import com.automic.connection.ConnectionManager;
+import com.automic.connection.AECredentials
+import com.automic.connection.ConnectionManager
 import com.automic.objects.CommonAERequests
-import com.automic.utils.CommonJSONRequests;
-import com.automic.utils.MiscUtils;
+import com.automic.utils.CommonJSONRequests
+import com.automic.utils.MiscUtils
+import com.uc4.communication.requests.GetComments.Comment
 
 class ActivitiesActions {
 
@@ -49,7 +56,88 @@ class ActivitiesActions {
 	public static def resume(String version, params,Connection conn){return "resume${version}"(params,conn)}
 	public static def rollback(String version, params,Connection conn){return "rollback${version}"(params,conn)}
 	public static def suspend(String version, params,Connection conn){return "suspend${version}"(params,conn)}
+	public static def show(String version, params,Connection conn){return "show${version}"(params,conn)}
+	public static def run(String version, params,Connection conn){return "run${version}"(params,conn)}
+	
+	/**
+	 * @purpose run a given object by name
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def runv1(params,Connection conn){
 
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['name (format: name= < object name >'],
+			'optional_parameters': [
+				'start (format: start=< date-time >, date-time can be: YYYYMMDDhhmm or simply hhmm (same day))',
+				'logical (format: start=< date-time >, date-time is be: YYYYMMDD)',
+				'tz (format: tz=<timezone name>)',
+				'manualrelease (format: manualrelease=Y)',
+				'alias (format: alias=<text>)'
+
+				],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+		
+		String STARTDATE = params.start;
+		String LOGDATE = params.logical;
+		String TZ = params.tz;
+		String MANUALRELEASE = params.manual;
+		String ALIAS = params.alias;
+		
+		
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+			return json
+		}else{
+				if(MiscUtils.checkParams(AllParamMap, params)){
+					String OBJNAME = params.name;
+					
+					ExecuteObject req = new ExecuteObject(new UC4ObjectName(OBJNAME));
+					req.allowImmediateStart(true);
+					
+					DateTime StartDate = DateTime.now();
+					DateTime LogicalDate = DateTime.now();
+					boolean ManualRelease = false;
+					String Alias = null;
+					UC4TimezoneName Tz= CommonAERequests.getSessionTZ(conn);
+					boolean IsDateSpecified = false;
+					
+					if(STARTDATE!= null && !STARTDATE.equals("")){IsDateSpecified = true; StartDate = MiscUtils.HandleDateText(STARTDATE);}
+					if(LOGDATE!= null && !LOGDATE.equals("")){LogicalDate = MiscUtils.HandleDateText(LOGDATE);}
+					if(MANUALRELEASE!= null && MANUALRELEASE.toUpperCase() =~/YES|Y|O|/){ManualRelease = true;}
+					if(ALIAS!= null && !ALIAS.equals("")){Alias = ALIAS;}
+					if(TZ != null && !TZ.equals("")){Tz=new UC4TimezoneName(TZ);}
+					
+					try{
+						if(IsDateSpecified){req.executeOnce(StartDate, LogicalDate, Tz, ManualRelease, null);}
+						if(!IsDateSpecified){req.executeOnce(null, LogicalDate, Tz, ManualRelease, null);}
+						
+					}catch (IllegalArgumentException e){
+						return CommonJSONRequests.renderErrorAsJSON(e.message);
+					}
+					
+					XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+
+					if(res == null){
+						JsonBuilder json = new JsonBuilder([status: "error", message: "could not start task"])
+						return json
+					}else{
+						JsonBuilder json = new JsonBuilder([status: "success", message: "task started"])
+						return json
+					}
+				}
+		}
+	}
 	
 	/**
 	 * @purpose search activities (Activities window) against filters
@@ -179,7 +267,74 @@ class ActivitiesActions {
 		}
 
 	}
-	
+		
+	 public static def showv1(params,Connection conn) {
+ 
+		 def AllParamMap = [:]
+		 AllParamMap = [
+			 'required_parameters': ['runid (format: runid= < integer >'],
+			 'optional_parameters': ['type (format: type= <Type of Report>) (available types: ACT, LOG, REP, LST, SREP, POST, REV0, REV1, REV2, CLNT, OBJ,SLOG, COMMENTS)'],
+			 'optional_filters': [],
+			 'required_methods': [],
+			 'optional_methods': ['usage']
+			 ]
+ 
+		 String FILTERS = params.filters;
+		 String METHOD = params.method;
+		 String TYPE = params.type;
+		 
+		 // Helper Methods
+		 if(METHOD == "usage"){
+			 JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			 return json
+			 //render(text: json, contentType: "text/json", encoding: "UTF-8")
+		 }else{
+ 
+				 if(MiscUtils.checkParams(AllParamMap, params)){
+					 
+					 String RUNIDASSTR = params.runid;
+					 int RUNID = RUNIDASSTR.toInteger();
+					 //ACT, LOG, REP, LST, SREP, POST, REV0, REV1, REV2, CLNT, OBJ,SLOG
+					 // realistically: ACT / LOG / REP / POST
+					 ArrayList<String> ValidReportTypes = ["ACT", "LOG", "REP", "LST", "SREP", "POST", "REV0", "REV1", "REV2", "CLNT", "OBJ","SLOG"]
+					 
+					 if(TYPE != null && ValidReportTypes.contains(TYPE.toUpperCase())){
+							return getReportAsJSON(TYPE.toUpperCase(),conn, RUNID);
+					 }
+					 else if(TYPE != null && TYPE.toUpperCase() =~ /COMMENTS|COMMENT|COMM|CMTS|CMT/){
+					 	GetComments req = new GetComments(RUNID);
+						 try{
+							 conn.sendRequestAndWait(req);
+						 }catch (IllegalStateException e){
+							 return CommonJSONRequests.renderErrorAsJSON(e.message);
+						 }
+						
+						if(req.getMessageBox()!=null){
+							return CommonJSONRequests.renderErrorAsJSON(req.getMessageBox());
+						}else{
+							ArrayList<Comment> reqList = req.iterator().toList();
+							return new JsonBuilder(
+								[
+									success: true,
+									count: reqList.size(),
+									data: reqList.collect {[
+										test:it.text.toString(),
+										timestamp:it.timestamp.toString(),
+										user:it.user.toString()
+										]}
+								  ]
+							)
+						}
+
+					 
+					 }else{
+					 	
+					 return getReportAsJSON("REP",conn, RUNID);
+					 }
+				 }
+		 }
+	 }
+	 
 	/**
 	* @purpose deactivate a given activity by runid
 	* @return JsonBuilder object
@@ -227,6 +382,51 @@ class ActivitiesActions {
 						return json
 					}					
 				}
+		}
+	}
+	
+	/**
+	 * @purpose adopt a given activity by runid
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def adoptv1(params,Connection conn){
+		
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['runid (format: runid= <integer>'],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+	
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+				
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			return json
+		}else{
+			if(MiscUtils.checkParams(AllParamMap, params)){
+				String RUNIDASSTR = params.runid;
+				int RUNID = RUNIDASSTR.toInteger();
+	
+				AdoptTask req = new AdoptTask(RUNID);
+				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+				if(res == null){
+					JsonBuilder json = new JsonBuilder([status: "error", message: "could not adopt task"])
+					return json
+				}else{
+					JsonBuilder json = new JsonBuilder([status: "success", message: "task adopted"])
+					return json
+				}
+			}else{
+				JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+				return json
+			}
 		}
 	}
 	
@@ -475,7 +675,12 @@ class ActivitiesActions {
 		def AllParamMap = [:]
 		AllParamMap = [
 			'required_parameters': ['runid (format: runid= < integer >'],
-			'optional_parameters': [],
+			'optional_parameters': [
+				'keepstartmode (format: keepstartmode=Y): Keep Start Mode',
+				'restartaborts (format: restartaborts=Y): Only Restart Aborted Tasks / Children',
+				'manualrelease (format: manualrelease=Y): Wait for Manual Release',
+				'restartpoint (format: restartpoint=<String>): Restart from certain point'
+				],
 			'optional_filters': [],
 			'required_methods': [],
 			'optional_methods': ['usage']
@@ -484,6 +689,11 @@ class ActivitiesActions {
 		String FILTERS = params.filters;
 		String TOKEN = params.token;
 		String METHOD = params.method;
+		
+		String KEEPSTARTMODE = params.keepstartmode;
+		String RESTARTABORTCHILDRENONLY = params.restartaborts;
+		String MANUALRELEASE = params.manualrelease;
+		String RESTARTPOINT = params.restartpoint;
 		
 		// Helper Methods
 		if(METHOD == "usage"){
@@ -495,7 +705,12 @@ class ActivitiesActions {
 					String RUNIDASSTR = params.runid;
 					int RUNID = RUNIDASSTR.toInteger();
 					RestartTask req = new RestartTask(RUNID);
-			
+					
+					if(KEEPSTARTMODE != null && KEEPSTARTMODE.toUpperCase() =~/Y|T|TRUE|YES|O|ON|/){req.setKeepStartType(true);}
+					if(RESTARTABORTCHILDRENONLY != null && RESTARTABORTCHILDRENONLY.toUpperCase() =~/Y|T|TRUE|YES|O|ON|/){req.setRestartAbortedChildrenOnly(true);}
+					if(MANUALRELEASE != null && MANUALRELEASE.toUpperCase() =~/Y|T|TRUE|YES|O|ON|/){req.setWaitForManualRelease(true);}
+					if(RESTARTPOINT != null && RESTARTPOINT.equals("")){req.setRestartPoint(RESTARTPOINT);}
+					
 					XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 
 					if(res == null){
@@ -506,7 +721,6 @@ class ActivitiesActions {
 						return json
 					}
 				}
-
 		}
 	}
 	
@@ -575,5 +789,41 @@ class ActivitiesActions {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * @purpose build JsonBuilder from Report content for an activity
+	 * @return JsonBuilder object
+	 * @version N/A
+	 */
+	private static def getReportAsJSON(String ReportType, Connection conn, int RUNID){
+		Report req = new Report(RUNID, ReportType);
+		XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+		
+		int pgnum = req.getNumberOfPages();
+		
+		ArrayList<String> POSTReports = new ArrayList<String>();
+
+		int initValue = req.getCurrentPage();
+		for(int i = initValue;i<=pgnum;i++){
+		   POSTReports.add( req.getReport());
+		   req.nextPage(i);
+		   CommonAERequests.sendSyncRequest(conn,req,false);
+		}
+
+		return new JsonBuilder(
+			[
+				success: true,
+				data:[
+					type: ReportType,
+					numberofpages: req.getNumberOfPages(),
+					report: POSTReports.collect {[
+							"page":POSTReports.indexOf(it)+1,
+							"content":it
+							
+						]}
+				]
+		   ]
+		)
 	}
 }

@@ -14,6 +14,13 @@ import groovy.json.JsonBuilder
 
 class CommonJSONRequests {
 	
+	public static JsonBuilder renderErrorAsJSON(String MessageBox){
+		return  new JsonBuilder( 
+			[
+			success: false,
+			message: MessageBox
+		  ])
+	}
 	public static JsonBuilder getHashMapAsJSONFormat(HashMap<String,String[]> ObjList){
 		
 		def data = [
