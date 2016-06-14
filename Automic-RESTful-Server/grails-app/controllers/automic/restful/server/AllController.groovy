@@ -44,10 +44,11 @@ class AllController {
 		String OPERATION = params.operation;
 		
 		//OPERATION = 'search';
-		//
+		// POST or GET is retrieve with request.method
+		// raw request header can be accessed thru: request.reader.text
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
 		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
-		
+		//println "DEBUG" + Environment.current
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
 			
@@ -58,7 +59,9 @@ class AllController {
 			}else{
 			// otherwise it needs to be caught
 				try{
-					myRes = com.automic.actions.AllActions."${OPERATION}"(VERSION,params,conn);
+					if(request.method.equals("GET")){myRes = com.automic.actions.AllActions."${OPERATION}"(VERSION,params,conn);}
+					//if(request.method.equals("POST")){myRes = com.automic.actions.AllPOSTActions."${OPERATION}"(VERSION,params,conn,request);}
+					
 				}catch(MissingMethodException){
 					myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
 				}

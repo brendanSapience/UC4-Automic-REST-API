@@ -3,12 +3,18 @@ package com.automic.actions
 import java.util.List;
 
 import com.uc4.api.SearchResultItem;
+import com.uc4.api.systemoverview.AgentGroupListItem
+import com.uc4.api.systemoverview.AgentListItem
 import com.uc4.api.systemoverview.ClientListItem
 import com.uc4.api.systemoverview.ServerListItem
+import com.uc4.api.systemoverview.UserListItem
 import com.uc4.communication.Connection;
+import com.uc4.communication.requests.AgentGroupList
+import com.uc4.communication.requests.AgentList
 import com.uc4.communication.requests.ClientList
 import com.uc4.communication.requests.GetDatabaseInfo
 import com.uc4.communication.requests.ServerList
+import com.uc4.communication.requests.UserList
 
 import groovy.json.JsonBuilder
 
@@ -60,7 +66,7 @@ class EngineActions {
 				JsonBuilder json = getServerListAsJSON(reqList);
 				return json
 				
-		}else if(METHOD == "showdb"){
+		}else if(METHOD.toLowerCase() =~ /showdb|db|database|databases|showdatabase/){
 			GetDatabaseInfo info = new GetDatabaseInfo();
 			conn.sendRequestAndWait(info);
 			return new JsonBuilder(
@@ -79,7 +85,7 @@ class EngineActions {
 				  ]
 			)
 			
-		}else if(METHOD == "showclients"){
+		}else if(METHOD =~ /showclients|client|clients|showclient|clnt|showclnt/){
 			ClientList req = new ClientList();
 			CommonAERequests.sendSyncRequest(conn, req, false)
 			ArrayList<ClientListItem> reqList = req.iterator().toList();
@@ -101,6 +107,83 @@ class EngineActions {
 						]}
 				  ]
 			)
+		}else if(METHOD =~ /showagents|showhosts|shownodes|agents|hosts|nodes|agent|host|node|/){
+			AgentList req = new AgentList();
+			CommonAERequests.sendSyncRequest(conn, req, false)
+			ArrayList<AgentListItem> reqList = req.iterator().toList();
+			return new JsonBuilder(
+				[
+					success: true,
+					count: reqList.size(),
+					data: reqList.collect {[
+						name:it.getName(),
+						auth:it.getAuthorizations(),
+						hardware:it.getHardware(),
+						ip:it.getIpAddress(),
+						variant:it.getJclVariant(),
+						keepalive:it.getKeepAlive().toString(),
+						lastcheck:it.getLastCheck().toString(),
+						liccategory:it.getLicenseCategory(),
+						licclass:it.getLicenseClass(),
+						maxjobres:it.getMaxJobResources(),
+						numclients:it.getNumberOfClients().toString(),
+						roles:it.getRoles(),
+						software:it.getSoftware(),
+						softwareversion: it.getSoftwareVersion(),
+						version:it.getVersion()
+						]}
+				  ]
+			)
+		
+		}
+		else if(METHOD =~ /showagentgroups|showhostgroups|agentgroups|hostgroups|agentgroup|hostgroup/){
+			AgentGroupList req = new AgentGroupList();
+			CommonAERequests.sendSyncRequest(conn, req, false)
+			ArrayList<AgentGroupListItem> reqList = req.iterator().toList();
+			return new JsonBuilder(
+				[
+					success: true,
+					count: reqList.size(),
+					data: reqList.collect {[
+						name:it.getName(),
+						client:it.getClient(),
+						variant:it.getJclVariant(),
+						mode:it.getMode(),
+						numparalleltasks:it.getParallelTasks(),
+						]}
+				  ]
+			)
+		
+		}
+		else if(METHOD =~ /showusers|showuser|users|user/){
+			UserList req = new UserList();
+			CommonAERequests.sendSyncRequest(conn, req, false)
+			ArrayList<UserListItem> reqList = req.iterator().toList();
+			return new JsonBuilder(
+				[
+					success: true,
+					count: reqList.size(),
+					data: reqList.collect {[
+						name:it.getName(),
+						firstname:it.getFirstName(),
+						lastname:it.getLastName(),
+						arch1:it.getArchiveKey1(),
+						arch2:it.getArchiveKey2(),
+						client:it.getClient(),
+						host:it.getHost(),
+						language:it.getLanguage(),
+						lastsession:it.getLastSession().toString(),
+						mail1:it.getMail1(),
+						mail2:it.getMail2(),
+						remoteid:it.getRemoteID(),
+						sessionid:it.getSessionId(),
+						sessiontz: it.getSessionTimeZone(),
+						usertz:it.getUserTimeZone(),
+						version:it.getVersion()
+						]}
+				  ]
+			)
+		
 		}
 	}
 	

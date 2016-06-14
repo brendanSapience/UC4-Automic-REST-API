@@ -21,6 +21,14 @@ class CommonJSONRequests {
 			message: MessageBox
 		  ])
 	}
+	public static JsonBuilder renderOKAsJSON(String MessageBox){
+		return  new JsonBuilder(
+			[
+			success: true,
+			message: MessageBox
+		  ])
+	}
+	
 	public static JsonBuilder getHashMapAsJSONFormat(HashMap<String,String[]> ObjList){
 		
 		def data = [

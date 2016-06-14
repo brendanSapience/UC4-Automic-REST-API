@@ -1,7 +1,8 @@
 package automic.restful.server
 
 import com.automic.DisplayFilters
-import com.automic.actions.JobsActions
+import com.automic.actions.JobsGETActions
+import com.automic.actions.JobsPOSTActions
 import com.automic.connection.AECredentials;
 import com.automic.connection.ConnectionManager;
 import com.automic.connection.ConnectionPoolItem;
@@ -27,7 +28,7 @@ class JobsController {
 	
 	def help = {
 		// all operations and all versions available - no list to maintained.. its dynamically calculated :)
-		ActionClassUtils utils = new ActionClassUtils(new JobsActions().metaClass.methods*.name.unique())
+		ActionClassUtils utils = new ActionClassUtils(new JobsGETActions().metaClass.methods*.name.unique())
 		render(text: utils.getOpsAndVersionsAsJSON(), contentType: "text/json", encoding: "UTF-8")
 	}
 	
@@ -46,7 +47,7 @@ class JobsController {
 		String OPERATION = params.operation;
 		
 		//OPERATION = 'search';
-		
+		//println request.
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
 		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
 		
@@ -56,11 +57,21 @@ class JobsController {
 			JsonBuilder myRes;
 			// if not in Prod we are ok to show stacktrace
 			if(Environment.current == Environment.DEVELOPMENT){
-				myRes = com.automic.actions.JobsActions."${OPERATION}"(VERSION,params,conn);
+				String HTTPMETHOD = request.method
+				ClassLoader classLoader = this.class.getClassLoader();
+				String CLASSNAME = "com.automic.actions.Jobs"+HTTPMETHOD+"Actions"
+				println "Debug: " + CLASSNAME
+				Class aClass = classLoader.loadClass(CLASSNAME);
+				//if(request.method.equals("POST")){myRes = com.automic.actions.JobsPOSTActions."${OPERATION}"(VERSION,params,conn,request);}
+				if(request.method.equals("POST")){myRes = aClass."${OPERATION}"(VERSION,params,conn,request);}
+				else{myRes = com.automic.actions.JobsGETActions."${OPERATION}"(VERSION,params,conn,request);}
 			}else{
 			// otherwise it needs to be caught
 				try{
-					myRes = com.automic.actions.JobsActions."${OPERATION}"(VERSION,params,conn);
+					println "DEBUG: Is Post: " + request.method
+					if(request.method.equals("POST")){myRes = com.automic.actions.JobsPOSTActions."${OPERATION}"(VERSION,params,conn,request);}
+					else{myRes = com.automic.actions.JobsGETActions."${OPERATION}"(VERSION,params,conn,request);}
+				//	myRes = com.automic.actions.JobsActions."${OPERATION}"(VERSION,params,conn);
 				}catch(MissingMethodException){
 					myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
 				}

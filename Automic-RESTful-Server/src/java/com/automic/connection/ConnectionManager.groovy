@@ -30,12 +30,12 @@ public final class ConnectionManager {
 	public static HashMap<String, ConnectionPoolItem> ConnectionMap = new HashMap<String, ConnectionPoolItem>();
 
 	
-	public static String DEVHOST = "192.168.1.60";
+	public static String DEVHOST = "192.168.17.128";
 	public static int DEVPORT = 2217;
-	public static int DEVCLIENT = 200;
-	public static String DEVLOGIN = "BSP"; //"BSP";
-	public static String DEVDEPT = "AUTOMIC";
-	public static String DEVPWD = 'Un1ver$e';
+	public static int DEVCLIENT = 100;
+	public static String DEVLOGIN = "ARA"; //"BSP";
+	public static String DEVDEPT = "ARA";
+	public static String DEVPWD = 'ara';
 	public static char LANG = 'E';
 	public static int DEVEXPIRYPERIOD = 525600;
 	
@@ -56,6 +56,8 @@ public final class ConnectionManager {
 		}catch (ConnectException c){
 			//System.out.println(" -- ERROR: Could Not Connect to Host: " + credentials.getAEHostnameOrIp());
 			//System.out.println(" --     Hint: is the host or IP reachable?");
+			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
+		}catch(NoRouteToHostException n){
 			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
 		}
 		
