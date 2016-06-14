@@ -1,4 +1,4 @@
-package com.automic.actions
+package com.automic.actions.get
 
 import com.uc4.api.SearchResultItem
 import com.uc4.communication.Connection;
@@ -12,8 +12,8 @@ import com.automic.utils.MiscUtils;
 
 class JobsGETActions {
 	
-	public static def search(String version, params,Connection conn){return "search${version}"(params,conn)}
-	public static def delete(String version, params,Connection conn){return "delete${version}"(params,conn)}
+	public static def search(String version, params,Connection conn,request){return "search${version}"(params,conn)}
+	public static def delete(String version, params,Connection conn,request){return "delete${version}"(params,conn)}
 	
 	public static def searchv1(params,Connection conn) {
 		

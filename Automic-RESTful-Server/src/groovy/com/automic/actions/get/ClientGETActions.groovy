@@ -1,4 +1,4 @@
-package com.automic.actions
+package com.automic.actions.get
 
 import com.uc4.api.SearchResultItem;
 import com.uc4.api.systemoverview.AgentGroupListItem
@@ -21,7 +21,7 @@ import groovy.json.JsonBuilder
 import com.automic.objects.CommonAERequests
 import com.automic.utils.CommonJSONRequests;
 
-class ClientActions {
+class ClientGETActions {
 	
 	/**
 	 * @purpose this section contains all "routing" methods: routing methods call internal versionned methods. ex: "search" can call searchv1 or searchv2 etc. depending on the version in URL params
@@ -31,10 +31,10 @@ class ClientActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def resume(String version, params,Connection conn){return "resume${version}"(params,conn)}
-	public static def go(String version, params,Connection conn){return "resume${version}"(params,conn)}
-	public static def stop(String version, params,Connection conn){return "stop${version}"(params,conn)}
-	public static def suspend(String version, params,Connection conn){return "stop${version}"(params,conn)}
+	public static def resume(String version, params,Connection conn,request){return "resume${version}"(params,conn)}
+	public static def go(String version, params,Connection conn,request){return "resume${version}"(params,conn)}
+	public static def stop(String version, params,Connection conn,request){return "stop${version}"(params,conn)}
+	public static def suspend(String version, params,Connection conn,request){return "stop${version}"(params,conn)}
 	/**
 	 * @purpose
 	 * @return JsonBuilder object

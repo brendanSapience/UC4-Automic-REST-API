@@ -17,10 +17,12 @@ import com.uc4.communication.requests.SearchObject
 import com.uc4.communication.requests.UnblockJobPlanTask
 import com.uc4.communication.requests.UnblockWorkflow
 import com.uc4.communication.requests.XMLRequest
+
 import grails.util.Environment
 import groovy.json.JsonBuilder
-import com.automic.actions.ActivitiesActions;
-import com.automic.actions.EngineActions
+
+import com.automic.actions.get.ActivitiesGETActions;
+import com.automic.actions.get.EngineGETActions;
 import com.automic.connection.AECredentials;
 import com.automic.connection.ConnectionManager;
 import com.automic.objects.CommonAERequests
@@ -38,7 +40,7 @@ class EngineController {
 	
 	def help = {
 		// all operations and all versions available - no list to maintained.. its dynamically calculated :)
-		ActionClassUtils utils = new ActionClassUtils(new EngineActions().metaClass.methods*.name.unique())
+		ActionClassUtils utils = new ActionClassUtils(new EngineGETActions().metaClass.methods*.name.unique())
 		render(text: utils.getOpsAndVersionsAsJSON(), contentType: "text/json", encoding: "UTF-8")
 	}
 	
@@ -54,25 +56,39 @@ class EngineController {
 		String TOKEN = params.token;
 		String VERSION = params.version;
 		String METHOD = params.method;
-		String OPERATION = params.operation;
+		String OPERATION = params.operation.toString().toLowerCase(); // makes sure the operation is lower case
+		String OBJECT = params.object.toString().toLowerCase().capitalize(); //Makes sure we have camel case on the Object Name
+		String HTTPMETHOD = request.method;
+		
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
 		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
 			JsonBuilder myRes;
-			// if not in Prod we are ok to show stacktrace
-			if(Environment.current == Environment.DEVELOPMENT){
-				myRes = com.automic.actions.EngineActions."${OPERATION}"(VERSION,params,conn);
-			}else{
-			// otherwise it needs to be caught
-				//try{
-					myRes = com.automic.actions.EngineActions."${OPERATION}"(VERSION,params,conn);
-				//}catch(MissingMethodException){
-				//	myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
-				//}
+			// Dynamically loading the Class based on Object name, and HTTP Method (GET, POST etc.)
+			Class actionClass
+			boolean ClassFound = true;
+			try{
+				actionClass = this.class.getClassLoader().loadClass("com.automic.actions."+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
+			}catch (ClassNotFoundException c){
+				ClassFound = false;
+				myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION ])
+				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
-			render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
-			
+			if(ClassFound){
+				// if not in Prod we are ok to show stacktrace
+				if(Environment.current == Environment.DEVELOPMENT){
+					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+				}else{
+				// otherwise it needs to be caught
+					//try{
+						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+					//}catch(MissingMethodException){
+					//	myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
+					//}
+				}
+				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
+			}
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
 		
 	}

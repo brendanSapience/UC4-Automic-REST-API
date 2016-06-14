@@ -1,4 +1,4 @@
-package com.automic.actions
+package com.automic.actions.get
 
 import com.uc4.api.SearchResultItem
 import com.uc4.communication.Connection;
@@ -11,11 +11,11 @@ import com.automic.objects.CommonAERequests
 import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
 
-class AuthActions {
+class AuthGETActions {
 
-	public static def login(String version, params,File connFile){return "login${version}"(params,connFile)}
-	public static def logout(String version, params,Connection conn){return "logout${version}"(params,conn)}
-	public static def admin(String version, params,Connection conn){return "admin${version}"(params)}
+	public static def login(String version, params,File connFile,request){return "login${version}"(params,connFile)}
+	public static def logout(String version, params,Connection conn,request){return "logout${version}"(params,conn)}
+	public static def admin(String version, params,Connection conn,request){return "admin${version}"(params)}
 	
 	/**
 	 * @purpose Provide login / authentication services to AE

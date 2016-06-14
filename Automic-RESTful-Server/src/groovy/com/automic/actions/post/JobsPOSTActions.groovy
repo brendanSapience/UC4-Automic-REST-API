@@ -1,4 +1,4 @@
-package com.automic.actions
+package com.automic.actions.post
 
 import com.uc4.communication.Connection;
 import groovy.json.JsonBuilder
@@ -19,7 +19,5 @@ class JobsPOSTActions {
 			JsonBuilder json = new JsonBuilder([status: "error", message: "JSON from POST Request has incorrect format."])
 			return json
 		}
-
-		 
 	}
 }

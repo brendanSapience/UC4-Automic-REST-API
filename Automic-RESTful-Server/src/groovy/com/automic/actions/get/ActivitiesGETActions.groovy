@@ -1,4 +1,4 @@
-package com.automic.actions
+package com.automic.actions.get
 
 import com.automic.DisplayFilters
 import com.uc4.api.DateTime
@@ -37,7 +37,7 @@ import com.automic.utils.CommonJSONRequests
 import com.automic.utils.MiscUtils
 import com.uc4.communication.requests.GetComments.Comment
 
-class ActivitiesActions {
+class ActivitiesGETActions {
 
 	/**
 	 * @purpose this section contains all "routing" methods: routing methods call internal versionned methods. ex: "search" can call searchv1 or searchv2 etc. depending on the version in URL params
@@ -47,17 +47,17 @@ class ActivitiesActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def search(String version, params,Connection conn){return "search${version}"(params,conn)}
-	public static def deactivate(String version, params,Connection conn){return "deactivate${version}"(params,conn)}
-	public static def rerun(String version, params,Connection conn){return "rerun${version}"(params,conn)}
-	public static def quit(String version, params,Connection conn){return "quit${version}"(params,conn)}
-	public static def unblock(String version, params,Connection conn){return "unblock${version}"(params,conn)}
-	public static def cancel(String version, params,Connection conn){return "cancel${version}"(params,conn)}
-	public static def resume(String version, params,Connection conn){return "resume${version}"(params,conn)}
-	public static def rollback(String version, params,Connection conn){return "rollback${version}"(params,conn)}
-	public static def suspend(String version, params,Connection conn){return "suspend${version}"(params,conn)}
-	public static def show(String version, params,Connection conn){return "show${version}"(params,conn)}
-	public static def run(String version, params,Connection conn){return "run${version}"(params,conn)}
+	public static def search(String version, params,Connection conn,request){return "search${version}"(params,conn)}
+	public static def deactivate(String version, params,Connection conn,request){return "deactivate${version}"(params,conn)}
+	public static def rerun(String version, params,Connection conn,request){return "rerun${version}"(params,conn)}
+	public static def quit(String version, params,Connection conn,request){return "quit${version}"(params,conn)}
+	public static def unblock(String version, params,Connection conn,request){return "unblock${version}"(params,conn)}
+	public static def cancel(String version, params,Connection conn,request){return "cancel${version}"(params,conn)}
+	public static def resume(String version, params,Connection conn,request){return "resume${version}"(params,conn)}
+	public static def rollback(String version, params,Connection conn,request){return "rollback${version}"(params,conn)}
+	public static def suspend(String version, params,Connection conn,request){return "suspend${version}"(params,conn)}
+	public static def show(String version, params,Connection conn,request){return "show${version}"(params,conn)}
+	public static def run(String version, params,Connection conn,request){return "run${version}"(params,conn)}
 	
 	/**
 	 * @purpose run a given object by name

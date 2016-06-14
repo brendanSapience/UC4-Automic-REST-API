@@ -1,4 +1,4 @@
-package com.automic.actions
+package com.automic.actions.get
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import groovy.json.JsonBuilder
 import com.automic.objects.CommonAERequests
 import com.automic.utils.CommonJSONRequests;
 
-class EngineActions {
+class EngineGETActions {
 	
 	/**
 	 * @purpose this section contains all "routing" methods: routing methods call internal versionned methods. ex: "search" can call searchv1 or searchv2 etc. depending on the version in URL params
@@ -31,7 +31,7 @@ class EngineActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def display(String version, params,Connection conn){return "display${version}"(params,conn)}
+	public static def display(String version, params,Connection conn,request){return "display${version}"(params,conn)}
 	
 	/**
 	 * @purpose 

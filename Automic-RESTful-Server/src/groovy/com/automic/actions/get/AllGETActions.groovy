@@ -1,4 +1,4 @@
-package com.automic.actions
+package com.automic.actions.get
 
 import com.uc4.communication.Connection;
 import com.uc4.api.DateTime
@@ -16,7 +16,7 @@ import com.automic.objects.CommonAERequests
 import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
 
-class AllActions {
+class AllGETActions {
 	
 	/**
 	 * @purpose this section contains all "routing" methods: routing methods call internal versionned methods. ex: "search" can call searchv1 or searchv2 etc. depending on the version in URL params
@@ -26,7 +26,7 @@ class AllActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def search(String version, params,Connection conn){return "search${version}"(params,conn)}
+	public static def search(String version, params,Connection conn,request){return "search${version}"(params,conn)}
 	
 	/**
 	 * @purpose search any objects (search window) against filters

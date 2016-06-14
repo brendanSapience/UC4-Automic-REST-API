@@ -1,8 +1,8 @@
 package automic.restful.server
 
 import com.automic.DisplayFilters
-import com.automic.actions.JobsGETActions
-import com.automic.actions.JobsPOSTActions
+import com.automic.actions.get.JobsGETActions;
+import com.automic.actions.post.JobsPOSTActions;
 import com.automic.connection.AECredentials;
 import com.automic.connection.ConnectionManager;
 import com.automic.connection.ConnectionPoolItem;
@@ -44,7 +44,9 @@ class JobsController {
 		String TOKEN = params.token;
 		String VERSION = params.version;
 		String METHOD = params.method;
-		String OPERATION = params.operation;
+		String OPERATION = params.operation.toString().toLowerCase(); // makes sure the operation is lower case
+		String OBJECT = params.object.toString().toLowerCase().capitalize(); //Makes sure we have camel case on the Object Name
+		String HTTPMETHOD = request.method;
 		
 		//OPERATION = 'search';
 		//println request.
@@ -55,28 +57,31 @@ class JobsController {
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
 			
 			JsonBuilder myRes;
-			// if not in Prod we are ok to show stacktrace
-			if(Environment.current == Environment.DEVELOPMENT){
-				String HTTPMETHOD = request.method
-				ClassLoader classLoader = this.class.getClassLoader();
-				String CLASSNAME = "com.automic.actions.Jobs"+HTTPMETHOD+"Actions"
-				println "Debug: " + CLASSNAME
-				Class aClass = classLoader.loadClass(CLASSNAME);
-				//if(request.method.equals("POST")){myRes = com.automic.actions.JobsPOSTActions."${OPERATION}"(VERSION,params,conn,request);}
-				if(request.method.equals("POST")){myRes = aClass."${OPERATION}"(VERSION,params,conn,request);}
-				else{myRes = com.automic.actions.JobsGETActions."${OPERATION}"(VERSION,params,conn,request);}
-			}else{
-			// otherwise it needs to be caught
-				try{
-					println "DEBUG: Is Post: " + request.method
-					if(request.method.equals("POST")){myRes = com.automic.actions.JobsPOSTActions."${OPERATION}"(VERSION,params,conn,request);}
-					else{myRes = com.automic.actions.JobsGETActions."${OPERATION}"(VERSION,params,conn,request);}
-				//	myRes = com.automic.actions.JobsActions."${OPERATION}"(VERSION,params,conn);
-				}catch(MissingMethodException){
-					myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
-				}
+			// Dynamically loading the Class based on Object name, and HTTP Method (GET, POST etc.)
+			Class actionClass
+			boolean ClassFound = true;
+			try{
+				actionClass = this.class.getClassLoader().loadClass("com.automic.actions."+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
+			}catch (ClassNotFoundException c){
+				ClassFound = false;
+				myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION ])
+				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
-			render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
+			if(ClassFound){
+				// if not in Prod we are ok to show stacktrace
+				if(Environment.current == Environment.DEVELOPMENT){
+					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+				}else{
+				// otherwise it needs to be caught
+					try{
+						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+					}catch(MissingMethodException){
+						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
+					}
+				}
+				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
+			}
+			
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
 		
 	}

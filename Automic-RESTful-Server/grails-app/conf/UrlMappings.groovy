@@ -18,6 +18,8 @@ class UrlMappings {
 		// add support for both POST and GET methods
 		//"/api/$product/update/$version/$object"(controller:{"${params.object}"}, action: 'router', method: 'POST')
 		//"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action: 'router', method: 'GET')
+		
+		//adding support for regular http request methods
 		"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action : [GET:"router", PUT:"router", DELETE:"router", POST:"router"])
 		"/api/$product/help/$version/$object"(controller:{"${params.object}"}, action: 'help', method: 'GET')
    }
