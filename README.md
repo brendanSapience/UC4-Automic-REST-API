@@ -273,7 +273,7 @@ REST API Server for Automic's ONE Automation Platform
                * Mandatory Parameters: 
                	* None
                * Optional Parameters: 
-               	* method <showdb|showclients|showhosts|showhostgroups|showusers> (ex: method=showclients) 
+               	* method < showdb|showclients|showhosts|showhostgroups|showusers > (ex: method=showclients) 
                
      * Examples:
      
