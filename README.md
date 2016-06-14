@@ -23,12 +23,13 @@ REST API Server for Automic's ONE Automation Platform
      - The authentication token can be either passed in every call as a URL parameter ("token=") or passed as a request header parameter (as 'token').
      - IF the Auth token is specified in the request header 'token' url parameter becomes unnecessary.
      - Tokens are non-persistent (they are not kept if the Server shuts down as they are tied to individual connection objects).
-     - Tokens expire after a certain configurable period (should be in a config file somewhere).
+     - Tokens expire after a certain configurable period (is configured in the ConnectionConfig.json file).
      - Ideally the server should be able to return XML responses as well as JSON (JSON only for now) depending on the header content of the request.
      - Tokens are uniquely & randomly generated and do not encode any specific information.
      - There are "helpers" url parameters that can be used to retrieve more info on certain calls.
      - There needs to be a "commit" mechanism to prevent accidental changes in objects (not implemented yet).
-     - Every api category is versionned: this is to facilitate backwards compatibility in the future 
+     - Every api category is versionned: this is to facilitate backwards compatibility in the future
+     - Update mechanisms will most likely leverage POST calls (with a JSON structure provided in the body) 
      - Filters are designed in a specific way and provided as a url parameter called filters:
      		filters=[FilterName:FilterValue]
      		=> the FilterNames available obviously depend on the Object & Action you are working with
@@ -246,6 +247,40 @@ REST API Server for Automic's ONE Automation Platform
 
      * returns: JSON
 
+* **Resume / go / stop / suspend:**
+
+     * Supported Objects:
+     
+          * **Client**
+               * Mandatory Parameters: 
+               	* None
+               * Optional Parameters: 
+               	* client <Integer> (ex: client=200) (=> this option can only be used when connected to Client 0. If not on Client 0, current Client is considered.)
+               
+     * Examples:
+     
+          * /api/awa/resume/v1/Client?client=200&token=s9dpur80s8rtvharifrm531387
+          * /api/awa/stop/v1/Client?token=s9dpur80s8rtvharifrm531387
 
 
+     * returns: JSON
+
+* **display:**
+
+     * Supported Objects:
+     
+          * **Engine**
+               * Mandatory Parameters: 
+               	* None
+               * Optional Parameters: 
+               	* method <showdb|showclients|showhosts|showhostgroups|showusers> (ex: method=showclients) 
+               
+     * Examples:
+     
+          * /api/awa/display/v1/Engine?method=showdb&token=s9dpur80s8rtvharifrm531387
+          * /api/awa/display/v1/Engine?method=showusers&token=s9dpur80s8rtvharifrm531387
+
+
+     * returns: JSON
+     
 !! The current scope is very limited, but the basics are in place and it should be extensible fairly easily & quickly.
