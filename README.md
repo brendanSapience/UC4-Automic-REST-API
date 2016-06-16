@@ -24,10 +24,11 @@ REST API Server for Automic's ONE Automation Platform
      - IF the Auth token is specified in the request header 'token' url parameter becomes unnecessary.
      - Tokens are non-persistent (they are not kept if the Server shuts down as they are tied to individual connection objects).
      - Tokens expire after a certain configurable period (is configured in the ConnectionConfig.json file).
-     - Ideally the server should be able to return XML responses as well as JSON (JSON only for now) depending on the header content of the request.
+     - XML will not be supported as an input or output format at this point (JSON only)
      - Tokens are uniquely & randomly generated and do not encode any specific information.
      - There are "helpers" url parameters that can be used to retrieve more info on certain calls.
-     - There needs to be a "commit" mechanism to prevent accidental changes in objects (not implemented yet).
+     - passive operations (display/show etc.) require GET. active operations (update) require POST.
+     - a COMMIT parameter is required for POST requests (otherwise only a simulation runs)
      - Every api category is versionned: this is to facilitate backwards compatibility in the future
      - Update mechanisms will most likely leverage POST calls (with a JSON structure provided in the body) 
      - Filters are designed in a specific way and provided as a url parameter called filters:
@@ -65,9 +66,9 @@ REST API Server for Automic's ONE Automation Platform
      	
      => this means that there are **3 < api categories >** you can use with Activities (search, rerun & unblock), where the search category has 2 version available.
      	
-* There is a special **< method >** called **"usage"** you can always use in order to retrieve the **list of parameters / filters required** for a given **Object Type**, **version** & **api category** combination:
+* There is a special **< method >** called **"usage"** you can always use in order to retrieve the **list of parameters / filters required** (for GET) or the **required / available JSON body structure** (for POST) for a given **Object Type**, **version** & **api category** combination:
      	
-  ex: http://localhost:8080/Automic-RESTful-Server/api/awa/search/v1/Activities?**method=usage**
+  ex: GET http://localhost:8080/Automic-RESTful-Server/api/awa/search/v1/Activities?**method=usage**
      	
      	Returns:
      	
@@ -86,12 +87,43 @@ REST API Server for Automic's ONE Automation Platform
 			]
 		}
 
-	=> This means that the **search < api category >** in combination with object **Activities** for **version 1** has **no required parameters** and **3 optional filters** you can use.
+	=> This means that the **search < api category >** in combination with object **Activities** for **version 1** needs to leverage GET and has **no required parameters** and **3 optional filters** you can use.
 		
+  ex: POST http://localhost:8080/Automic-RESTful-Server/api/awa/update/v1/Jobs?**method=usage**
+     	
+     	Returns:
+     	
+		{
+		  "spec_filters": {
+		    "active": "true|false",
+		    "inactive": "true|false"
+		  },
+		  "std_filters": {
+		    "date_from": "YYYYMMDDhhmm",
+		    "date_search": false,
+		    "date_search_type": "created|modified|used",
+		    "date_to": "YYYYMMDDhhmm",
+		    "include_links": true,
+		    "name": "*",
+		    "search_for_usage": false,
+		    "search_text": false,
+		    "search_text_docu": false,
+		    "search_text_key": false,
+		    "search_text_process": false,
+		    "search_text_title": false,
+		    "text": "*"
+		  },
+		  "updates": {
+		    "status": "active|inactive"
+		  }
+		}
+
+	=> This means that the **update < api category >** in combination with object **Jobs** for **version 1** needs to leverage POST and pass a JSON structure similar to what is returned above.
+				
        
 **Available Methods & API Categories:**
 
-* **Authentication (login):**
+* **Authentication (login) (GET):**
      
     Ex: /api/awa/**login**/v1/**Auth**?**login**=BSP&**pwd**=Un1ver$e&**connection**=AEPROD&**client**=200
 
@@ -106,7 +138,7 @@ REST API Server for Automic's ONE Automation Platform
      
         {'status':'success','token':'s9dpur80s8rtvharifrm531387','expdate':'20161231235959'}
         
-* **Authentication (logout):**
+* **Authentication (logout) (GET):**
      
     Ex: /api/awa/**logout**/v1/**Auth**?**token**=123fjh324gf234k234
 
@@ -115,7 +147,7 @@ REST API Server for Automic's ONE Automation Platform
           * _token_ (your auth token)
           
 
-* **Search:**
+* **Search (GET):**
 
      * Supported Objects:
      
@@ -182,7 +214,7 @@ REST API Server for Automic's ONE Automation Platform
                  
      * returns: JSON
 
-* **Deactivate:**
+* **Deactivate (GET):**
 
      * Supported Objects:
      
@@ -199,7 +231,7 @@ REST API Server for Automic's ONE Automation Platform
 
      * returns: JSON
 
-* **Quit:**
+* **Quit (GET):**
 
      * Supported Objects:
      
@@ -215,7 +247,7 @@ REST API Server for Automic's ONE Automation Platform
 
           JSON
           
-* **Rerun:**
+* **Rerun (GET):**
 
      * Supported Objects:
      
@@ -230,7 +262,7 @@ REST API Server for Automic's ONE Automation Platform
 
      * returns: JSON
 
-* **Unblock:**
+* **Unblock (GET):**
 
      * Supported Objects:
      
@@ -247,7 +279,7 @@ REST API Server for Automic's ONE Automation Platform
 
      * returns: JSON
 
-* **Resume / go / stop / suspend:**
+* **Resume / go / stop / suspend (GET):**
 
      * Supported Objects:
      
@@ -265,7 +297,7 @@ REST API Server for Automic's ONE Automation Platform
 
      * returns: JSON
 
-* **display:**
+* **display (GET):**
 
      * Supported Objects:
      
@@ -283,4 +315,48 @@ REST API Server for Automic's ONE Automation Platform
 
      * returns: JSON
      
-!! The current scope is very limited, but the basics are in place and it should be extensible fairly easily & quickly.
+* **update (POST):**
+
+     * Supported Objects:
+     
+          * **Jobs**
+               * Mandatory Parameters: 
+               	* JSON Body in POST Request
+               * Optional Parameters: 
+               	* commit < Y > (ex: commit=Y) => Commit update operations (by default: N. Only a simulation runs)
+              
+           
+     * POST Body Examples:
+     
+		{
+			"std_filters":
+			{
+				"name" : "NOVA.CDS.DB2*",
+				"include_links" : true,
+				"search_for_usage" : false,
+				"text" : "*",
+				"search_text" : false,
+				"search_text_title" : false,
+				"search_text_key" : false,
+				"search_text_process" : false,
+				"search_text_docu" : false,
+				"date_search" : false,
+				"date_search_type" : "created|modified|used",
+				"date_from" : "YYYYMMDDhhmm",
+				"date_to" : "YYYYMMDDhhmm"
+			},
+			"spec_filters":
+			{
+			    "active" : true,
+			    "inactive" : true
+			},
+			"updates":
+			{
+			    "status" : "inactive"
+			}
+		}
+
+
+     * returns: JSON    
+     
+..More to come..
