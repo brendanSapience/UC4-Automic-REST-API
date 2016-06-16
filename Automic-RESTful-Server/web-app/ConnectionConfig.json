@@ -2,8 +2,8 @@
 	[
 	{
 		"name":"AEPROD",
-		"host":"192.168.17.128",
-		"dept":"ARA",
+		"host":"192.168.44.134",
+		"dept":"AUTOMIC",
 		"lang":"E",
 		"ports":["2217","2218"],
 		"validity":525600,

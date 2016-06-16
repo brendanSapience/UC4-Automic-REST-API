@@ -78,21 +78,19 @@ class ClientController {
 			}
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
-				if(Environment.current == Environment.DEVELOPMENT){
-					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
-				}else{
+				//if(Environment.current == Environment.DEVELOPMENT){
+					//myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+				//}else{
 				// otherwise it needs to be caught
-					//try{
+					try{
 						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
-					//}catch(MissingMethodException){
-					//	myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
-					//}
-				}
+					}catch(MissingMethodException){
+						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
+					}
+				//}
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
 		
 	}
-
-    def index() { }
 }

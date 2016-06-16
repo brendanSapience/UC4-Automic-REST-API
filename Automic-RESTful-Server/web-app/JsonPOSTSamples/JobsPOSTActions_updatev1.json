@@ -1,0 +1,33 @@
+{
+	"std_filters":
+	{
+		"name" : "*",
+		"include_links" : true,
+		"search_for_usage" : false,
+		
+		"text" : "*",
+		"search_text" : false,
+		"search_text_title" : false,
+		"search_text_key" : false,
+		"search_text_process" : false,
+		"search_text_docu" : false,
+
+		"date_search" : false,
+		"date_search_type" : "created|modified|used",
+		"date_from" : "YYYYMMDDhhmm",
+		"date_to" : "YYYYMMDDhhmm"
+	},
+	"spec_filters":
+	{
+	    "active" : "true|false",
+	    "inactive" : "true|false"
+	},
+	"updates":
+	{
+		"status" : "active|inactive",
+		"addvar" : "VARNAME,Var Value",
+		"delvar" : "VARNAME",
+		"updvar" : "VARNAME,Value Source Pattern,Value Target Pattern",
+		"genatruntime" : true|false
+	}
+}

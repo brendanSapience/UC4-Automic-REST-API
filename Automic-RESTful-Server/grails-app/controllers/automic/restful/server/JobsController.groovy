@@ -70,11 +70,11 @@ class JobsController {
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
 				if(Environment.current == Environment.DEVELOPMENT){
-					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 				}else{
 				// otherwise it needs to be caught
 					try{
-						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 					}catch(MissingMethodException){
 						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
 					}

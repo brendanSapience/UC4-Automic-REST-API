@@ -45,7 +45,7 @@ class EngineGETActions {
 			'optional_parameters': [],
 			'optional_filters': [],
 			'required_methods': [],
-			'optional_methods': ['usage','showdb (show AE DB Info)','showclients (show AE Client Info)','showengine (Default: show Automation Engine Info']
+			'optional_methods': ['usage','showdb (show AE DB Info)','showclients (show AE Client Info)','showhosts (show agents info)','showhostgroups (show agentgroups info)','showusers (show connected users info)','showengine (Default: show Automation Engine Info)']
 			]
 		
 		String FILTERS = params.filters;
@@ -107,7 +107,8 @@ class EngineGETActions {
 						]}
 				  ]
 			)
-		}else if(METHOD =~ /showagents|showhosts|shownodes|agents|hosts|nodes|agent|host|node|/){
+		}else if(METHOD =~ /showagents|showhosts|shownodes|agents|hosts|nodes|agent|host|node/){
+		println "In Here!:" + METHOD
 			AgentList req = new AgentList();
 			CommonAERequests.sendSyncRequest(conn, req, false)
 			ArrayList<AgentListItem> reqList = req.iterator().toList();
@@ -156,6 +157,7 @@ class EngineGETActions {
 		
 		}
 		else if(METHOD =~ /showusers|showuser|users|user/){
+			
 			UserList req = new UserList();
 			CommonAERequests.sendSyncRequest(conn, req, false)
 			ArrayList<UserListItem> reqList = req.iterator().toList();

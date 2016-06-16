@@ -30,12 +30,12 @@ public final class ConnectionManager {
 	public static HashMap<String, ConnectionPoolItem> ConnectionMap = new HashMap<String, ConnectionPoolItem>();
 
 	
-	public static String DEVHOST = "192.168.17.128";
+	public static String DEVHOST = "192.168.44.134";
 	public static int DEVPORT = 2217;
-	public static int DEVCLIENT = 100;
-	public static String DEVLOGIN = "ARA"; //"BSP";
-	public static String DEVDEPT = "ARA";
-	public static String DEVPWD = 'ara';
+	public static int DEVCLIENT = 200;
+	public static String DEVLOGIN = "BSP"; //"BSP";
+	public static String DEVDEPT = "AUTOMIC";
+	public static String DEVPWD = 'Un1ver$e';
 	public static char LANG = 'E';
 	public static int DEVEXPIRYPERIOD = 525600;
 	
