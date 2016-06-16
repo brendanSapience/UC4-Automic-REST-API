@@ -28,6 +28,6 @@
 		"addvar" : "VARNAME,Var Value",
 		"delvar" : "VARNAME",
 		"updvar" : "VARNAME,Value Source Pattern,Value Target Pattern",
-		"genatruntime" : true|false
+		"genatruntime" : "true|false"
 	}
 }
