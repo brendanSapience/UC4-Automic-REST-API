@@ -19,15 +19,24 @@
 	},
 	"spec_filters":
 	{
-	    "active" : "true|false",
-	    "inactive" : "true|false"
+	    "active" : "<boolean>",
+	    "inactive" : "<boolean>"
 	},
 	"updates":
 	{
-		"status" : "active|inactive",
-		"addvar" : "VARNAME,Var Value",
-		"delvar" : "VARNAME",
-		"updvar" : "VARNAME,Value Source Pattern,Value Target Pattern",
-		"genatruntime" : "true|false"
+		"title" : "<Regex: expression to Match>,<String: new value>",
+		"key1" : "<Regex: expression to Match>,<String: new value>",
+		"key2" : "<Regex: expression to Match>,<String: new value>",
+		"host" : "<Regex: expression to Match>,<String: new value>",
+		"login" : <Regex: expression to Match>,<String: new value>",
+		"queue" <Regex: expression to Match>,<String: new value>",
+		"status" : "<active|inactive>",
+		"addvar" : "<String: variable name>,<String: variable value>",
+		"delvar" : "<String: variable name>",
+		"updvar" : "<String: variable name>,<Regex: expression to Match>,<String: new value>",
+		"genatruntime" : "<boolean>",
+		"process" : "<Regex: expression to Match>,<String: new value>",
+		"preprocess" : "<Regex: expression to Match>,<String: new value>",
+		"postprocess" : "<Regex: expression to Match>,<String: new value>",
 	}
 }

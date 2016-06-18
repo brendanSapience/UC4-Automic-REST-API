@@ -3,6 +3,9 @@ package com.automic.utils
 import com.uc4.api.SearchResultItem
 import com.uc4.api.StatisticSearchItem
 import com.uc4.api.Task
+import com.uc4.api.objects.ObjectValues;
+import com.uc4.api.objects.PromptSetDefinition
+
 import groovy.json.JsonBuilder
 
 /**
@@ -106,6 +109,24 @@ class CommonJSONRequests {
 		//, folder:it.folder, modified:it.modified, type: it.title
 		def json = new JsonBuilder(data)
 		return json;
+	}
+	public static def getObjectVariablesAsJSON(ObjectValues objVals){
+		Iterator<String> iterator = objVals.valueKeyIterator()
+		
+		def data = [
+			size: objVals.map.entrySet().size(),
+			 data: iterator.collect {[name: it, value:objVals.getValue(it)]}
+		  ]
+		return data
+	}
+	
+	public static def getObjectPromptsAsJSON(ObjectValues objVals){
+		Iterator<PromptSetDefinition> iterator = objVals.promptSetIterator()
+		def data = [
+			size: objVals.promptSetSize(),
+			data: iterator.collect {[name: it.getName().toString(), elements:it.elementIDs.length]}
+		  ]
+		return data
 	}
 	
 	public static JsonBuilder getActivityListAsJSONFormat(List<Task> ObjList){

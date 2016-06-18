@@ -48,7 +48,6 @@ class AllGETActions {
 			String TOKEN = params.token;
 			String METHOD = params.method;
 			String SEARCHUSAGE = params.search_usage;
-			
 			if(METHOD == "usage"){
 				JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
 				return json

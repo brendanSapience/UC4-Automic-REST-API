@@ -11,6 +11,22 @@ import com.uc4.api.TaskFilter;
 
 class MiscUtils {
 
+	static String[] getPatternsFromStringArg(String str, int numberOfParams){
+		String SEPARATOR = ","
+		if(numberOfParams == 1){
+			return [str.split(SEPARATOR)[0]]
+		}else if(numberOfParams == 2){
+			if(str.contains(SEPARATOR)){
+				return [str.split(SEPARATOR)[0],str.split(SEPARATOR)[1]]
+			}else{return ["",""]}
+		}else if(numberOfParams == 3){
+			if(str.contains(SEPARATOR) && str.split(SEPARATOR).length==3){
+				return [str.split(SEPARATOR)[0],str.split(SEPARATOR)[1],,str.split(SEPARATOR)[2]]
+			}else{return ["",""]}
+		}
+		
+	}
+	
 	static String toCamelCase( String text, boolean capitalized = false ) {
 		text = text.replaceAll( "(_)([A-Za-z0-9])", { Object[] it -> it[2].toUpperCase() } )
 		return capitalized ? capitalize(text) : text
