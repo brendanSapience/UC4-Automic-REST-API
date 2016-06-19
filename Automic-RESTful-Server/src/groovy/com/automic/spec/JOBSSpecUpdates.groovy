@@ -114,7 +114,10 @@ class JOBSSpecUpdates {
 				 active:it.header.isActive(),
 				 jobtype:it.jobtype,
 				 variables:CommonJSONRequests.getObjectVariablesAsJSON(it.values()),
-				 prompts: CommonJSONRequests.getObjectPromptsAsJSON(it.values())
+				 prompts: CommonJSONRequests.getObjectPromptsAsJSON(it.values()),
+				 process: it.getProcess(),
+				 preprocess: it.getPreProcess(),
+				 postprocess: it.getPostProcess()
 				 ]}
 			//properties:it.getProperties().toMapString()
 		  ]

@@ -20,7 +20,10 @@
 	"spec_filters":
 	{
 	    "active" : "<boolean>",
-	    "inactive" : "<boolean>"
+	    "inactive" : "<boolean>",
+	    "process" : "<Regex: Expression to Match>",
+		"preprocess" : "<Regex: Expression to Match>",
+		"postprocess" : "<Regex: Expression to Match>"
 	},
 	"updates":
 	{
@@ -37,6 +40,6 @@
 		"genatruntime" : "<boolean>",
 		"process" : "<Regex: expression to Match>,<String: new value>",
 		"preprocess" : "<Regex: expression to Match>,<String: new value>",
-		"postprocess" : "<Regex: expression to Match>,<String: new value>",
+		"postprocess" : "<Regex: expression to Match>,<String: new value>"
 	}
 }

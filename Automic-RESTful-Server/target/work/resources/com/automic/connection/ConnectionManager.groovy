@@ -30,7 +30,7 @@ public final class ConnectionManager {
 	public static HashMap<String, ConnectionPoolItem> ConnectionMap = new HashMap<String, ConnectionPoolItem>();
 
 	
-	public static String DEVHOST = "192.168.44.134";
+	public static String DEVHOST = "192.168.44.148";
 	public static int DEVPORT = 2217;
 	public static int DEVCLIENT = 200;
 	public static String DEVLOGIN = "BSP"; //"BSP";

@@ -20,6 +20,9 @@ import grails.util.Environment
 
 class JobsController {
 
+	Class actionClass
+	boolean ClassFound = true;
+	
 	/**
 	 * @name help
 	 * @purpose return a JSON structure containing the list of available operations for a given Object Type
@@ -28,8 +31,9 @@ class JobsController {
 	
 	def help = {
 		// all operations and all versions available - no list to maintained.. its dynamically calculated :)
-		ActionClassUtils utils = new ActionClassUtils(new JobsGETActions().metaClass.methods*.name.unique())
-		render(text: utils.getOpsAndVersionsAsJSON(), contentType: "text/json", encoding: "UTF-8")
+		actionClass = this.class.getClassLoader().loadClass("com.automic.actions."+request.method.toLowerCase()+"."+params.object.toString().toLowerCase().capitalize()+request.method+"Actions");
+		ActionClassUtils utils = new ActionClassUtils(actionClass.metaClass.methods*.name.unique(),request.method)
+		render(text: utils.getOpsAndVersionsAsJSON2(), contentType: "text/json", encoding: "UTF-8")
 	}
 	
 	/**
@@ -58,8 +62,7 @@ class JobsController {
 			
 			JsonBuilder myRes;
 			// Dynamically loading the Class based on Object name, and HTTP Method (GET, POST etc.)
-			Class actionClass
-			boolean ClassFound = true;
+
 			try{
 				actionClass = this.class.getClassLoader().loadClass("com.automic.actions."+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
 			}catch (ClassNotFoundException c){
@@ -67,6 +70,7 @@ class JobsController {
 				myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION ])
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
+			
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
 				if(Environment.current == Environment.DEVELOPMENT){

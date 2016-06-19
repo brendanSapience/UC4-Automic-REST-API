@@ -35,7 +35,7 @@ class StatisticsGETActions {
 	 * @return JsonBuilder object
 	 * @version v1
 	 */
-	private static def searchv1(params,Connection conn){
+	public static def searchv1(params,Connection conn){
 	
 		def AllParamMap = [:]
 		AllParamMap = [

@@ -32,6 +32,24 @@ class CommonJSONRequests {
 		  ])
 	}
 	
+	public static JsonBuilder getHashMapAsJSONFormat2(HashMap<String,String[]> ObjList, String HttpMethod){
+		
+		def data = [
+			success: true,
+			type: HttpMethod,
+			count: ObjList.size(),
+			data: ObjList.collect {k,v ->
+				//println "key is: " + k
+				//println "values is: " + v
+				["operation": k, "versions":v]
+			}
+			//properties:it.getProperties().toMapString()
+		  ]
+
+		def json = new JsonBuilder(data)
+		return json;
+	}
+	
 	public static JsonBuilder getHashMapAsJSONFormat(HashMap<String,String[]> ObjList){
 		
 		def data = [

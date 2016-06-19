@@ -19,6 +19,7 @@ import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
 import com.uc4.communication.requests.ActivityList;
 import com.uc4.communication.requests.CloseObject;
+import com.uc4.communication.requests.DeleteObject;
 import com.uc4.communication.requests.GenericStatistics;
 import com.uc4.communication.requests.GetSessionTZ;
 import com.uc4.communication.requests.OpenObject;
@@ -36,6 +37,21 @@ import com.uc4.communication.requests.XMLRequest;
 
 public class CommonAERequests {
 
+	public static String deleteObject(String name,Connection connection) throws IOException {
+
+		UC4ObjectName objName = null;
+		if (name.indexOf('/') != -1) objName = new UC4UserName(name);
+		else objName = new UC4ObjectName(name);
+
+		DeleteObject delete = new DeleteObject(objName);
+		connection.sendRequestAndWait(delete);	
+		if (delete.getMessageBox() != null) {
+			return delete.getMessageBox().getText();
+		}else{		
+			return null;
+		}
+	}
+	
 	// Save an Automic Object (of any kind)
 	public static String saveObject(UC4Object obj,Connection connection) throws IOException {
 		//Say(" \t ++ Saving object: "+obj.getName()+"(Type: "+obj.getType()+")");

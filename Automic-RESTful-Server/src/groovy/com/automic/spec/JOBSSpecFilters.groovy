@@ -15,7 +15,19 @@ class JOBSSpecFilters {
 		
 		if(!SELECTACTIVE && obji.header().isActive()){SelectObject = false}
 		if(!SELECTINACTIVE && !obji.header().isActive()){SelectObject = false}
-		//println "Checking obj:" + obji.getName() +" : is : " + SelectObject
+		
+		if(JsonSpecFilters.process != null && !JsonSpecFilters.process.equals("")){
+			if(!obji.getProcess().matches(JsonSpecFilters.process)){SelectObject=false}
+		}	
+		
+		if(JsonSpecFilters.preprocess != null && !JsonSpecFilters.preprocess.equals("")){
+			if(!obji.getPreProcess().matches(JsonSpecFilters.preprocess)){SelectObject=false}
+		}
+		
+		if(JsonSpecFilters.postprocess != null && !JsonSpecFilters.postprocess.equals("")){
+			if(!obji.getPostProcess().matches(JsonSpecFilters.postprocess)){SelectObject=false}
+		}
+		
 		return SelectObject
 	}
 }
