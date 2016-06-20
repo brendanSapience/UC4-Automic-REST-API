@@ -58,8 +58,6 @@ class AllController {
 			
 			JsonBuilder myRes;
 			// Dynamically loading the Class based on Object name, and HTTP Method (GET, POST etc.)
-			Class actionClass
-			boolean ClassFound = true;
 			try{
 				actionClass = this.class.getClassLoader().loadClass("com.automic.actions."+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
 			}catch (ClassNotFoundException c){
@@ -70,13 +68,11 @@ class AllController {
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
 				if(Environment.current == Environment.DEVELOPMENT){
-					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 				}else{
 				// otherwise it needs to be caught
 					try{
-						if(request.method.equals("GET")){myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);}
-						//if(request.method.equals("POST")){myRes = com.automic.actions.AllPOSTActions."${OPERATION}"(VERSION,params,conn,request);}
-						
+						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 					}catch(MissingMethodException){
 						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
 					}
