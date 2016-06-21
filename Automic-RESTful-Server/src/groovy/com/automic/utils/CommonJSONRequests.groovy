@@ -17,17 +17,21 @@ import groovy.json.JsonBuilder
 
 class CommonJSONRequests {
 	
+	private static String OKSTATUS = "success"
+	private static String NOKSTATUS = "error"
+	
+	
 	public static JsonBuilder renderErrorAsJSON(String MessageBox){
 		return  new JsonBuilder( 
 			[
-			success: false,
+			status: NOKSTATUS,
 			message: MessageBox
 		  ])
 	}
 	public static JsonBuilder renderOKAsJSON(String MessageBox){
 		return  new JsonBuilder(
 			[
-			success: true,
+			status: OKSTATUS,
 			message: MessageBox
 		  ])
 	}
@@ -35,7 +39,7 @@ class CommonJSONRequests {
 	public static JsonBuilder getHashMapAsJSONFormat2(HashMap<String,String[]> ObjList, String HttpMethod){
 		
 		def data = [
-			success: true,
+			status: OKSTATUS,
 			type: HttpMethod,
 			count: ObjList.size(),
 			data: ObjList.collect {k,v ->
@@ -53,7 +57,7 @@ class CommonJSONRequests {
 	public static JsonBuilder getHashMapAsJSONFormat(HashMap<String,String[]> ObjList){
 		
 		def data = [
-			success: true,
+			status: OKSTATUS,
 			count: ObjList.size(),
 			data: ObjList.collect {k,v ->
 				//println "key is: " + k
@@ -70,7 +74,7 @@ class CommonJSONRequests {
 	public static JsonBuilder getStatisticResultListAsJSONFormat(List<StatisticSearchItem> ObjList){
 		
 		def data = [
-			success: true,
+			status: OKSTATUS,
 			count: ObjList.size(),
 			data: ObjList.collect {[name: it.name, type:it.type, desc:it.periodDescription,
 				 platform:it.platform, runid:it.runID, parent:it.parentRunID, user:it.userName, 
@@ -90,7 +94,7 @@ class CommonJSONRequests {
 	
 	public static JsonBuilder getResultListAsJSONFormat(List<SearchResultItem> ObjList){
 		def data = [
-			success: true,
+			status: OKSTATUS,
 			count: ObjList.size(),
 			data: ObjList.collect {[name: it.name, folder: it.folder, title: it.title, type: it.objectType, open: it.open]}
 		  ]
@@ -102,7 +106,7 @@ class CommonJSONRequests {
 	
 	public static JsonBuilder getStringListAsJSONFormat(String OpName, String[] ObjList){
 		def data = [
-			success: true,
+			status: OKSTATUS,
 			count: ObjList.length,
 			data: ObjList.collect {["$OpName": it]}
 		  ]
@@ -114,7 +118,7 @@ class CommonJSONRequests {
 	
 	public static JsonBuilder getSupportedThingsAsJSONFormat(ObjList){
 		def data = [
-			success: true,
+			status: OKSTATUS,
 			required_parameters: ObjList.required_parameters,
 			optional_parameters: ObjList.optional_parameters,
 			optional_filters: ObjList.optional_filters,
@@ -149,7 +153,7 @@ class CommonJSONRequests {
 	
 	public static JsonBuilder getActivityListAsJSONFormat(List<Task> ObjList){
 		def data = [
-			success: true,
+			status: OKSTATUS,
 			count: ObjList.size(),
 			data: ObjList.collect {[name: it.name, type:it.type, desc:it.periodDescription,
 				 platform:it.platform, runid:it.runID, parent:it.parentRunID, user:it.userName, 

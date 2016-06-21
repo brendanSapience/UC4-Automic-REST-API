@@ -145,8 +145,10 @@ class MiscUtils {
 			int Number = NumberOfUnits.toInteger()
 			String Type = RawDate.split(NumberOfUnits)[1]
 			
-			DateTime NOW = DateTime.now()
+			DateTime NOW = DateTime.now().addDays(1)
 			DateTime BEGINNING = DateTime.now()
+			
+
 			
 			if(Type.toUpperCase() =~/YEARS|YEAR|YR/){
 				BEGINNING.addYears(-Number)
@@ -175,6 +177,8 @@ class MiscUtils {
 
 //			req.setTimestampFrom(BEGINNING);
 //			req.setTimestampTo(NOW);
+		//println "Begin: " + BEGINNING
+		//	println "to: " + NOW
 			return [BEGINNING,NOW]
 		}
 

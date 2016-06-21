@@ -47,17 +47,17 @@ class ActivitiesGETActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def search(String version, params,Connection conn,request){return "search${version}"(params,conn)}
-	public static def deactivate(String version, params,Connection conn,request){return "deactivate${version}"(params,conn)}
-	public static def rerun(String version, params,Connection conn,request){return "rerun${version}"(params,conn)}
-	public static def quit(String version, params,Connection conn,request){return "quit${version}"(params,conn)}
-	public static def unblock(String version, params,Connection conn,request){return "unblock${version}"(params,conn)}
-	public static def cancel(String version, params,Connection conn,request){return "cancel${version}"(params,conn)}
-	public static def resume(String version, params,Connection conn,request){return "resume${version}"(params,conn)}
-	public static def rollback(String version, params,Connection conn,request){return "rollback${version}"(params,conn)}
-	public static def suspend(String version, params,Connection conn,request){return "suspend${version}"(params,conn)}
-	public static def show(String version, params,Connection conn,request){return "show${version}"(params,conn)}
-	public static def run(String version, params,Connection conn,request){return "run${version}"(params,conn)}
+	public static def search(String version, params,Connection conn,request, grailsattr){return "search${version}"(params,conn)}
+	public static def deactivate(String version, params,Connection conn,request, grailsattr){return "deactivate${version}"(params,conn)}
+	public static def rerun(String version, params,Connection conn,request, grailsattr){return "rerun${version}"(params,conn)}
+	public static def quit(String version, params,Connection conn,request, grailsattr){return "quit${version}"(params,conn)}
+	public static def unblock(String version, params,Connection conn,request, grailsattr){return "unblock${version}"(params,conn)}
+	public static def cancel(String version, params,Connection conn,request, grailsattr){return "cancel${version}"(params,conn)}
+	public static def resume(String version, params,Connection conn,request, grailsattr){return "resume${version}"(params,conn)}
+	public static def rollback(String version, params,Connection conn,request, grailsattr){return "rollback${version}"(params,conn)}
+	public static def suspend(String version, params,Connection conn,request, grailsattr){return "suspend${version}"(params,conn)}
+	public static def show(String version, params,Connection conn,request, grailsattr){return "show${version}"(params,conn)}
+	public static def run(String version, params,Connection conn,request, grailsattr){return "run${version}"(params,conn)}
 	
 	/**
 	 * @purpose run a given object by name

@@ -39,7 +39,7 @@ REST API Server for Automic's ONE Automation Platform
      
    **How to Get Help (and get started):**
    
-* there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type (and the list of versions available):
+* there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type & http request type (GET or POST):
      	
   ex: http://localhost:8080/Automic-RESTful-Server/api/awa/**help**/v1/Activities
      	
@@ -356,6 +356,26 @@ REST API Server for Automic's ONE Automation Platform
 			}
 		}
 
+
+     * returns: JSON    
+
+* **delete (POST):**
+
+     * Supported Objects:
+     
+          * **Jobs**
+               * Mandatory Parameters: 
+               	* JSON Body in POST Request
+               * Optional Parameters: 
+               	* commit < Y > (ex: commit=Y) => Commit update operations (by default: N. Only a simulation runs)
+				-> See method=usage for example of JSON body
+				              
+          * **All**
+               * Mandatory Parameters: 
+               	* JSON Body in POST Request
+               * Optional Parameters: 
+               	* commit < Y > (ex: commit=Y) => Commit update operations (by default: N. Only a simulation runs)       
+				-> See method=usage for example of JSON body
 
      * returns: JSON    
      

@@ -20,7 +20,7 @@ class UrlMappings {
 		//"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action: 'router', method: 'GET')
 		
 		//adding support for regular http request methods
-		"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action : [GET:"router", PUT:"router", DELETE:"router", POST:"router"])
-		"/api/$product/help/$version/$object"(controller:{"${params.object}"}, action : [GET:"help", PUT:"help", DELETE:"help", POST:"help"])
+		"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action : [GET:"router", POST:"router"])
+		"/api/$product/help/$version/$object"(controller:{"${params.object}"}, action : [GET:"help", POST:"help"])
    }
 }

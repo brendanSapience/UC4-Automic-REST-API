@@ -26,7 +26,7 @@ class AllGETActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def search(String version, params,Connection conn,request){return "search${version}"(params,conn)}
+	public static def search(String version, params,Connection conn,request, grailsattr){return "search${version}"(params,conn)}
 	
 	/**
 	 * @purpose search any objects (search window) against filters
@@ -145,23 +145,6 @@ class AllGETActions {
 							req.setTextSearch(SEARCHTEXT, processsearch, docusearch, titlesearch, keysearch)
 						}
 						
-						if(dispFilters.doesKeyExistInFilter("created")){
-							String RawDate = dispFilters.getValueFromKey("created");
-							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
-							req.setDateSelectionCreated(RESULTS[0], RESULTS[1]);
-						}
-						
-						if(dispFilters.doesKeyExistInFilter("modified")){
-							String RawDate = dispFilters.getValueFromKey("modified");
-							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
-							req.setDateSelectionModified(RESULTS[0], RESULTS[1]);
-						}
-						
-						if(dispFilters.doesKeyExistInFilter("used")){
-							String RawDate = dispFilters.getValueFromKey("used");
-							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
-							req.setDateSelectionUsed(RESULTS[0], RESULTS[1]);
-						}
 						
 						if(dispFilters.doesKeyExistInFilter("type")){
 		
@@ -222,8 +205,28 @@ class AllGETActions {
 						
 						if(SEARCHUSAGE!=null && SEARCHUSAGE.toUpperCase() =~/Y|YES|OK|O/){req.setSearchUseOfObjects(true);}
 						
-						List<SearchResultItem> JobList = CommonAERequests.GenericSearchObjects(conn, params.name, req);
+						if(dispFilters.doesKeyExistInFilter("created")){
+							String RawDate = dispFilters.getValueFromKey("created");
+							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
+							req.setDateSelectionCreated(RESULTS[0], RESULTS[1]);
+							
+							println "Debug here is:" + RESULTS[0] +":"+ RESULTS[1]
+						}
 						
+						if(dispFilters.doesKeyExistInFilter("modified")){
+							String RawDate = dispFilters.getValueFromKey("modified");
+							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
+							req.setDateSelectionModified(RESULTS[0], RESULTS[1]);
+						}
+						
+						if(dispFilters.doesKeyExistInFilter("used")){
+							String RawDate = dispFilters.getValueFromKey("used");
+							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
+							req.setDateSelectionUsed(RESULTS[0], RESULTS[1]);
+						}
+						
+						List<SearchResultItem> JobList = CommonAERequests.GenericSearchObjects(conn, params.name, req);
+
 						JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(JobList);
 						return json
 						
