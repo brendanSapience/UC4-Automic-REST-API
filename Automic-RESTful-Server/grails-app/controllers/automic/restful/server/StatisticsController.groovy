@@ -82,7 +82,7 @@ class StatisticsController {
 			}
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
-				if(Environment.current == Environment.DEVELOPMENT){
+				if(false){ //Environment.current == Environment.DEVELOPMENT){
 					myRes = com.automic.actions.get.StatisticsGETActions."${OPERATION}"(VERSION,params,conn,request);
 				}else{
 				// otherwise it needs to be caught

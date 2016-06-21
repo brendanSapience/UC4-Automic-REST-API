@@ -138,7 +138,7 @@ class JobsPOSTActions {
 			}
 			// we now have a selected list of instantiated objects
 			def data = [
-				success: true,
+				status: "success",
 				commit: COMMIT,
 				simulate:!COMMIT,
 				count: SelectedObjects.size(),

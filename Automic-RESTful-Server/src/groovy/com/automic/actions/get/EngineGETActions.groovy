@@ -71,7 +71,7 @@ class EngineGETActions {
 			conn.sendRequestAndWait(info);
 			return new JsonBuilder(
 				[
-					success: true,
+					status: "success",
 					data:[
 						dbtype: info.getDbmsName(),
 						dbversion:info.getDbmsVersion(),
@@ -91,7 +91,7 @@ class EngineGETActions {
 			ArrayList<ClientListItem> reqList = req.iterator().toList();
 			return new JsonBuilder(
 				[
-					success: true,
+					status: "success",
 					count: reqList.size(),
 					data: reqList.collect {[
 						client:it.client,
@@ -107,14 +107,33 @@ class EngineGETActions {
 						]}
 				  ]
 			)
-		}else if(METHOD =~ /showagents|showhosts|shownodes|agents|hosts|nodes|agent|host|node/){
+		}	else if(METHOD =~ /showagentgroups|showhostgroups|agentgroups|hostgroups|agentgroup|hostgroup/){
+			AgentGroupList req = new AgentGroupList();
+			CommonAERequests.sendSyncRequest(conn, req, false)
+			ArrayList<AgentGroupListItem> reqList = req.iterator().toList();
+			return new JsonBuilder(
+				[
+					status: "success",
+					count: reqList.size(),
+					data: reqList.collect {[
+						name:it.getName(),
+						client:it.getClient(),
+						variant:it.getJclVariant(),
+						mode:it.getMode(),
+						numparalleltasks:it.getParallelTasks(),
+						]}
+				  ]
+			)
+		
+		}
+		else if(METHOD =~ /showagents|showhosts|shownodes|agents|hosts|nodes|agent|host|node/){
 		println "In Here!:" + METHOD
 			AgentList req = new AgentList();
 			CommonAERequests.sendSyncRequest(conn, req, false)
 			ArrayList<AgentListItem> reqList = req.iterator().toList();
 			return new JsonBuilder(
 				[
-					success: true,
+					status: "success",
 					count: reqList.size(),
 					data: reqList.collect {[
 						name:it.getName(),
@@ -137,25 +156,7 @@ class EngineGETActions {
 			)
 		
 		}
-		else if(METHOD =~ /showagentgroups|showhostgroups|agentgroups|hostgroups|agentgroup|hostgroup/){
-			AgentGroupList req = new AgentGroupList();
-			CommonAERequests.sendSyncRequest(conn, req, false)
-			ArrayList<AgentGroupListItem> reqList = req.iterator().toList();
-			return new JsonBuilder(
-				[
-					success: true,
-					count: reqList.size(),
-					data: reqList.collect {[
-						name:it.getName(),
-						client:it.getClient(),
-						variant:it.getJclVariant(),
-						mode:it.getMode(),
-						numparalleltasks:it.getParallelTasks(),
-						]}
-				  ]
-			)
-		
-		}
+	
 		else if(METHOD =~ /showusers|showuser|users|user/){
 			
 			UserList req = new UserList();
@@ -163,7 +164,7 @@ class EngineGETActions {
 			ArrayList<UserListItem> reqList = req.iterator().toList();
 			return new JsonBuilder(
 				[
-					success: true,
+					status: "success",
 					count: reqList.size(),
 					data: reqList.collect {[
 						name:it.getName(),
@@ -191,7 +192,7 @@ class EngineGETActions {
 	
 	private static JsonBuilder getServerListAsJSON(List<ServerListItem> ObjList){
 		def data = [
-			success: true,
+			status: "success",
 			count: ObjList.size(),
 			data: ObjList.collect {[name: it.name, connections: it.connections, active: it.active, 
 				type: it.port, hostname: it.hostName, ip:it.ipAddress, role:it.role, servertime:it.serverTime.toString(),

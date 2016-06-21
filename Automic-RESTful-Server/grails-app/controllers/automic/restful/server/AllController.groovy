@@ -67,7 +67,7 @@ class AllController {
 			}
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
-				if(Environment.current == Environment.DEVELOPMENT){
+				if(false){ //Environment.current == Environment.DEVELOPMENT){
 					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 				}else{
 				// otherwise it needs to be caught

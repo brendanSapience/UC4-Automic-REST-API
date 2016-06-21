@@ -103,7 +103,7 @@ class JOBSSpecUpdates {
 	public static def getJSONStructure(ArrayList<Job> SelectedObjects,boolean commit){
 
 		def data = [
-			success: true,
+			status: "success",
 			commit: commit,
 			count: SelectedObjects.size(),
 			data: SelectedObjects.collect {[

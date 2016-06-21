@@ -39,7 +39,7 @@ class JsonFiltersUtils {
 		if(SEARCHTEXTDOCU == null){SEARCHTEXTDOCU=false}
 		
 		if(SEARCHDATE == null){SEARCHDATE=false}
-		if(SEARCHDATETYPE.toLowerCase().equals("created") &&SEARCHDATETYPE.toLowerCase().equals("modified") &&SEARCHDATETYPE.toLowerCase().equals("used")){
+		if(SEARCHDATETYPE != null && SEARCHDATETYPE.toLowerCase().equals("created") && SEARCHDATETYPE.toLowerCase().equals("modified") &&SEARCHDATETYPE.toLowerCase().equals("used")){
 			SEARCHDATETYPE = "created"}
 		if(SEARCHDATEFROM == null || SEARCHDATEFROM.equals("")){SEARCHDATEFROM="201601010000"}
 		if(SEARCHDATETO == null || SEARCHDATETO.equals("")){SEARCHDATETO="210001010000"};

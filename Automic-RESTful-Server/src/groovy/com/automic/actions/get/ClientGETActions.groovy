@@ -71,7 +71,7 @@ class ClientGETActions {
 				if(req.getMessageBox()!=null){
 					return CommonJSONRequests.renderErrorAsJSON(req.getMessageBox());
 				}else{
-					return CommonJSONRequests.renderOKAsJSON("client stopped");
+					return CommonJSONRequests.renderOKAsJSON("client started");
 				}
 			}else{
 				// check if we are in Client 0
