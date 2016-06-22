@@ -109,7 +109,13 @@ class JOBSSpecUpdates {
 			data: SelectedObjects.collect {[
 				 name: it.name, 
 				 title: it.header.title,
+				 key1 :  it.header().getArchiveKey1(),
+				 key2 :  it.header().getArchiveKey2(),
 				 type:it.type, 
+				 host: it.attributes().getHost(),
+				 login: it.attributes().getLogin(),
+				 queue: it.attributes().getQueue(),
+				 genatruntime: it.attributes().isGenerateAtRuntime(),
 				 access:it.access, 
 				 active:it.header.isActive(),
 				 jobtype:it.jobtype,
@@ -117,7 +123,8 @@ class JOBSSpecUpdates {
 				 prompts: CommonJSONRequests.getObjectPromptsAsJSON(it.values()),
 				 process: it.getProcess(),
 				 preprocess: it.getPreProcess(),
-				 postprocess: it.getPostProcess()
+				 postprocess: it.getPostProcess(),
+				// f:
 				 ]}
 			//properties:it.getProperties().toMapString()
 		  ]
