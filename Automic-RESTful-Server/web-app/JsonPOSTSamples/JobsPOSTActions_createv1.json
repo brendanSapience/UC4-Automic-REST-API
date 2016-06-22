@@ -1,0 +1,16 @@
+{
+	"type" : "<>",
+	"folder" : "0200/REST.API.TESTS",
+	"name" : "<String>",
+	"title" : "<String>",
+	"key1" : "<String>",
+	"key2" : "<String>",
+	"host" : "<String>",
+	"login" : "<String>",
+	"queue" : "<String>",
+	"status" : "<active|inactive>",
+	"genatruntime" : "<boolean>",
+	"process" : "<String>",
+	"preprocess" : "<String>",
+	"postprocess" : "<String>"
+}

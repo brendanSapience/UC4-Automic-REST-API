@@ -18,6 +18,32 @@ class JobsPOSTActions {
 	public static String JsonTemplateFolder = "./JsonPOSTSamples/"
 	public static def update(String version, params,Connection conn,request, grailsattr){return "update${version}"(params,conn,request,grailsattr)}
 	public static def delete(String version, params,Connection conn,request, grailsattr){return "delete${version}"(params,conn,request,grailsattr)}
+	public static def create(String version, params,Connection conn,request, grailsattr){return "create${version}"(params,conn,request,grailsattr)}
+	
+	public static def createv1(params,Connection conn,request,grailsattr) {
+		String METHOD = params.method;
+		String COMMITSTR = params.commit;
+		boolean COMMIT = false;
+		if(COMMITSTR!=null && COMMITSTR.equalsIgnoreCase("Y")){COMMIT=true;}
+		
+		if(METHOD != null && METHOD.equals("usage")){
+			def JsonFile = grailsattr.getApplicationContext().getResource(JsonTemplateFolder+"JobsPOSTActions"+"_updatev1.json").getFile()
+			def InputJSON = new JsonSlurper().parseText(JsonFile.text)
+			return InputJSON
+		}
+		
+		try{
+			def jsonSlurper = new JsonSlurper()
+			def json = jsonSlurper.parseText(request.reader.text)
+			
+			JsonBuilder jsonres = JOBSSpecCreate.CreateObject(conn, json, COMMIT)
+			return jsonres
+			
+		}catch(JsonException j){
+			JsonBuilder json = new JsonBuilder([status: "error", message: "JSON from POST Request has incorrect format."])
+			return json
+		}
+	}
 	
 	public static def updatev1(params,Connection conn,request,grailsattr) {
 		
@@ -47,7 +73,7 @@ class JobsPOSTActions {
 			req.setTypeJOBS(true);
 			List<SearchResultItem> ObjList = JsonFiltersUtils.getObjectListFromSearchAndStdFilters(conn, req, JsonStdFilters)
 			ArrayList<Job> SelectedObjects = new ArrayList<Job>()
-			if(!JsonSpecFilters.isEmpty()){
+			if(JsonSpecFilters != null && !JsonSpecFilters.isEmpty()){
 				ObjList.each {
 					UC4Object obj
 					if(COMMIT){
@@ -118,7 +144,7 @@ class JobsPOSTActions {
 			req.setTypeJOBS(true);
 			List<SearchResultItem> ObjList = JsonFiltersUtils.getObjectListFromSearchAndStdFilters(conn, req, JsonStdFilters)
 			ArrayList<Job> SelectedObjects = new ArrayList<Job>()
-			if(!JsonSpecFilters.isEmpty()){
+			if(JsonSpecFilters != null && !JsonSpecFilters.isEmpty()){
 				ObjList.each {
 					UC4Object obj
 
