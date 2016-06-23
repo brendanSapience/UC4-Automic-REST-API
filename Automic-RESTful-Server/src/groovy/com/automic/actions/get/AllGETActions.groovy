@@ -209,8 +209,6 @@ class AllGETActions {
 							String RawDate = dispFilters.getValueFromKey("created");
 							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
 							req.setDateSelectionCreated(RESULTS[0], RESULTS[1]);
-							
-							println "Debug here is:" + RESULTS[0] +":"+ RESULTS[1]
 						}
 						
 						if(dispFilters.doesKeyExistInFilter("modified")){

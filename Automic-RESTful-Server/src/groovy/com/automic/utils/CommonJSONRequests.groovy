@@ -5,6 +5,7 @@ import com.uc4.api.StatisticSearchItem
 import com.uc4.api.Task
 import com.uc4.api.objects.ObjectValues;
 import com.uc4.api.objects.PromptSetDefinition
+import com.uc4.communication.requests.GetChangeLog
 
 import groovy.json.JsonBuilder
 
@@ -139,6 +140,37 @@ class CommonJSONRequests {
 			size: objVals.map.entrySet().size(),
 			 data: iterator.collect {[name: it, value:objVals.getValue(it)]}
 		  ]
+		return data
+	}
+	
+	public static def getChangesAsJSON2(ArrayList<GetChangeLog.Entry> allentries){
+		def data = [
+			size: allentries.size(),
+			 data: allentries.collect {
+				 [
+					 objectname:it.getObjectName(),
+					 title:it.getTitle(),
+					 type:it.getType(),
+					 username:it.getUserName(),
+					 timestamp:it.getTimestamp().toString(),
+					 message: it.getMessage(),
+					 firstname:it.getFirstName(),
+					 lastname:it.getLastName(),
+				 ]}
+			  ]
+		return data
+	}
+	
+	public static def getChangesAsJSON(GetChangeLog changes){
+		Iterator<GetChangeLog.Entry> iterator = changes.iterator()
+		
+		def data = [
+			size: iterator.size(),
+			 data: iterator.each { k ->
+				 [
+				 message: k.getMessage()
+				 ]}
+		  	]
 		return data
 	}
 	
