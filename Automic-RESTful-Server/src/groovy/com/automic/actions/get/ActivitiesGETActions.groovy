@@ -65,7 +65,6 @@ class ActivitiesGETActions {
 	 * @version v1
 	 */
 	public static def runv1(params,Connection conn){
-
 		def AllParamMap = [:]
 		AllParamMap = [
 			'required_parameters': ['name (format: name= < object name >'],
@@ -129,13 +128,34 @@ class ActivitiesGETActions {
 					XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 
 					if(res == null){
-						JsonBuilder json = new JsonBuilder([status: "error", message: "could not start task"])
+						JsonBuilder json = new JsonBuilder(
+							[
+								status: "error",
+								message: req.getMessageBox().getText(),
+								
+								msgnumber:  req.getMessageBox().getNumber().toString()
+							])
 						return json
 					}else{
-						JsonBuilder json = new JsonBuilder([status: "success", message: "task started"])
+						int RUNID = req.getRunID();
+						String MSGNUMBER = "NA";
+						String MSGINSERT = "NA";
+						if(req.getMessageBox() != null){
+							MSGNUMBER = req.getMessageBox().getNumber().toString()
+							MSGINSERT = req.getMessageBox().getInsert()
+						}
+						JsonBuilder json = new JsonBuilder(
+							[status: "success", 
+							message: "task started", 
+							runid: RUNID,
+							msgnumber: MSGNUMBER,
+							msginsert: MSGINSERT
+							])
 						return json
 					}
-				}
+				}else{
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+				 }
 		}
 	}
 	
@@ -289,7 +309,6 @@ class ActivitiesGETActions {
 			 return json
 			 //render(text: json, contentType: "text/json", encoding: "UTF-8")
 		 }else{
- 
 				 if(MiscUtils.checkParams(AllParamMap, params)){
 					 
 					 String RUNIDASSTR = params.runid;
@@ -310,7 +329,12 @@ class ActivitiesGETActions {
 						 }
 						
 						if(req.getMessageBox()!=null){
-							return CommonJSONRequests.renderErrorAsJSON(req.getMessageBox());
+							JsonBuilder json = new JsonBuilder(
+								[
+									status: "error",
+									message: req.getMessageBox().getText(),
+									msgnumber:  req.getMessageBox().getNumber().toString()
+								])
 						}else{
 							ArrayList<Comment> reqList = req.iterator().toList();
 							return new JsonBuilder(
@@ -331,6 +355,8 @@ class ActivitiesGETActions {
 					 	
 					 return getReportAsJSON("REP",conn, RUNID);
 					 }
+				 }else{
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
 				 }
 		 }
 	 }
@@ -375,13 +401,21 @@ class ActivitiesGETActions {
 			
 					XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 					if(res == null){
-						JsonBuilder json = new JsonBuilder([status: "error", message: "could not deactivate task"])
+						JsonBuilder json = new JsonBuilder(
+							[
+								status: "error",
+								message: req.getMessageBox().getText(),
+								
+								msgnumber:  req.getMessageBox().getNumber().toString()
+							])
 						return json
 					}else{
 						JsonBuilder json = new JsonBuilder([status: "success", message: "task deactivated"])
 						return json
 					}					
-				}
+				}else{
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+				 }
 		}
 	}
 	
@@ -417,15 +451,20 @@ class ActivitiesGETActions {
 				AdoptTask req = new AdoptTask(RUNID);
 				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 				if(res == null){
-					JsonBuilder json = new JsonBuilder([status: "error", message: "could not adopt task"])
+					JsonBuilder json = new JsonBuilder(
+						[
+							status: "error",
+							message: req.getMessageBox().getText(),
+							
+							msgnumber:  req.getMessageBox().getNumber().toString()
+						])
 					return json
 				}else{
 					JsonBuilder json = new JsonBuilder([status: "success", message: "task adopted"])
 					return json
 				}
 			}else{
-				JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
-				return json
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
 			}
 		}
 	}
@@ -465,15 +504,20 @@ class ActivitiesGETActions {
 				RollbackTask req = new RollbackTask(RUNID,RECURSIVE);
 				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 				if(res == null){
-					JsonBuilder json = new JsonBuilder([status: "error", message: "could not rollback task"])
+					JsonBuilder json = new JsonBuilder(
+						[
+							status: "error",
+							message: req.getMessageBox().getText(),
+							
+							msgnumber:  req.getMessageBox().getNumber().toString()
+						])
 					return json
 				}else{
 					JsonBuilder json = new JsonBuilder([status: "success", message: "task rolled back"])
 					return json
 				}
 			}else{
-				JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
-				return json
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
 			}
 		}
 	}
@@ -513,15 +557,20 @@ class ActivitiesGETActions {
 				SuspendTask req = new SuspendTask(RUNID,RECURSIVE);
 				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 				if(res == null){
-					JsonBuilder json = new JsonBuilder([status: "error", message: "could not resume task"])
+					JsonBuilder json = new JsonBuilder(
+						[
+							status: "error",
+							message: req.getMessageBox().getText(),
+							
+							msgnumber:  req.getMessageBox().getNumber().toString()
+						])
 					return json
 				}else{
 					JsonBuilder json = new JsonBuilder([status: "success", message: "task resumed"])
 					return json
 				}
 			}else{
-				JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
-				return json
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
 			}
 		}
 	}
@@ -561,15 +610,19 @@ class ActivitiesGETActions {
 				ResumeTask req = new ResumeTask(RUNID,RECURSIVE);
 				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 				if(res == null){
-					JsonBuilder json = new JsonBuilder([status: "error", message: "could not resume task"])
-					return json
+					JsonBuilder json = new JsonBuilder(
+						[
+							status: "error",
+							message: req.getMessageBox().getText(),
+							
+							msgnumber:  req.getMessageBox().getNumber().toString()
+						])
 				}else{
 					JsonBuilder json = new JsonBuilder([status: "success", message: "task resumed"])
 					return json
 				}
 			}else{
-				JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
-				return json
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
 			}
 		}
 	}
@@ -609,15 +662,19 @@ class ActivitiesGETActions {
 				CancelTask req = new CancelTask(RUNID,RECURSIVE);
 				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 				if(res == null){
-					JsonBuilder json = new JsonBuilder([status: "error", message: "could not cancel task"])
+					JsonBuilder json = new JsonBuilder(
+						[
+							status: "error",
+							message: req.getMessageBox().getText(),
+							msgnumber:  req.getMessageBox().getNumber().toString()
+						])
 					return json
 				}else{
 					JsonBuilder json = new JsonBuilder([status: "success", message: "task cancelled"])
 					return json
 				}
 			}else{
-						JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
-						return json
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
 			}
 		}
 	}
@@ -655,12 +712,19 @@ class ActivitiesGETActions {
 					
 				XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 				if(res == null){
-					JsonBuilder json = new JsonBuilder([status: "error", message: "could not quit task"])
+					JsonBuilder json = new JsonBuilder(
+						[
+							status: "error", 
+							message: req.getMessageBox().getText(),
+							msgnumber:  req.getMessageBox().getNumber().toString()
+						])
 					return json
 				}else{
 					JsonBuilder json = new JsonBuilder([status: "success", message: "task quit done"])
 					return json
 				}		
+			}else{
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
 			}
 		}
 	}
@@ -712,14 +776,27 @@ class ActivitiesGETActions {
 					if(RESTARTPOINT != null && RESTARTPOINT.equals("")){req.setRestartPoint(RESTARTPOINT);}
 					
 					XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
-
+					
 					if(res == null){
-						JsonBuilder json = new JsonBuilder([status: "error", message: "could not restart task"])
+						JsonBuilder json = new JsonBuilder(
+							[
+								status: "error", 
+								message: req.getMessageBox().getText(),
+								msgnumber:  req.getMessageBox().getNumber().toString()
+							])
 						return json
 					}else{
-						JsonBuilder json = new JsonBuilder([status: "success", message: "task restarted"])
+						JsonBuilder json = new JsonBuilder(
+							[
+								status: "success", 
+								message: "task restarted",
+								runid: req.getRestartedRunID(),
+								refrunid: req.getReferenceRunID()
+							])
 						return json
 					}
+				}else{
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
 				}
 		}
 	}
@@ -775,18 +852,26 @@ class ActivitiesGETActions {
 							}
 						}else if(TYPE.toUpperCase() == "JOBP"){
 							req = (UnblockWorkflow) new UnblockWorkflow(RUNID);
+							
 						}
 			
 						XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
-					
+							
 						if(res == null){
-							JsonBuilder json = new JsonBuilder([status: "error", message: "could not unblock task"])
+							JsonBuilder json = new JsonBuilder(
+								[
+									status: "error", 
+									message: req.getMessageBox().getText(),
+									msgnumber:  req.getMessageBox().getNumber().toString()
+								])
 							return json
 						}else{
 							JsonBuilder json = new JsonBuilder([status: "success", message: "task unblocked"])
 							return json
 						}
 				}
+			}else{
+				 	return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
 			}
 		}
 	}
