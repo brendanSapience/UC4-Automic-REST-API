@@ -34,5 +34,5 @@
 /target
 
 # internal files
-/web-app/bin.key
-XMLExport_*
+Automic-RESTful-Server/web-app/bin.key
+Automic-RESTful-Server/*.xml
