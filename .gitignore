@@ -35,4 +35,4 @@
 
 # internal files
 Automic-RESTful-Server/web-app/bin.key
-Automic-RESTful-Server/*.xml
+Automic-RESTful-Server/XMLExport*.xml
