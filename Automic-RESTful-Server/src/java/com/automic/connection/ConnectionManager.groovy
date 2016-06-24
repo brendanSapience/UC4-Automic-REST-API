@@ -92,6 +92,20 @@ public final class ConnectionManager {
 		return CONNTOKEN;
 		
 	}
+	//Clear token / Connection pool
+	public static boolean clearAllTokens(String initiatorToken){
+		ArrayList<String> TokensToClear = new ArrayList<String>()
+		
+		ConnectionMap.entrySet().each {
+			if(!it.key.equals(initiatorToken)){
+				TokensToClear.add(it.key)
+			}
+		}
+		
+		TokensToClear.each {
+			ConnectionMap.remove(it)
+		}
+	}
 	
 	//on logout operations, the token needs to be removed from the Hash and the Connection needs to be closed
 	public static boolean removeToken(String token){

@@ -18,6 +18,7 @@ class AllPOSTActions {
 	public static def delete(String version, params,Connection conn,request, grailsattr){return "delete${version}"(params,conn,request,grailsattr)}
 	//public static def insert(String version, params,Connection conn,request, grailsattr){return "import${version}"(params,conn,request,grailsattr)}
 	
+	// not yet functional
 	public static def importv1(params,Connection conn,request,grailsattr) {
 		
 		String METHOD = params.method;

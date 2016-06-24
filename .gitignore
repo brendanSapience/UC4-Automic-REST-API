@@ -6,6 +6,7 @@
 # web application files
 /web-app/WEB-INF/classes
 
+
 # default HSQL database files for production mode
 /prodDb.*
 
@@ -31,3 +32,7 @@
 
 # "temporary" build files
 /target
+
+# internal files
+/web-app/bin.key
+XMLExport_*

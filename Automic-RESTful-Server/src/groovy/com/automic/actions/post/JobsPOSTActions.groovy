@@ -27,7 +27,7 @@ class JobsPOSTActions {
 		if(COMMITSTR!=null && COMMITSTR.equalsIgnoreCase("Y")){COMMIT=true;}
 		
 		if(METHOD != null && METHOD.equals("usage")){
-			def JsonFile = grailsattr.getApplicationContext().getResource(JsonTemplateFolder+"JobsPOSTActions"+"_updatev1.json").getFile()
+			def JsonFile = grailsattr.getApplicationContext().getResource(JsonTemplateFolder+"JobsPOSTActions"+"_createv1.json").getFile()
 			def InputJSON = new JsonSlurper().parseText(JsonFile.text)
 			return InputJSON
 		}

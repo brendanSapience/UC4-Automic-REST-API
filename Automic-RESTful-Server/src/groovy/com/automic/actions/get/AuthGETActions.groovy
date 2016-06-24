@@ -10,6 +10,7 @@ import com.automic.connection.ConnectionManager;
 import com.automic.objects.CommonAERequests
 import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
+import com.automic.objects.AECrypter;
 
 class AuthGETActions {
 
@@ -108,26 +109,72 @@ class AuthGETActions {
 			'optional_parameters': [],
 			'optional_filters': [],
 			'required_methods': [],
-			'optional_methods': ['usage']
+			'optional_methods': ['usage', 'clearall', 'encrypt (-> requires a binary key file)', 'decrypt (-> requires a binary key file)']
 			]
 		
 		//String TOKEN = params.token;
 		String METHOD = params.method;
-		String ADMINKEY = params.key;
+		//String ADMINKEY = params.key;
 		
 		if( METHOD != null && METHOD.equalsIgnoreCase("usage")){
 			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
 			return json
 		}else{
-			//if(ADMINKEY != null && ADMINKEY.equals(ADMINKEYFORCONNDISPLAY)){
-			if(ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin()){
-					JsonBuilder json = ConnectionManager.getJSONFromConnectionPoolContent()
-					return json
-				
-			}else{
-				JsonBuilder json = new JsonBuilder([status: "error", message: "request denied"])
-				return json
+			// added a method to clear all tokens (except the initiator of the request)
+			if(METHOD != null && ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD.equalsIgnoreCase("clearall")){
+				ConnectionManager.clearAllTokens(TOKEN)
 			}
+		
+			// undocumented method for now?
+			if(METHOD != null && ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD.equalsIgnoreCase("encrypt")){
+				String CLEARSTR = params.key;
+				if(CLEARSTR == null || CLEARSTR.equals("")){
+					CommonJSONRequests.renderErrorAsJSON("parameter key cannot be empty.")
+				}else{
+				
+					if(AECrypter.isBinKeyFilePresent()){
+						String EncStrWithFile = AECrypter.enMaximWithBinFile(CLEARSTR)
+						JsonBuilder json = new JsonBuilder([status: "success", encrypted: EncStrWithFile])
+						return json
+					}else{
+						return CommonJSONRequests.renderErrorAsJSON("No key file found on your system.")
+					}
+
+				}
+			
+			}
+			
+			// undocumented method for now?
+			else if(METHOD != null && ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD.equalsIgnoreCase("decrypt")){
+				String KEY = params.key;
+				if(KEY == null || KEY.equals("")){
+					return CommonJSONRequests.renderErrorAsJSON("parameter key cannot be empty.")
+				}else{
+					if(AECrypter.isBinKeyFilePresent()){
+						String ClearStrWithFile = AECrypter.deMaximWithBinFile(KEY)
+						JsonBuilder json = new JsonBuilder([status: "success", decrypted: ClearStrWithFile])
+						return json
+					}else{
+						return CommonJSONRequests.renderErrorAsJSON("No key file found on your system.")
+					}
+
+				}
+			
+			}
+			
+			else{
+				//if(ADMINKEY != null && ADMINKEY.equals(ADMINKEYFORCONNDISPLAY)){
+				if(ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD == null){
+						JsonBuilder json = ConnectionManager.getJSONFromConnectionPoolContent()
+						return json
+					
+				}else{
+					JsonBuilder json = new JsonBuilder([status: "error", message: "request denied"])
+					return json
+				}
+			}
+			
+
 		}
 	}
 	
