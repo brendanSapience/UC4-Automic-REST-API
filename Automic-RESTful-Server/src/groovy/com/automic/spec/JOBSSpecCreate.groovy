@@ -89,14 +89,17 @@ class JOBSSpecCreate {
 			if(STATUS.equals("inactive")){job.header().setActive(false)}
 		}
 		
-		//if(Commit){
+		if(Commit){
 			//println "Saving Object: " + it.getName()
 			CommonAERequests.saveAndCloseObject(job,connection)
-			//}
-	//	else{CommonAERequests.closeObject(job,connection)}
+		}
+		else{
+			CommonAERequests.closeObject(job,connection)
+			CommonAERequests.deleteObject(job.getName(), connection)
+		}
 		
-		return CommonJSONRequests.renderOKAsJSON("Object created successfully")
-
+		if(Commit){return CommonJSONRequests.renderOKAsJSON("Object created successfully",Commit)}
+		if(!Commit){return CommonJSONRequests.renderOKAsJSON("Object created simulated successfully",Commit)}
 	}
 		
 		

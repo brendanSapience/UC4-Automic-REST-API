@@ -36,7 +36,15 @@ class CommonJSONRequests {
 			message: MessageBox
 		  ])
 	}
-	
+	public static JsonBuilder renderOKAsJSON(String MessageBox,boolean Commit){
+		return  new JsonBuilder(
+			[
+			status: OKSTATUS,
+			commit: Commit,
+			simulate: !Commit,
+			message: MessageBox
+		  ])
+	}
 	public static JsonBuilder getHashMapAsJSONFormat2(HashMap<String,String[]> ObjList, String HttpMethod){
 		
 		def data = [
