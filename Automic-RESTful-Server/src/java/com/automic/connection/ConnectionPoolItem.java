@@ -1,5 +1,7 @@
 package com.automic.connection;
 
+import java.io.File;
+
 /**
  * 
  * @author bsp

@@ -16,6 +16,28 @@ class AllPOSTActions {
 	public static String JsonTemplateFolder = "./JsonPOSTSamples/"
 	
 	public static def delete(String version, params,Connection conn,request, grailsattr){return "delete${version}"(params,conn,request,grailsattr)}
+	//public static def insert(String version, params,Connection conn,request, grailsattr){return "import${version}"(params,conn,request,grailsattr)}
+	
+	public static def importv1(params,Connection conn,request,grailsattr) {
+		
+		String METHOD = params.method;
+		String COMMITSTR = params.commit;
+		boolean COMMIT = false;
+		if(COMMITSTR!=null && COMMITSTR.equalsIgnoreCase("Y")){COMMIT=true;}
+		
+		if(METHOD != null && METHOD.equals("usage")){
+			//def JsonFile = grailsattr.getApplicationContext().getResource(JsonTemplateFolder+"AllPOSTActions"+"_importv1.json").getFile()
+			//def InputJSON = new JsonSlurper().parseText(JsonFile.text)
+			//return InputJSON
+		}
+		
+		try{
+			
+		}catch(JsonException j){
+			JsonBuilder json = new JsonBuilder([status: "error", message: "JSON from POST Request has incorrect format."])
+			return json
+		}
+	}
 	
 	public static def deletev1(params,Connection conn,request,grailsattr) {
 		

@@ -2,10 +2,13 @@ package com.automic.objects;
 
 import groovy.json.JsonSlurper;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import org.xml.sax.SAXException;
 
 import com.uc4.api.InvalidUC4NameException;
 import com.uc4.api.SearchResultItem;
@@ -25,9 +28,11 @@ import com.uc4.communication.requests.ActivityList;
 import com.uc4.communication.requests.CloseObject;
 import com.uc4.communication.requests.CreateObject;
 import com.uc4.communication.requests.DeleteObject;
+import com.uc4.communication.requests.ExportObject;
 import com.uc4.communication.requests.FolderTree;
 import com.uc4.communication.requests.GenericStatistics;
 import com.uc4.communication.requests.GetSessionTZ;
+import com.uc4.communication.requests.ImportObject;
 import com.uc4.communication.requests.OpenObject;
 import com.uc4.communication.requests.ResetOpenFlag;
 import com.uc4.communication.requests.SaveObject;
@@ -43,6 +48,46 @@ import com.uc4.communication.requests.XMLRequest;
 
 public class CommonAERequests {
 
+	public static UC4ObjectName getUC4ObjectNameFromString(String name,boolean isTZ){
+		UC4ObjectName objName = null;
+		try{
+			if (name.indexOf('/') != -1){
+				objName = new UC4UserName(name);
+			}
+			else if (isTZ) {
+				objName = new UC4TimezoneName(name);
+			}
+			else {
+				objName = new UC4ObjectName(name);
+			}		
+		} catch (InvalidUC4NameException e){
+			return null;
+		}
+		return objName;
+	}
+	
+	public static String importObjects(String FilePathForImport, IFolder folder, boolean overwriteObject, boolean overwriteFolderLinks,Connection connection) throws SAXException, IOException{
+		File file = new File(FilePathForImport);
+		ImportObject imp = new ImportObject(file, folder, overwriteObject, overwriteFolderLinks);
+		connection.sendRequestAndWait(imp);
+		if (imp.getMessageBox() != null) {
+			return imp.getMessageBox().getText();
+		}else{
+			return null;
+		}
+	}
+	
+	public static String exportObjects(File file, UC4ObjectName[] objectNames,Connection connection) throws IOException{
+		//File file = new File(FilePathForExport);
+		//System.out.println("DEBUG:"+objectNames.length);
+		ExportObject exp = new ExportObject(objectNames,file);
+		connection.sendRequestAndWait(exp);
+		if (exp.getMessageBox() != null) {
+			return exp.getMessageBox().toString();
+		}else{
+			return null;
+		}
+	}
 	
 	public static String createObject(String name, String templateName, String FolderName,Connection connection) throws IOException{
 

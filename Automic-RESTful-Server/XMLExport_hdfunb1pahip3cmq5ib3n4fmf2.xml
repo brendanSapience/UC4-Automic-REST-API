@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<uc-export clientvers="11.2.0+build.2347">
+<JOBS_WINDOWS AttrType="WINDOWS" name="REST.AUTO.INVALID.TESTS">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;WIN&gt;|HOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>1</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>0</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>1</BAT>
+<COM>0</COM>
+<WinBatch>0</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>1</JObjDefault>
+<JObjYes>0</JObjYes>
+<JObjNo>0</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+<Ert>0</Ert>
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI/>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! insert these lines in your script to determine if an error occurred
+!
+! @set retcode=%errorlevel%
+! @if NOT %ERRORLEVEL% == 0 goto :retcode
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_General state="1" type="text">
+<DOC/>
+</DOCU_General>
+<DOCU_Details- state="1" type="xml">
+<DOC/>
+</DOCU_Details->
+</JOBS_WINDOWS>
+<JOBS_WINDOWS AttrType="WINDOWS" name="REST.AUTO.RUNNABLE.JOBS.1">
+<XHEADER state="1">
+<Title>OLDTITLE</Title>
+<ArchiveKey1>OLDKEY1</ArchiveKey1>
+<ArchiveKey2>OLDKEY2</ArchiveKey2>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|WIN01|HOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login>LOGIN.GENERAL</Login>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>1</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>0</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>0</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>1</BAT>
+<COM>0</COM>
+<WinBatch>0</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>1</JObjDefault>
+<JObjYes>0</JObjYes>
+<JObjNo>0</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+<Ert>157</Ert>
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI/>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! insert these lines in your script to determine if an error occurred
+echo something!
+ping -n 120 127.0.0.1
+! @set retcode=%errorlevel%
+! @if NOT %ERRORLEVEL% == 0 goto :retcode
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_General state="1" type="text">
+<DOC/>
+</DOCU_General>
+<DOCU_Details- state="1" type="xml">
+<DOC/>
+</DOCU_Details->
+</JOBS_WINDOWS>
+<CALL name="REST.AUTO.TESTS.CALL.1">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType>0</OH_SubType>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_CALL state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<IntAccount/>
+<External1>0</External1>
+<External2>0</External2>
+<EscTime>0</EscTime>
+<Object/>
+<AutoDeact>1</AutoDeact>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<UC4Priority>0</UC4Priority>
+<Priority>1|High</Priority>
+<Type>0|Request</Type>
+<ActAtRun>0</ActAtRun>
+<TZ/>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<AutoDeactAlways>1</AutoDeactAlways>
+<DeactDelay>0</DeactDelay>
+</ATTR_CALL>
+<NOTIFICATION state="1">
+<Subject/>
+<Text/>
+<AttachReports/>
+<ReportSrcDb>1</ReportSrcDb>
+<ReportSrcExt>0</ReportSrcExt>
+<ReportSrcAll>0</ReportSrcAll>
+<AttachFile/>
+</NOTIFICATION>
+<CALL state="1">
+<Cond/>
+</CALL>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+<Ert>0</Ert>
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<SCRIPT mode="1" state="1">
+<MSCRI/>
+</SCRIPT>
+<DOCU_General state="1" type="text">
+<DOC/>
+</DOCU_General>
+<DOCU_Details- state="1" type="xml">
+<DOC/>
+</DOCU_Details->
+</CALL>
+<JOBP AllowExternal="1" name="REST.AUTO.TESTS.JOBP.1">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBP state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<ChildQueue/>
+<StartType/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<IntAccount/>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>1</AutoDeactErrorFree>
+<DeactWhen/>
+<AutoDeactAlways>0</AutoDeactAlways>
+<DeactDelay>0</DeactDelay>
+<ActAtRun>0</ActAtRun>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<ReuseHG>1</ReuseHG>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+<RWhen/>
+<RExecute/>
+<JPA_SubType/>
+</ATTR_JOBP>
+<JOBP state="1">
+<JobpStruct mode="design">
+<task Alias="" BranchType="0" Col="1" Lnr="1" OType="&lt;START&gt;" Object="START" ParentAlias="" ParentObject="" Row="1" Text2="">
+<checkpoint RollbackFlag="0" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
+<after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
+<when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="0" WElseH="0" WElseS="1" WElseX="0" WhenExecute="" WtimOn="0"/>
+<preconditions>
+<PreCon>
+<conditions id="CONDITIONS"/>
+</PreCon>
+</preconditions>
+<predecessors/>
+<runtime MrtCancel="0" MrtDays="0" MrtErt="0" MrtExecute="0" MrtExecuteObj="" MrtFix="0" MrtMethodDate="0" MrtMethodErt="0" MrtMethodFix="0" MrtMethodNone="1" MrtOn="1" MrtTZ="" MrtTime="00:00" SrtErt="0" SrtFix="0" SrtMethodErt="0" SrtMethodFix="0" SrtMethodNone="1"/>
+<result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
+<dynvalues>
+<dyntree/>
+</dynvalues>
+<CIT/>
+<calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
+<postconditions>
+<PostCon>
+<conditions id="CONDITIONS"/>
+</PostCon>
+</postconditions>
+</task>
+<task Alias="" BranchType="0" Col="4" Lnr="2" OType="&lt;END&gt;" Object="END" ParentAlias="" ParentObject="" Row="1" Text2="">
+<checkpoint RollbackFlag="0" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
+<after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
+<when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="0" WElseH="0" WElseS="1" WElseX="0" WhenExecute="" WtimOn="0"/>
+<preconditions>
+<PreCon>
+<conditions id="CONDITIONS"/>
+</PreCon>
+</preconditions>
+<predecessors/>
+<runtime MrtCancel="0" MrtDays="0" MrtErt="0" MrtExecute="0" MrtExecuteObj="" MrtFix="0" MrtMethodDate="0" MrtMethodErt="0" MrtMethodFix="0" MrtMethodNone="1" MrtOn="1" MrtTZ="" MrtTime="00:00" SrtErt="0" SrtFix="0" SrtMethodErt="0" SrtMethodFix="0" SrtMethodNone="1"/>
+<result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
+<dynvalues>
+<dyntree/>
+</dynvalues>
+<CIT/>
+<calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
+<postconditions>
+<PostCon>
+<conditions id="CONDITIONS"/>
+</PostCon>
+</postconditions>
+</task>
+<OPTIONS/>
+</JobpStruct>
+</JOBP>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+<Ert>0</Ert>
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<DEPLOYMENT state="1">
+<DeploymentFlag>0</DeploymentFlag>
+<WFTypeA>1</WFTypeA>
+<WFTypeC>0</WFTypeC>
+<AppName/>
+<WFName/>
+<ComponentName/>
+</DEPLOYMENT>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<SCRIPT mode="1" state="1">
+<MSCRI/>
+</SCRIPT>
+<DOCU_General state="1" type="text">
+<DOC/>
+</DOCU_General>
+<DOCU_Details- state="1" type="xml">
+<DOC/>
+</DOCU_Details->
+</JOBP>
+<JOBS_WINDOWS AttrType="WINDOWS" name="REST.AUTO.TESTS.JOBS.1">
+<XHEADER state="1">
+<Title>OLDTITLE</Title>
+<ArchiveKey1>OLDKEY1</ArchiveKey1>
+<ArchiveKey2>OLDKEY2</ArchiveKey2>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|OLDHOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login>LOGIN.GENERAL</Login>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>1</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>0</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>0</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>1</BAT>
+<COM>0</COM>
+<WinBatch>0</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>1</JObjDefault>
+<JObjYes>0</JObjYes>
+<JObjNo>0</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+<Ert>1</Ert>
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI/>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! insert these lines in your script to determine if an error occurred
+echo something!
+! @set retcode=%errorlevel%
+! @if NOT %ERRORLEVEL% == 0 goto :retcode
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_General state="1" type="text">
+<DOC/>
+</DOCU_General>
+<DOCU_Details- state="1" type="xml">
+<DOC/>
+</DOCU_Details->
+</JOBS_WINDOWS>
+<JOBS_WINDOWS AttrType="WINDOWS" name="REST.AUTO.TESTS.JOBS.2">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;WIN&gt;|HOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>1</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>0</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>1</BAT>
+<COM>0</COM>
+<WinBatch>0</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>1</JObjDefault>
+<JObjYes>0</JObjYes>
+<JObjNo>0</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+<Ert>0</Ert>
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI/>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! insert these lines in your script to determine if an error occurred
+!
+! @set retcode=%errorlevel%
+! @if NOT %ERRORLEVEL% == 0 goto :retcode
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_General state="1" type="text">
+<DOC/>
+</DOCU_General>
+<DOCU_Details- state="1" type="xml">
+<DOC/>
+</DOCU_Details->
+</JOBS_WINDOWS>
+<JOBS_WINDOWS AttrType="WINDOWS" name="REST.AUTO.TESTS.JOBS.3">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;WIN&gt;|HOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>1</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>0</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>1</BAT>
+<COM>0</COM>
+<WinBatch>0</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>1</JObjDefault>
+<JObjYes>0</JObjYes>
+<JObjNo>0</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+<Ert>0</Ert>
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI/>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! insert these lines in your script to determine if an error occurred
+!
+! @set retcode=%errorlevel%
+! @if NOT %ERRORLEVEL% == 0 goto :retcode
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_General state="1" type="text">
+<DOC/>
+</DOCU_General>
+<DOCU_Details- state="1" type="xml">
+<DOC/>
+</DOCU_Details->
+</JOBS_WINDOWS>
+<JOBS_WINDOWS AttrType="WINDOWS" name="REST.AUTO.TESTS.JOBS.4">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;WIN&gt;|HOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>1</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>0</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>1</BAT>
+<COM>0</COM>
+<WinBatch>0</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>1</JObjDefault>
+<JObjYes>0</JObjYes>
+<JObjNo>0</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+<Ert>0</Ert>
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI/>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! insert these lines in your script to determine if an error occurred
+!
+! @set retcode=%errorlevel%
+! @if NOT %ERRORLEVEL% == 0 goto :retcode
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_General state="1" type="text">
+<DOC/>
+</DOCU_General>
+<DOCU_Details- state="1" type="xml">
+<DOC/>
+</DOCU_Details->
+</JOBS_WINDOWS>
+</uc-export>

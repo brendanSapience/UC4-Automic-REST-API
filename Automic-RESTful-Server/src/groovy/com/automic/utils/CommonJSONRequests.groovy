@@ -105,6 +105,20 @@ class CommonJSONRequests {
 		return json;
 	}
 	
+	public static JsonBuilder getResultListAsJSONFormat(List<SearchResultItem> ObjList,boolean Commit){
+		def data = [
+			status: OKSTATUS,
+			commit: Commit,
+			simulate: !Commit,
+			count: ObjList.size(),
+			data: ObjList.collect {[name: it.name, folder: it.folder, title: it.title, type: it.objectType, open: it.open]}
+		  ]
+		
+		//, folder:it.folder, modified:it.modified, type: it.title
+		def json = new JsonBuilder(data)
+		return json;
+	}
+	
 	public static JsonBuilder getStringListAsJSONFormat(String OpName, String[] ObjList){
 		def data = [
 			status: OKSTATUS,
@@ -145,7 +159,8 @@ class CommonJSONRequests {
 	
 	public static def getChangesAsJSON2(ArrayList<GetChangeLog.Entry> allentries){
 		def data = [
-			size: allentries.size(),
+			status: OKSTATUS,
+			count: allentries.size(),
 			 data: allentries.collect {
 				 [
 					 objectname:it.getObjectName(),
@@ -161,23 +176,11 @@ class CommonJSONRequests {
 		return data
 	}
 	
-	public static def getChangesAsJSON(GetChangeLog changes){
-		Iterator<GetChangeLog.Entry> iterator = changes.iterator()
-		
-		def data = [
-			size: iterator.size(),
-			 data: iterator.each { k ->
-				 [
-				 message: k.getMessage()
-				 ]}
-		  	]
-		return data
-	}
-	
 	public static def getObjectPromptsAsJSON(ObjectValues objVals){
 		Iterator<PromptSetDefinition> iterator = objVals.promptSetIterator()
 		def data = [
-			size: objVals.promptSetSize(),
+			status: OKSTATUS,
+			count: objVals.promptSetSize(),
 			data: iterator.collect {[name: it.getName().toString(), elements:it.elementIDs.length]}
 		  ]
 		return data

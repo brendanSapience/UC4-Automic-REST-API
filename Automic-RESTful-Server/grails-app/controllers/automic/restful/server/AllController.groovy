@@ -68,16 +68,45 @@ class AllController {
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
 				if(false){ //Environment.current == Environment.DEVELOPMENT){
-					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
+					
+					if(OPERATION.equals("export") && params.commit != null && params.commit.toUpperCase().equals("Y")){
+						// if commit.. return is file
+							File file = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
+							//println "debug:" + file.getAbsolutePath()
+							response.setHeader "Content-disposition", "attachment; filename=${file.name}"
+							response.contentType = 'text/xml'
+							response.outputStream << file.text
+						// else, return is json
+					}else{
+		
+						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
+						render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
+					}
 				}else{
 				// otherwise it needs to be caught
 					try{
-						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
-					}catch(MissingMethodException){
+						// if we are doing an export WITH commit set to Y, then we need to serve a file instead of a JSON response
+						if(OPERATION.equals("export") && params.commit != null && params.commit.toUpperCase().equals("Y")){
+							// if commit.. return is file
+								File file = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
+								//println "debug:" + file.getAbsolutePath()
+								response.setHeader "Content-disposition", "attachment; filename=${file.name}"
+								response.contentType = 'text/xml'
+								response.outputStream << file.text
+						// else, return is json as usual
+						}else{
+							myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
+							render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
+						}
+					
+					}catch(MissingMethodException e){
 						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
+						render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 					}
 				}
-				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
+				//println "Debug"+ myRes.getClass()
+				//render(text:  myRes, contentType: "text/xml", encoding: "UTF-8")
+
 			}
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
 		
