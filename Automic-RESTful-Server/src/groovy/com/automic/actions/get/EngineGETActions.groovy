@@ -127,7 +127,6 @@ class EngineGETActions {
 		
 		}
 		else if(METHOD =~ /showagents|showhosts|shownodes|agents|hosts|nodes|agent|host|node/){
-		println "In Here!:" + METHOD
 			AgentList req = new AgentList();
 			CommonAERequests.sendSyncRequest(conn, req, false)
 			ArrayList<AgentListItem> reqList = req.iterator().toList();

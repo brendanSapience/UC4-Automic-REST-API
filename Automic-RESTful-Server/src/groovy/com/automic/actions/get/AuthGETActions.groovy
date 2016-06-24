@@ -65,17 +65,17 @@ class AuthGETActions {
 				def InputJSON = new JsonSlurper().parseText(ConnectionFile.text)
 				def ConnFoundInConfigFile = false;
 				
-				println InputJSON.connections.each{
-					if(it.name == CONNECTIONNAME){
-						if(it.dept!=null){DEPT = it.dept;}
-						if(it.host!=null){HOST = it.host;}
-						if(it.ports[0] != null && it.ports[0].isInteger()){PORT = it.ports[0].toInteger();}
-						LANG = it.lang.toCharArray()[0];
-						if(it.validity != null && it.validity.toInteger()){VALIDITY = it.validity.toInteger();}
-						ISADMIN = it.RESTadmin;
-					}
-					
-				}
+//				println InputJSON.connections.each{
+//					if(it.name == CONNECTIONNAME){
+//						if(it.dept!=null){DEPT = it.dept;}
+//						if(it.host!=null){HOST = it.host;}
+//						if(it.ports[0] != null && it.ports[0].isInteger()){PORT = it.ports[0].toInteger();}
+//						LANG = it.lang.toCharArray()[0];
+//						if(it.validity != null && it.validity.toInteger()){VALIDITY = it.validity.toInteger();}
+//						ISADMIN = it.RESTadmin;
+//					}
+//					
+//				}
 				// connecting to AE Engine
 				//String AEHostnameOrIp,int AECPPort,int AEClientToConnect,String AEUserLogin, String AEDepartment,String AEUserPassword,char AEMessageLanguage
 				AECredentials creds = new AECredentials(HOST,PORT,CLIENTINT,LOGIN,DEPT,PWD,LANG);
@@ -117,7 +117,12 @@ class AuthGETActions {
 		//String ADMINKEY = params.key;
 		
 		if( METHOD != null && METHOD.equalsIgnoreCase("usage")){
-			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			JsonBuilder json
+			if(ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin()){
+				json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			}else{
+				json = CommonJSONRequests.renderErrorAsJSON("request denied")
+			}
 			return json
 		}else{
 			// added a method to clear all tokens (except the initiator of the request)
@@ -129,13 +134,13 @@ class AuthGETActions {
 			if(METHOD != null && ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD.equalsIgnoreCase("encrypt")){
 				String CLEARSTR = params.key;
 				if(CLEARSTR == null || CLEARSTR.equals("")){
-					CommonJSONRequests.renderErrorAsJSON("parameter key cannot be empty.")
+					return CommonJSONRequests.renderErrorAsJSON("parameter key cannot be empty.")
 				}else{
 				
 					if(AECrypter.isBinKeyFilePresent()){
 						String EncStrWithFile = AECrypter.enMaximWithBinFile(CLEARSTR)
-						JsonBuilder json = new JsonBuilder([status: "success", encrypted: EncStrWithFile])
-						return json
+						return new JsonBuilder([status: "success", encrypted: EncStrWithFile])
+						
 					}else{
 						return CommonJSONRequests.renderErrorAsJSON("No key file found on your system.")
 					}
@@ -152,8 +157,7 @@ class AuthGETActions {
 				}else{
 					if(AECrypter.isBinKeyFilePresent()){
 						String ClearStrWithFile = AECrypter.deMaximWithBinFile(KEY)
-						JsonBuilder json = new JsonBuilder([status: "success", decrypted: ClearStrWithFile])
-						return json
+						return new JsonBuilder([status: "success", decrypted: ClearStrWithFile])
 					}else{
 						return CommonJSONRequests.renderErrorAsJSON("No key file found on your system.")
 					}
@@ -165,16 +169,12 @@ class AuthGETActions {
 			else{
 				//if(ADMINKEY != null && ADMINKEY.equals(ADMINKEYFORCONNDISPLAY)){
 				if(ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD == null){
-						JsonBuilder json = ConnectionManager.getJSONFromConnectionPoolContent()
-						return json
+						return ConnectionManager.getJSONFromConnectionPoolContent()
 					
 				}else{
-					JsonBuilder json = new JsonBuilder([status: "error", message: "request denied"])
-					return json
+					return CommonJSONRequests.renderErrorAsJSON("request denied")
 				}
 			}
-			
-
 		}
 	}
 	
