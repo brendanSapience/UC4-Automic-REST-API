@@ -14,8 +14,8 @@ import com.automic.utils.MiscUtils;
 class AuthGETActions {
 
 	public static def login(String version, params,File connFile,request){return "login${version}"(params,connFile)}
-	public static def logout(String version, params,Connection conn,request){return "logout${version}"(params,conn)}
-	public static def admin(String version, params,Connection conn,request){return "admin${version}"(params)}
+	public static def logout(String version, params,Connection conn,request,String TOKEN){return "logout${version}"(params,conn)}
+	public static def admin(String version, params,Connection conn,request,String TOKEN){return "admin${version}"(params,TOKEN)}
 	
 	/**
 	 * @purpose Provide login / authentication services to AE
@@ -101,17 +101,17 @@ class AuthGETActions {
 	 * @additional Can only return content if the user / token passed in URL is marked as "RESTadmin" in the ConnectionConfig.json file
 	 */
 
-	public static def adminv1(params){
+	public static def adminv1(params,TOKEN){
 		def SupportedThings = [:]
 		SupportedThings = [
-			'required_parameters': ['token (format: token= < text > )'],
+			'required_parameters': [],
 			'optional_parameters': [],
 			'optional_filters': [],
 			'required_methods': [],
 			'optional_methods': ['usage']
 			]
 		
-		String TOKEN = params.token;
+		//String TOKEN = params.token;
 		String METHOD = params.method;
 		String ADMINKEY = params.key;
 		

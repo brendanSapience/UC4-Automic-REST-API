@@ -72,7 +72,7 @@ class AuthController {
 						def ConnectonFile = grailsAttributes.getApplicationContext().getResource(ConnectionSettingsFileName).getFile()
 						myRes = actionClass."${OPERATION}"(VERSION,params,ConnectonFile,request);
 					}else{
-						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,TOKEN);
 					}
 					
 					//}catch(MissingMethodException){
