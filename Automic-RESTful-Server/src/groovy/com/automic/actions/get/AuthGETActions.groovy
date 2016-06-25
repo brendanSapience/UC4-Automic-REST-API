@@ -15,8 +15,10 @@ import com.automic.objects.AECrypter;
 class AuthGETActions {
 
 	public static def login(String version, params,File connFile,request){return "login${version}"(params,connFile)}
-	public static def logout(String version, params,Connection conn,request,String TOKEN){return "logout${version}"(params,conn)}
-	public static def admin(String version, params,Connection conn,request,String TOKEN){return "admin${version}"(params,TOKEN)}
+	public static def logout(String version, params,Connection conn,request,String TOKEN){return "logout${version}"(params,conn,TOKEN)}
+	//public static def admin(String version, params,Connection conn,request,String TOKEN){return "admin${version}"(params,TOKEN)}
+	public static def show(String version, params,Connection conn,request,String TOKEN){return "show${version}"(params,TOKEN)}
+	//public static def manage(String version, params,Connection conn,request,String TOKEN){return "show${version}"(params,TOKEN)}
 	
 	/**
 	 * @purpose Provide login / authentication services to AE
@@ -65,17 +67,17 @@ class AuthGETActions {
 				def InputJSON = new JsonSlurper().parseText(ConnectionFile.text)
 				def ConnFoundInConfigFile = false;
 				
-//				println InputJSON.connections.each{
-//					if(it.name == CONNECTIONNAME){
-//						if(it.dept!=null){DEPT = it.dept;}
-//						if(it.host!=null){HOST = it.host;}
-//						if(it.ports[0] != null && it.ports[0].isInteger()){PORT = it.ports[0].toInteger();}
-//						LANG = it.lang.toCharArray()[0];
-//						if(it.validity != null && it.validity.toInteger()){VALIDITY = it.validity.toInteger();}
-//						ISADMIN = it.RESTadmin;
-//					}
-//					
-//				}
+				InputJSON.connections.each{
+					if(it.name == CONNECTIONNAME){
+						if(it.dept!=null){DEPT = it.dept;}
+						if(it.host!=null){HOST = it.host;}
+						if(it.ports[0] != null && it.ports[0].isInteger()){PORT = it.ports[0].toInteger();}
+						LANG = it.lang.toCharArray()[0];
+						if(it.validity != null && it.validity.toInteger()){VALIDITY = it.validity.toInteger();}
+						ISADMIN = it.RESTadmin;
+					}
+					
+				}
 				// connecting to AE Engine
 				//String AEHostnameOrIp,int AECPPort,int AEClientToConnect,String AEUserLogin, String AEDepartment,String AEUserPassword,char AEMessageLanguage
 				AECredentials creds = new AECredentials(HOST,PORT,CLIENTINT,LOGIN,DEPT,PWD,LANG);
@@ -94,7 +96,7 @@ class AuthGETActions {
 			}
 		}
 	}
-
+	
 	/**
 	 * @purpose returns the list of active (valid & expired) tokens on the REST server + the connection parameters for each
 	 * @param params: URL params unsorted
@@ -102,14 +104,14 @@ class AuthGETActions {
 	 * @additional Can only return content if the user / token passed in URL is marked as "RESTadmin" in the ConnectionConfig.json file
 	 */
 
-	public static def adminv1(params,TOKEN){
+	public static def showv1(params,TOKEN){
 		def SupportedThings = [:]
 		SupportedThings = [
 			'required_parameters': [],
 			'optional_parameters': [],
 			'optional_filters': [],
 			'required_methods': [],
-			'optional_methods': ['usage', 'clearall', 'encrypt (-> requires a binary key file)', 'decrypt (-> requires a binary key file)']
+			'optional_methods': ['usage']
 			]
 		
 		//String TOKEN = params.token;
@@ -125,58 +127,19 @@ class AuthGETActions {
 			}
 			return json
 		}else{
-			// added a method to clear all tokens (except the initiator of the request)
-			if(METHOD != null && ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD.equalsIgnoreCase("clearall")){
-				ConnectionManager.clearAllTokens(TOKEN)
-			}
-		
-			// undocumented method for now?
-			if(METHOD != null && ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD.equalsIgnoreCase("encrypt")){
-				String CLEARSTR = params.key;
-				if(CLEARSTR == null || CLEARSTR.equals("")){
-					return CommonJSONRequests.renderErrorAsJSON("parameter key cannot be empty.")
-				}else{
+			if(ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD == null){
+				return ConnectionManager.getJSONFromConnectionPoolContent()
 				
-					if(AECrypter.isBinKeyFilePresent()){
-						String EncStrWithFile = AECrypter.enMaximWithBinFile(CLEARSTR)
-						return new JsonBuilder([status: "success", encrypted: EncStrWithFile])
-						
-					}else{
-						return CommonJSONRequests.renderErrorAsJSON("No key file found on your system.")
-					}
-
-				}
-			
-			}
-			
-			// undocumented method for now?
-			else if(METHOD != null && ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD.equalsIgnoreCase("decrypt")){
-				String KEY = params.key;
-				if(KEY == null || KEY.equals("")){
-					return CommonJSONRequests.renderErrorAsJSON("parameter key cannot be empty.")
-				}else{
-					if(AECrypter.isBinKeyFilePresent()){
-						String ClearStrWithFile = AECrypter.deMaximWithBinFile(KEY)
-						return new JsonBuilder([status: "success", decrypted: ClearStrWithFile])
-					}else{
-						return CommonJSONRequests.renderErrorAsJSON("No key file found on your system.")
-					}
-
-				}
-			
-			}
-			
-			else{
-				//if(ADMINKEY != null && ADMINKEY.equals(ADMINKEYFORCONNDISPLAY)){
-				if(ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD == null){
-						return ConnectionManager.getJSONFromConnectionPoolContent()
-					
-				}else{
-					return CommonJSONRequests.renderErrorAsJSON("request denied")
-				}
+			}else{
+				return CommonJSONRequests.renderErrorAsJSON("request denied")
 			}
 		}
 	}
+		
+//			if(METHOD != null && ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD.equalsIgnoreCase("clearall")){
+//				ConnectionManager.clearAllTokens(TOKEN)
+//			}
+
 	
 	/**
 	 * @purpose Provide logout services for REST Server & AE
@@ -185,34 +148,44 @@ class AuthGETActions {
 	 * @return formatted JSON response
 	 */
 	
-	public static def logoutv1(params,Connection conn){
+	public static def logoutv1(params,Connection conn,String TOKEN){
 		def SupportedThings = [:]
 		SupportedThings = [
 			'required_parameters': ['token (format: token= < text > )'],
-			'optional_parameters': [],
+			'optional_parameters': ['scope (format: scope=all) -> removes all tokens / logout all users'],
 			'optional_filters': [],
 			'required_methods': [],
 			'optional_methods': ['usage']
 			]
 		
-		String TOKEN = params.token;
+		//String TOKEN = params.token;
 		String METHOD = params.method;
+		String SCOPE = params.scope;
 		
 		if( METHOD != null && METHOD.equalsIgnoreCase("usage")){
 			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
 			return json
 		}else{
-			boolean wasTokenFound = ConnectionManager.removeToken(TOKEN);
-			conn.close();
-			
-			if(wasTokenFound){
-				JsonBuilder json = new JsonBuilder([status: "success", message: "token "+ TOKEN+" was removed successfully"])
-				return json
+			if(SCOPE == null || !SCOPE.equals("all")){
+				boolean wasTokenFound = ConnectionManager.removeToken(TOKEN);
+				conn.close();
+				
+				if(wasTokenFound){
+					JsonBuilder json = new JsonBuilder([status: "success", message: "token "+ TOKEN+" was removed successfully"])
+					return json
+				}else{
+					JsonBuilder json = new JsonBuilder([status: "success", message: "token "+ TOKEN+" was not found"])
+					return json
+				}
 			}else{
-				JsonBuilder json = new JsonBuilder([status: "success", message: "token "+ TOKEN+" was not found"])
-				return json
+				if(ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin()){
+					ConnectionManager.clearAllTokens(TOKEN)
+					return ConnectionManager.getJSONFromConnectionPoolContent()
+				}else{
+					return CommonJSONRequests.renderErrorAsJSON("request denied")
+				}
+				
 			}
 		}
 	}
-	
 }

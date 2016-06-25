@@ -49,6 +49,7 @@ public final class ConnectionManager {
 		Connection conn = null;
 		//should try the list of ports
 		try{ 
+			//println "DEBUG : " + credentials.getAEHostnameOrIp() +":"+credentials.getAECPPort()
 			conn = Connection.open(credentials.getAEHostnameOrIp(), credentials.getAECPPort());
 		}catch (UnresolvedAddressException e){
 			//System.out.println(" -- ERROR: Could Not Resolve Host or IP: "+credentials.getAEHostnameOrIp());
@@ -170,16 +171,16 @@ public final class ConnectionManager {
 	      Iterator iterator = set.iterator();
 	      while(iterator.hasNext()) {
 	         Map.Entry mentry = (Map.Entry)iterator.next(); 
-	         System.out.print("Token: "+ mentry.getKey());
+	         //System.out.print("Token: "+ mentry.getKey());
 	         ConnectionPoolItem c1 = (ConnectionPoolItem)mentry.getValue();
-	         System.out.println("\t Exp Date: "+ c1.ExpirationDate);
+	        // System.out.println("\t Exp Date: "+ c1.ExpirationDate);
 	      }
 	}
 
 	// returns a JSON formatted message with all ConnectionMap Hash info
 	public static JsonBuilder getJSONFromConnectionPoolContent(){
 			def data = [
-			success: true,
+			status: "success",
 			count: ConnectionMap.size(),
 			data: ConnectionMap.collect {k,v ->
 				["token": k, "expdate":v.getExpirationDate(), "host":v.getHost(),"user":v.getUser(),"client":v.getClient(),"dept":v.getDept(), "created" : v.getCreationDate()]

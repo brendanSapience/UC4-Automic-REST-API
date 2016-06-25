@@ -49,6 +49,7 @@ public final class ConnectionManager {
 		Connection conn = null;
 		//should try the list of ports
 		try{ 
+			//println "DEBUG : " + credentials.getAEHostnameOrIp() +":"+credentials.getAECPPort()
 			conn = Connection.open(credentials.getAEHostnameOrIp(), credentials.getAECPPort());
 		}catch (UnresolvedAddressException e){
 			//System.out.println(" -- ERROR: Could Not Resolve Host or IP: "+credentials.getAEHostnameOrIp());
