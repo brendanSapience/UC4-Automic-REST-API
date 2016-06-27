@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
+import com.uc4.ara.feature.rm.CreateDeployPackage;
+
 import org.xml.sax.SAXException;
 
 import com.uc4.api.InvalidUC4NameException;
@@ -21,6 +24,7 @@ import com.uc4.api.UC4TimezoneName;
 import com.uc4.api.UC4UserName;
 import com.uc4.api.objects.IFolder;
 import com.uc4.api.objects.UC4Object;
+
 import com.uc4.communication.Connection;
 import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
@@ -66,7 +70,7 @@ public class CommonAERequests {
 		return objName;
 	}
 	
-	public static String importObjects(String FilePathForImport, IFolder folder, boolean overwriteObject, boolean overwriteFolderLinks,Connection connection) throws SAXException, IOException{
+	public static String importObjects(String FilePathForImport, IFolder folder, boolean overwriteObject, boolean overwriteFolderLinks,Connection connection) throws IOException, SAXException{
 		File file = new File(FilePathForImport);
 		ImportObject imp = new ImportObject(file, folder, overwriteObject, overwriteFolderLinks);
 		connection.sendRequestAndWait(imp);

@@ -21,6 +21,7 @@ public class ConnectionPoolItem {
 	private String Language;
 	private String CreationDate;
 	private String Password;
+	private String ARAUrl;
 	private boolean isAdmin = false;
 	
 	public boolean isAdmin() {
@@ -30,7 +31,13 @@ public class ConnectionPoolItem {
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	public String getARAUrl() {
+		return ARAUrl;
+	}
 
+	public void setARAUrl(String url) {
+		this.ARAUrl = url;
+	}
 	public String getCreationDate() {
 		return CreationDate;
 	}
@@ -39,7 +46,7 @@ public class ConnectionPoolItem {
 		CreationDate = creationDate;
 	}
 
-	private String getPassword() {
+	public String getPassword() {
 		return Password;
 	}
 

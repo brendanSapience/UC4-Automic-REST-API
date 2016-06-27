@@ -45,6 +45,26 @@ class CommonJSONRequests {
 			message: MessageBox
 		  ])
 	}
+	public static JsonBuilder renderARAOKAsJSON(String MessageBox, int status,boolean Commit){
+		return  new JsonBuilder(
+			[
+			status: OKSTATUS,
+			commit: Commit,
+			simulate: !Commit,
+			code: status,
+			message: MessageBox
+		  ])
+	}
+	public static JsonBuilder renderARAErrorAsJSON(String MessageBox, int status,boolean Commit){
+		return  new JsonBuilder(
+			[
+			status: NOKSTATUS,
+			commit: Commit,
+			simulate: !Commit,
+			code: status,
+			message: MessageBox
+		  ])
+	}
 	public static JsonBuilder getHashMapAsJSONFormat2(HashMap<String,String[]> ObjList, String HttpMethod){
 		
 		def data = [

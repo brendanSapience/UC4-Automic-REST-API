@@ -8,13 +8,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Key;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.spec.SecretKeySpec;
+
 import com.uc4.util.HexUtil;
 
 /**
  * 
  * @author bsp
- * @purpose provide encryption / decryption services for ini files
+ * @purpose provide encryption / decryption services for ini files or other (INTERNALKKEY)
  * !!! This class can only work if a binary file is present on the target system...
  *
  */
@@ -22,8 +24,11 @@ public class AECrypter {
 
 
 	private final static String ENCODING = "ISO-8859-1";
-	private final static String KEYFILEPATH = "web-app/bin.key";
 	
+	private final static String KEYFILEPATH = "web-app/bin.key";
+	private final static String INTERNALKEY = "h1st0ri@";
+	
+	// check the presence of binary file
 	public static boolean isBinKeyFilePresent(){
 			File keyfile = new File(KEYFILEPATH);
 			if(keyfile.exists() && !keyfile.isDirectory()) { 
@@ -32,6 +37,7 @@ public class AECrypter {
 			return false;
 	}
 	
+	// retrieve binary key from file
 	public static byte[] getKeyFromFile() throws IOException{
 		Path path = Paths.get(KEYFILEPATH);
 		byte[] data = Files.readAllBytes(path);
@@ -48,6 +54,17 @@ public class AECrypter {
 		return AECrypter.deMaxim(value, getKeyFromFile());
 	}
 
+	/**
+	 * Decrypts password for the  REST Server (with internal key stored in this class)
+	 * 
+	 * @param value String
+	 * @return Encrypted String
+	 */
+	public static String deMaximWithInternalKey(final String value) throws IOException {
+		byte[] key = INTERNALKEY.getBytes(ENCODING);
+		return AECrypter.deMaxim(value, key);
+	}
+	
 	/**
 	 * @param value encrypted String
 	 * @param keyString Key
@@ -72,7 +89,14 @@ public class AECrypter {
 				final byte[] input = HexUtil.hexStringToByteArray(value.substring(4));
 				final Cipher cipher = Cipher.getInstance("DES/ECB/NoPadding");
 				cipher.init(Cipher.DECRYPT_MODE, secretKey);
-				final byte[] result = cipher.doFinal(input);
+				
+				byte[] result = null;
+				try{
+					result = cipher.doFinal(input);
+				}catch (IllegalBlockSizeException e){
+					// returns a password that can only be wrong.. but avoids  throwing an error
+					return value.replace("--10", "");
+				}
 				// find 0 byte
 				int len = 0;
 				for (int i = 0; i < result.length; i++) {
@@ -95,6 +119,19 @@ public class AECrypter {
 		return value;
 	}
 
+	/**
+	 * Encrypts password for the  REST Server
+	 * 
+	 * @param value String
+	 * @return Encrypted String
+	 */
+	public static String enMaximWithInternalKey(final String value) throws IOException {
+		byte[] key = INTERNALKEY.getBytes(ENCODING);
+		return AECrypter.enMaxim(value, key);
+	}
+
+	
+	
 	/**
 	 * Encrypts password
 	 * 

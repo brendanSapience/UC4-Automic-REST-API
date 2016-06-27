@@ -3,7 +3,8 @@
 	{
 		"name":"AEPROD",
 		"host":"AETestHost",
-		"dept":"AUTOMIC",
+		"dept":"ARA",
+		"araurl":"http://192.168.17.136/ARA",
 		"lang":"E",
 		"ports":["2217","2218"],
 		"validity":525600,
@@ -13,6 +14,7 @@
 		"name":"AEDEV",
 		"host":"192.168.1.60",
 		"dept":"AUTOMIC",
+		"araurl":"http://192.168.17.136/ARA",
 		"lang":"E",
 		"ports":["2217","2218"],
 		"validity":525600,

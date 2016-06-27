@@ -93,9 +93,6 @@
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>INCLUDE</dispatcher>
   </filter-mapping>
-  <listener>
-    <listener-class>org.codehaus.groovy.grails.plugins.log4j.web.util.Log4jConfigListener</listener-class>
-  </listener>
 
     <listener>
         <listener-class>org.codehaus.groovy.grails.web.context.GrailsContextLoaderListener</listener-class>

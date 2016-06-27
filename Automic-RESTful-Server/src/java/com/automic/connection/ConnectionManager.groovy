@@ -15,6 +15,7 @@ import java.util.Set;
 import com.uc4.api.DateTime
 import com.uc4.communication.Connection;
 import com.uc4.communication.requests.CreateSession;
+import com.automic.objects.AECrypter
 
 /**
  *
@@ -32,20 +33,26 @@ public final class ConnectionManager {
 	
 	public static String DEVHOST = "AETestHost";
 	public static int DEVPORT = 2217;
-	public static int DEVCLIENT = 200;
-	public static String DEVLOGIN = "BSP"; //"BSP";
-	public static String DEVDEPT = "AUTOMIC";
-	public static String DEVPWD = 'Un1ver$e';
+	public static int DEVCLIENT = 100;
+	public static String DEVLOGIN = "ARA"; //"BSP";
+	public static String DEVDEPT = "ARA";
+	public static String DEVPWD = 'ara';
 	public static char LANG = 'E';
 	public static int DEVEXPIRYPERIOD = 525600;
+	public static String DEVARAURL = "http://192.168.17.136/ARA";
 	
 	public ConnectionManager(){ 
 		// leave empty
 	} 
 	
+	public static String connectToClient(AECredentials credentials, int ValidityMinutes,boolean IsAdmin) throws IOException{
+		return connectToClient( credentials,  ValidityMinutes, IsAdmin,"");
+	}
+	
 	// Establish a connection to AE: if successful, a new ConnectionPoolItem is stored and the corresponding token is returned
 	// IF Fails: returns an error message with details.
-	public static String connectToClient(AECredentials credentials, int ValidityMinutes,boolean IsAdmin) throws IOException{ 
+	
+	public static String connectToClient(AECredentials credentials, int ValidityMinutes,boolean IsAdmin, String ARAUrl) throws IOException{ 
 		Connection conn = null;
 		//should try the list of ports
 		try{ 
@@ -62,8 +69,15 @@ public final class ConnectionManager {
 			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
 		}
 		
+		String PASSWORD = ''
+		if(credentials.getAEUserPassword().startsWith("--10")){
+			PASSWORD = AECrypter.deMaximWithInternalKey(credentials.getAEUserPassword())
+		}else{
+			PASSWORD = credentials.getAEUserPassword()
+		}
+		
 		CreateSession sess = conn.login(credentials.getAEClientToConnect(), credentials.getAEUserLogin(), 
-				credentials.getAEDepartment(), credentials.getAEUserPassword(), credentials.getAEMessageLanguage());
+				credentials.getAEDepartment(), PASSWORD, credentials.getAEMessageLanguage());
 		
 		if(sess.getMessageBox()!=null){
 			return "--MESSAGE: " + sess.getMessageBox(); 
@@ -87,6 +101,7 @@ public final class ConnectionManager {
 		ConnItem.setCreationDate(DateTime.now().toString());
 		ConnItem.setPassword(credentials.getAEUserPassword());
 		ConnItem.setAdmin(IsAdmin);
+		ConnItem.setARAUrl(ARAUrl);
 		
 		ConnectionMap.put(CONNTOKEN,ConnItem);
 
@@ -199,8 +214,8 @@ public final class ConnectionManager {
 		}else{ 
 			JsonBuilder txt; 
 			if(CheckTokenRes == -1){txt = new JsonBuilder([status: "error", message: "no token passed"])};
-			if(CheckTokenRes == -2){txt = new JsonBuilder([status: "error", message: "token invalid"])};
-			if(CheckTokenRes == -3){txt = new JsonBuilder([status: "error", message: "token expired"])};
+			if(CheckTokenRes == -2){txt = new JsonBuilder([status: "error", message: "token invalid: " + token])};
+			if(CheckTokenRes == -3){txt = new JsonBuilder([status: "error", message: "token expired: " + token])};
 			return txt;
 		}
 	}
@@ -208,6 +223,6 @@ public final class ConnectionManager {
 	// this method is only used in Dev
 	public static String bypassAuth(){
 		AECredentials creds = new AECredentials(DEVHOST,DEVPORT,DEVCLIENT,DEVLOGIN,DEVDEPT,DEVPWD,LANG);
-		return ConnectionManager.connectToClient(creds,DEVEXPIRYPERIOD,true);
+		return ConnectionManager.connectToClient(creds,DEVEXPIRYPERIOD,true,DEVARAURL);
 	}
 }

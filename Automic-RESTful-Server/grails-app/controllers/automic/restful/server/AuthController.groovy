@@ -1,6 +1,6 @@
 package automic.restful.server
 
-import com.automic.actions.get.AuthGETActions;
+import com.automic.ae.actions.get.AuthGETActions;
 import com.automic.connection.AECredentials;
 import com.automic.connection.ConnectionManager;
 import com.automic.utils.ActionClassUtils
@@ -13,7 +13,7 @@ class AuthController {
 	
 	Class actionClass
 	boolean ClassFound = true;
-	
+	String RootPackage = "com.automic.ae.actions.";
 	static String ConnectionSettingsFileName = "ConnectionConfig.json"
 	
 	/**
@@ -24,7 +24,7 @@ class AuthController {
 	
 	def help = {
 		// all operations and all versions available - no list to maintained.. its dynamically calculated :)
-		actionClass = this.class.getClassLoader().loadClass("com.automic.actions."+request.method.toLowerCase()+"."+params.object.toString().toLowerCase().capitalize()+request.method+"Actions");
+		actionClass = this.class.getClassLoader().loadClass(RootPackage+request.method.toLowerCase()+"."+params.object.toString().toLowerCase().capitalize()+request.method+"Actions");
 		ActionClassUtils utils = new ActionClassUtils(actionClass.metaClass.methods*.name.unique(),request.method)
 		render(text: utils.getOpsAndVersionsAsJSON2(), contentType: "text/json", encoding: "UTF-8")
 	}
@@ -60,7 +60,7 @@ class AuthController {
 				Class actionClass
 				boolean ClassFound = true;
 				try{
-					actionClass = this.class.getClassLoader().loadClass("com.automic.actions."+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
+					actionClass = this.class.getClassLoader().loadClass(RootPackage+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
 				}catch (ClassNotFoundException c){
 					ClassFound = false;
 					myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION ])
