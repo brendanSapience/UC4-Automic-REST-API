@@ -2,20 +2,20 @@
 
 REST API Server for Automic's ONE Automation Platform
 
-**Structure proposed:**
+**Structure:**
 
-     http://<server name>:<port>/api/<product>/<api category>/<version>/<object type>?method=<method>&<all required URL parameters>
+     http://<server name>:<port>/api/<product>/<action name>/<version>/<object type>?method=<method>&<all required URL parameters>
 
 * **with:**
 
      - **server name**: hostname of server hosting the REST API app
      - **port**: port number of the REST API app
      - **api**: api (generic placeholder in case something else needs to sit on the same server / port)
-     - **product**: automic product line: ara | awa | aso | etc. (makes the api more extensible)
-     - **api category**: type of methods. Ex: display / update / delete / find / move etc. 
-     - **version**: version of the API + Product + API category (allows more granular releases)
-     - **object type**: type of objects to be considered. Ex: JOBS / JOBP / JSCH etc. NOT mandatory (depends on the api category).
-     - **method**: method to execute. Only used when the 'api category' isnt enough to define the action that is being taken.
+     - **product**: automic product line: ara or awa (nothing else planned at this point)
+     - **action name**: action to carry out, ex: display / update / delete / find / move etc. 
+     - **version**: version of the API + Product + Action (allows more granular releases)
+     - **object type**: type of objects to be considered: Jobs / Jobp / Workflows / All etc.
+     - **method**: method to execute. Not always used: Usually only to provide additional info & context to a given action
      - **URL parameters**: parameters required for the <method> & <api category> combination. ex: filters=[status:1800,type:JOBP] or search_usage=Y, etc.
      
 **Important Additional Design Aspects:**
@@ -24,13 +24,13 @@ REST API Server for Automic's ONE Automation Platform
      - IF the Auth token is specified in the request header 'token' url parameter becomes unnecessary.
      - Tokens are non-persistent (they are not kept if the Server shuts down as they are tied to individual connection objects).
      - Tokens expire after a certain configurable period (is configured in the ConnectionConfig.json file).
-     - XML will not be supported as an input or output format at this point (JSON only)
+     - Only JSON outputs are supported
      - Tokens are uniquely & randomly generated and do not encode any specific information.
-     - There are "helpers" url parameters that can be used to retrieve more info on certain calls.
-     - passive operations (display/show etc.) require GET. active operations (update) require POST.
+     - There are "helpers" url parameters at different levels to provide usage info.
+     - passive operations (display/show etc.) require GET. 
+     - some active operations (update) require POST (and a JSON body along with it).
      - a COMMIT parameter is required for POST requests (otherwise only a simulation runs)
-     - Every api category is versionned: this is to facilitate backwards compatibility in the future
-     - Update mechanisms will most likely leverage POST calls (with a JSON structure provided in the body) 
+     - Every action is versionned: this is to facilitate backwards compatibility in the future
      - Filters are designed in a specific way and provided as a url parameter called filters:
      		filters=[FilterName:FilterValue]
      		=> the FilterNames available obviously depend on the Object & Action you are working with
@@ -39,7 +39,23 @@ REST API Server for Automic's ONE Automation Platform
      
    **How to Get Help (and get started):**
    
-* there is a **special < api category >** called **"help"** you can always use in order to **retrieve the list of available < api categories >** for a given object type & http request type (GET or POST):
+* there is 2 **special URL Calls**, one for **awa**, one for **ara**, that you can use in order to **retrieve the list of available < objects >** that are currently supported:
+
+	http://localhost:8080/UC4Rest/api/ara/objects
+	
+	http://localhost:8080/UC4Rest/api/awa/objects 
+	
+	{
+		 "status": "success",
+		 "count": 3,
+		 "objects": [
+		   "Packages",
+		   "Workflows",
+		   "Activities"
+		 ]
+	} 
+   
+* there is a **special < action >** called **"help"** you can always use in order to **retrieve the list of available < actions >** for a given object type (see above) & http request type (GET or POST):
      	
   ex: http://localhost:8080/Automic-RESTful-Server/api/awa/**help**/v1/Activities
      	
