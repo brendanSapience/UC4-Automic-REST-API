@@ -52,6 +52,8 @@ class PackagesGETActions {
 	
 	public static def create(String version, String TOKEN, params,request, grailsattr){return "create${version}"(TOKEN, params)}
 	public static def chgstate(String version, String TOKEN, params,request, grailsattr){return "chgstate${version}"(TOKEN, params)}
+	public static def getstate(String version, String TOKEN, params,request, grailsattr){return "getstate${version}"(TOKEN, params)}
+	//public static def startappwf(String version, String TOKEN, params,request, grailsattr){return "startappwf${version}"(TOKEN, params)}
 	
 	/**
 	 * @purpose create an ARA Package
@@ -136,7 +138,45 @@ class PackagesGETActions {
 		}else{
 				if(MiscUtils.checkParams(AllParamMap, params)){
 					ConnectionManager.getConnectionItemFromToken(TOKEN)
-					JsonBuilder res = CommonARARequests.createDeployPackage(PCKNAME,NEWSTATE,CURRENTSTATE,NOTMATCHING,ConnectionManager.getConnectionItemFromToken(TOKEN));
+					JsonBuilder res = CommonARARequests.setPackageState(PCKNAME,NEWSTATE,CURRENTSTATE,NOTMATCHING,ConnectionManager.getConnectionItemFromToken(TOKEN));
+					return res;
+				}else{
+					 return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+				 }
+		}
+	}
+	/**
+	 * @purpose change an ARA package state
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def getstatev1(TOKEN, params){
+		def AllParamMap = [:]
+		AllParamMap = [
+			//name (format: name= < UC4RegEx > )
+			'required_parameters': [
+				'pck (format: pck=<String> (Package Name or ID)'
+				],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+
+		String FILTERS = params.filters;
+		String METHOD = params.method;
+		
+		String PCKNAME = params.pck;
+			
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+			return json
+		}else{
+				if(MiscUtils.checkParams(AllParamMap, params)){
+					ConnectionManager.getConnectionItemFromToken(TOKEN) 
+					JsonBuilder res = CommonARARequests.getPackageState(PCKNAME,ConnectionManager.getConnectionItemFromToken(TOKEN));
 					return res;
 				}else{
 					 return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");

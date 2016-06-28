@@ -39,7 +39,7 @@ public final class ConnectionManager {
 	public static String DEVPWD = 'ara';
 	public static char LANG = 'E';
 	public static int DEVEXPIRYPERIOD = 525600;
-	public static String DEVARAURL = "http://192.168.17.136/ARA";
+	public static String DEVARAURL = "http://AETestHost/ARA";
 	
 	public ConnectionManager(){ 
 		// leave empty

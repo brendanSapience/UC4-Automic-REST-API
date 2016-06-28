@@ -29,6 +29,17 @@ class CommonJSONRequests {
 			message: MessageBox
 		  ])
 	}
+	
+	public static JsonBuilder renderPackageStateAsJSON(String PackageName, String PackageID, String State){
+		return  new JsonBuilder(
+			[
+			status: OKSTATUS,
+			pckname: PackageName,
+			pckid: PackageID,
+			state: State
+		  ])
+	}
+	
 	public static JsonBuilder renderOKAsJSON(String MessageBox){
 		return  new JsonBuilder(
 			[

@@ -4,7 +4,7 @@
 		"name":"AEPROD",
 		"host":"AETestHost",
 		"dept":"ARA",
-		"araurl":"http://192.168.17.136/ARA",
+		"araurl":"http://AETestHost/ARA",
 		"lang":"E",
 		"ports":["2217","2218"],
 		"validity":525600,

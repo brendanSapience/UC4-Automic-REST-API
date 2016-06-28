@@ -27,7 +27,16 @@ public class ARACmdOutputManager {
 			 Msg = response.split("ERROR:")[1].replace("\r\n", " ");
 			 //System.out.println("Message: " + ErrorMsg);
 		 }else if(response.contains("INFO:")){
-			 Msg = response.split("INFO:")[1].replace("\r\n", " ");
+			 String[] InfoFields = response.split("INFO:");
+			 Msg = "";
+			 for(int i=0;i<InfoFields.length;i++){
+				 if(i>=1){
+					 Msg = Msg +" "+ InfoFields[i].replace("\r\n", " ") ;
+				 }
+				
+			 }
+			 
+			// Msg = response.split("INFO:")[1].replace("\r\n", " ");
 		 }
 		return Msg;	
 		
