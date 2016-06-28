@@ -139,11 +139,6 @@ class AuthGETActions {
 			}
 		}
 	}
-		
-//			if(METHOD != null && ConnectionManager.getConnectionItemFromToken(TOKEN).isAdmin() && METHOD.equalsIgnoreCase("clearall")){
-//				ConnectionManager.clearAllTokens(TOKEN)
-//			}
-
 	
 	/**
 	 * @purpose Provide logout services for REST Server & AE

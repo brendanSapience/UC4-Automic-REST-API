@@ -20,12 +20,15 @@ class UrlMappings {
 		//"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action: 'router', method: 'GET')
 		
 		//adding support for regular http request methods
-		// AE / AWA stuff
-		"/api/$product/$operation/$version/$object"(controller:{"${params.object}"}, action : [GET:"router", POST:"router"])
-		"/api/$product/help/$version/$object"(controller:{"${params.object}"}, action : [GET:"help", POST:"help"])
+		// AE & AWA stuff
+		"/api/awa/$operation/$version/$object"(controller:{"${params.object}"}, action : [GET:"router", POST:"router"])
+		"/api/awa/help/$version/$object"(controller:{"${params.object}"}, action : [GET:"help", POST:"help"])
+		"/api/awa/objects"(controller:"AE", action : [GET:"getObjectList"])
 		
 		// ARA stuff
 		"/api/ara/$operation/$version/$object"(controller:{"ARA${params.object}"}, action : [GET:"router", POST:"router"])
 		"/api/ara/help/$version/$object"(controller:{"ARA${params.object}"}, action : [GET:"help", POST:"help"])
+		"/api/ara/objects"(controller:"ARA", action : [GET:"getObjectList"])
+		
    }
 }

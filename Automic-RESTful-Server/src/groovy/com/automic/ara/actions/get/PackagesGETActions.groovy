@@ -165,7 +165,6 @@ class PackagesGETActions {
 
 		String FILTERS = params.filters;
 		String METHOD = params.method;
-		
 		String PCKNAME = params.pck;
 			
 		// Helper Methods

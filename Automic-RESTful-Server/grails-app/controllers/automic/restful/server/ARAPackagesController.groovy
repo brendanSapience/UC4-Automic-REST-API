@@ -66,7 +66,6 @@ class ARAPackagesController {
 		if(Environment.current == Environment.DEVELOPMENT){
 			
 			TOKEN = ConnectionManager.bypassAuth();
-			println "Token is:" +TOKEN
 			if(TOKEN.startsWith("--")){
 					render(text:  TOKEN, contentType: "text/json", encoding: "UTF-8")
 				}
