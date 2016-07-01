@@ -1,14 +1,17 @@
 package com.automic.utils
 
+import com.uc4.api.DetailGroup
 import com.uc4.api.SearchResultItem
 import com.uc4.api.StatisticSearchItem
 import com.uc4.api.Task
 import com.uc4.api.objects.ObjectValues;
 import com.uc4.api.objects.PromptSetDefinition
+import com.uc4.communication.Connection
 import com.uc4.communication.requests.GetChangeLog
-
+import com.uc4.communication.requests.TaskDetails
+import com.automic.objects.CommonAERequests
 import groovy.json.JsonBuilder
-
+import com.automic.objects.CommonAERequests
 /**
  * 
  * @author bsp
@@ -136,7 +139,13 @@ class CommonJSONRequests {
 		def data = [
 			status: OKSTATUS,
 			count: ObjList.size(),
-			data: ObjList.collect {[name: it.name, folder: it.folder, title: it.title, type: it.objectType, open: it.open]}
+			data: ObjList.collect {
+				[name: it.name, 
+					folder: it.folder, 
+					title: it.title, 
+					type: it.objectType, 
+					open: it.open
+					]}
 		  ]
 		
 		//, folder:it.folder, modified:it.modified, type: it.title
@@ -225,18 +234,45 @@ class CommonJSONRequests {
 		return data
 	}
 	
-	public static JsonBuilder getActivityListAsJSONFormat(List<Task> ObjList){
+	public static JsonBuilder getActivityListAsJSONFormat(Connection conn, List<Task> ObjList){
+//		Task tsk = ObjList.get(0);
+//		tsk.;
+//		List<PropertyValue> propvals = tsk.getMetaPropertyValues();
+//		for(PropertyValue p : propvals){
+//			println "Debug: " + p.getName() +":"+ p.getType().toString()+":"+p.getValue().toString()
+//		}
+		
+		
 		def data = [
 			status: OKSTATUS,
 			count: ObjList.size(),
-			data: ObjList.collect {[name: it.name, type:it.type, desc:it.periodDescription,
-				 platform:it.platform, runid:it.runID, parent:it.parentRunID, user:it.userName, 
-				 starttime:it.startTime.toString(), priority:it.priority, status:it.status,
-				 statuscode:it.statusCode, statusdesc:it.statusText,
-				 archive1:it.archive1, archive2:it.archive2, endtime:it.endTime.toString(), 
-				 runtime:it.runtime,consumption:it.consumption, cputime:it.cpuTime, 
-				 host:it.host, modification:it.modificationFlag,desc:it.periodDescription, 
-				 queue:it.queue,starttype:it.startType,statuswithinparent:it.statusWithinParentText]}
+			data: ObjList.collect {[name: it.name,
+				type:it.type, desc:it.periodDescription,
+				 platform:it.platform, 
+				 runid:it.runID, 
+				 parent:it.parentRunID, 
+				 user:it.userName, 
+				 starttime:it.startTime.toString(), 
+				 priority:it.priority, 
+				 status:it.status,
+				 statuscode:it.statusCode, 
+				 statusdesc:it.statusText,
+				 archive1:it.archive1, 
+				 archive2:it.archive2, 
+				// meta:it.getMetaPropertyValues().get(0).getName(),
+				 version:CommonAERequests.getTaskDetails(it.runID,conn).findByName("Version"),//Version
+				 login:CommonAERequests.getTaskDetails(it.runID,conn).findByName("Login"),
+				 endtime:it.endTime.toString(), 
+				 runtime:it.runtime,
+				 consumption:it.consumption, 
+				 cputime:it.cpuTime, 
+				 host:it.host, 
+				 modification:it.modificationFlag,
+				 desc:it.periodDescription, 
+				 queue:it.queue,
+				 starttype:it.startType,
+				 statuswithinparent:it.statusWithinParentText
+				 ]}
 			
 		 ]
 		

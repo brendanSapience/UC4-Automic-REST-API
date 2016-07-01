@@ -3,6 +3,7 @@ package com.automic.spec
 import com.uc4.api.InvalidUC4NameException
 import com.uc4.api.UC4HostName
 import com.uc4.api.UC4ObjectName
+import com.uc4.api.objects.CustomAttribute
 import com.uc4.api.objects.Job;
 import com.uc4.api.objects.UC4Object
 import com.uc4.communication.Connection;
@@ -70,6 +71,7 @@ class JOBSSpecCreate {
 				CommonAERequests.closeObject(job,connection)
 				return CommonJSONRequests.renderErrorAsJSON(e.getMessage())}
 		}
+		
 		if(LOGIN != null && !LOGIN.equals("")){
 			try{job.attributes.setLogin(new UC4ObjectName(LOGIN))}catch(InvalidUC4NameException e){
 				CommonAERequests.closeObject(job,connection)

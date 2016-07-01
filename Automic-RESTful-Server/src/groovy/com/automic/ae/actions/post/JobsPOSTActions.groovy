@@ -106,7 +106,6 @@ class JobsPOSTActions {
 					//println "Saving Object: " + it.getName()
 					CommonAERequests.saveAndCloseObject(it,conn)}
 				else{CommonAERequests.closeObject(it,conn)}
-				//println "Selected:"+it.getName()
 			}
 			JsonBuilder jsonresp = JOBSSpecUpdates.getJSONStructure(SelectedObjects,COMMIT)
 			return jsonresp //CommonJSONRequests.getResultListAsJSONFormat(ObjList)

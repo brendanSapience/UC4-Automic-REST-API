@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 
 
+
+
 import com.uc4.ara.feature.rm.CreateDeployPackage;
 
 import org.xml.sax.SAXException;
@@ -24,7 +26,6 @@ import com.uc4.api.UC4TimezoneName;
 import com.uc4.api.UC4UserName;
 import com.uc4.api.objects.IFolder;
 import com.uc4.api.objects.UC4Object;
-
 import com.uc4.communication.Connection;
 import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
@@ -41,6 +42,8 @@ import com.uc4.communication.requests.OpenObject;
 import com.uc4.communication.requests.ResetOpenFlag;
 import com.uc4.communication.requests.SaveObject;
 import com.uc4.communication.requests.SearchObject;
+import com.uc4.communication.requests.TaskDetails;
+import com.uc4.communication.requests.VersionControlList;
 import com.uc4.communication.requests.XMLRequest;
 
 /**
@@ -52,6 +55,29 @@ import com.uc4.communication.requests.XMLRequest;
 
 public class CommonAERequests {
 
+//	public static TaskDetails getPreviousVersions(String ObjName, Connection connection) throws IOException, SAXException{
+//		
+//		connection.sendRequestAndWait(imp);
+//		if (imp.getMessageBox() != null) {
+//			System.out.println(imp.getMessageBox().getText());
+//			return null;
+//		}else{
+//			return imp;
+//		}
+//	}
+	
+	//VersionControlList imp = new VersionControlList(getUC4ObjectNameFromString(ObjName,false);
+	public static TaskDetails getTaskDetails(int runid, Connection connection) throws IOException, SAXException{
+		TaskDetails imp = new TaskDetails(runid);
+		connection.sendRequestAndWait(imp);
+		if (imp.getMessageBox() != null) {
+			System.out.println(imp.getMessageBox().getText());
+			return null;
+		}else{
+			return imp;
+		}
+	}
+	
 	public static UC4ObjectName getUC4ObjectNameFromString(String name,boolean isTZ){
 		UC4ObjectName objName = null;
 		try{
@@ -217,7 +243,6 @@ public class CommonAERequests {
 		// last boolean returns an OpenObject
 		OpenObject open = new OpenObject(objName,readOnly,true);
 		connection.sendRequestAndWait(open);
-
 		if (open.getMessageBox() != null) {
 			System.err.println(" -- "+open.getMessageBox().toString().replace("\n", ""));
 			return null;

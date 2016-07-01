@@ -2,12 +2,15 @@ package com.automic.ae.actions.get
 
 import com.automic.DisplayFilters
 import com.uc4.api.DateTime
+import com.uc4.api.DetailGroup
 import com.uc4.api.SearchResultItem
 import com.uc4.api.Task
 import com.uc4.api.TaskFilter
 import com.uc4.api.UC4ObjectName
 import com.uc4.api.UC4TimezoneName
 import com.uc4.api.TaskFilter.TimeFrame
+import com.uc4.api.objects.CustomAttribute
+import com.uc4.api.objects.CustomAttributeFilter
 import com.uc4.communication.Connection
 import com.uc4.communication.requests.ActivityList
 import com.uc4.communication.requests.AdoptTask
@@ -24,6 +27,7 @@ import com.uc4.communication.requests.ResumeTask
 import com.uc4.communication.requests.RollbackTask
 import com.uc4.communication.requests.SearchObject
 import com.uc4.communication.requests.SuspendTask
+import com.uc4.communication.requests.TaskDetails
 import com.uc4.communication.requests.UnblockJobPlanTask
 import com.uc4.communication.requests.UnblockWorkflow
 import com.uc4.communication.requests.XMLRequest
@@ -175,7 +179,7 @@ class ActivitiesGETActions {
 				'parentrunid (format: filters=[parentrunid:12345678901100])','toprunid (format: filters=[toprunid:12345678901100])',
 				'user (format: filters=[user:*])','platform (format: filters=[platform:WIN|UNIX])','type (format: filters=[type:JOBF|JOBS])',
 				'exkey1 (format: filters=[exkey1])','exkey2 (format: filters=[exkey2])','exhost (format: filters=[exhost])',
-				'exname (format: filters=[exname])','exuser (format: filters=[exuser])'
+				'exname (format: filters=[exname])','exuser (format: filters=[exuser])','custom (format: filters=[custom:AttrName-AttrValue])'
 				],
 			'required_methods': [],
 			'optional_methods': ['usage']
@@ -207,6 +211,26 @@ class ActivitiesGETActions {
 				if(dispFilters.doesKeyExistInFilter("parentrunid")){taskFilter.setParentRunID(dispFilters.getValueFromKey("parentrunid").toInteger());}
 				if(dispFilters.doesKeyExistInFilter("toprunid")){taskFilter.setTopRunID(dispFilters.getValueFromKey("toprunid").toInteger());}
 				if(dispFilters.doesKeyExistInFilter("user")){taskFilter.setUser(dispFilters.getValueFromKey("user"));}
+				if(dispFilters.doesKeyExistInFilter("custom")){
+					String RAWCUSTOMATTRFILTER  = dispFilters.getValueFromKey("custom");
+					
+					if(RAWCUSTOMATTRFILTER.contains("-") & RAWCUSTOMATTRFILTER.split("-").length == 2){
+						
+						String CUSTOMATTRNAME = RAWCUSTOMATTRFILTER.split("-")[0];
+						String CUSTOMATTRVALUE = RAWCUSTOMATTRFILTER.split("-")[1];
+//						String CUSTOMATTRVALUE="HR";
+//						String CUSTOMATTRNAME = "&BusinessUnit#";
+
+						taskFilter.removeAllCustomAttributeFilter();
+						CustomAttribute custattr = new CustomAttribute(CUSTOMATTRNAME,CUSTOMATTRVALUE);
+						
+						CustomAttributeFilter customattrfilter =  new CustomAttributeFilter(custattr);
+						//customattrfilter.addSelectedValue(CUSTOMATTRVALUE);
+						//customattrfilter.setFilter(CUSTOMATTRVALUE);
+						taskFilter.addCustomAttributeFilter(customattrfilter);
+						
+					}
+				}
 				
 				if(dispFilters.doesKeyExistInFilter("exkey1")){taskFilter.setExcludeArchiveKey1(true);}
 				if(dispFilters.doesKeyExistInFilter("exkey2")){taskFilter.setExcludeArchiveKey2(true);}
@@ -250,9 +274,21 @@ class ActivitiesGETActions {
 								}
 						}
 				}
-				
+//				TaskDetails details = CommonAERequests.getTaskDetails(1357217,conn);
+//				details.setArchiveDetail();
+//				Iterator<DetailGroup> it = details.groupIterator();
+//				while(it.hasNext()){
+//					DetailGroup grp = it.next();
+//					LinkedHashMap<String,String> hash = grp.getDetails();
+//					for(int i=0;i<hash.keySet().size();i++){
+//		
+//						println "DEBUG:"+ hash.keySet()[i]+":"+hash.get(hash.keySet()[i]);
+//		
+//					}
+//		
+//				}
 				if(dispFilters.doesKeyExistInFilter("type")){
-					
+	
 					taskFilter.unselectAllObjects();
 					String AllTypesSelected = dispFilters.getValueFromKey("type");
 					String[] AllTypessArray = AllTypesSelected.split("\\|");
@@ -279,10 +315,11 @@ class ActivitiesGETActions {
 						}
 					}
 				}
-					
+				
+				
 				List<Task> TaskList = CommonAERequests.getActivityWindowContent(conn,taskFilter);
 				
-				JsonBuilder json = CommonJSONRequests.getActivityListAsJSONFormat(TaskList);
+				JsonBuilder json = CommonJSONRequests.getActivityListAsJSONFormat(conn,TaskList);
 				return json
 		}
 

@@ -169,6 +169,7 @@ class EngineGETActions {
 						name:it.getName(),
 						firstname:it.getFirstName(),
 						lastname:it.getLastName(),
+						isloggedon:it.isLoggedOn,
 						arch1:it.getArchiveKey1(),
 						arch2:it.getArchiveKey2(),
 						client:it.getClient(),
@@ -181,7 +182,11 @@ class EngineGETActions {
 						sessionid:it.getSessionId(),
 						sessiontz: it.getSessionTimeZone(),
 						usertz:it.getUserTimeZone(),
-						version:it.getVersion()
+						version:it.getVersion(),
+						active:it.active,
+						cp:it.cp,
+						id:it.id,
+						sessiontz:it.sessionTimeZone.toString()
 						]}
 				  ]
 			)

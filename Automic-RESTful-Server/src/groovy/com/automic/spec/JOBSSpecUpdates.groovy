@@ -2,6 +2,7 @@ package com.automic.spec
 
 import com.uc4.api.UC4HostName
 import com.uc4.api.UC4ObjectName
+import com.uc4.api.objects.CustomAttribute
 import com.uc4.api.objects.Job
 import com.uc4.api.objects.ObjectValues
 import groovy.json.JsonBuilder
@@ -11,6 +12,14 @@ import com.automic.utils.MiscUtils
 class JOBSSpecUpdates {
 
 	public static def UpdateObject(Job obj,JsonUpdates,boolean Commit){
+		
+		
+		Iterator<CustomAttribute> myIt = obj.header.customAttributeIterator();
+		while(myIt.hasNext()){
+			CustomAttribute c = myIt.next();
+			println "DEBUG:"+c.getName()+":"+c.getValue();
+		}
+		
 		
 		if(JsonUpdates.status != null && JsonUpdates.status.equalsIgnoreCase("active")){obj.header().setActive(true);}
 		if(JsonUpdates.status != null && JsonUpdates.status.equalsIgnoreCase("inactive")){obj.header().setActive(false);}
