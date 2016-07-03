@@ -1,12 +1,26 @@
 package automic.restful.server
 
 import com.automic.DisplayFilters
+import com.uc4.api.DateTime
 import com.uc4.api.SearchResultItem
+import com.uc4.api.Task
+import com.uc4.api.TaskFilter;
+import com.uc4.api.UC4ObjectName
+import com.uc4.api.TaskFilter.TimeFrame;
+import com.uc4.communication.requests.ActivityList
+import com.uc4.communication.requests.DeactivateTask
+import com.uc4.communication.requests.GenericStatistics;
+import com.uc4.communication.requests.QuitTask
+import com.uc4.communication.requests.RestartTask
 import com.uc4.communication.requests.SearchObject
+import com.uc4.communication.requests.UnblockJobPlanTask
+import com.uc4.communication.requests.UnblockWorkflow
+import com.uc4.communication.requests.XMLRequest
 
+import grails.util.Environment
 import groovy.json.JsonBuilder
 
-import com.automic.ae.actions.get.AllGETActions;
+import com.automic.ae.actions.get.ActivitiesGETActions;
 import com.automic.connection.AECredentials;
 import com.automic.connection.ConnectionManager;
 import com.automic.objects.CommonAERequests
@@ -14,9 +28,7 @@ import com.automic.utils.ActionClassUtils
 import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
 
-import grails.util.Environment
-
-class AllController {
+class ForecastController {
 	
 	Class actionClass
 	boolean ClassFound = true;
@@ -52,12 +64,11 @@ class AllController {
 		
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
 		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
-	
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
-			
 			JsonBuilder myRes;
 			// Dynamically loading the Class based on Object name, and HTTP Method (GET, POST etc.)
+
 			try{
 				actionClass = this.class.getClassLoader().loadClass(RootPackage+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
 			}catch (ClassNotFoundException c){
@@ -65,61 +76,22 @@ class AllController {
 				myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION ])
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
+			
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
 				if(false){ //Environment.current == Environment.DEVELOPMENT){
-					
-					if(OPERATION.equals("export") && params.commit != null && params.commit.toUpperCase().equals("Y")){
-						// if commit.. return is file
-							File file = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
-							//println "debug:" + file.getAbsolutePath()
-							if(file != null){
-								response.setHeader "Content-disposition", "attachment; filename=${file.name}"
-								response.contentType = 'text/xml'
-								response.outputStream << file.text
-							}else{
-								myRes = CommonJSONRequests.renderErrorAsJSON("Unspecified Error.  is the JWP active?")
-								render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
-							}
-
-						// else, return is json
-					}else{
-		
-						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
-						render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
-					}
+					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 				}else{
 				// otherwise it needs to be caught
 					try{
-						// if we are doing an export WITH commit set to Y, then we need to serve a file instead of a JSON response
-						if(OPERATION.equals("export") && params.commit != null && params.commit.toUpperCase().equals("Y")){
-							// if commit.. return is file
-								File file = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
-								//println "debug:" + file.getAbsolutePath()
-								if(file != null){
-									response.setHeader "Content-disposition", "attachment; filename=${file.name}"
-									response.contentType = 'text/xml'
-									response.outputStream << file.text
-								}else{
-									myRes = CommonJSONRequests.renderErrorAsJSON("Unspecified Error.  is the JWP active?")
-									render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
-								}
-						// else, return is json as usual
-						}else{
-							myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
-							render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
-						}
-					
-					}catch(MissingMethodException e){
+						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
+					}catch(MissingMethodException){
 						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
-						render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 					}
 				}
-				//println "Debug"+ myRes.getClass()
-				//render(text:  myRes, contentType: "text/xml", encoding: "UTF-8")
-
+				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
+			
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
-		
 	}
 }

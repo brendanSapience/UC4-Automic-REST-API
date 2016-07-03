@@ -1,12 +1,6 @@
+/com/
+/grails/
+/org/
 /asset/
 /automic/
-/com/
-/dbdoc/
-/grails/
-/hibernate/
-/hibernate.cfg.xml
-/javascripts/
-/org/
-/spring/
 /uc4rest/
-/uglifyjs/

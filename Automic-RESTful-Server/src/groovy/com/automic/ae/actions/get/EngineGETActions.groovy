@@ -6,15 +6,20 @@ import com.uc4.api.SearchResultItem;
 import com.uc4.api.systemoverview.AgentGroupListItem
 import com.uc4.api.systemoverview.AgentListItem
 import com.uc4.api.systemoverview.ClientListItem
+import com.uc4.api.systemoverview.MessageListItem
 import com.uc4.api.systemoverview.ServerListItem
 import com.uc4.api.systemoverview.UserListItem
+import com.uc4.api.systemoverview.WorkloadItem
 import com.uc4.communication.Connection;
 import com.uc4.communication.requests.AgentGroupList
 import com.uc4.communication.requests.AgentList
 import com.uc4.communication.requests.ClientList
 import com.uc4.communication.requests.GetDatabaseInfo
+import com.uc4.communication.requests.MessageList
 import com.uc4.communication.requests.ServerList
+import com.uc4.communication.requests.SystemWorkload
 import com.uc4.communication.requests.UserList
+import com.uc4.communication.requests.GetDatabaseInfo.MQEntry
 
 import groovy.json.JsonBuilder
 
@@ -45,7 +50,7 @@ class EngineGETActions {
 			'optional_parameters': [],
 			'optional_filters': [],
 			'required_methods': [],
-			'optional_methods': ['usage','showdb (show AE DB Info)','showclients (show AE Client Info)','showhosts (show agents info)','showhostgroups (show agentgroups info)','showusers (show connected users info)','showengine (Default: show Automation Engine Info)']
+			'optional_methods': ['usage','showusage (show AE Usage info), showmessages (show AE Messages), showdb (show AE DB Info)','showclients (show AE Client Info)','showhosts (show agents info)','showhostgroups (show agentgroups info)','showusers (show connected users info)','showengine (Default: show Automation Engine Info)']
 			]
 		
 		String FILTERS = params.filters;
@@ -63,7 +68,7 @@ class EngineGETActions {
 				ServerList req = new ServerList();
 				CommonAERequests.sendSyncRequest(conn, req, false)
 				ArrayList<ServerListItem> reqList = req.iterator().toList();
-				JsonBuilder json = getServerListAsJSON(reqList);
+				JsonBuilder json = getServerListAsJSON(reqList, conn);
 				return json
 				
 		}else if(METHOD.toLowerCase() =~ /showdb|db|database|databases|showdatabase/){
@@ -80,7 +85,15 @@ class EngineGETActions {
 						driverversion:info.getDriverVersion(),
 						dataversion:info.getInitialDataVersion(),
 						odbcversion:info.getOdbcVersion(),
-						connectionstring:info.getOdbcConnectString()
+						connectionstring:info.getOdbcConnectString(),
+						mqdwp:info.getMqdwp(),
+						mqjwp:info.getMqjwp(),
+						mqmem:info.getMqmem(),
+						mqowp:info.getMqowp(),
+						mqpwp:info.getMqpwp(),
+						mqrwp:info.getMqrwp(),
+						mqqwp:info.getMqwp(),
+						mqentries:getMQEntriesAsJson(info.getMessageQueues())
 					]
 				  ]
 			)
@@ -104,6 +117,45 @@ class EngineGETActions {
 						taskpriority:it.taskPriority,
 						tz:it.timezone,
 						title:it.title
+						]}
+				  ]
+			)
+		}else if(METHOD =~ /showmessages|getmessages/){
+			MessageList req = new MessageList();
+			req.setAdminMessages(true);
+			req.setSecurityMessages(true);
+			
+			CommonAERequests.sendSyncRequest(conn, req, false)
+			ArrayList<MessageListItem> reqList = req.iterator().toList();
+			return new JsonBuilder(
+				[
+					status: "success",
+					count: reqList.size(),
+					data: reqList.collect {[
+						category:it.category,
+						type:it.messageType,
+						message:it.message,
+						source:it.source,
+						timestamp:it.timestamp.toString(),
+			
+						]}
+				  ]
+			)
+		}else if(METHOD =~ /showusage|getusage/){
+			SystemWorkload req = new SystemWorkload();
+			CommonAERequests.sendSyncRequest(conn, req, false);
+			ArrayList<WorkloadItem> reqList = req.iterator().toList();
+			// Add All Clients perf: (marked as -1 in JSON output)
+			reqList.add(req.getTotalWorkload())
+			
+			return new JsonBuilder(
+				[
+					status: "success",
+					count: reqList.size(),
+					data: reqList.collect {[
+						client:it.client,
+						average:it.averageLoad,
+						active:it.hours
 						]}
 				  ]
 			)
@@ -194,13 +246,70 @@ class EngineGETActions {
 		}
 	}
 	
-	private static JsonBuilder getServerListAsJSON(List<ServerListItem> ObjList){
+	private static getMQEntriesAsJson(MQEntry[] entries){
+		return  [
+			entries.collect {[
+				name: it.name, 
+				count: it.count,
+				lastsec:it.lastSecond,
+				last10sec:it.last10Seconds,
+				last60sec:it.last60Seconds,
+				lastmin: it.getResponseLastMinute(), 
+				last10min: it.getResponseTime10Minutes(), 
+				last60min: it.getResponseTime60Minutes()
+				]}
+		]
+	}
+	// not used:
+	private static JsonBuilder getServerWorkload(ServerListItem item, Connection conn){
+		SystemWorkload req = new SystemWorkload(item);
+		
+		CommonAERequests.sendSyncRequest(conn, req, false);
+		if(req.getMessageBox()!=null){
+			return new JsonBuilder({[]})
+		}else{
+			WorkloadItem WorkloadIt = req.size();
+			
+			return new JsonBuilder(
+				{[
+						//client:WorkloadIt.client,
+						average:WorkloadIt.averageLoad,
+						active:WorkloadIt.hours
+				]}
+			)
+		}
+
+	}
+	private static JsonBuilder getServerListAsJSON(List<ServerListItem> ObjList, Connection conn){
+		
+		SystemWorkload req = new SystemWorkload();
+		CommonAERequests.sendSyncRequest(conn, req, false);
+		
+		
 		def data = [
 			status: "success",
 			count: ObjList.size(),
-			data: ObjList.collect {[name: it.name, connections: it.connections, active: it.active, 
-				type: it.port, hostname: it.hostName, ip:it.ipAddress, role:it.role, servertime:it.serverTime.toString(),
-				version:it.version]}
+			data: ObjList.collect {[
+				name: it.name, 
+				connections: it.connections, 
+				active: it.active, 
+				type: it.getType(), 
+				hostname: it.hostName, 
+				ip:it.ipAddress, 
+				role:it.role, 
+				servertime:it.serverTime.toString(),
+				version:it.version,
+				b01:it.getB01(),
+				b10:it.getB10(),
+				b60:it.getB60(),
+				mqactive:it.getMqSetActive(),
+				mqown:it.getMqSetOwn(),
+				netarea:it.getNetArea(),
+				port:it.getPort(),
+				id:it.getId(),
+				processid:it.getProcessId(),
+				//workload: {getServerWorkload(it,conn)}
+				]}
 		  ]
 		
 		//, folder:it.folder, modified:it.modified, type: it.title

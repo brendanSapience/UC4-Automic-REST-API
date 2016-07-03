@@ -31,7 +31,7 @@ import com.automic.utils.MiscUtils;
 class AEController {
 	
 	def getObjectList = {
-		def ObjectList = ["Activities","All","Auth","Changes","Client","Engine","Jobs","Misc","Statistics"] as String[]
+		def ObjectList = ["Activities","All","Auth","Changes","Client","Docu","Engine","Forecast","Jobs","Misc","Notifications","Statistics"] as String[]
 		
 		def data = [
 			status: "success",

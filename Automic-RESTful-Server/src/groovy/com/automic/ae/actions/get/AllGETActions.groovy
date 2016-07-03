@@ -7,8 +7,14 @@ import com.uc4.api.DateTime
 import com.uc4.api.SearchResultItem
 import com.uc4.api.UC4ObjectName;
 import com.uc4.communication.Connection;
+import com.uc4.communication.requests.ExportWithReferences
+import com.uc4.communication.requests.FindReferencedObjects
 import com.uc4.communication.requests.GenericStatistics;
+import com.uc4.communication.requests.GetLastRuntimes
+import com.uc4.communication.requests.GetOutputDirectory
+import com.uc4.communication.requests.LatestReport
 import com.uc4.communication.requests.SearchObject
+import com.uc4.communication.requests.GetOutputDirectory.OutputDirectoryItem
 
 import groovy.json.JsonBuilder
 
@@ -32,6 +38,161 @@ class AllGETActions {
 	
 	public static def search(String version, params,Connection conn,request, grailsattr){return "search${version}"(params,conn)}
 	public static def export(String version, params,Connection conn,request, grailsattr){return "export${version}"(params,conn)}
+	public static def runtimes(String version, params,Connection conn,request, grailsattr){return "runtimes${version}"(params,conn)}
+	public static def lastrun(String version, params,Connection conn,request, grailsattr){return "lastrun${version}"(params,conn)}
+	public static def output(String version, params,Connection conn,request, grailsattr){return "output${version}"(params,conn)}
+	
+	/**
+	 * @purpose get last runid for object
+	 * @return XML content & json content (xml should be served as download)
+	 * @version v1
+	 */
+	
+	public static def outputv1(params,Connection conn){
+		def SupportedThings = [:]
+		SupportedThings = [
+			'required_parameters': ['runid (format: runid= < Integer > )'],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+		
+		String RUNIDASSTR = params.runid;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+		int RUNID = -1;
+		
+		if(RUNIDASSTR.isInteger()){RUNID = RUNIDASSTR.toInteger()}
+		
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			return json
+		}else{
+				// check mandatory stuff here
+				if(MiscUtils.checkParams(SupportedThings, params)){
+					GetOutputDirectory req = new GetOutputDirectory(RUNID);
+					CommonAERequests.sendSyncRequest(conn,req,false)
+					if(req.getMessageBox()!=null){
+						return CommonJSONRequests.renderErrorAsJSON(req.getMessageBox().getText())
+					}else{
+						ArrayList<OutputDirectoryItem> reqList = req.iterator().toList()
+							
+						return new JsonBuilder(
+							[
+								status: "success",
+								count: reqList.size,
+								data: reqList.collect {[
+									type:it.displayType,
+									file:it.file,
+									inuc4db:it.inUC4DB,
+									onagent:it.onAgent,
+									reportid:it.reportID,
+									requireslogin:it.requiresLogin,
+								]}
+									
+							  ])
+					}
+
+				}
+		}
+	}
+	
+	/**
+	 * @purpose get last runid for object
+	 * @return XML content & json content (xml should be served as download)
+	 * @version v1
+	 */
+	
+	public static def lastrunv1(params,Connection conn){
+		def SupportedThings = [:]
+		SupportedThings = [
+			'required_parameters': ['name (format: name= < Object Name > )'],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+		
+		String NAME = params.name;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+		
+		if(NAME != null && NAME)
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			return json
+		}else{
+			if(NAME.contains("*") || NAME.contains("?")){
+				return CommonJSONRequests.renderErrorAsJSON("Object Name cannot contain * or ?: it should be an actual object name, not a pattern.")
+			}
+				// check mandatory stuff here
+				if(MiscUtils.checkParams(SupportedThings, params)){
+					UC4ObjectName ObjName = CommonAERequests.getUC4ObjectNameFromString(NAME, false)
+					LatestReport req = new LatestReport(ObjName);
+					CommonAERequests.sendSyncRequest(conn,req,false);
+					if(req.getMessageBox()!=null){
+						return CommonJSONRequests.renderErrorAsJSON(req.getMessageBox().getText())
+					}else{
+						int RUNID = req.latestRunID();
+						
+						return new JsonBuilder(
+							[
+								status: "success",
+								runid:req.runID,
+								
+							  ])
+					}
+					
+				}
+		}
+	}
+	/**
+	 * @purpose get last runtimes for object
+	 * @return XML content & json content (xml should be served as download)
+	 * @version v1
+	 */
+	
+	public static def runtimesv1(params,Connection conn){
+		def SupportedThings = [:]
+		SupportedThings = [
+			'required_parameters': ['name (format: name= < Object Name > )'],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+		
+		String NAME = params.name;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+		
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			return json
+		}else{
+				// check mandatory stuff here
+				if(MiscUtils.checkParams(SupportedThings, params)){
+					UC4ObjectName ObjName = CommonAERequests.getUC4ObjectNameFromString(NAME, false)
+					
+					GetLastRuntimes req = new GetLastRuntimes(ObjName);
+					CommonAERequests.sendSyncRequest(conn,req,false);
+					if(req.getMessageBox()!=null){
+						CommonJSONRequests.renderErrorAsJSON(req.getMessageBox().getText())
+					}else{
+							
+						return new JsonBuilder(
+							[
+								status: "success",
+								estimatedruntimes:req.estimatedRuntimes,
+								lastruntimes:req.realRuntimes,
+							  ])
+					}
+
+				}
+		}
+	}
+	
 	
 	/**
 	 * @purpose export any objects against filters
@@ -63,7 +224,7 @@ class AllGETActions {
 				
 				],
 			'required_methods': [],
-			'optional_methods': ['usage']
+			'optional_methods': ['usage','showreferences','exportwithreferences']
 			]
 		
 		String COMMITSTR = params.commit;
@@ -88,129 +249,190 @@ class AllGETActions {
 				// check mandatory stuff here
 				if(MiscUtils.checkParams(SupportedThings, params)){
 
-					DisplayFilters dispFilters = new DisplayFilters(FILTERS);
-					
-					SearchObject req = new SearchObject();
-					req.selectAllObjectTypes();
-					req.setIncludeLinks(true)
-					
-					if(SEARCHTEXT != null && !SEARCHTEXT.equals("")){
-						boolean titlesearch = false;
-						boolean keysearch = false;
-						boolean processsearch = false;
-						boolean docusearch = false;
+					if(METHOD != null && METHOD.equalsIgnoreCase("showreferences")){
+						UC4ObjectName ObjName = CommonAERequests.getUC4ObjectNameFromString(NAME, false)
+						FindReferencedObjects req = new FindReferencedObjects(ObjName)
+						CommonAERequests.sendSyncRequest(conn, req, false)
 						
-						if(TEXTTITLE!=null){titlesearch = true}
-						if(TEXTKEYS!=null){keysearch = true}
-						if(TEXTPROCESS!=null){processsearch = true}
-						if(TEXTDOCU!=null){docusearch = true}
-						
-						//setTextSearch(java.lang.String pattern, boolean process, boolean documentation, boolean objectTitle, boolean archiveKeys)
-						req.setTextSearch(SEARCHTEXT, processsearch, docusearch, titlesearch, keysearch)
-					}
-					
-					
-					if(dispFilters.doesKeyExistInFilter("type")){
+						if(req.getMessageBox()!=null){
+							return CommonJSONRequests.renderErrorAsJSON(req.getMessageBox().getText())
+						}else{
+							ArrayList<UC4ObjectName> reqList = req.iterator().toList()
+							return new JsonBuilder(
+								[
+									status: "success",
+									count: reqList.size(),
+									data: reqList.collect {[
+										name:it.getName(),						
+										]}
+								  ]
+							)
+						}
+					}else if(METHOD != null && METHOD.equalsIgnoreCase("exportwithreferences")){
+						UC4ObjectName ObjName = CommonAERequests.getUC4ObjectNameFromString(NAME, false)
+						File file = GenerateFileForExport() 
+						ExportWithReferences req = new ExportWithReferences(ObjName,file)
+						if(COMMIT) {
+							CommonAERequests.sendSyncRequest(conn, req, false)
+							if(req.getMessageBox()!=null){
+								//return CommonJSONRequests.renderErrorAsJSON(req.getMessageBox().getText())
+								println req.getMessageBox().getText()
+								return null;
+							}else{
+								return file
+							}
+						}else{
+							file.delete()
+							CommonJSONRequests.renderOKAsJSON("nothing exported, simulation mode is on.")
+//							ArrayList<UC4ObjectName> reqList = req.iterator().toList()
+//							return new JsonBuilder(
+//								[
+//									status: "success",
+//									count: reqList.size(),
+//									data: reqList.collect {[
+//										name:it.getName(),
+//										]}
+//								  ]
+//							)
+							
+						}
 	
-						// if type os a filter.. by default we select nothing and only add what is in the filter..
-						boolean SelectIsStandard = true;
-						req.unselectAllObjectTypes();
+					}else{
 						
-						// UNLESS the reversetype filter is found, in which case we select everything and only unselect what is found in filter
-						if(dispFilters.doesKeyExistInFilter("reversetype")){
-							SelectIsStandard = false;
-							req.selectAllObjectTypes();
+						DisplayFilters dispFilters = new DisplayFilters(FILTERS);
+						
+						SearchObject req = new SearchObject();
+						req.selectAllObjectTypes();
+						req.setIncludeLinks(true)
+						
+						if(SEARCHTEXT != null && !SEARCHTEXT.equals("")){
+							boolean titlesearch = false;
+							boolean keysearch = false;
+							boolean processsearch = false;
+							boolean docusearch = false;
+							
+							if(TEXTTITLE!=null){titlesearch = true}
+							if(TEXTKEYS!=null){keysearch = true}
+							if(TEXTPROCESS!=null){processsearch = true}
+							if(TEXTDOCU!=null){docusearch = true}
+							
+							//setTextSearch(java.lang.String pattern, boolean process, boolean documentation, boolean objectTitle, boolean archiveKeys)
+							req.setTextSearch(SEARCHTEXT, processsearch, docusearch, titlesearch, keysearch)
 						}
 						
-						String AllTypesSelected = dispFilters.getValueFromKey("type");
-						String[] AllTypessArray = AllTypesSelected.split("\\|");
-						AllTypessArray.each{
-							switch(it.toUpperCase()) {
-								case ~/CALE|CALENDAR/:req.setTypeCALE(SelectIsStandard);break;
-								case ~/PERIOD/:req.setTypePERIOD(SelectIsStandard);break;
-								case ~/CALL/:req.setTypeCALL(SelectIsStandard);break;
-								case ~/CITC|CIT|RA/:req.setTypeCITC(SelectIsStandard);break;
-								case ~/CLNT|CLIENT/:req.setTypeCLNT(SelectIsStandard);break;
-								case ~/CODE|CODE/:req.setTypeCODE(SelectIsStandard);break;
-								case ~/CONN|CONNECTION/:req.setTypeCONN(SelectIsStandard);break;
-								case ~/CPIT|COCKPIT/:req.setTypeCPIT(SelectIsStandard);break;
-								case ~/DOCU|DOCUMENT/:req.setTypeDOCU(SelectIsStandard);break;
-								case ~/DASH|DASHBOARD/:req.setTypeDASH(SelectIsStandard);break;
-								case ~/EVNT|EVENT/:req.setTypeEVNT(SelectIsStandard);break;
-								case ~/FILTER|FILT/:req.setTypeFILTER(SelectIsStandard);break;
-								//case ~/FOLDER|FOLD/:req.setTypeFOLD(SelectIsStandard);break;
-								case ~/HOST|AGENT|NODE/:req.setTypeHOST(SelectIsStandard);break;
-								case ~/HOSTG|AGENTG|NODEG|AGTGRP|AGENTGROUP|HOSTGROUP|HOSTGRP/:req.setTypeHOSTG(SelectIsStandard);break;
-								case ~/HSTA/:req.setTypeHSTA(SelectIsStandard);break;
-								case ~/JOBI/:req.setTypeJOBI(SelectIsStandard);break;
-								case ~/LOGIN/:req.setTypeLOGIN(SelectIsStandard);break;
-								case ~/PERIOD/:req.setTypePERIOD(SelectIsStandard);break;
-								case ~/PRPT|PROMPT|PRPTSET|PROMPSET|PROMPTSETS/:req.setTypePRPT(SelectIsStandard);break;
-								case ~/QUEUE|QUEUES/:req.setTypeQUEUE(SelectIsStandard);break;
-								case ~/SERV/:req.setTypeSERV(SelectIsStandard);break;
-								case ~/STORE|STOR|STORES/:req.setTypeSTORE(SelectIsStandard);break;
-								case ~/SYNC/:req.setTypeSYNC(SelectIsStandard);break;
-								case ~/TZ|TIMEZONE|TIMEZONES/:req.setTypeTZ(SelectIsStandard);break;
-								case ~/USER|USR/:req.setTypeUSER(SelectIsStandard);break;
-								case ~/USRG|USERG|USERGROUP|USERGRP|USERGROUPS/:req.setTypeUSRG(SelectIsStandard);break;
-								case ~/VARA|VARAS/:req.setTypeVARA(SelectIsStandard);break;
-								case ~/XSL/:req.setTypeXSL(SelectIsStandard);break;
-								case ~/JOBF|MFT|FILETRANSFER|TRANSFER/:req.setTypeJOBF(SelectIsStandard);break;
-								case ~/JOBG/:req.setTypeJOBG(true);break;
-								case ~/JOBP|JOBPLAN|WORKFLOW|JOBFLOW/:req.setTypeJOBP(SelectIsStandard);break;
-								case ~/JOBQ/:req.setTypeJOBQ(SelectIsStandard);break;
-								case ~/JOBS|JOB/:req.setTypeJOBS(SelectIsStandard);break;
-								case ~/JSCH|SCHEDULE|JOBSCH|SCHED/:req.setTypeJSCH(SelectIsStandard);break;
-								case ~/SCRI|SCRIPT/:req.setTypeSCRI(SelectIsStandard);break;
-								case ~/EXECUTABLE/:if (SelectIsStandard) {req.setTypeExecuteable()};break; // this one should be used by itself.. need to be the last check
+						
+						if(dispFilters.doesKeyExistInFilter("type")){
+		
+							// if type os a filter.. by default we select nothing and only add what is in the filter..
+							boolean SelectIsStandard = true;
+							req.unselectAllObjectTypes();
+							
+							// UNLESS the reversetype filter is found, in which case we select everything and only unselect what is found in filter
+							if(dispFilters.doesKeyExistInFilter("reversetype")){
+								SelectIsStandard = false;
+								req.selectAllObjectTypes();
+							}
+							
+							String AllTypesSelected = dispFilters.getValueFromKey("type");
+							String[] AllTypessArray = AllTypesSelected.split("\\|");
+							AllTypessArray.each{
+								switch(it.toUpperCase()) {
+									case ~/CALE|CALENDAR/:req.setTypeCALE(SelectIsStandard);break;
+									case ~/PERIOD/:req.setTypePERIOD(SelectIsStandard);break;
+									case ~/CALL/:req.setTypeCALL(SelectIsStandard);break;
+									case ~/CITC|CIT|RA/:req.setTypeCITC(SelectIsStandard);break;
+									case ~/CLNT|CLIENT/:req.setTypeCLNT(SelectIsStandard);break;
+									case ~/CODE|CODE/:req.setTypeCODE(SelectIsStandard);break;
+									case ~/CONN|CONNECTION/:req.setTypeCONN(SelectIsStandard);break;
+									case ~/CPIT|COCKPIT/:req.setTypeCPIT(SelectIsStandard);break;
+									case ~/DOCU|DOCUMENT/:req.setTypeDOCU(SelectIsStandard);break;
+									case ~/DASH|DASHBOARD/:req.setTypeDASH(SelectIsStandard);break;
+									case ~/EVNT|EVENT/:req.setTypeEVNT(SelectIsStandard);break;
+									case ~/FILTER|FILT/:req.setTypeFILTER(SelectIsStandard);break;
+									//case ~/FOLDER|FOLD/:req.setTypeFOLD(SelectIsStandard);break;
+									case ~/HOST|AGENT|NODE/:req.setTypeHOST(SelectIsStandard);break;
+									case ~/HOSTG|AGENTG|NODEG|AGTGRP|AGENTGROUP|HOSTGROUP|HOSTGRP/:req.setTypeHOSTG(SelectIsStandard);break;
+									case ~/HSTA/:req.setTypeHSTA(SelectIsStandard);break;
+									case ~/JOBI/:req.setTypeJOBI(SelectIsStandard);break;
+									case ~/LOGIN/:req.setTypeLOGIN(SelectIsStandard);break;
+									case ~/PERIOD/:req.setTypePERIOD(SelectIsStandard);break;
+									case ~/PRPT|PROMPT|PRPTSET|PROMPSET|PROMPTSETS/:req.setTypePRPT(SelectIsStandard);break;
+									case ~/QUEUE|QUEUES/:req.setTypeQUEUE(SelectIsStandard);break;
+									case ~/SERV/:req.setTypeSERV(SelectIsStandard);break;
+									case ~/STORE|STOR|STORES/:req.setTypeSTORE(SelectIsStandard);break;
+									case ~/SYNC/:req.setTypeSYNC(SelectIsStandard);break;
+									case ~/TZ|TIMEZONE|TIMEZONES/:req.setTypeTZ(SelectIsStandard);break;
+									case ~/USER|USR/:req.setTypeUSER(SelectIsStandard);break;
+									case ~/USRG|USERG|USERGROUP|USERGRP|USERGROUPS/:req.setTypeUSRG(SelectIsStandard);break;
+									case ~/VARA|VARAS/:req.setTypeVARA(SelectIsStandard);break;
+									case ~/XSL/:req.setTypeXSL(SelectIsStandard);break;
+									case ~/JOBF|MFT|FILETRANSFER|TRANSFER/:req.setTypeJOBF(SelectIsStandard);break;
+									case ~/JOBG/:req.setTypeJOBG(true);break;
+									case ~/JOBP|JOBPLAN|WORKFLOW|JOBFLOW/:req.setTypeJOBP(SelectIsStandard);break;
+									case ~/JOBQ/:req.setTypeJOBQ(SelectIsStandard);break;
+									case ~/JOBS|JOB/:req.setTypeJOBS(SelectIsStandard);break;
+									case ~/JSCH|SCHEDULE|JOBSCH|SCHED/:req.setTypeJSCH(SelectIsStandard);break;
+									case ~/SCRI|SCRIPT/:req.setTypeSCRI(SelectIsStandard);break;
+									case ~/EXECUTABLE/:if (SelectIsStandard) {req.setTypeExecuteable()};break; // this one should be used by itself.. need to be the last check
+								}
 							}
 						}
-					}
-					
-					if(SEARCHUSAGE!=null && SEARCHUSAGE.toUpperCase() =~/Y|YES|OK|O/){req.setSearchUseOfObjects(true);}
-					
-					//req.setSearchLocation("", false)
-					
-					if(dispFilters.doesKeyExistInFilter("created")){
-						String RawDate = dispFilters.getValueFromKey("created");
-						DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
-						req.setDateSelectionCreated(RESULTS[0], RESULTS[1]);
-					}
-					
-					if(dispFilters.doesKeyExistInFilter("modified")){
-						String RawDate = dispFilters.getValueFromKey("modified");
-						DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
-						req.setDateSelectionModified(RESULTS[0], RESULTS[1]);
-					}
-					
-					if(dispFilters.doesKeyExistInFilter("used")){
-						String RawDate = dispFilters.getValueFromKey("used");
-						DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
-						req.setDateSelectionUsed(RESULTS[0], RESULTS[1]);
-					}
-					// removing FOLD objects as they cannot be exported..
-					req.setTypeFOLD(false);
-					
-					List<SearchResultItem> ObjList = CommonAERequests.GenericSearchObjects(conn, NAME, req);
-					ArrayList<SearchResultItem> FilteredList = new ArrayList<SearchResultItem>();
-					// calculate a random unique XML file name
-					SessionIdentifierGenerator sig = new SessionIdentifierGenerator();
-					String RANDOMTOKEN = sig.nextSessionId();
-					String StringXmlExportFileName = "XMLExport_" + RANDOMTOKEN + ".xml"
-					File file = new File(StringXmlExportFileName);
-					//def InputJSON = new JsonSlurper().parseText(ConnectionFile.text)
-					
-					ArrayList<UC4ObjectName> ObjectNamesAsArray = new ArrayList<UC4ObjectName>();
-					
-					// converting names to UC4ObjectName objects
-					for(int i=0;i<ObjList.size();i++){
-						UC4ObjectName UC4Obj
-						String ObjFolder = ObjList.get(i).getFolder()
-						if(dispFilters.doesKeyExistInFilter("folder")){
-							
-							String FolderPattern = dispFilters.getValueFromKey("folder");
-							
-							if(ObjFolder.matches(FolderPattern)){
+						
+						if(SEARCHUSAGE!=null && SEARCHUSAGE.toUpperCase() =~/Y|YES|OK|O/){req.setSearchUseOfObjects(true);}
+						
+						//req.setSearchLocation("", false)
+						
+						if(dispFilters.doesKeyExistInFilter("created")){
+							String RawDate = dispFilters.getValueFromKey("created");
+							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
+							req.setDateSelectionCreated(RESULTS[0], RESULTS[1]);
+						}
+						
+						if(dispFilters.doesKeyExistInFilter("modified")){
+							String RawDate = dispFilters.getValueFromKey("modified");
+							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
+							req.setDateSelectionModified(RESULTS[0], RESULTS[1]);
+						}
+						
+						if(dispFilters.doesKeyExistInFilter("used")){
+							String RawDate = dispFilters.getValueFromKey("used");
+							DateTime[] RESULTS = MiscUtils.HandleDateFilter(RawDate);
+							req.setDateSelectionUsed(RESULTS[0], RESULTS[1]);
+						}
+						// removing FOLD objects as they cannot be exported..
+						req.setTypeFOLD(false);
+						
+						List<SearchResultItem> ObjList = CommonAERequests.GenericSearchObjects(conn, NAME, req);
+						ArrayList<SearchResultItem> FilteredList = new ArrayList<SearchResultItem>();
+						// calculate a random unique XML file name
+						File file = GenerateFileForExport()  
+						//def InputJSON = new JsonSlurper().parseText(ConnectionFile.text)
+						
+						ArrayList<UC4ObjectName> ObjectNamesAsArray = new ArrayList<UC4ObjectName>();
+						
+						// converting names to UC4ObjectName objects
+						for(int i=0;i<ObjList.size();i++){
+							UC4ObjectName UC4Obj
+							String ObjFolder = ObjList.get(i).getFolder()
+							if(dispFilters.doesKeyExistInFilter("folder")){
+								
+								String FolderPattern = dispFilters.getValueFromKey("folder");
+								
+								if(ObjFolder.matches(FolderPattern)){
+									if(ObjList.get(i).getObjectType().equals("TZ")){
+										UC4Obj = CommonAERequests.getUC4ObjectNameFromString(ObjList.get(i).getName(),true)
+									}else{
+										UC4Obj = CommonAERequests.getUC4ObjectNameFromString(ObjList.get(i).getName(),false)
+									}
+									if(UC4Obj != null){
+										ObjectNamesAsArray.add(UC4Obj)
+										FilteredList.add(ObjList.get(i))
+										//println "adding folder: "+ObjFolder
+									}
+								}else{
+									//println "no match for: "+ObjFolder
+								}
+							}else{
 								if(ObjList.get(i).getObjectType().equals("TZ")){
 									UC4Obj = CommonAERequests.getUC4ObjectNameFromString(ObjList.get(i).getName(),true)
 								}else{
@@ -219,52 +441,39 @@ class AllGETActions {
 								if(UC4Obj != null){
 									ObjectNamesAsArray.add(UC4Obj)
 									FilteredList.add(ObjList.get(i))
-									//println "adding folder: "+ObjFolder
+									//println "adding object skipped folder check: "
 								}
-							}else{
-								//println "no match for: "+ObjFolder
-							}
-						}else{
-							if(ObjList.get(i).getObjectType().equals("TZ")){
-								UC4Obj = CommonAERequests.getUC4ObjectNameFromString(ObjList.get(i).getName(),true)
-							}else{
-								UC4Obj = CommonAERequests.getUC4ObjectNameFromString(ObjList.get(i).getName(),false)
-							}
-							if(UC4Obj != null){
-								ObjectNamesAsArray.add(UC4Obj)
-								FilteredList.add(ObjList.get(i))
-								//println "adding object skipped folder check: "
 							}
 						}
-					}
-					
-					UC4ObjectName[] objectNames = ObjectNamesAsArray.toArray()
-					
-			//		objectNames.each{
-			//			println "Debug:"+it.getName()
-			//		}
-					
-					// File needs to be served.. 
-					if(COMMIT) {
-						String res = CommonAERequests.exportObjects(file,objectNames,conn);
-						if(res == null){
-							//JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(ObjList,COMMIT);
-							//file.delete()
-							//return json
-							return file
+						
+						UC4ObjectName[] objectNames = ObjectNamesAsArray.toArray()
+						
+				//		objectNames.each{
+				//			println "Debug:"+it.getName()
+				//		}
+						
+						// File needs to be served..
+						if(COMMIT) {
+							String res = CommonAERequests.exportObjects(file,objectNames,conn);
+							if(res == null){
+								//JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(ObjList,COMMIT);
+								//file.delete()
+								//return json
+								return file
+							}else{
+								file.delete()
+								//println "Debug in herte"
+								return CommonJSONRequests.renderErrorAsJSON(res)
+								//return file
+							}
+							
 						}else{
-							file.delete()
-							//println "Debug in herte"
-							return CommonJSONRequests.renderErrorAsJSON(res)
-							//return file
+							JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(FilteredList,COMMIT);
+							
+							return json
 						}
-						
-					}else{
-						JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(FilteredList,COMMIT);
-						
-						return json
+																																																													
 					}
-					
 				}else{
 					JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
 					return json
@@ -492,4 +701,11 @@ class AllGETActions {
 					}
 			}
 		}
+	private static def GenerateFileForExport(){
+			SessionIdentifierGenerator sig = new SessionIdentifierGenerator();
+			String RANDOMTOKEN = sig.nextSessionId();
+			String StringXmlExportFileName = "XMLExport_" + RANDOMTOKEN + ".xml"
+			File file = new File(StringXmlExportFileName);
+			return file;
+	}
 }

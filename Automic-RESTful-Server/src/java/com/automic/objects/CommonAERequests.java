@@ -264,10 +264,12 @@ public class CommonAERequests {
 
 		connection.sendRequestAndWait(req);
 
+		
 		if (req.getMessageBox() != null) {
-			if(verbose){System.out.println(" -- "+req.getMessageBox().getText().toString().replace("\n", ""));}
+			//System.out.println(" -- "+req.getMessageBox().getText().replace("\n", ""));
 			return null;
 		}
+		
 		return req;
 	}
 	
