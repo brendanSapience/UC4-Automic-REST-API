@@ -88,7 +88,7 @@ class ARAPackagesController {
 			
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
-				if(true){ //Environment.current == Environment.DEVELOPMENT){
+				if(false){ //Environment.current == Environment.DEVELOPMENT){
 					myRes = actionClass."${OPERATION}"(VERSION,TOKEN,params,request,grailsAttributes);
 				}else{
 				// otherwise it needs to be caught

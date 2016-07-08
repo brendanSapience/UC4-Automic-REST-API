@@ -20,7 +20,6 @@ import com.uc4.communication.requests.XMLRequest
 import grails.util.Environment
 import groovy.json.JsonBuilder
 
-import com.automic.ae.actions.get.ActivitiesGETActions;
 import com.automic.connection.AECredentials;
 import com.automic.connection.ConnectionManager;
 import com.automic.objects.CommonAERequests
@@ -28,11 +27,11 @@ import com.automic.utils.ActionClassUtils
 import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
 
-class ActivitiesController {
+class ARAEntitiesController {
 	
 	Class actionClass
 	boolean ClassFound = true;
-	String RootPackage = "com.automic.ae.actions.";
+	String RootPackage = "com.automic.ara.actions.";
 	/**
 	 * @name help
 	 * @purpose return a JSON structure containing the list of available operations for a given Object Type
@@ -55,17 +54,27 @@ class ActivitiesController {
 	
 	def router = {
 		String FILTERS = params.filters;
-		String TOKEN = params.token;
 		String VERSION = params.version;
 		String METHOD = params.method;
 		String OPERATION = params.operation.toString().toLowerCase(); // makes sure the operation is lower case
 		String OBJECT = params.object.toString().toLowerCase().capitalize(); //Makes sure we have camel case on the Object Name
 		String HTTPMETHOD = request.method;
+		String TOKEN = params.token;
+		String PRODUCT = params.operation.toString().toLowerCase();
 		
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
-		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
+		if(Environment.current == Environment.DEVELOPMENT){
+			
+			TOKEN = ConnectionManager.bypassAuth();
+			if(TOKEN.startsWith("--")){
+					render(text:  TOKEN, contentType: "text/json", encoding: "UTF-8")
+				}
+			}
+		
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
+			
+			
 			JsonBuilder myRes;
 			// Dynamically loading the Class based on Object name, and HTTP Method (GET, POST etc.)
 
@@ -80,18 +89,17 @@ class ActivitiesController {
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
 				if(false){ //Environment.current == Environment.DEVELOPMENT){
-					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
+					myRes = actionClass."${OPERATION}"(VERSION,TOKEN,params,request,grailsAttributes);
 				}else{
 				// otherwise it needs to be caught
 					try{
-						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
+						myRes = actionClass."${OPERATION}"(VERSION,TOKEN,params,request,grailsAttributes);
 					}catch(MissingMethodException){
 						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
 					}
 				}
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
-			
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
 	}
 }

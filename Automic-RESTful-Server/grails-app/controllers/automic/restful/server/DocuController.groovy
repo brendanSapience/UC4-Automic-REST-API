@@ -79,7 +79,7 @@ class DocuController {
 			
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
-				if(true){ //Environment.current == Environment.DEVELOPMENT){
+				if(false){ //Environment.current == Environment.DEVELOPMENT){
 					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 				}else{
 				// otherwise it needs to be caught
