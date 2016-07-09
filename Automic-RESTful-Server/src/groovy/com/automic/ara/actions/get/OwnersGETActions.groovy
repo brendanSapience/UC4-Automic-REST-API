@@ -41,7 +41,7 @@ import com.automic.utils.CommonJSONRequests
 import com.automic.utils.MiscUtils
 import com.uc4.communication.requests.GetComments.Comment
 
-class EntitiesGETActions {
+class OwnersGETActions {
 
 	/**
 	 * @purpose this section contains all "routing" methods: routing methods call internal versionned methods. ex: "search" can call searchv1 or searchv2 etc. depending on the version in URL params
@@ -51,28 +51,24 @@ class EntitiesGETActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def archive(String version, String TOKEN, params,request, grailsattr){return "archive${version}"(TOKEN, params)}
-
+	public static def get(String version, String TOKEN, params,request, grailsattr){return "get${version}"(TOKEN, params)}
+	public static def set(String version, String TOKEN, params,request, grailsattr){return "set${version}"(TOKEN, params)}
+	
 	/**
-	 * @purpose Archive ARA Entities
+	 * @purpose Set ARA Owner for Object Name
 	 * @return JsonBuilder object
 	 * @version v1
 	 */
-	public static def archivev1(TOKEN, params){
+	public static def setv1(TOKEN, params){
 		def AllParamMap = [:]
 		AllParamMap = [
 			//name (format: name= < UC4RegEx > )
 			'required_parameters': [
-				'type (format: type=<String> (Package Type)',
+				'name (format: name=<String> (Object Name)',
+				'type (format: type=<String> (Object Type)',
+				'owner (format: owner=<String> (Owner Name)',
 			],
 			'optional_parameters': [
-				'name (format: name=<String> (Entity Name)',
-				'owner (format: owner=<String> (Owner)',
-				'folder (format: folder=<String> (Folder)',
-				'customtype (format: customtype=<String> (Custom Type)',
-				'startdate (format: startdate=<String> (Start Date)',
-				'enddate (format: enddate=<String> (End Date)',
-				'conditions (format: conditions=<String> (Conditions)',
 			],
 			'optional_filters': [],
 			'required_methods': [],
@@ -80,16 +76,11 @@ class EntitiesGETActions {
 			]
 
 		String FILTERS = params.filters;
-		String METHOD = params.method;	
+		String METHOD = params.method;
 		
-		String ENTNAME = params.name;
-		String OWNERNAME = params.owner;
-		String FOLDER = params.folder;
-		String TYPE = params.type; // mandatory
-		String CUSTOMTYPE = params.customtype;
-		String STARTDATE = params.startdate;
-		String ENDDATE = params.enddate;
-		String CONDITIONS = params.conditions;
+		String TYPE = params.type; // Mandatory
+		String NAME = params.name; // Mandatory
+		String OWNER = params.owner; // Mandatory
 		
 		// Helper Methods
 		if(METHOD == "usage"){
@@ -101,8 +92,52 @@ class EntitiesGETActions {
 		//archiveEntities(String ENTNAME,String ENTOWNER, String ENTFOLDER,String ENTTYPE, String CUSTOMENTTYPE,
 		//	String STARTDATE,String ENDDATE,String CONDITIONS,ConnectionPoolItem item)
 					ConnectionManager.getConnectionItemFromToken(TOKEN)
-					JsonBuilder res = CommonARARequests.archiveEntities(ENTNAME,OWNERNAME,FOLDER,TYPE,CUSTOMTYPE,
-						,STARTDATE,ENDDATE,CONDITIONS,ConnectionManager.getConnectionItemFromToken(TOKEN));
+					JsonBuilder res = CommonARARequests.setOwner(NAME,TYPE,OWNER,ConnectionManager.getConnectionItemFromToken(TOKEN));
+
+					return res;
+				}else{
+					 return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+				 }
+		}
+	}
+	
+	/**
+	 * @purpose Get ARA Owner from Object
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def getv1(TOKEN, params){
+		def AllParamMap = [:]
+		AllParamMap = [
+			//name (format: name= < UC4RegEx > )
+			'required_parameters': [
+				'name (format: name=<String> (Object Name)',
+				'type (format: type=<String> (Object Type)',
+			],
+			'optional_parameters': [
+			],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+
+		String FILTERS = params.filters;
+		String METHOD = params.method;
+		
+		String TYPE = params.type; // Mandatory
+		String NAME = params.name; // Mandatory
+		
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+			return json
+		}else{
+				if(MiscUtils.checkParams(AllParamMap, params)){
+		//archiveEntities(String ENTNAME,String ENTOWNER, String ENTFOLDER,String ENTTYPE, String CUSTOMENTTYPE,
+		//	String STARTDATE,String ENDDATE,String CONDITIONS,ConnectionPoolItem item)
+					ConnectionManager.getConnectionItemFromToken(TOKEN)
+					JsonBuilder res = CommonARARequests.getOwners(NAME,TYPE,ConnectionManager.getConnectionItemFromToken(TOKEN));
 
 					return res;
 				}else{

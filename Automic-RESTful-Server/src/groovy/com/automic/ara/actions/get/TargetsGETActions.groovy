@@ -41,7 +41,7 @@ import com.automic.utils.CommonJSONRequests
 import com.automic.utils.MiscUtils
 import com.uc4.communication.requests.GetComments.Comment
 
-class EntitiesGETActions {
+class TargetsGETActions {
 
 	/**
 	 * @purpose this section contains all "routing" methods: routing methods call internal versionned methods. ex: "search" can call searchv1 or searchv2 etc. depending on the version in URL params
@@ -51,28 +51,28 @@ class EntitiesGETActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def archive(String version, String TOKEN, params,request, grailsattr){return "archive${version}"(TOKEN, params)}
+	public static def create(String version, String TOKEN, params,request, grailsattr){return "create${version}"(TOKEN, params)}
 
 	/**
 	 * @purpose Archive ARA Entities
 	 * @return JsonBuilder object
 	 * @version v1
 	 */
-	public static def archivev1(TOKEN, params){
+	public static def createv1(TOKEN, params){
 		def AllParamMap = [:]
 		AllParamMap = [
 			//name (format: name= < UC4RegEx > )
 			'required_parameters': [
+				'name (format: name=<String> (Target Name)',
+				'folder (format: folder=<String> (Folder)',
 				'type (format: type=<String> (Package Type)',
 			],
 			'optional_parameters': [
-				'name (format: name=<String> (Entity Name)',
-				'owner (format: owner=<String> (Owner)',
-				'folder (format: folder=<String> (Folder)',
-				'customtype (format: customtype=<String> (Custom Type)',
-				'startdate (format: startdate=<String> (Start Date)',
-				'enddate (format: enddate=<String> (End Date)',
-				'conditions (format: conditions=<String> (Conditions)',
+				
+				'owner (format: owner=<String> (Owner)',			
+				'env (format: env=<String> (Environment ID)',
+				'agent (format: agent=<String> (Agent Name)',
+				'failifexists (format: failifexists (Fail if Target Exists, otherwise Update Target)',
 			],
 			'optional_filters': [],
 			'required_methods': [],
@@ -80,16 +80,16 @@ class EntitiesGETActions {
 			]
 
 		String FILTERS = params.filters;
-		String METHOD = params.method;	
+		String METHOD = params.method;
 		
-		String ENTNAME = params.name;
-		String OWNERNAME = params.owner;
-		String FOLDER = params.folder;
-		String TYPE = params.type; // mandatory
-		String CUSTOMTYPE = params.customtype;
-		String STARTDATE = params.startdate;
-		String ENDDATE = params.enddate;
-		String CONDITIONS = params.conditions;
+		String TYPE = params.type; // Mandatory
+		String NAME = params.name; // Mandatory
+		String FOLDER = params.folder; // Mandatory
+		
+		String OWNER = params.owner;
+		String ENVIRONMENTID = params.env;
+		String AGENT = params.agent;
+		String FAILIFEXISTS = params.failifexists;
 		
 		// Helper Methods
 		if(METHOD == "usage"){
@@ -101,8 +101,8 @@ class EntitiesGETActions {
 		//archiveEntities(String ENTNAME,String ENTOWNER, String ENTFOLDER,String ENTTYPE, String CUSTOMENTTYPE,
 		//	String STARTDATE,String ENDDATE,String CONDITIONS,ConnectionPoolItem item)
 					ConnectionManager.getConnectionItemFromToken(TOKEN)
-					JsonBuilder res = CommonARARequests.archiveEntities(ENTNAME,OWNERNAME,FOLDER,TYPE,CUSTOMTYPE,
-						,STARTDATE,ENDDATE,CONDITIONS,ConnectionManager.getConnectionItemFromToken(TOKEN));
+					JsonBuilder res = CommonARARequests.createTarget(NAME,FOLDER,TYPE,OWNER,ENVIRONMENTID
+						,AGENT,FAILIFEXISTS,ConnectionManager.getConnectionItemFromToken(TOKEN));
 
 					return res;
 				}else{

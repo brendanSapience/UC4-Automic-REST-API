@@ -31,7 +31,7 @@ import com.automic.utils.MiscUtils;
 class ARAController {
 	
 	def getObjectList = {
-		def ObjectList = ["Packages","Workflows"] as String[]
+		def ObjectList = ["Entities","Environments","Folders","Owners","Packages","Profiles","Targets","Workflows"] as String[]
 		
 		def data = [
 			status: "success",
