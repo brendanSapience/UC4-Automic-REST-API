@@ -9442,3 +9442,537 @@ C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automi
 				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\JOBSSpecDisplay.groovy] changed. Applying changes to application.
 2016-07-07_22:17:06.879 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
 				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\JOBSSpecDisplay.groovy] changed. Applying changes to application.
+2016-07-09_13:36:10.669 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Attempting to load [0] user defined plugins
+2016-07-09_13:36:11.267 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [restResponder] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.267 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataBinding] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.267 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [core] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.272 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataSource] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.273 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [servlets] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.273 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [i18n] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.273 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [codecs] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.273 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [webxml] with version [1.4.1] loaded successfully
+2016-07-09_13:36:11.273 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [databaseMigration] with version [1.4.0] loaded successfully
+2016-07-09_13:36:11.273 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [jquery] with version [1.11.1] loaded successfully
+2016-07-09_13:36:11.273 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [tomcat] with version [7.0.55] loaded successfully
+2016-07-09_13:36:11.274 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [urlMappings] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.275 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllers] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.275 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [mimeTypes] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.276 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [assetPipeline] with version [1.9.9] loaded successfully
+2016-07-09_13:36:11.279 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [domainClass] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.279 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllersAsync] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.280 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [filters] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.280 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [hibernate4] with version [4.3.6.1] loaded successfully
+2016-07-09_13:36:11.283 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [converters] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.283 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [validation] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.283 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [groovyPages] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.283 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [services] with version [2.4.4] loaded successfully
+2016-07-09_13:36:11.286 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [scaffolding] with version [2.1.2] loaded successfully
+2016-07-09_13:36:11.286 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [cache] with version [1.1.8] loaded successfully
+2016-07-09_13:36:11.470 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-09_13:36:11.497 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-09_13:36:12.089 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-09_13:36:12.095 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-09_13:38:03.240 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\AllGETActions.groovy] added. Applying changes to application.
+2016-07-09_13:38:08.916 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\AllGETActions.groovy] changed. Applying changes to application.
+2016-07-09_13:44:11.131 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\AllGETActions.groovy] changed. Applying changes to application.
+2016-07-09_13:44:11.623 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\AllGETActions.groovy] changed. Applying changes to application.
+2016-07-09_13:46:00.731 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_13:46:02.262 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_13:46:07.717 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_13:46:08.578 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_13:47:50.957 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_13:47:51.681 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_13:48:12.635 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAAllController.groovy] added. Applying changes to application.
+2016-07-09_13:48:18.122 [Thread-11] ERROR o.c.g.g.p.AbstractGrailsPluginManager -
+				Plugin [controllers:2.4.4] could not reload changes to file [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAAllController.groovy]: Cannot get property 'cacheOperationSource' on null object
+java.lang.NullPointerException: Cannot get property 'cacheOperationSource' on null object
+	at org.codehaus.groovy.runtime.NullObject.getProperty(NullObject.java:57) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.InvokerHelper.getProperty(InvokerHelper.java:168) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.NullCallSite.getProperty(NullCallSite.java:44) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGetProperty(AbstractCallSite.java:227) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.doCall(CacheGrailsPlugin.groovy:184) ~[plugin-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_11]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_11]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_11]
+	at java.lang.reflect.Method.invoke(Method.java:601) ~[na:1.7.0_11]
+	at org.springsource.loaded.ri.OriginalClassInvoker.invoke(OriginalClassInvoker.java:47) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1299) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.Closure.call(Closure.java:423) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.call(CacheGrailsPlugin.groovy) ~[plugin-classes/:na]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.invokeOnChangeListener(DefaultGrailsPlugin.java:767) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:716) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager.informObservers(DefaultGrailsPluginManager.java:242) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:732) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfClassChange(AbstractGrailsPluginManager.java:408) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfFileChange(AbstractGrailsPluginManager.java:366) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.informPluginManager(GrailsProjectWatcher.java:226) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.access$400(GrailsProjectWatcher.java:48) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher$1.onNew(GrailsProjectWatcher.java:152) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.compiler.AbstractDirectoryWatcher.fireOnNew(AbstractDirectoryWatcher.java:76) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.compiler.WatchServiceDirectoryWatcher.run(WatchServiceDirectoryWatcher.java:95) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.compiler.DirectoryWatcher.run(DirectoryWatcher.java:154) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.run(GrailsProjectWatcher.java:161) [grails-project-api-2.4.4.jar:2.4.4]
+2016-07-09_13:48:18.128 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAAllController.groovy] changed. Applying changes to application.
+2016-07-09_13:48:19.134 [FileSystemWatcher: files=#71 cl=java.net.URLClassLoader@3c2d46f7] ERROR o.c.g.g.p.AbstractGrailsPluginManager -
+				Plugin [controllers:2.4.4] could not reload changes to file [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAAllController.groovy]: Cannot get property 'cacheOperationSource' on null object
+java.lang.NullPointerException: Cannot get property 'cacheOperationSource' on null object
+	at org.codehaus.groovy.runtime.NullObject.getProperty(NullObject.java:57) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.InvokerHelper.getProperty(InvokerHelper.java:168) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.NullCallSite.getProperty(NullCallSite.java:44) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGetProperty(AbstractCallSite.java:227) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.doCall(CacheGrailsPlugin.groovy:184) ~[plugin-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_11]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_11]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_11]
+	at java.lang.reflect.Method.invoke(Method.java:601) ~[na:1.7.0_11]
+	at org.springsource.loaded.ri.OriginalClassInvoker.invoke(OriginalClassInvoker.java:47) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1299) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.Closure.call(Closure.java:423) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.call(CacheGrailsPlugin.groovy) ~[plugin-classes/:na]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.invokeOnChangeListener(DefaultGrailsPlugin.java:767) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:716) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager.informObservers(DefaultGrailsPluginManager.java:242) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:732) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfClassChange(AbstractGrailsPluginManager.java:408) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher$2.run(GrailsProjectWatcher.java:246) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.firePendingClassChangeEvents(GrailsProjectWatcher.java:107) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.cli.agent.GrailsPluginManagerReloadPlugin.reloadEvent(GrailsPluginManagerReloadPlugin.java:42) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.springsource.loaded.TypeRegistry.fireReloadEvent(TypeRegistry.java:1794) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ReloadableType.loadNewVersion(ReloadableType.java:417) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.TypeRegistry.loadNewVersion(TypeRegistry.java:845) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.ReloadableFileChangeListener.fileChanged(ReloadableFileChangeListener.java:51) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.Watcher.determineChangesSince(FileSystemWatcher.java:235) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.Watcher.run(FileSystemWatcher.java:219) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_11]
+2016-07-09_13:48:39.641 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAController.groovy] changed. Applying changes to application.
+2016-07-09_13:48:40.195 [Thread-11] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAController.groovy] changed. Applying changes to application.
+2016-07-09_13:50:42.057 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Attempting to load [0] user defined plugins
+2016-07-09_13:50:42.428 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [core] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.434 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [servlets] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.435 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [urlMappings] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.435 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataBinding] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.435 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [restResponder] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.435 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [i18n] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.435 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [webxml] with version [1.4.1] loaded successfully
+2016-07-09_13:50:42.435 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [assetPipeline] with version [1.9.9] loaded successfully
+2016-07-09_13:50:42.435 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [databaseMigration] with version [1.4.0] loaded successfully
+2016-07-09_13:50:42.435 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [jquery] with version [1.11.1] loaded successfully
+2016-07-09_13:50:42.436 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [tomcat] with version [7.0.55] loaded successfully
+2016-07-09_13:50:42.436 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataSource] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.436 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [codecs] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.436 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllers] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.436 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [filters] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.440 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [groovyPages] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.440 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllersAsync] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.440 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [domainClass] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.440 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [scaffolding] with version [2.1.2] loaded successfully
+2016-07-09_13:50:42.445 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [hibernate4] with version [4.3.6.1] loaded successfully
+2016-07-09_13:50:42.445 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [mimeTypes] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.446 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [converters] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.446 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [validation] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.450 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [services] with version [2.4.4] loaded successfully
+2016-07-09_13:50:42.450 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [cache] with version [1.1.8] loaded successfully
+2016-07-09_13:50:42.889 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-09_13:50:42.911 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-09_13:50:43.201 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-09_13:50:43.206 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-09_13:54:57.385 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAAllController.groovy] changed. Applying changes to application.
+2016-07-09_13:54:58.816 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAAllController.groovy] changed. Applying changes to application.
+2016-07-09_13:57:18.223 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_13:57:19.900 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_13:59:30.115 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAEnvironmentsController.groovy] changed. Applying changes to application.
+2016-07-09_13:59:30.838 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAEnvironmentsController.groovy] changed. Applying changes to application.
+2016-07-09_14:01:45.277 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:01:46.017 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:02:17.333 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:02:18.083 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:03:09.708 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:03:11.011 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:03:13.946 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:03:14.618 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:03:33.023 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Attempting to load [0] user defined plugins
+2016-07-09_14:03:33.335 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [restResponder] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.335 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [i18n] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.342 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [core] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.342 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataBinding] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.343 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [webxml] with version [1.4.1] loaded successfully
+2016-07-09_14:03:33.343 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [databaseMigration] with version [1.4.0] loaded successfully
+2016-07-09_14:03:33.343 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [jquery] with version [1.11.1] loaded successfully
+2016-07-09_14:03:33.343 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [tomcat] with version [7.0.55] loaded successfully
+2016-07-09_14:03:33.344 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [urlMappings] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.344 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [codecs] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.344 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllers] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.345 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataSource] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.345 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [servlets] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.346 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [mimeTypes] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.346 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [assetPipeline] with version [1.9.9] loaded successfully
+2016-07-09_14:03:33.349 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllersAsync] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.350 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [filters] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.350 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [domainClass] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.350 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [hibernate4] with version [4.3.6.1] loaded successfully
+2016-07-09_14:03:33.353 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [groovyPages] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.354 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [converters] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.354 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [validation] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.354 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [services] with version [2.4.4] loaded successfully
+2016-07-09_14:03:33.356 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [scaffolding] with version [2.1.2] loaded successfully
+2016-07-09_14:03:33.356 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [cache] with version [1.1.8] loaded successfully
+2016-07-09_14:03:33.458 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-09_14:03:33.478 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-09_14:03:34.456 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-09_14:03:34.463 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-09_14:05:56.409 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:05:58.878 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:36.455 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:37.163 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:42.713 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:43.350 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:46.972 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:47.765 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:50.769 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:51.499 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:54.222 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:55.167 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:58.534 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:06:59.086 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:02.446 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:03.132 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:06.644 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:07.113 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:09.591 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:10.303 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:15.624 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:16.160 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:26.998 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:27.549 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:33.760 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:07:34.191 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:08:28.297 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:08:28.833 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:21:16.253 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Attempting to load [0] user defined plugins
+2016-07-09_14:21:16.600 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataBinding] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.600 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [restResponder] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.600 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [i18n] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.600 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [core] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.606 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [urlMappings] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.606 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [webxml] with version [1.4.1] loaded successfully
+2016-07-09_14:21:16.606 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [assetPipeline] with version [1.9.9] loaded successfully
+2016-07-09_14:21:16.606 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [databaseMigration] with version [1.4.0] loaded successfully
+2016-07-09_14:21:16.606 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [jquery] with version [1.11.1] loaded successfully
+2016-07-09_14:21:16.606 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [tomcat] with version [7.0.55] loaded successfully
+2016-07-09_14:21:16.606 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataSource] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.607 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllers] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.607 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllersAsync] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.607 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [servlets] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.607 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [codecs] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.620 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [domainClass] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.620 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [filters] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.620 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [mimeTypes] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.621 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [converters] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.624 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [groovyPages] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.624 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [scaffolding] with version [2.1.2] loaded successfully
+2016-07-09_14:21:16.624 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [hibernate4] with version [4.3.6.1] loaded successfully
+2016-07-09_14:21:16.624 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [services] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.628 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [validation] with version [2.4.4] loaded successfully
+2016-07-09_14:21:16.628 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [cache] with version [1.1.8] loaded successfully
+2016-07-09_14:21:17.092 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-09_14:21:17.108 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-09_14:21:17.389 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-09_14:21:17.394 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-09_14:22:47.760 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:22:49.650 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:23:13.181 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:23:13.963 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:25:41.070 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:25:41.495 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:26:19.201 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:26:19.717 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:26:45.287 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:26:45.815 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:27:53.311 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:27:53.891 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:30:40.057 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:30:40.453 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:31:03.047 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:31:03.680 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:31:14.104 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:31:14.404 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:31:42.694 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:31:43.185 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:31:54.935 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:31:55.300 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:32:57.887 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:32:58.265 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:33:18.288 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:33:18.734 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\ARACmdOutputManager.java] changed. Applying changes to application.
+2016-07-09_14:40:05.431 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:40:06.292 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonARARequests.java] changed. Applying changes to application.
+2016-07-09_14:40:19.818 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAOwnersController.groovy] changed. Applying changes to application.
+2016-07-09_14:40:20.974 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAOwnersController.groovy] changed. Applying changes to application.
+2016-07-09_14:41:10.118 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\OwnersGETActions.groovy] changed. Applying changes to application.
+2016-07-09_14:41:10.736 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\OwnersGETActions.groovy] changed. Applying changes to application.
+2016-07-09_15:00:55.925 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\ProfilesGETActions.groovy] changed. Applying changes to application.
+2016-07-09_15:00:56.670 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\ProfilesGETActions.groovy] changed. Applying changes to application.
+2016-07-09_15:18:54.331 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\PropertiesGETActions.groovy] changed. Applying changes to application.
+2016-07-09_15:18:54.907 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\PropertiesGETActions.groovy] changed. Applying changes to application.
+2016-07-09_15:33:55.907 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\PropertiesGETActions.groovy] changed. Applying changes to application.
+2016-07-09_15:33:56.198 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\PropertiesGETActions.groovy: 1: expecting EOF, found 'package' @ line 1, column 6.
+   show package com.automic.ara.actions.get
+        ^
+
+1 error
+
+2016-07-09_15:33:56.205 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\PropertiesGETActions.groovy] changed. Applying changes to application.
+2016-07-09_15:33:56.434 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\PropertiesGETActions.groovy: 1: expecting EOF, found 'package' @ line 1, column 6.
+   show package com.automic.ara.actions.get
+        ^
+
+1 error
+
+2016-07-09_15:34:01.827 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\PropertiesGETActions.groovy] changed. Applying changes to application.
+2016-07-09_15:34:02.451 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\PropertiesGETActions.groovy] changed. Applying changes to application.
+2016-07-09_15:35:36.249 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAAllController.groovy] changed. Applying changes to application.
+2016-07-09_15:35:36.931 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAAllController.groovy] changed. Applying changes to application.
+2016-07-09_15:35:46.184 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAEnvironmentsController.groovy] changed. Applying changes to application.
+2016-07-09_15:35:46.908 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAEnvironmentsController.groovy] changed. Applying changes to application.
+2016-07-09_15:35:51.215 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAOwnersController.groovy] changed. Applying changes to application.
+2016-07-09_15:35:51.885 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAOwnersController.groovy] changed. Applying changes to application.
+2016-07-09_15:44:00.635 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAController.groovy] changed. Applying changes to application.
+2016-07-09_15:44:01.649 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ARAController.groovy] changed. Applying changes to application.

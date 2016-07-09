@@ -37,6 +37,30 @@ public class ARACmdOutputManager {
 			 }
 			 
 			// Msg = response.split("INFO:")[1].replace("\r\n", " ");
+		 }else if(response.contains("RESULT:")){
+			 String[] InfoFields = response.split("RESULT:");
+			 Msg = "";
+			 for(int i=0;i<InfoFields.length;i++){
+				 if(i>=1){
+					 Msg = Msg +" "+ InfoFields[i].replace("\r\n", " ") ;
+				 }
+				
+			 }
+			 
+			// Msg = response.split("INFO:")[1].replace("\r\n", " ");
+		 }
+ 
+		 else{
+			 String[] InfoFields = response.split("DMTool: PARAM:");
+			 String MsgTemp = InfoFields[InfoFields.length-1];
+			 String[] SanitizedArray = MsgTemp.replace("\r\n", " ").split(" ");
+			 Msg = "";
+			 for(int i=4;i<SanitizedArray.length;i++){
+				 Msg = Msg + " " + SanitizedArray[i];
+			 }
+					 
+			// Msg = Msg;
+
 		 }
 		return Msg;	
 		

@@ -137,7 +137,7 @@ class OwnersGETActions {
 		//archiveEntities(String ENTNAME,String ENTOWNER, String ENTFOLDER,String ENTTYPE, String CUSTOMENTTYPE,
 		//	String STARTDATE,String ENDDATE,String CONDITIONS,ConnectionPoolItem item)
 					ConnectionManager.getConnectionItemFromToken(TOKEN)
-					JsonBuilder res = CommonARARequests.getOwners(NAME,TYPE,ConnectionManager.getConnectionItemFromToken(TOKEN));
+					JsonBuilder res = CommonARARequests.getOwner(NAME,TYPE,ConnectionManager.getConnectionItemFromToken(TOKEN));
 
 					return res;
 				}else{

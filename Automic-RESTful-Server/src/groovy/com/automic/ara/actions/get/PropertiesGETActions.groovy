@@ -69,7 +69,7 @@ class PropertiesGETActions {
 				'objname (format: objname=<String> (ID or Name of the object of the dynamic property to get)',
 				'value (format: value=<String> (Value of Dynamic Property to create)',
 				'valuetype (format: valuetype=<String> (value type of the dynamic property to create. Options are: Static, Expression, Prompt)',
-				'proptype (format: proptype=<String> (dynamic property type of the dynamic property to create. Options: Number, Protected, Short Text, Single Line Text, List)',
+				'proptype (format: proptype=<String> (dynamic property type of the dynamic property to create. Options: Number, Protected, ShortText, SingleLineText, List)',
 			],
 			'optional_parameters': [
 				'objtype (format: objtype=<String> (Typeof Object that holds the property (can be ommited if objname is given the object ID))',

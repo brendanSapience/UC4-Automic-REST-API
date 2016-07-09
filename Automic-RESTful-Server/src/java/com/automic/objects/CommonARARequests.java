@@ -14,6 +14,7 @@ import com.uc4.ara.feature.rm.CreateDeployPackage;
 import com.uc4.ara.feature.rm.CreateDeploymentTarget;
 import com.uc4.ara.feature.rm.CreateEnvironment;
 import com.uc4.ara.feature.rm.CreateProfile;
+import com.uc4.ara.feature.rm.DeleteObject;
 import com.uc4.ara.feature.rm.ExecuteApplicationWorkflow;
 import com.uc4.ara.feature.rm.ExecuteGeneralWorkflow;
 import com.uc4.ara.feature.rm.GetDeploymentProfileID;
@@ -29,6 +30,48 @@ import com.uc4.ara.feature.rm.SetPackageState;
 
 public class CommonARARequests {
 
+	//deleteObject(NAME,TYPE,FAILIFMISSING,ConnectionManager.getConnectionItemFromToken(TOKEN));
+	public static JsonBuilder deleteObject(String NAME, String TYPE, boolean FAILIFMISSING,ConnectionPoolItem item) throws Exception{
+		String ARAURL = item.getARAUrl(); //"http://192.168.17.136/ARA"
+		String USERSTRING = item.getClient()+"/"+item.getUser()+"/"+item.getDept(); //"100/ARA/ARA"
+		String PWD = item.getPassword(); //"ara"
+		
+		ArrayList<String> TempParams = getMandatoryParametersArray(ARAURL,USERSTRING,PWD);
+
+		// mandatory params
+		TempParams.add("-n");TempParams.add(NAME);
+		TempParams.add("-t");TempParams.add(TYPE);
+		if(FAILIFMISSING){TempParams.add("-fm");TempParams.add("YES");};
+		if(!FAILIFMISSING){TempParams.add("-fm");TempParams.add("NO");};
+		
+		// optional params
+		
+		String[] PARAMS = new String[TempParams.size()];
+		PARAMS = TempParams.toArray(PARAMS);
+
+		// the dm-tools.jar just outputs everything to stdout.. overriding this behavior temporarily
+				ByteArrayOutputStream baos = ARACmdOutputManager.OverrideStdOutputStream();
+				
+				DeleteObject f = new DeleteObject();
+				f.initialize();
+				int code = -1;
+				try{
+					code = f.run(PARAMS);
+				}catch(ConnectException c){
+					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
+				}
+			    
+			    // reverting to std sysout
+			    ARACmdOutputManager.RevertStdOutputStream();
+				String Msg = ARACmdOutputManager.extractMsg(baos.toString());
+
+				// processing the textual output of the command
+				if(code == 0){return CommonJSONRequests.renderARAOKAsJSON(Msg, code, true);}	
+				else{return CommonJSONRequests.renderARAErrorAsJSON("Could Not Delete Object:  " + Msg, code, true);}	
+	}
+	
 	// CommonARARequests.setProperty(NAME,OBJNAME,VALUE,VALUETYPE,PROPTYPE,OBJTYPE,NAMESPACE,HIGHLIGHTED,FAILIFDIFFERS,FAILIFEXISTS,ConnectionManager.getConnectionItemFromToken(TOKEN));
 	public static JsonBuilder setProperty(String NAME, String OBJNAME, String VALUE, String VALUETYPE,String PROPTYPE, String OBJTYPE,
 			String NAMESPACE,String HIGHLIGHTED, String FAILIFDIFFERS, String FAILIFEXISTS,ConnectionPoolItem item) throws Exception{
@@ -65,6 +108,8 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -104,6 +149,8 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -141,6 +188,8 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -179,6 +228,8 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -216,12 +267,13 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
 			    ARACmdOutputManager.RevertStdOutputStream();
 				String Msg = ARACmdOutputManager.extractMsg(baos.toString());
-
 				// processing the textual output of the command
 				if(code == 0){return CommonJSONRequests.renderARAOKAsJSON(Msg, code, true);}	
 				else{return CommonJSONRequests.renderARAErrorAsJSON("Could Not get Folder:  " + Msg, code, true);}	
@@ -256,6 +308,8 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -296,6 +350,8 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -334,6 +390,8 @@ public class CommonARARequests {
 						code = f.run(PARAMS);
 					}catch(ConnectException c){
 						return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+					}catch(RuntimeException r){
+						return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 					}
 				    
 				    // reverting to std sysout
@@ -384,6 +442,8 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -413,13 +473,7 @@ public class CommonARARequests {
 		
 		String[] PARAMS = new String[TempParams.size()];
 		PARAMS = TempParams.toArray(PARAMS);
-		
-//		String[] PARAMS = {
-//				"--url",ARAURL,"--username",USERSTRING, "--password",PWD,
-//				  "-n", ENTNAME,"-o",ENTOWNER, "-f",ENTFOLDER , "-t",ENTTYPE, "-c", CUSTOMENTTYPE,
-//				  "-s",STARTDATE,"-e",ENDDATE,"-co",CONDITIONS
-//			};
-		
+
 		// the dm-tools.jar just outputs everything to stdout.. overriding this behavior temporarily
 				ByteArrayOutputStream baos = ARACmdOutputManager.OverrideStdOutputStream();
 				
@@ -427,9 +481,13 @@ public class CommonARARequests {
 				f.initialize();
 				int code = -1;
 				try{
+					System.out.println("GAGA0");
 					code = f.run(PARAMS);
+					System.out.println("GAGA1");
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -465,13 +523,7 @@ public class CommonARARequests {
 		
 		String[] PARAMS = new String[TempParams.size()];
 		PARAMS = TempParams.toArray(PARAMS);
-		
-//		String[] PARAMS = {
-//				"--url",ARAURL,"--username",USERSTRING, "--password",PWD,
-//				  "-n", ENTNAME,"-o",ENTOWNER, "-f",ENTFOLDER , "-t",ENTTYPE, "-c", CUSTOMENTTYPE,
-//				  "-s",STARTDATE,"-e",ENDDATE,"-co",CONDITIONS
-//			};
-		
+
 		// the dm-tools.jar just outputs everything to stdout.. overriding this behavior temporarily
 				ByteArrayOutputStream baos = ARACmdOutputManager.OverrideStdOutputStream();
 				
@@ -482,6 +534,8 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -516,13 +570,7 @@ public class CommonARARequests {
 		
 		String[] PARAMS = new String[TempParams.size()];
 		PARAMS = TempParams.toArray(PARAMS);
-		
-//		String[] PARAMS = {
-//				"--url",ARAURL,"--username",USERSTRING, "--password",PWD,
-//				  "-n", ENTNAME,"-o",ENTOWNER, "-f",ENTFOLDER , "-t",ENTTYPE, "-c", CUSTOMENTTYPE,
-//				  "-s",STARTDATE,"-e",ENDDATE,"-co",CONDITIONS
-//			};
-		
+
 		// the dm-tools.jar just outputs everything to stdout.. overriding this behavior temporarily
 				ByteArrayOutputStream baos = ARACmdOutputManager.OverrideStdOutputStream();
 				
@@ -533,6 +581,8 @@ public class CommonARARequests {
 					code = f.run(PARAMS);
 				}catch(ConnectException c){
 					return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+				}catch(RuntimeException r){
+					return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 				}
 			    
 			    // reverting to std sysout
@@ -570,14 +620,6 @@ public class CommonARARequests {
 		
 		String[] PARAMS = new String[TempParams.size()];
 		PARAMS = TempParams.toArray(PARAMS);
-						
-		// Params need to be passed in a String[]
-//		String[] PARAMS = {
-//							"--url",ARAURL,"--username",USERSTRING, "--password",PWD,
-//							  "-n", PCKNAME,"-o",USERSTRING, "-f",FOLDER , "-t",TYPE
-//							  ,"-a",APPNAME
-//						};
-
 
 		// the dm-tools.jar just outputs everything to stdout.. overriding this behavior temporarily
 		ByteArrayOutputStream baos = ARACmdOutputManager.OverrideStdOutputStream();
@@ -589,6 +631,8 @@ public class CommonARARequests {
 			code = f.run(PARAMS);
 		}catch(ConnectException c){
 			return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+		}catch(RuntimeException r){
+			return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 		}
 	    
 	    // reverting to std sysout
@@ -609,12 +653,7 @@ public class CommonARARequests {
 
 		// mandatory params
 		TempParams.add("--package");TempParams.add(PCKNAME);
-//		
-//		String[] PARAMS = {
-//							"--url",ARAURL,"--username",USERSTRING, "--password",PWD,
-//							  "--package", PCKNAME  
-//						};
-		
+
 		String[] PARAMS = new String[TempParams.size()];
 		PARAMS = TempParams.toArray(PARAMS);
 		
@@ -626,7 +665,10 @@ public class CommonARARequests {
 			code = f.run(PARAMS);
 		}catch(ConnectException c){
 			return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+		}catch(RuntimeException r){
+			return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 		}
+		
 	    ARACmdOutputManager.RevertStdOutputStream();
 		String Msg = ARACmdOutputManager.extractMsg(baos.toString());
 		
@@ -657,12 +699,6 @@ public class CommonARARequests {
 		String[] PARAMS = new String[TempParams.size()];
 		PARAMS = TempParams.toArray(PARAMS);
 		
-//		String[] PARAMS = {
-//							"--url",ARAURL,"--username",USERSTRING, "--password",PWD,
-//							  "--package", PCKNAME,"--newstate",NEWSTATE, "--currentstate",CURRENTSTATE , "--notmatching",NOTMATCHING  
-//						};
-
-
 		ByteArrayOutputStream baos = ARACmdOutputManager.OverrideStdOutputStream();
 		SetPackageState f = new SetPackageState();
 		f.initialize();
@@ -671,7 +707,10 @@ public class CommonARARequests {
 			code = f.run(PARAMS);
 		}catch(ConnectException c){
 			return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+		}catch(RuntimeException r){
+			return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 		}
+		
 	    ARACmdOutputManager.RevertStdOutputStream();
 		String Msg = ARACmdOutputManager.extractMsg(baos.toString());
 		
@@ -703,15 +742,6 @@ public class CommonARARequests {
 		String[] PARAMS = new String[TempParams.size()];
 		PARAMS = TempParams.toArray(PARAMS);
 		
-//		String[] PARAMS = {
-//							"--url",ARAURL,"--username",USERSTRING, "--password",PWD,
-//							  "--workflowname", WFNAME,
-//							  "--application",APPNAME,  
-//							  "--package",PCKNAME,   
-//							  "--profile",PROFILE,   
-//							  "--skipifinstalled",SKIP,   //optional YES or NO
-//		};		
-
 		ByteArrayOutputStream baos = ARACmdOutputManager.OverrideStdOutputStream();
 		ExecuteApplicationWorkflow f = new ExecuteApplicationWorkflow();
 		f.initialize();
@@ -720,7 +750,10 @@ public class CommonARARequests {
 			code = f.run(PARAMS);
 		}catch(ConnectException c){
 			return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+		}catch(RuntimeException r){
+			return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 		}
+		
 	    ARACmdOutputManager.RevertStdOutputStream();
 		String Msg = ARACmdOutputManager.extractMsg(baos.toString());
 		
@@ -747,11 +780,6 @@ public class CommonARARequests {
 
 		String[] PARAMS = new String[TempParams.size()];
 		PARAMS = TempParams.toArray(PARAMS);
-		
-//		String[] PARAMS = {
-//							"--url",ARAURL,"--username",USERSTRING, "--password",PWD,
-//							  "--workflowname", WFNAME,
-//		};							  			
 
 		ByteArrayOutputStream baos = ARACmdOutputManager.OverrideStdOutputStream();
 		ExecuteGeneralWorkflow f = new ExecuteGeneralWorkflow();
@@ -761,7 +789,10 @@ public class CommonARARequests {
 			code = f.run(PARAMS);
 		}catch(ConnectException c){
 			return CommonJSONRequests.renderARAErrorAsJSON("Cannot connect to ARA Url: "+ARAURL, code, true);
+		}catch(RuntimeException r){
+			return CommonJSONRequests.renderARAErrorAsJSON("Error: "+ r.getMessage(), code, true);
 		}
+		
 	    ARACmdOutputManager.RevertStdOutputStream();
 		String Msg = ARACmdOutputManager.extractMsg(baos.toString());
 		
