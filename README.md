@@ -1,5 +1,8 @@
 # UC4-Automic-REST-API
 
+Full documentation here: UC4-Automic-REST-API-Delivery/Automic REST API Documentation.pdf
+
+
 REST API Server for Automic's ONE Automation Platform
 
 **Structure:**
