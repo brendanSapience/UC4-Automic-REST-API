@@ -22,6 +22,7 @@ import com.uc4.communication.requests.ExecuteObject
 import com.uc4.communication.requests.GenericStatistics
 import com.uc4.communication.requests.GetComments
 import com.uc4.communication.requests.GetSessionTZ
+import com.uc4.communication.requests.ModifyTaskState
 import com.uc4.communication.requests.QueryAutoforecast
 import com.uc4.communication.requests.QuitTask
 import com.uc4.communication.requests.RecalculateAutoForecast
@@ -62,11 +63,69 @@ class ActivitiesGETActions {
 	public static def unblock(String version, params,Connection conn,request, grailsattr){return "unblock${version}"(params,conn)}
 	public static def cancel(String version, params,Connection conn,request, grailsattr){return "cancel${version}"(params,conn)}
 	public static def resume(String version, params,Connection conn,request, grailsattr){return "resume${version}"(params,conn)}
-	public static def rollback(String version, params,Connection conn,request, grailsattr){return "rollback${version}"(params,conn)}
 	public static def suspend(String version, params,Connection conn,request, grailsattr){return "suspend${version}"(params,conn)}
+	public static def rollback(String version, params,Connection conn,request, grailsattr){return "rollback${version}"(params,conn)}
 	public static def show(String version, params,Connection conn,request, grailsattr){return "show${version}"(params,conn)}
 	public static def run(String version, params,Connection conn,request, grailsattr){return "run${version}"(params,conn)}
 	public static def forecast(String version, params,Connection conn,request, grailsattr){return "forecast${version}"(params,conn)}
+	public static def addbreak(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1562,"Task breakpoint added.")}
+	public static def delbreak(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1562,1700,"Task breakpoint removed.")}
+	public static def addskip(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1922,"Task deactivated / skipped.")}
+	public static def delskip(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1922,1700,"Task reactivated / unskipped.")}
+	public static def go(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1545,"Task Go Now Ok.")}
+	
+	/**
+	 * @purpose change task state
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	 public static def changetaskstatev1(params,Connection conn, int intitialState, int targetState, String Message) {
+ 
+		 def AllParamMap = [:]
+		 AllParamMap = [
+			 'required_parameters': ['runid (format: runid= < integer >'],
+			 'optional_parameters': [],
+			 'optional_filters': [],
+			 'required_methods': [],
+			 'optional_methods': ['usage']
+			 ]
+ 
+		 String FILTERS = params.filters;
+		 String METHOD = params.method;
+		 
+		 // Helper Methods
+		 if(METHOD == "usage"){
+			 JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			 return json
+			 //render(text: json, contentType: "text/json", encoding: "UTF-8")
+		 }else{
+ 
+				 if(MiscUtils.checkParams(AllParamMap, params)){
+					 
+					 String RUNIDASSTR = params.runid;
+					 int RUNID = RUNIDASSTR.toInteger();
+ 
+					 ModifyTaskState req = new ModifyTaskState(RUNID,intitialState,targetState);
+			 
+					 XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+					 if(res == null){
+						 JsonBuilder json = new JsonBuilder(
+							 [
+								 status: "error",
+								 message: req.getMessageBox().getText(),
+								 
+								 msgnumber:  req.getMessageBox().getNumber().toString()
+							 ])
+						 return json
+					 }else{
+						 JsonBuilder json = new JsonBuilder([status: "success", message: Message])
+						 return json
+					 }
+				 }else{
+					  return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+				  }
+		 }
+	 }
 	
 	/**
 	 * @purpose run a given object by name
@@ -550,10 +609,10 @@ class ActivitiesGETActions {
 							ArrayList<Comment> reqList = req.iterator().toList();
 							return new JsonBuilder(
 								[
-									success: true,
+									status: "success",
 									count: reqList.size(),
 									data: reqList.collect {[
-										test:it.text.toString(),
+										text:it.text.toString(),
 										timestamp:it.timestamp.toString(),
 										user:it.user.toString()
 										]}
@@ -605,7 +664,7 @@ class ActivitiesGETActions {
 					int RUNID = RUNIDASSTR.toInteger();
 
 					boolean ForceDeactivate = false;
-					if(FORCE.toUpperCase() =~/Y|YES|OK|TRUE/){
+					if(FORCE !=null && FORCE.toUpperCase() =~/Y|YES|OK|TRUE/){
 						ForceDeactivate=true;
 					}
 					DeactivateTask req = new DeactivateTask(RUNID,ForceDeactivate);
@@ -1096,13 +1155,17 @@ class ActivitiesGETActions {
 		Report req = new Report(RUNID, ReportType);
 		XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
 		
+		if(req.getMessageBox()!= null){
+			println "Error! " + req.getMessageBox().getText()
+		}
+		
 		int pgnum = req.getNumberOfPages();
 		
 		ArrayList<String> POSTReports = new ArrayList<String>();
 
 		int initValue = req.getCurrentPage();
 		for(int i = initValue;i<=pgnum;i++){
-		   POSTReports.add( req.getReport());
+		   POSTReports.add(req.getReport());
 		   req.nextPage(i);
 		   CommonAERequests.sendSyncRequest(conn,req,false);
 		}

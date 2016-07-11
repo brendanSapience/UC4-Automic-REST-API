@@ -10076,3 +10076,175 @@ C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\auto
 				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\TargetsGETActions.groovy] changed. Applying changes to application.
 2016-07-11_12:06:37.889 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
 				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ara\actions\get\TargetsGETActions.groovy] changed. Applying changes to application.
+2016-07-11_12:50:48.074 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Attempting to load [0] user defined plugins
+2016-07-11_12:50:48.512 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [restResponder] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.512 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [core] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.520 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataSource] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.520 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [i18n] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.520 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataBinding] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.520 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [codecs] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.521 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [webxml] with version [1.4.1] loaded successfully
+2016-07-11_12:50:48.521 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [databaseMigration] with version [1.4.0] loaded successfully
+2016-07-11_12:50:48.521 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [jquery] with version [1.11.1] loaded successfully
+2016-07-11_12:50:48.521 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [tomcat] with version [7.0.55] loaded successfully
+2016-07-11_12:50:48.521 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [urlMappings] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.521 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [servlets] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.523 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllers] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.524 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [assetPipeline] with version [1.9.9] loaded successfully
+2016-07-11_12:50:48.524 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [domainClass] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.529 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [mimeTypes] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.529 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [filters] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.529 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllersAsync] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.529 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [converters] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.534 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [groovyPages] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.534 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [scaffolding] with version [2.1.2] loaded successfully
+2016-07-11_12:50:48.534 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [hibernate4] with version [4.3.6.1] loaded successfully
+2016-07-11_12:50:48.534 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [validation] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.538 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [services] with version [2.4.4] loaded successfully
+2016-07-11_12:50:48.538 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [cache] with version [1.1.8] loaded successfully
+2016-07-11_12:50:48.724 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-11_12:50:48.748 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-11_12:50:49.500 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-11_12:50:49.508 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-11_14:08:46.263 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ActivitiesController.groovy] changed. Applying changes to application.
+2016-07-11_14:08:46.749 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ActivitiesController.groovy] changed. Applying changes to application.
+2016-07-11_14:12:39.495 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_14:12:40.158 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:04:58.455 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:04:59.155 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy: 103: Apparent variable 'FORCE' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'FORCE' but left out brackets in a place not allowed by the grammar.
+ @ line 103, column 10.
+   					 if(FORCE !=null && FORCE.toUpperCase() =~/Y|YES|OK|TRUE/){
+            ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy: 103: Apparent variable 'FORCE' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'FORCE' but left out brackets in a place not allowed by the grammar.
+ @ line 103, column 26.
+   					 if(FORCE !=null && FORCE.toUpperCase() =~/Y|YES|OK|TRUE/){
+                            ^
+
+2 errors
+
+2016-07-11_15:04:59.163 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:04:59.895 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy: 103: Apparent variable 'FORCE' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'FORCE' but left out brackets in a place not allowed by the grammar.
+ @ line 103, column 10.
+   					 if(FORCE !=null && FORCE.toUpperCase() =~/Y|YES|OK|TRUE/){
+            ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy: 103: Apparent variable 'FORCE' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'FORCE' but left out brackets in a place not allowed by the grammar.
+ @ line 103, column 26.
+   					 if(FORCE !=null && FORCE.toUpperCase() =~/Y|YES|OK|TRUE/){
+                            ^
+
+2 errors
+
+2016-07-11_15:06:10.133 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:06:11.284 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:06:19.233 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:06:20.254 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:07:15.453 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:07:16.325 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:07:31.803 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:07:32.821 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:07:51.486 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:07:52.518 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:09:38.272 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:09:39.198 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:09:56.630 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:09:57.401 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:10:03.030 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:10:03.843 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:11:53.362 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:11:54.138 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:12:28.973 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:12:29.872 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:13:52.985 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:13:54.141 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:17:05.459 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:17:06.345 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:19:10.595 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:19:11.295 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:21:03.747 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_15:21:04.387 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-11_16:35:07.295 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ActivitiesController.groovy] changed. Applying changes to application.
+2016-07-11_16:35:07.847 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\ActivitiesController.groovy] changed. Applying changes to application.
