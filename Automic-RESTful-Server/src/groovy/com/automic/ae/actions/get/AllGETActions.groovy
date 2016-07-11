@@ -492,54 +492,6 @@ class AllGETActions {
 			def SupportedThings = [:]
 			SupportedThings = [
 				'required_parameters': ['name (format: name= < UC4RegEx > )'],
-				'optional_parameters': ['search_usage (format: search_usage=Y)'],
-				'optional_filters': [],
-				'required_methods': [],
-				'optional_methods': ['usage']
-				]
-			
-			String FILTERS = params.filters;
-			String TOKEN = params.token;
-			String METHOD = params.method;
-			String SEARCHUSAGE = params.search_usage;
-			if(METHOD == "usage"){
-				JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
-				return json
-			}else{
-					// check mandatory stuff here
-					if(MiscUtils.checkParams(SupportedThings, params)){
-						
-						//DisplayFilters dispFilters = new DisplayFilters(FILTERS);
-						
-						SearchObject req = new SearchObject();
-						req.selectAllObjectTypes();
-
-						if(SEARCHUSAGE!=null && SEARCHUSAGE.toUpperCase() =~/Y|YES|OK|O/){req.setSearchUseOfObjects(true);}
-						
-						List<SearchResultItem> JobList = CommonAERequests.GenericSearchObjects(conn, params.name, req);
-						
-						JsonBuilder json = CommonJSONRequests.getResultListAsJSONFormat(JobList);
-						return json
-						
-					}else{
-						JsonBuilder json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
-						
-						return json
-					}
-				
-			}
-		}
-	
-	/**
-	 * @purpose search any objects (search window) against filters
-	 * @return JsonBuilder object
-	 * @version v2 (vs v1: more filters)
-	 */
-	public static def searchv2(params,Connection conn) {
-		
-			def SupportedThings = [:]
-			SupportedThings = [
-				'required_parameters': ['name (format: name= < UC4RegEx > )'],
 				'optional_parameters': [
 					'search_usage (format: search_usage=Y)',
 					'text (format: text=< UC4RegEx > )',

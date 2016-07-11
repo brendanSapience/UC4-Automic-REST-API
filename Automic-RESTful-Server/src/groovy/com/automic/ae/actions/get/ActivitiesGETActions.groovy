@@ -85,10 +85,10 @@ class ActivitiesGETActions {
 				'srclogin (format: filters=[srclogin:*])',
 				'srchost (format: filters=[srchost:*])',
 				'type (format: filters=[type:JOBF|JOBS])',
-				'date (format: filters=[date:YYYYMMDDHHMM-YYYYMMDDHHMM]), or filters=[activation:LAST4DAYS] (DAYS can be substituted with: SECS, MINS, HOURS, DAYS, MONTHS, YEARS) ',
+				'date (format: filters=[date:YYYYMMDDHHMM-YYYYMMDDHHMM])) ',
 				'platform (format: filters=[platform:WIN|UNIX])',],
-			'required_methods': [],
-			'optional_methods': ['usage','recalculate', 'query', 'setrange']
+			'required_methods': ['usage','recalculate', 'query'],
+			'optional_methods': []
 			]
 
 		String FILTERS = params.filters;
@@ -777,7 +777,7 @@ class ActivitiesGETActions {
 						])
 					return json
 				}else{
-					JsonBuilder json = new JsonBuilder([status: "success", message: "task resumed"])
+					JsonBuilder json = new JsonBuilder([status: "success", message: "task suspended"])
 					return json
 				}
 			}else{

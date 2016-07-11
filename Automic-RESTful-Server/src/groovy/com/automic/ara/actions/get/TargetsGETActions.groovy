@@ -65,7 +65,7 @@ class TargetsGETActions {
 			'required_parameters': [
 				'name (format: name=<String> (Target Name)',
 				'folder (format: folder=<String> (Folder)',
-				'type (format: type=<String> (Package Type)',
+				'type (format: type=<String> (Target Type)',
 			],
 			'optional_parameters': [
 				

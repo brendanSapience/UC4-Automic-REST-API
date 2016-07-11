@@ -51,7 +51,6 @@ class StatisticsGETActions {
 				'name (format: filters=[name:*])',
 				'queue (format: filters=[queue:*])',
 				'runid (format: filters=[runid:*])',
-				'status (format: filters=[status:1900])',
 				'activation (format: filters=[activation:YYYYMMDDHHMM-YYYYMMDDHHMM]), or filters=[activation:LAST4DAYS] (DAYS can be substituted with: SECS, MINS, HOURS, DAYS, MONTHS, YEARS) ',
 				'start (format: filters=[start:YYYYMMDDHHMM-YYYYMMDDHHMM]), or filters=[start:LAST4DAYS] (DAYS can be substituted with: SECS, MINS, HOURS, DAYS, MONTHS, YEARS) ',
 				'end (format: filters=[end:YYYYMMDDHHMM-YYYYMMDDHHMM]), or filters=[end:LAST4DAYS] (DAYS can be substituted with: SECS, MINS, HOURS, DAYS, MONTHS, YEARS) ',

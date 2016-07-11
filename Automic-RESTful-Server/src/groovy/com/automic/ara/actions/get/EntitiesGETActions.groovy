@@ -63,7 +63,7 @@ class EntitiesGETActions {
 		AllParamMap = [
 			//name (format: name= < UC4RegEx > )
 			'required_parameters': [
-				'type (format: type=<String> (Package Type)',
+				'type (format: type=<String> (Entity Type)',
 			],
 			'optional_parameters': [
 				'name (format: name=<String> (Entity Name)',
