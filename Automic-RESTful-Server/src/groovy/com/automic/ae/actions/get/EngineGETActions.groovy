@@ -50,7 +50,7 @@ class EngineGETActions {
 			'optional_parameters': [],
 			'optional_filters': [],
 			'required_methods': [],
-			'optional_methods': ['usage','showusage (show AE Usage info), showmessages (show AE Messages), showdb (show AE DB Info)','showclients (show AE Client Info)','showhosts (show agents info)','showhostgroups (show agentgroups info)','showusers (show connected users info)','showengine (Default: show Automation Engine Info)']
+			'optional_methods': ['usage','showusage (show AE Usage info)', 'showmessages (show AE Messages)', 'showdb (show AE DB Info)','showclients (show AE Client Info)','showhosts (show agents info)','showhostgroups (show agentgroups info)','showusers (show connected users info)','showengine (Default: show Automation Engine Info)']
 			]
 		
 		String FILTERS = params.filters;

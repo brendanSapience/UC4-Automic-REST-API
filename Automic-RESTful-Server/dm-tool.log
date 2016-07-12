@@ -10324,3 +10324,7 @@ You attempted to use a method 'FORCE' but left out brackets in a place not allow
 				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonAERequests.java] changed. Applying changes to application.
 2016-07-12_10:38:00.579 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
 				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\java\com\automic\objects\CommonAERequests.java] changed. Applying changes to application.
+2016-07-12_10:57:16.145 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\EngineGETActions.groovy] changed. Applying changes to application.
+2016-07-12_10:57:16.698 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\EngineGETActions.groovy] changed. Applying changes to application.
