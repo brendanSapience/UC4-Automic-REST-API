@@ -11,6 +11,9 @@ import java.util.List;
 
 
 
+
+
+
 import com.uc4.ara.feature.rm.CreateDeployPackage;
 
 import org.xml.sax.SAXException;
@@ -26,10 +29,13 @@ import com.uc4.api.UC4TimezoneName;
 import com.uc4.api.UC4UserName;
 import com.uc4.api.objects.IFolder;
 import com.uc4.api.objects.UC4Object;
+import com.uc4.api.objects.UserRight.Type;
 import com.uc4.communication.Connection;
 import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
 import com.uc4.communication.requests.ActivityList;
+import com.uc4.communication.requests.AdoptTask;
+import com.uc4.communication.requests.CheckAuthorizations;
 import com.uc4.communication.requests.CloseObject;
 import com.uc4.communication.requests.CreateObject;
 import com.uc4.communication.requests.DeleteObject;
@@ -54,21 +60,26 @@ import com.uc4.communication.requests.XMLRequest;
  */
 
 public class CommonAERequests {
+	
+	//VersionControlList imp = new VersionControlList(getUC4ObjectNameFromString(ObjName,false);
+	public static void checkUserRights(String ObjName, Connection connection) throws IOException, SAXException{
+		
+		CheckAuthorizations.Candidate check1 = new CheckAuthorizations.Candidate(new UC4ObjectName(ObjName), Type.JOBS, 'R');
+	    //CheckAuthorizations.Candidate check2 = new CheckAuthorizations.Candidate(new UC4UserName(ObjName), Type.JOBS, 'C');
 
-//	public static TaskDetails getPreviousVersions(String ObjName, Connection connection) throws IOException, SAXException{
-//		
-//		connection.sendRequestAndWait(imp);
-//		if (imp.getMessageBox() != null) {
-//			System.out.println(imp.getMessageBox().getText());
-//			return null;
-//		}else{
-//			return imp;
-//		}
-//	}
+	    CheckAuthorizations checkAuth = new CheckAuthorizations(check1);
+	    connection.sendRequestAndWait(checkAuth);
+
+	    for (CheckAuthorizations.Candidate c : checkAuth) {
+	        System.out.println("Access mode "+c.getAccess()+" for object "+c.getName()+ (c.getResult() ? " is allowed" : " has been denied"));                      
+	    }
+	    
+	}
 	
 	//VersionControlList imp = new VersionControlList(getUC4ObjectNameFromString(ObjName,false);
 	public static TaskDetails getTaskDetails(int runid, Connection connection) throws IOException, SAXException{
 		TaskDetails imp = new TaskDetails(runid);
+                 
 		connection.sendRequestAndWait(imp);
 		if (imp.getMessageBox() != null) {
 			System.out.println(imp.getMessageBox().getText());
