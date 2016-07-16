@@ -29,7 +29,7 @@ import com.automic.utils.ActionClassUtils
 import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
 
-class ClientController {
+class AgentsController {
 	
 	Class actionClass
 	boolean ClassFound = true;
@@ -69,7 +69,8 @@ class ClientController {
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
 			JsonBuilder myRes;
 			// Dynamically loading the Class based on Object name, and HTTP Method (GET, POST etc.)
-
+			Class actionClass
+			boolean ClassFound = true;
 			try{
 				actionClass = this.class.getClassLoader().loadClass(RootPackage+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
 			}catch (ClassNotFoundException c){
@@ -77,7 +78,6 @@ class ClientController {
 				myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION ])
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
-			
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
 				if(false){ //Environment.current == Environment.DEVELOPMENT){
@@ -92,7 +92,7 @@ class ClientController {
 				}
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
-			
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
+		
 	}
 }

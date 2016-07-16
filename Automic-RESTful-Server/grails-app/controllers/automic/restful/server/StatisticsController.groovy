@@ -39,7 +39,7 @@ class StatisticsController {
 	 * @purpose return a JSON structure containing the list of available operations for a given Object Type
 	 * @note this method should be in all controllers
 	 */
-
+	
 	def help = {
 		// all operations and all versions available - no list to maintained.. its dynamically calculated :)
 		actionClass = this.class.getClassLoader().loadClass(RootPackage+request.method.toLowerCase()+"."+params.object.toString().toLowerCase().capitalize()+request.method+"Actions");
@@ -65,14 +65,11 @@ class StatisticsController {
 		
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
 		if(Environment.current == Environment.DEVELOPMENT){TOKEN = ConnectionManager.bypassAuth();}
-		
 		if(ConnectionManager.runTokenChecks(TOKEN)==null){
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
-			
 			JsonBuilder myRes;
 			// Dynamically loading the Class based on Object name, and HTTP Method (GET, POST etc.)
-			Class actionClass
-			boolean ClassFound = true;
+
 			try{
 				actionClass = this.class.getClassLoader().loadClass(RootPackage+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
 			}catch (ClassNotFoundException c){
@@ -80,24 +77,22 @@ class StatisticsController {
 				myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION ])
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
+			
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
 				if(false){ //Environment.current == Environment.DEVELOPMENT){
-					myRes = com.automic.actions.get.StatisticsGETActions."${OPERATION}"(VERSION,params,conn,request);
+					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 				}else{
 				// otherwise it needs to be caught
 					try{
-						myRes = com.automic.actions.get.StatisticsGETActions."${OPERATION}"(VERSION,params,conn,request);
+						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 					}catch(MissingMethodException){
 						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
 					}
 				}
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
+			
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
-		
 	}
-
-	
-
 }

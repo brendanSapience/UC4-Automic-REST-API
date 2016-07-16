@@ -2,7 +2,10 @@ class UrlMappings {
 
     static mappings = {
 
-        "/"(view:"/index")
+        "/"(controller:"Generic", action : [GET:"showinfo"])
+		"/api"(controller:"Generic", action : [GET:"showinfo"])
+		
+		
         "500"(view:'/error')
 
 		///api/awa/display/v1/JOBS?method=getinfo&filters=[‘name’:’*.ABC.*’, ’type’:’JOBS’]&additional[‘LOGIN']&token=dsfgsdfgfasdfa
@@ -23,11 +26,13 @@ class UrlMappings {
 		// AE & AWA stuff
 		"/api/awa/$operation/$version/$object"(controller:{"${params.object}"}, action : [GET:"router", POST:"router"])
 		"/api/awa/help/$version/$object"(controller:{"${params.object}"}, action : [GET:"help", POST:"help"])
+		"/api/awa"(controller:"AE", action : [GET:"getObjectList"])
 		"/api/awa/objects"(controller:"AE", action : [GET:"getObjectList"])
 		
 		// ARA stuff
 		"/api/ara/$operation/$version/$object"(controller:{"ARA${params.object}"}, action : [GET:"router", POST:"router"])
 		"/api/ara/help/$version/$object"(controller:{"ARA${params.object}"}, action : [GET:"help", POST:"help"])
+		"/api/ara"(controller:"ARA", action : [GET:"getObjectList"])
 		"/api/ara/objects"(controller:"ARA", action : [GET:"getObjectList"])
 		
    }

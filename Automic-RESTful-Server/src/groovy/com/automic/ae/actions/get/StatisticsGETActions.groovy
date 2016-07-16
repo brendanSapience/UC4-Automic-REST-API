@@ -4,10 +4,12 @@ import com.uc4.communication.Connection;
 import com.uc4.api.DateTime
 import com.uc4.api.SearchResultItem
 import com.uc4.api.StatisticSearchItem
+import com.uc4.api.UC4ObjectName
 import com.uc4.communication.Connection;
 import com.uc4.communication.requests.GenericStatistics
+import com.uc4.communication.requests.ObjectStatistics
 import com.uc4.communication.requests.SearchObject
-
+import com.uc4.api.InvalidUC4NameException
 import groovy.json.JsonBuilder
 
 import com.automic.DisplayFilters
@@ -18,7 +20,7 @@ import com.automic.utils.CommonJSONRequests;
 import com.automic.utils.MiscUtils;
 
 class StatisticsGETActions {
-
+	  
 	/**
 	 * @purpose this section contains all "routing" methods: routing methods call internal versionned methods. ex: "search" can call searchv1 or searchv2 etc. depending on the version in URL params
 	 * @param version: action version to use to call the proper method
@@ -27,8 +29,57 @@ class StatisticsGETActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def search(String version, params,Connection conn,request){return "search${version}"(params,conn)}
+	public static def search(String version, params,Connection conn,request,grailsAttributes){return "search${version}"(params,conn)}
+	public static def get(String version, params,Connection conn,request,grailsAttributes){return "get${version}"(params,conn)}
+	
+	/**
+	 * @purpose get statistics from object 
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def getv1(params,Connection conn) {
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['name (format: name= < String: Object Name >'],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+		
+		String FILTERS = params.filters;
+		String METHOD = params.method;
+				
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			return json
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+		}else{
+			if(MiscUtils.checkParams(AllParamMap, params)){					
+				String OBJNAME = params.name;
+				UC4ObjectName UC4ObjName;
+					try{
+						UC4ObjName = new UC4ObjectName(OBJNAME);
+					}catch(InvalidUC4NameException i){
+						return CommonJSONRequests.renderErrorAsJSON("Invalid Object Name: " + i.getMessage())
+					}
+							
+					ObjectStatistics req = new ObjectStatistics(UC4ObjName);
+					try{
+						conn.sendRequestAndWait(req);
+					}catch (IllegalStateException e){
+						return CommonJSONRequests.renderErrorAsJSON(e.message);
+					}
 
+				JsonBuilder json = CommonJSONRequests.getStatisticResultListAsJSONFormat(req.list);
+				return json
+							
+			}else{
+				return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+			}
+		}
+	}
 	
 	/**
 	 * @purpose search statistics (Period window) against filters

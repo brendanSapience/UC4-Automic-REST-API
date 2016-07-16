@@ -5,6 +5,7 @@ import com.uc4.api.AutoForecastItem
 import com.uc4.api.DateTime
 import com.uc4.api.DetailGroup
 import com.uc4.api.SearchResultItem
+import com.uc4.api.StatisticSearchItem
 import com.uc4.api.Task
 import com.uc4.api.TaskFilter
 import com.uc4.api.UC4ObjectName
@@ -13,10 +14,12 @@ import com.uc4.api.TaskFilter.TimeFrame
 import com.uc4.api.objects.CustomAttribute
 import com.uc4.api.objects.CustomAttributeFilter
 import com.uc4.communication.Connection
+import com.uc4.communication.requests.ActivatorStatistics;
 import com.uc4.communication.requests.ActivityList
 import com.uc4.communication.requests.AdoptTask
 import com.uc4.communication.requests.AutoForecastRange
 import com.uc4.communication.requests.CancelTask
+import com.uc4.communication.requests.ChildStatistics
 import com.uc4.communication.requests.DeactivateTask
 import com.uc4.communication.requests.ExecuteObject
 import com.uc4.communication.requests.GenericStatistics
@@ -48,6 +51,9 @@ import com.uc4.communication.requests.GetComments.Comment
 
 class ActivitiesGETActions {
 
+	
+	// perhaps use GroupingType?
+	
 	/**
 	 * @purpose this section contains all "routing" methods: routing methods call internal versionned methods. ex: "search" can call searchv1 or searchv2 etc. depending on the version in URL params
 	 * @param version: action version to use to call the proper method
@@ -68,11 +74,14 @@ class ActivitiesGETActions {
 	public static def show(String version, params,Connection conn,request, grailsattr){return "show${version}"(params,conn)}
 	public static def run(String version, params,Connection conn,request, grailsattr){return "run${version}"(params,conn)}
 	public static def forecast(String version, params,Connection conn,request, grailsattr){return "forecast${version}"(params,conn)}
+	public static def childstats(String version, params,Connection conn,request, grailsattr){return "childstats${version}"(params,conn)}
+	public static def activatorstats(String version, params,Connection conn,request, grailsattr){return "activatorstats${version}"(params,conn)}
 	public static def addbreak(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1562,"Task breakpoint added.")}
 	public static def delbreak(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1562,1700,"Task breakpoint removed.")}
 	public static def addskip(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1922,"Task deactivated / skipped.")}
 	public static def delskip(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1922,1700,"Task reactivated / unskipped.")}
 	public static def go(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1545,"Task Go Now Ok.")}
+	
 	
 	/**
 	 * @purpose change task state
@@ -557,7 +566,92 @@ class ActivitiesGETActions {
 		}
 
 	}
+	
+	public static def activatorstatsv1(params,Connection conn) {
 		
+				def AllParamMap = [:]
+				AllParamMap = [
+					'required_parameters': ['runid (format: runid= < integer >'],
+					'optional_parameters': [],
+					'optional_filters': [],
+					'required_methods': [],
+					'optional_methods': ['usage']
+					]
+		
+				String FILTERS = params.filters;
+				String METHOD = params.method;
+				
+				// Helper Methods
+				if(METHOD == "usage"){
+					JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+					return json
+					//render(text: json, contentType: "text/json", encoding: "UTF-8")
+				}else{
+						if(MiscUtils.checkParams(AllParamMap, params)){
+							
+							String RUNIDASSTR = params.runid;
+							int RUNID = RUNIDASSTR.toInteger();
+							ActivatorStatistics req = new ActivatorStatistics(RUNID);
+							try{
+								conn.sendRequestAndWait(req);
+							}catch (IllegalStateException e){
+								return CommonJSONRequests.renderErrorAsJSON(e.message);
+							}
+							
+							StatisticSearchItem item = req.result;
+							
+							List<StatisticSearchItem> myList = new ArrayList<StatisticSearchItem>();
+							myList.add(item);
+							JsonBuilder json = CommonJSONRequests.getStatisticResultListAsJSONFormat(myList);
+							return json
+							
+						}else{
+							return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+						}
+				}
+			}
+	
+	public static def childstatsv1(params,Connection conn) {
+		
+				def AllParamMap = [:]
+				AllParamMap = [
+					'required_parameters': ['runid (format: runid= < integer >'],
+					'optional_parameters': [],
+					'optional_filters': [],
+					'required_methods': [],
+					'optional_methods': ['usage']
+					]
+		
+				String FILTERS = params.filters;
+				String METHOD = params.method;
+				
+				// Helper Methods
+				if(METHOD == "usage"){
+					JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+					return json
+					//render(text: json, contentType: "text/json", encoding: "UTF-8")
+				}else{
+						if(MiscUtils.checkParams(AllParamMap, params)){
+							
+							String RUNIDASSTR = params.runid;
+							int RUNID = RUNIDASSTR.toInteger();
+							ChildStatistics req = new ChildStatistics(RUNID);
+							try{
+								conn.sendRequestAndWait(req);
+							}catch (IllegalStateException e){
+								return CommonJSONRequests.renderErrorAsJSON(e.message);
+							}
+							
+							ArrayList<StatisticSearchItem>  myarr = req.result;
+
+							JsonBuilder json = CommonJSONRequests.getStatisticResultListAsJSONFormat(myarr);
+							return json
+							
+						}else{
+							return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+						}
+				}
+			}
 	 public static def showv1(params,Connection conn) {
  
 		 def AllParamMap = [:]

@@ -17,7 +17,9 @@ import com.uc4.communication.requests.ClientList
 import com.uc4.communication.requests.GetDatabaseInfo
 import com.uc4.communication.requests.MessageList
 import com.uc4.communication.requests.ServerList
+import com.uc4.communication.requests.StartServer
 import com.uc4.communication.requests.SystemWorkload
+import com.uc4.communication.requests.TerminateServer
 import com.uc4.communication.requests.UserList
 import com.uc4.communication.requests.GetDatabaseInfo.MQEntry
 
@@ -25,6 +27,7 @@ import groovy.json.JsonBuilder
 
 import com.automic.objects.CommonAERequests
 import com.automic.utils.CommonJSONRequests;
+import com.automic.utils.MiscUtils
 
 class EngineGETActions {
 	
@@ -36,7 +39,105 @@ class EngineGETActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def display(String version, params,Connection conn,request){return "display${version}"(params,conn)}
+	public static def display(String version, params,Connection conn,request,grailsAttributes){return "display${version}"(params,conn)}
+	public static def start(String version, params,Connection conn,request,grailsAttributes){return "start${version}"(params,conn)}
+	public static def stop(String version, params,Connection conn,request,grailsAttributes){return "stop${version}"(params,conn)}
+	
+	/**
+	 * @purpose stop a server process
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def stopv1(params,Connection conn){
+	
+	def SupportedThings = [:]
+			SupportedThings = [
+				'required_parameters': ['name (format: name=<String> Process Name(ex: UC4#WP002))'],
+				'optional_parameters': [],
+				'optional_filters': [
+				],
+				'required_methods': [],
+				'optional_methods': ['usage']
+				]
+		
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+		String NAMEASSTR = params.name;
+		
+		JsonBuilder json;
+		
+		// Helper Methods
+		if(METHOD == "usage"){
+			json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+			return json
+		}else{
+			
+			// check mandatory stuff here
+			if(MiscUtils.checkParams(SupportedThings, params)){
+				
+				TerminateServer req = new TerminateServer(NAMEASSTR);
+				
+				CommonAERequests.sendSyncRequest(conn, req, false);
+				
+				return CommonJSONRequests.renderOKAsJSON("Process Start Request Processed.")
+				
+			}else{
+					json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+					return json
+			}
+		
+		}
+	}
+	
+	/**
+	 * @purpose start a server process
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def startv1(params,Connection conn){
+	
+	def SupportedThings = [:]
+			SupportedThings = [
+				'required_parameters': ['name (format: name=<String> Process Name(ex: UC4#WP002))'],
+				'optional_parameters': [],
+				'optional_filters': [
+				],
+				'required_methods': [],
+				'optional_methods': ['usage']
+				]
+		
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+		String NAMEASSTR = params.name;
+		
+		JsonBuilder json;
+		
+		// Helper Methods
+		if(METHOD == "usage"){
+			json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+			return json
+		}else{
+			
+			// check mandatory stuff here
+			if(MiscUtils.checkParams(SupportedThings, params)){
+				
+				StartServer req = new StartServer(NAMEASSTR);
+				
+				CommonAERequests.sendSyncRequest(conn, req, false);
+				
+				return CommonJSONRequests.renderOKAsJSON("Process Start Request Processed.")
+				
+			}else{
+					json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+					return json
+			}
+		
+		}
+	}
 	
 	/**
 	 * @purpose 

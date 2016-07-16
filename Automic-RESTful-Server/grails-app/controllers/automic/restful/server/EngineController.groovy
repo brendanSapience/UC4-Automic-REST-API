@@ -69,8 +69,7 @@ class EngineController {
 			com.uc4.communication.Connection conn = ConnectionManager.getConnectionFromToken(TOKEN);
 			JsonBuilder myRes;
 			// Dynamically loading the Class based on Object name, and HTTP Method (GET, POST etc.)
-			Class actionClass
-			boolean ClassFound = true;
+
 			try{
 				actionClass = this.class.getClassLoader().loadClass(RootPackage+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
 			}catch (ClassNotFoundException c){
@@ -78,22 +77,22 @@ class EngineController {
 				myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION ])
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
+			
 			if(ClassFound){
 				// if not in Prod we are ok to show stacktrace
-				//if(Environment.current == Environment.DEVELOPMENT){
-				//	myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
-				//}else{
+				if(false){ //Environment.current == Environment.DEVELOPMENT){
+					myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
+				}else{
 				// otherwise it needs to be caught
 					try{
-						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request);
+						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
 					}catch(MissingMethodException){
-						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION + " (Invalid Operation or Invalid Version?)"])
+						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
 					}
-				//}
+				}
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 			}
+			
 		}else{render(text:  ConnectionManager.runTokenChecks(TOKEN), contentType: "text/json", encoding: "UTF-8")}
-		
 	}
-
 }

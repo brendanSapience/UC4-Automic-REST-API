@@ -31,10 +31,10 @@ class ClientGETActions {
 	 * @return JsonBuilder object
 	 */
 	
-	public static def resume(String version, params,Connection conn,request){return "resume${version}"(params,conn)}
-	public static def go(String version, params,Connection conn,request){return "resume${version}"(params,conn)}
-	public static def stop(String version, params,Connection conn,request){return "stop${version}"(params,conn)}
-	public static def suspend(String version, params,Connection conn,request){return "stop${version}"(params,conn)}
+	public static def resume(String version, params,Connection conn,request,grailsAttributes){return "resume${version}"(params,conn)}
+	public static def go(String version, params,Connection conn,request,grailsAttributes){return "resume${version}"(params,conn)}
+	public static def stop(String version, params,Connection conn,request,grailsAttributes){return "stop${version}"(params,conn)}
+	public static def suspend(String version, params,Connection conn,request,grailsAttributes){return "stop${version}"(params,conn)}
 	/**
 	 * @purpose
 	 * @return JsonBuilder object

@@ -14,6 +14,8 @@ import java.util.List;
 
 
 
+
+
 import com.uc4.ara.feature.rm.CreateDeployPackage;
 
 import org.xml.sax.SAXException;
@@ -30,11 +32,13 @@ import com.uc4.api.UC4UserName;
 import com.uc4.api.objects.IFolder;
 import com.uc4.api.objects.UC4Object;
 import com.uc4.api.objects.UserRight.Type;
+import com.uc4.api.systemoverview.AgentListItem;
 import com.uc4.communication.Connection;
 import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
 import com.uc4.communication.requests.ActivityList;
 import com.uc4.communication.requests.AdoptTask;
+import com.uc4.communication.requests.AgentList;
 import com.uc4.communication.requests.CheckAuthorizations;
 import com.uc4.communication.requests.CloseObject;
 import com.uc4.communication.requests.CreateObject;
@@ -74,6 +78,20 @@ public class CommonAERequests {
 	        System.out.println("Access mode "+c.getAccess()+" for object "+c.getName()+ (c.getResult() ? " is allowed" : " has been denied"));                      
 	    }
 	    
+	}
+	
+	public static AgentListItem getAgentListItemByName(String AgentName, Connection connection) throws IOException {
+		AgentList list = new AgentList();
+		connection.sendRequestAndWait(list);
+		if (list.getMessageBox() != null) {
+			return null;
+		}
+		for (AgentListItem item : list) {
+			if(item.getName().toString().equals(AgentName)){
+			return item;
+			}
+		}
+		return null;
 	}
 	
 	//VersionControlList imp = new VersionControlList(getUC4ObjectNameFromString(ObjName,false);
@@ -248,7 +266,7 @@ public class CommonAERequests {
 		//Say(" \t ++ Opening object: "+name);
 		UC4ObjectName objName = null;
 		if (name.indexOf('/') != -1) objName = new UC4UserName(name);
-		else if (name.indexOf('-')  != -1) objName = new UC4HostName(name);
+		else if (name.indexOf('-')  != -1);
 		else objName = new UC4ObjectName(name);		
 
 		// last boolean returns an OpenObject
