@@ -1266,7 +1266,7 @@ class ActivitiesGETActions {
 
 		return new JsonBuilder(
 			[
-				success: true,
+				status: "success",
 				data:[
 					type: ReportType,
 					numberofpages: req.getNumberOfPages(),

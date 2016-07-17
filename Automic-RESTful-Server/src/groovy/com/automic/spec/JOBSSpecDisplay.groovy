@@ -20,12 +20,12 @@ class JOBSSpecDisplay {
 		CommonAERequests.sendSyncRequest(conn,vcl,false);
 		Iterator<VersionControlListItem> iterator = vcl.iterator()
 		
-		def versionsData = [
-			 data: iterator.collect {[
+		def versionsData = 
+			 iterator.collect {[
 				 name:it.getSavedName().getName(),
 				 version: it.getVersionNumber()
 				 ]}
-		  ]
+		  
 		
 		def data = [
 			status: "success",

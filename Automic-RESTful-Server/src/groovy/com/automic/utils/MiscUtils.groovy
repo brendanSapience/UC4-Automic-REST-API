@@ -36,7 +36,7 @@ class MiscUtils {
 	static boolean checkParams(HashMap<String,String[]> Hash, params){
 		
 		boolean isError = false;
-		Hash.each{ k, v -> if(k.contains("required"))
+		Hash.each{ k, v -> if(k.contains("required_parameters"))
 			{
 				if(v.size() > 0){
 					v.each { s -> String ParamName = s.split(/ /)[0];

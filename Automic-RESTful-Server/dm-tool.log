@@ -12453,3 +12453,2025 @@ C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controll
 				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\EngineGETActions.groovy] changed. Applying changes to application.
 2016-07-16_13:17:38.541 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
 				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\EngineGETActions.groovy] changed. Applying changes to application.
+2016-07-16_13:52:59.909 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Attempting to load [0] user defined plugins
+2016-07-16_13:53:00.137 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [core] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.143 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [urlMappings] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.143 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [i18n] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.143 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [restResponder] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.144 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [codecs] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.144 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [servlets] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.144 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataBinding] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.144 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataSource] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.144 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [webxml] with version [1.4.1] loaded successfully
+2016-07-16_13:53:00.144 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [assetPipeline] with version [1.9.9] loaded successfully
+2016-07-16_13:53:00.144 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [databaseMigration] with version [1.4.0] loaded successfully
+2016-07-16_13:53:00.144 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [jquery] with version [1.11.1] loaded successfully
+2016-07-16_13:53:00.144 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [tomcat] with version [7.0.55] loaded successfully
+2016-07-16_13:53:00.145 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllers] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.145 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [mimeTypes] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.148 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllersAsync] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.148 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [filters] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.148 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [domainClass] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.149 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [hibernate4] with version [4.3.6.1] loaded successfully
+2016-07-16_13:53:00.151 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [services] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.152 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [groovyPages] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.152 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [converters] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.152 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [validation] with version [2.4.4] loaded successfully
+2016-07-16_13:53:00.156 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [scaffolding] with version [2.1.2] loaded successfully
+2016-07-16_13:53:00.156 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [cache] with version [1.1.8] loaded successfully
+2016-07-16_13:53:00.708 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-16_13:53:00.728 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-16_13:53:01.050 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-16_13:53:01.056 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-16_17:10:55.984 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] added. Applying changes to application.
+2016-07-16_17:11:01.391 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:13:34.763 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:13:35.366 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:14:30.739 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:14:31.125 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:15:31.478 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:15:31.892 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:15:45.727 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:15:46.168 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:15:51.861 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:15:52.317 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:16:16.509 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:16:16.976 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:21:16.050 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:21:16.667 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:40:16.803 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:40:17.267 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:43:17.380 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:43:17.884 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:44:15.781 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:44:16.384 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 94: Apparent variable 'UserRight' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'UserRight' but left out brackets in a place not allowed by the grammar.
+ @ line 94, column 115.
+   ObjectName("JOBS.R3.NEW.26"), UserRight.
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 96: Apparent variable 'check2' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'check2' but left out brackets in a place not allowed by the grammar.
+ @ line 96, column 69.
+   w CheckAuthorizations(check1, check2);
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 97: Apparent variable 'uc4' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'uc4' but left out brackets in a place not allowed by the grammar.
+ @ line 97, column 5.
+   				uc4.sendRequestAndWait(checkAuth);
+       ^
+
+3 errors
+
+2016-07-16_17:44:16.389 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:44:16.726 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 94: Apparent variable 'UserRight' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'UserRight' but left out brackets in a place not allowed by the grammar.
+ @ line 94, column 115.
+   ObjectName("JOBS.R3.NEW.26"), UserRight.
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 96: Apparent variable 'check2' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'check2' but left out brackets in a place not allowed by the grammar.
+ @ line 96, column 69.
+   w CheckAuthorizations(check1, check2);
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 97: Apparent variable 'uc4' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'uc4' but left out brackets in a place not allowed by the grammar.
+ @ line 97, column 5.
+   				uc4.sendRequestAndWait(checkAuth);
+       ^
+
+3 errors
+
+2016-07-16_17:44:48.789 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:44:49.222 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 96: Apparent variable 'check2' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'check2' but left out brackets in a place not allowed by the grammar.
+ @ line 96, column 69.
+   w CheckAuthorizations(check1, check2);
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 97: Apparent variable 'uc4' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'uc4' but left out brackets in a place not allowed by the grammar.
+ @ line 97, column 5.
+   				uc4.sendRequestAndWait(checkAuth);
+       ^
+
+2 errors
+
+2016-07-16_17:44:49.228 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:44:49.611 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 96: Apparent variable 'check2' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'check2' but left out brackets in a place not allowed by the grammar.
+ @ line 96, column 69.
+   w CheckAuthorizations(check1, check2);
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 97: Apparent variable 'uc4' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'uc4' but left out brackets in a place not allowed by the grammar.
+ @ line 97, column 5.
+   				uc4.sendRequestAndWait(checkAuth);
+       ^
+
+2 errors
+
+2016-07-16_17:49:20.899 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_17:49:21.398 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:06:45.799 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:06:46.425 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:15:42.925 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:15:43.412 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:17:06.075 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:17:06.742 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:35:51.571 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:35:52.193 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 139: Apparent variable 'checkAuth' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'checkAuth' but left out brackets in a place not allowed by the grammar.
+ @ line 139, column 44.
+   equests.sendSyncRequest(conn, checkAuth,
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 141: Apparent variable 'checkAuth' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'checkAuth' but left out brackets in a place not allowed by the grammar.
+ @ line 141, column 44.
+   kAuthorizations.Candidate c : checkAuth)
+                                 ^
+
+2 errors
+
+2016-07-16_18:35:52.199 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:35:52.783 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 139: Apparent variable 'checkAuth' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'checkAuth' but left out brackets in a place not allowed by the grammar.
+ @ line 139, column 44.
+   equests.sendSyncRequest(conn, checkAuth,
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 141: Apparent variable 'checkAuth' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'checkAuth' but left out brackets in a place not allowed by the grammar.
+ @ line 141, column 44.
+   kAuthorizations.Candidate c : checkAuth)
+                                 ^
+
+2 errors
+
+2016-07-16_18:41:57.400 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:41:57.601 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 167: expecting '}', found 'else' @ line 167, column 5.
+   			}else{
+       ^
+
+1 error
+
+2016-07-16_18:41:57.610 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:41:57.733 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 167: expecting '}', found 'else' @ line 167, column 5.
+   			}else{
+       ^
+
+1 error
+
+2016-07-16_18:52:11.074 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:52:11.223 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 167: expecting '}', found 'else' @ line 167, column 5.
+   			}else{
+       ^
+
+1 error
+
+2016-07-16_18:52:11.230 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:52:11.383 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy: 167: expecting '}', found 'else' @ line 167, column 5.
+   			}else{
+       ^
+
+1 error
+
+2016-07-16_18:54:03.301 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:54:03.800 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:55:49.938 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:55:50.667 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:56:07.046 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\UsersController.groovy] added. Applying changes to application.
+2016-07-16_18:56:12.893 [Thread-10] ERROR o.c.g.g.p.AbstractGrailsPluginManager -
+				Plugin [controllers:2.4.4] could not reload changes to file [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\UsersController.groovy]: Cannot get property 'cacheOperationSource' on null object
+java.lang.NullPointerException: Cannot get property 'cacheOperationSource' on null object
+	at org.codehaus.groovy.runtime.NullObject.getProperty(NullObject.java:57) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.InvokerHelper.getProperty(InvokerHelper.java:168) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.NullCallSite.getProperty(NullCallSite.java:44) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGetProperty(AbstractCallSite.java:227) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.doCall(CacheGrailsPlugin.groovy:184) ~[plugin-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_11]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_11]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_11]
+	at java.lang.reflect.Method.invoke(Method.java:601) ~[na:1.7.0_11]
+	at org.springsource.loaded.ri.OriginalClassInvoker.invoke(OriginalClassInvoker.java:47) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1299) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.Closure.call(Closure.java:423) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.call(CacheGrailsPlugin.groovy) ~[plugin-classes/:na]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.invokeOnChangeListener(DefaultGrailsPlugin.java:767) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:716) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager.informObservers(DefaultGrailsPluginManager.java:242) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:732) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfClassChange(AbstractGrailsPluginManager.java:408) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfFileChange(AbstractGrailsPluginManager.java:366) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.informPluginManager(GrailsProjectWatcher.java:226) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.access$400(GrailsProjectWatcher.java:48) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher$1.onNew(GrailsProjectWatcher.java:152) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.compiler.AbstractDirectoryWatcher.fireOnNew(AbstractDirectoryWatcher.java:76) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.compiler.WatchServiceDirectoryWatcher.run(WatchServiceDirectoryWatcher.java:95) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.compiler.DirectoryWatcher.run(DirectoryWatcher.java:154) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.run(GrailsProjectWatcher.java:161) [grails-project-api-2.4.4.jar:2.4.4]
+2016-07-16_18:56:12.900 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_18:56:12.985 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\UsersController.groovy] changed. Applying changes to application.
+2016-07-16_18:56:14.146 [FileSystemWatcher: files=#71 cl=java.net.URLClassLoader@2ee19c9b] ERROR o.c.g.g.p.AbstractGrailsPluginManager -
+				Plugin [controllers:2.4.4] could not reload changes to file [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\UsersController.groovy]: Cannot get property 'cacheOperationSource' on null object
+java.lang.NullPointerException: Cannot get property 'cacheOperationSource' on null object
+	at org.codehaus.groovy.runtime.NullObject.getProperty(NullObject.java:57) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.InvokerHelper.getProperty(InvokerHelper.java:168) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.NullCallSite.getProperty(NullCallSite.java:44) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGetProperty(AbstractCallSite.java:227) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.doCall(CacheGrailsPlugin.groovy:184) ~[plugin-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_11]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_11]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_11]
+	at java.lang.reflect.Method.invoke(Method.java:601) ~[na:1.7.0_11]
+	at org.springsource.loaded.ri.OriginalClassInvoker.invoke(OriginalClassInvoker.java:47) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1299) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.Closure.call(Closure.java:423) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.call(CacheGrailsPlugin.groovy) ~[plugin-classes/:na]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.invokeOnChangeListener(DefaultGrailsPlugin.java:767) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:716) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager.informObservers(DefaultGrailsPluginManager.java:242) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:732) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfClassChange(AbstractGrailsPluginManager.java:408) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher$2.run(GrailsProjectWatcher.java:246) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.firePendingClassChangeEvents(GrailsProjectWatcher.java:107) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.cli.agent.GrailsPluginManagerReloadPlugin.reloadEvent(GrailsPluginManagerReloadPlugin.java:42) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.springsource.loaded.TypeRegistry.fireReloadEvent(TypeRegistry.java:1794) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ReloadableType.loadNewVersion(ReloadableType.java:417) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.TypeRegistry.loadNewVersion(TypeRegistry.java:845) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.ReloadableFileChangeListener.fileChanged(ReloadableFileChangeListener.java:51) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.Watcher.determineChangesSince(FileSystemWatcher.java:235) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.Watcher.run(FileSystemWatcher.java:219) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_11]
+2016-07-16_19:02:53.159 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:02:53.872 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:03:21.423 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:03:21.959 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:04:07.055 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:04:07.667 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:09:34.641 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\UsersController.groovy] changed. Applying changes to application.
+2016-07-16_19:09:35.234 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\UsersController.groovy] changed. Applying changes to application.
+2016-07-16_19:09:36.091 [FileSystemWatcher: files=#71 cl=java.net.URLClassLoader@2ee19c9b] ERROR o.c.g.g.p.AbstractGrailsPluginManager -
+				Plugin [controllers:2.4.4] could not reload changes to file [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\UsersController.groovy]: Cannot get property 'cacheOperationSource' on null object
+java.lang.NullPointerException: Cannot get property 'cacheOperationSource' on null object
+	at org.codehaus.groovy.runtime.NullObject.getProperty(NullObject.java:57) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.InvokerHelper.getProperty(InvokerHelper.java:168) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.NullCallSite.getProperty(NullCallSite.java:44) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGetProperty(AbstractCallSite.java:227) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.doCall(CacheGrailsPlugin.groovy:184) ~[plugin-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_11]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_11]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_11]
+	at java.lang.reflect.Method.invoke(Method.java:601) ~[na:1.7.0_11]
+	at org.springsource.loaded.ri.OriginalClassInvoker.invoke(OriginalClassInvoker.java:47) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1299) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.Closure.call(Closure.java:423) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.call(CacheGrailsPlugin.groovy) ~[plugin-classes/:na]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.invokeOnChangeListener(DefaultGrailsPlugin.java:767) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:716) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager.informObservers(DefaultGrailsPluginManager.java:242) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:732) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfClassChange(AbstractGrailsPluginManager.java:408) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher$2.run(GrailsProjectWatcher.java:246) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.firePendingClassChangeEvents(GrailsProjectWatcher.java:107) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.cli.agent.GrailsPluginManagerReloadPlugin.reloadEvent(GrailsPluginManagerReloadPlugin.java:42) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.springsource.loaded.TypeRegistry.fireReloadEvent(TypeRegistry.java:1794) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ReloadableType.loadNewVersion(ReloadableType.java:417) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.TypeRegistry.loadNewVersion(TypeRegistry.java:845) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.ReloadableFileChangeListener.fileChanged(ReloadableFileChangeListener.java:51) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.Watcher.determineChangesSince(FileSystemWatcher.java:235) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.Watcher.run(FileSystemWatcher.java:219) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_11]
+2016-07-16_19:10:25.467 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:10:25.913 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:11:14.929 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:11:15.437 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:16:39.780 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:16:40.307 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:16:45.892 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:16:46.946 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:18:47.580 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:18:48.494 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:32:09.678 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:32:10.326 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:33:48.600 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:33:49.201 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:34:46.510 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:34:47.315 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\UsersGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:38:13.479 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\CalendarsController.groovy] added. Applying changes to application.
+2016-07-16_19:38:18.808 [Thread-10] ERROR o.c.g.g.p.AbstractGrailsPluginManager -
+				Plugin [controllers:2.4.4] could not reload changes to file [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\CalendarsController.groovy]: Cannot get property 'cacheOperationSource' on null object
+java.lang.NullPointerException: Cannot get property 'cacheOperationSource' on null object
+	at org.codehaus.groovy.runtime.NullObject.getProperty(NullObject.java:57) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.InvokerHelper.getProperty(InvokerHelper.java:168) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.NullCallSite.getProperty(NullCallSite.java:44) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGetProperty(AbstractCallSite.java:227) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.doCall(CacheGrailsPlugin.groovy:184) ~[plugin-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_11]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_11]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_11]
+	at java.lang.reflect.Method.invoke(Method.java:601) ~[na:1.7.0_11]
+	at org.springsource.loaded.ri.OriginalClassInvoker.invoke(OriginalClassInvoker.java:47) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1299) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.Closure.call(Closure.java:423) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.call(CacheGrailsPlugin.groovy) ~[plugin-classes/:na]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.invokeOnChangeListener(DefaultGrailsPlugin.java:767) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:716) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager.informObservers(DefaultGrailsPluginManager.java:242) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:732) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfClassChange(AbstractGrailsPluginManager.java:408) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfFileChange(AbstractGrailsPluginManager.java:366) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.informPluginManager(GrailsProjectWatcher.java:226) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.access$400(GrailsProjectWatcher.java:48) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher$1.onNew(GrailsProjectWatcher.java:152) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.compiler.AbstractDirectoryWatcher.fireOnNew(AbstractDirectoryWatcher.java:76) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.compiler.WatchServiceDirectoryWatcher.run(WatchServiceDirectoryWatcher.java:95) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.compiler.DirectoryWatcher.run(DirectoryWatcher.java:154) [grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.run(GrailsProjectWatcher.java:161) [grails-project-api-2.4.4.jar:2.4.4]
+2016-07-16_19:38:18.816 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\CalendarsController.groovy] changed. Applying changes to application.
+2016-07-16_19:38:19.124 [FileSystemWatcher: files=#72 cl=java.net.URLClassLoader@2ee19c9b] ERROR o.c.g.g.p.AbstractGrailsPluginManager -
+				Plugin [controllers:2.4.4] could not reload changes to file [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\CalendarsController.groovy]: Cannot get property 'cacheOperationSource' on null object
+java.lang.NullPointerException: Cannot get property 'cacheOperationSource' on null object
+	at org.codehaus.groovy.runtime.NullObject.getProperty(NullObject.java:57) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.InvokerHelper.getProperty(InvokerHelper.java:168) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.NullCallSite.getProperty(NullCallSite.java:44) ~[groovy-all-2.3.7.jar:2.3.7]
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGetProperty(AbstractCallSite.java:227) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.doCall(CacheGrailsPlugin.groovy:184) ~[plugin-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_11]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_11]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_11]
+	at java.lang.reflect.Method.invoke(Method.java:601) ~[na:1.7.0_11]
+	at org.springsource.loaded.ri.OriginalClassInvoker.invoke(OriginalClassInvoker.java:47) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1299) ~[springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) ~[groovy-all-2.3.7.jar:2.3.7]
+	at groovy.lang.Closure.call(Closure.java:423) ~[groovy-all-2.3.7.jar:2.3.7]
+	at CacheGrailsPlugin$_closure4.call(CacheGrailsPlugin.groovy) ~[plugin-classes/:na]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.invokeOnChangeListener(DefaultGrailsPlugin.java:767) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:716) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager.informObservers(DefaultGrailsPluginManager.java:242) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin.notifyOfEvent(DefaultGrailsPlugin.java:732) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.plugins.AbstractGrailsPluginManager.informOfClassChange(AbstractGrailsPluginManager.java:408) ~[grails-core-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher$2.run(GrailsProjectWatcher.java:246) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.project.compiler.GrailsProjectWatcher.firePendingClassChangeEvents(GrailsProjectWatcher.java:107) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.codehaus.groovy.grails.cli.agent.GrailsPluginManagerReloadPlugin.reloadEvent(GrailsPluginManagerReloadPlugin.java:42) [grails-project-api-2.4.4.jar:2.4.4]
+	at org.springsource.loaded.TypeRegistry.fireReloadEvent(TypeRegistry.java:1794) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.ReloadableType.loadNewVersion(ReloadableType.java:417) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.TypeRegistry.loadNewVersion(TypeRegistry.java:845) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.ReloadableFileChangeListener.fileChanged(ReloadableFileChangeListener.java:51) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.Watcher.determineChangesSince(FileSystemWatcher.java:235) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at org.springsource.loaded.agent.Watcher.run(FileSystemWatcher.java:219) [springloaded-1.2.1.RELEASE.jar:1.2.1.RELEASE]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_11]
+2016-07-16_19:38:33.593 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] added. Applying changes to application.
+2016-07-16_19:38:39.078 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:40:16.511 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:40:16.961 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:44:20.974 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:44:21.448 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'JOBSSpecDisplay' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'JOBSSpecDisplay' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 26.
+   						JsonBuilder json = JOBSSpecDisplay.ShowObject(conn,job);
+                            ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 58.
+   BSSpecDisplay.ShowObject(conn,job);
+                                 ^
+
+2 errors
+
+2016-07-16_19:44:21.455 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:44:21.793 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'JOBSSpecDisplay' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'JOBSSpecDisplay' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 26.
+   						JsonBuilder json = JOBSSpecDisplay.ShowObject(conn,job);
+                            ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 58.
+   BSSpecDisplay.ShowObject(conn,job);
+                                 ^
+
+2 errors
+
+2016-07-16_19:44:34.799 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] added. Applying changes to application.
+2016-07-16_19:44:40.251 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'JOBSSpecDisplay' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'JOBSSpecDisplay' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 26.
+   						JsonBuilder json = JOBSSpecDisplay.ShowObject(conn,job);
+                            ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 58.
+   BSSpecDisplay.ShowObject(conn,job);
+                                 ^
+
+2 errors
+
+2016-07-16_19:44:40.260 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_19:44:40.634 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'JOBSSpecDisplay' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'JOBSSpecDisplay' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 26.
+   						JsonBuilder json = JOBSSpecDisplay.ShowObject(conn,job);
+                            ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 58.
+   BSSpecDisplay.ShowObject(conn,job);
+                                 ^
+
+2 errors
+
+2016-07-16_19:45:57.940 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:45:58.411 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 58.
+   LESpecDisplay.ShowObject(conn,job);
+                                 ^
+
+1 error
+
+2016-07-16_19:45:58.417 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:45:58.813 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 58.
+   LESpecDisplay.ShowObject(conn,job);
+                                 ^
+
+1 error
+
+2016-07-16_19:46:16.817 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_19:46:17.278 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 58.
+   LESpecDisplay.ShowObject(conn,job);
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 19: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 19, column 95.
+   ts.getUC4ObjectNameFromString(job.getNam
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 34: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 34, column 12.
+   				 name: job.name,
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 35: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 35, column 13.
+   				 title: job.header.title,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 36: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 36, column 14.
+   				 key1 :  job.header().getArchiveKey1(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 37: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 37, column 14.
+   				 key2 :  job.header().getArchiveKey2(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 38: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 38, column 11.
+   				 type:job.type,
+             ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 39: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 39, column 12.
+   				 host: job.attributes().getHost(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 40: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 40, column 13.
+   				 login: job.attributes().getLogin(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 41: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 41, column 13.
+   				 queue: job.attributes().getQueue(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 42: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 42, column 20.
+   				 genatruntime: job.attributes().isGenerateAtRuntime(),
+                      ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 43: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 43, column 13.
+   				 access:job.access,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 44: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 44, column 13.
+   				 active:job.header.isActive(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 45: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 45, column 14.
+   				 jobtype:job.jobtype,
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 46: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 46, column 18.
+   				 EstimatedRT:job.runtime.estimatedRuntime.currentERT,
+                    ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 47: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 47, column 12.
+   				 MaxRT:job.runtime.maximumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 48: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 48, column 12.
+   				 MinRT:job.runtime.minimumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 49: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 49, column 60.
+   ests.getObjectVariablesAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 50: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 50, column 57.
+   quests.getObjectPromptsAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 51: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 51, column 15.
+   				 process: job.getProcess(),
+                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 52: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 52, column 17.
+   				 preprocess:job.getPreProcess(),
+                   ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 53: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 53, column 19.
+   				 postprocess: job.getPostProcess(),
+                     ^
+
+22 errors
+
+2016-07-16_19:46:17.283 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_19:46:17.693 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy: 120: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 120, column 58.
+   LESpecDisplay.ShowObject(conn,job);
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 19: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 19, column 95.
+   ts.getUC4ObjectNameFromString(job.getNam
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 34: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 34, column 12.
+   				 name: job.name,
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 35: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 35, column 13.
+   				 title: job.header.title,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 36: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 36, column 14.
+   				 key1 :  job.header().getArchiveKey1(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 37: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 37, column 14.
+   				 key2 :  job.header().getArchiveKey2(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 38: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 38, column 11.
+   				 type:job.type,
+             ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 39: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 39, column 12.
+   				 host: job.attributes().getHost(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 40: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 40, column 13.
+   				 login: job.attributes().getLogin(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 41: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 41, column 13.
+   				 queue: job.attributes().getQueue(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 42: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 42, column 20.
+   				 genatruntime: job.attributes().isGenerateAtRuntime(),
+                      ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 43: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 43, column 13.
+   				 access:job.access,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 44: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 44, column 13.
+   				 active:job.header.isActive(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 45: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 45, column 14.
+   				 jobtype:job.jobtype,
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 46: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 46, column 18.
+   				 EstimatedRT:job.runtime.estimatedRuntime.currentERT,
+                    ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 47: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 47, column 12.
+   				 MaxRT:job.runtime.maximumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 48: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 48, column 12.
+   				 MinRT:job.runtime.minimumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 49: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 49, column 60.
+   ests.getObjectVariablesAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 50: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 50, column 57.
+   quests.getObjectPromptsAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 51: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 51, column 15.
+   				 process: job.getProcess(),
+                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 52: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 52, column 17.
+   				 preprocess:job.getPreProcess(),
+                   ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 53: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 53, column 19.
+   				 postprocess: job.getPostProcess(),
+                     ^
+
+22 errors
+
+2016-07-16_19:46:23.386 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:46:23.833 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 19: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 19, column 95.
+   ts.getUC4ObjectNameFromString(job.getNam
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 34: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 34, column 12.
+   				 name: job.name,
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 35: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 35, column 13.
+   				 title: job.header.title,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 36: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 36, column 14.
+   				 key1 :  job.header().getArchiveKey1(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 37: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 37, column 14.
+   				 key2 :  job.header().getArchiveKey2(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 38: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 38, column 11.
+   				 type:job.type,
+             ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 39: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 39, column 12.
+   				 host: job.attributes().getHost(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 40: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 40, column 13.
+   				 login: job.attributes().getLogin(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 41: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 41, column 13.
+   				 queue: job.attributes().getQueue(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 42: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 42, column 20.
+   				 genatruntime: job.attributes().isGenerateAtRuntime(),
+                      ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 43: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 43, column 13.
+   				 access:job.access,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 44: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 44, column 13.
+   				 active:job.header.isActive(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 45: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 45, column 14.
+   				 jobtype:job.jobtype,
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 46: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 46, column 18.
+   				 EstimatedRT:job.runtime.estimatedRuntime.currentERT,
+                    ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 47: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 47, column 12.
+   				 MaxRT:job.runtime.maximumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 48: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 48, column 12.
+   				 MinRT:job.runtime.minimumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 49: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 49, column 60.
+   ests.getObjectVariablesAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 50: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 50, column 57.
+   quests.getObjectPromptsAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 51: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 51, column 15.
+   				 process: job.getProcess(),
+                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 52: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 52, column 17.
+   				 preprocess:job.getPreProcess(),
+                   ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 53: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 53, column 19.
+   				 postprocess: job.getPostProcess(),
+                     ^
+
+21 errors
+
+2016-07-16_19:46:23.839 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_19:46:24.270 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 19: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 19, column 95.
+   ts.getUC4ObjectNameFromString(job.getNam
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 34: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 34, column 12.
+   				 name: job.name,
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 35: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 35, column 13.
+   				 title: job.header.title,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 36: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 36, column 14.
+   				 key1 :  job.header().getArchiveKey1(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 37: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 37, column 14.
+   				 key2 :  job.header().getArchiveKey2(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 38: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 38, column 11.
+   				 type:job.type,
+             ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 39: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 39, column 12.
+   				 host: job.attributes().getHost(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 40: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 40, column 13.
+   				 login: job.attributes().getLogin(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 41: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 41, column 13.
+   				 queue: job.attributes().getQueue(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 42: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 42, column 20.
+   				 genatruntime: job.attributes().isGenerateAtRuntime(),
+                      ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 43: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 43, column 13.
+   				 access:job.access,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 44: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 44, column 13.
+   				 active:job.header.isActive(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 45: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 45, column 14.
+   				 jobtype:job.jobtype,
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 46: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 46, column 18.
+   				 EstimatedRT:job.runtime.estimatedRuntime.currentERT,
+                    ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 47: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 47, column 12.
+   				 MaxRT:job.runtime.maximumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 48: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 48, column 12.
+   				 MinRT:job.runtime.minimumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 49: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 49, column 60.
+   ests.getObjectVariablesAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 50: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 50, column 57.
+   quests.getObjectPromptsAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 51: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 51, column 15.
+   				 process: job.getProcess(),
+                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 52: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 52, column 17.
+   				 preprocess:job.getPreProcess(),
+                   ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 53: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 53, column 19.
+   				 postprocess: job.getPostProcess(),
+                     ^
+
+21 errors
+
+2016-07-16_19:47:06.561 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_19:47:06.983 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 34: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 34, column 12.
+   				 name: job.name,
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 35: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 35, column 13.
+   				 title: job.header.title,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 36: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 36, column 14.
+   				 key1 :  job.header().getArchiveKey1(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 37: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 37, column 14.
+   				 key2 :  job.header().getArchiveKey2(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 38: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 38, column 11.
+   				 type:job.type,
+             ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 39: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 39, column 12.
+   				 host: job.attributes().getHost(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 40: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 40, column 13.
+   				 login: job.attributes().getLogin(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 41: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 41, column 13.
+   				 queue: job.attributes().getQueue(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 42: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 42, column 20.
+   				 genatruntime: job.attributes().isGenerateAtRuntime(),
+                      ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 43: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 43, column 13.
+   				 access:job.access,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 44: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 44, column 13.
+   				 active:job.header.isActive(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 45: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 45, column 14.
+   				 jobtype:job.jobtype,
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 46: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 46, column 18.
+   				 EstimatedRT:job.runtime.estimatedRuntime.currentERT,
+                    ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 47: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 47, column 12.
+   				 MaxRT:job.runtime.maximumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 48: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 48, column 12.
+   				 MinRT:job.runtime.minimumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 49: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 49, column 60.
+   ests.getObjectVariablesAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 50: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 50, column 57.
+   quests.getObjectPromptsAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 51: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 51, column 15.
+   				 process: job.getProcess(),
+                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 52: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 52, column 17.
+   				 preprocess:job.getPreProcess(),
+                   ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 53: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 53, column 19.
+   				 postprocess: job.getPostProcess(),
+                     ^
+
+20 errors
+
+2016-07-16_19:47:06.987 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_19:47:07.568 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 34: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 34, column 12.
+   				 name: job.name,
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 35: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 35, column 13.
+   				 title: job.header.title,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 36: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 36, column 14.
+   				 key1 :  job.header().getArchiveKey1(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 37: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 37, column 14.
+   				 key2 :  job.header().getArchiveKey2(),
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 38: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 38, column 11.
+   				 type:job.type,
+             ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 39: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 39, column 12.
+   				 host: job.attributes().getHost(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 40: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 40, column 13.
+   				 login: job.attributes().getLogin(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 41: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 41, column 13.
+   				 queue: job.attributes().getQueue(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 42: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 42, column 20.
+   				 genatruntime: job.attributes().isGenerateAtRuntime(),
+                      ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 43: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 43, column 13.
+   				 access:job.access,
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 44: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 44, column 13.
+   				 active:job.header.isActive(),
+               ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 45: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 45, column 14.
+   				 jobtype:job.jobtype,
+                ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 46: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 46, column 18.
+   				 EstimatedRT:job.runtime.estimatedRuntime.currentERT,
+                    ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 47: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 47, column 12.
+   				 MaxRT:job.runtime.maximumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 48: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 48, column 12.
+   				 MinRT:job.runtime.minimumRuntime.getFixedValue(),
+              ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 49: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 49, column 60.
+   ests.getObjectVariablesAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 50: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 50, column 57.
+   quests.getObjectPromptsAsJSON(job.values
+                                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 51: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 51, column 15.
+   				 process: job.getProcess(),
+                 ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 52: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 52, column 17.
+   				 preprocess:job.getPreProcess(),
+                   ^
+
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 53: Apparent variable 'job' was found in a static scope but doesn't refer to a local variable, static field or class. Possible causes:
+You attempted to reference a variable in the binding or an instance variable from a static context.
+You misspelled a classname or statically imported field. Please check the spelling.
+You attempted to use a method 'job' but left out brackets in a place not allowed by the grammar.
+ @ line 53, column 19.
+   				 postprocess: job.getPostProcess(),
+                     ^
+
+20 errors
+
+2016-07-16_19:55:15.007 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_19:55:15.664 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:02:12.025 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:02:12.358 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:02:54.555 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:02:54.810 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:04:58.825 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_20:04:59.516 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\CalendarsGETActions.groovy] changed. Applying changes to application.
+2016-07-16_20:07:24.073 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:07:24.331 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:07:49.419 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:07:49.719 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:08:09.411 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:08:09.859 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:10:36.740 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:10:37.028 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:11:56.551 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:13:37.468 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:13:37.751 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:13:44.140 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:13:48.426 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:47:02.380 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Attempting to load [0] user defined plugins
+2016-07-16_20:47:02.840 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [restResponder] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.840 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [i18n] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.844 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [core] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.845 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [codecs] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.845 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataBinding] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.845 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [webxml] with version [1.4.1] loaded successfully
+2016-07-16_20:47:02.845 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [databaseMigration] with version [1.4.0] loaded successfully
+2016-07-16_20:47:02.845 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [jquery] with version [1.11.1] loaded successfully
+2016-07-16_20:47:02.845 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [tomcat] with version [7.0.55] loaded successfully
+2016-07-16_20:47:02.846 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [servlets] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.846 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [dataSource] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.846 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [urlMappings] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.847 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [assetPipeline] with version [1.9.9] loaded successfully
+2016-07-16_20:47:02.848 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllers] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.849 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [filters] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.854 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [controllersAsync] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.855 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [domainClass] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.855 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [hibernate4] with version [4.3.6.1] loaded successfully
+2016-07-16_20:47:02.855 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [groovyPages] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.858 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [mimeTypes] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.859 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [validation] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.859 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [converters] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.859 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [services] with version [2.4.4] loaded successfully
+2016-07-16_20:47:02.861 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [scaffolding] with version [2.1.2] loaded successfully
+2016-07-16_20:47:02.861 [main] INFO  o.c.g.g.p.DefaultGrailsPluginManager -
+				Grails plug-in [cache] with version [1.1.8] loaded successfully
+2016-07-16_20:47:02.991 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-16_20:47:03.016 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-16_20:47:03.679 [main] INFO  g.plugin.webxml.WebxmlGrailsPlugin -
+				Loading default config file: class DefaultWebXmlConfig
+2016-07-16_20:47:03.686 [main] WARN  g.plugin.webxml.WebxmlGrailsPlugin -
+				Did not find application config file: WebXmlConfig
+2016-07-16_20:50:35.057 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:50:36.068 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:50:59.472 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:51:00.010 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:51:27.992 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:51:28.507 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:51:31.079 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:51:31.532 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:53:25.501 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:53:26.054 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:53:58.082 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:53:58.701 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:55:05.568 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:55:05.957 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:55:43.623 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:55:43.893 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 28: expecting '}', found ',' @ line 28, column 27.
+   				name:it.getName().name,
+                             ^
+
+1 error
+
+2016-07-16_20:55:43.899 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:55:44.080 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 28: expecting '}', found ',' @ line 28, column 27.
+   				name:it.getName().name,
+                             ^
+
+1 error
+
+2016-07-16_20:55:46.278 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:55:47.380 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_20:56:18.472 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:02:22.982 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:02:23.310 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:04:26.553 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:04:26.834 [Thread-10] ERROR o.c.g.g.p.c.GrailsProjectWatcher -
+				Compilation Error: startup failed:
+C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy: 39: expecting '}', found ':' @ line 39, column 9.
+   			 data: iterator.collect {[
+           ^
+
+1 error
+
+2016-07-16_21:04:30.998 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:05:22.567 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\JOBFSpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:05:23.406 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\JOBFSpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:05:32.916 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\JOBPSpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:05:45.780 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\JOBSSpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:15:38.801 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:15:39.409 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:24:25.458 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:24:25.860 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:06.515 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:07.123 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:27.613 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:27.969 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:30.542 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:30.907 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:33.230 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:33.675 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:35.682 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:25:36.323 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:32:55.745 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:32:56.094 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:39:19.621 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:39:20.023 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:39:56.136 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:39:56.490 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:40:11.963 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:40:12.369 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:42:30.684 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:42:31.050 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:55:25.367 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:55:25.752 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:56:47.901 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:56:48.261 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:56:58.304 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:56:58.685 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:57:56.363 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:57:56.720 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:58:08.064 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:58:08.393 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:58:30.709 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:58:31.139 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:59:45.668 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_21:59:46.046 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:00:16.891 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:00:17.245 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:05:49.263 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:05:49.624 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:08:16.754 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:08:17.082 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:11:17.459 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:11:17.811 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:11:58.255 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:11:58.759 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:12:01.652 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:12:01.960 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:13:03.625 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:13:03.966 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:22:59.829 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:23:00.240 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:23:30.028 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:23:30.440 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\spec\CALESpecDisplay.groovy] changed. Applying changes to application.
+2016-07-16_22:31:06.987 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\UsersController.groovy] changed. Applying changes to application.
+2016-07-16_22:31:09.135 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\UsersController.groovy] changed. Applying changes to application.
+2016-07-16_22:31:15.474 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\CalendarsController.groovy] changed. Applying changes to application.
+2016-07-16_22:31:16.409 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\grails-app\controllers\automic\restful\server\CalendarsController.groovy] changed. Applying changes to application.
+2016-07-16_22:59:27.186 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-16_22:59:28.613 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\ae\actions\get\ActivitiesGETActions.groovy] changed. Applying changes to application.
+2016-07-16_23:11:26.501 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\utils\MiscUtils.groovy] changed. Applying changes to application.
+2016-07-16_23:11:26.978 [Thread-10] INFO  o.c.g.g.p.c.GrailsProjectWatcher -
+				File [C:\Users\bsp\git\UC4-Automic-REST-API\Automic-RESTful-Server\src\groovy\com\automic\utils\MiscUtils.groovy] changed. Applying changes to application.
