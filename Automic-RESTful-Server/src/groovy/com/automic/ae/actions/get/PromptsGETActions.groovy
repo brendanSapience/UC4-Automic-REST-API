@@ -150,11 +150,11 @@ class PromptsGETActions {
 		return listEl.collect {[
 			type:it.getTagName(),
 			variable: it.getVariable(),
-			customfield:it.getCustomField(),
-			tooltip:it.getTooltip(),
+			//customfield:it.getCustomField(),
+			//tooltip:it.getTooltip(),
 			value:it.getValue(),
 			values:it.getValues(),
-			mode:it.getMode(),
+			//mode:it.getMode(),
 			data:getElementContent(it),
 			]}
 		
@@ -166,13 +166,13 @@ class PromptsGETActions {
 			return [
 				caption:el.getCaption(),
 				required:el.isValueRequired(),
-				dataref:el.getDataReference().getName(),
-				quotechar:el.getQuoteCharacter(),
-				xmlkey:el.getXmlKey(),
-				xpath:el.getXPath(),
+				//dataref:el.getDataReference().getName(),
+				//quotechar:el.getQuoteCharacter(),
+				//xmlkey:el.getXmlKey(),
+				//xpath:el.getXPath(),
 				locked:el.isLocked(),
 				possiblevalues:el.getItemList(),
-				separator:el.getMultiSelectSeparator(),
+				//separator:el.getMultiSelectSeparator(),
 				]
 		}
 		
@@ -182,10 +182,10 @@ class PromptsGETActions {
 			ComboElement el = (ComboElement)elem;
 			return [
 				caption:el.getCaption(),
-				dataref:el.dataReference.getName(),
-				quotechar:el.getQuoteCharacter(),
-				xmlkey:el.getXmlKey(),
-				xpath:el.getXPath(),
+				//dataref:el.dataReference.getName(),
+				//quotechar:el.getQuoteCharacter(),
+				//xmlkey:el.getXmlKey(),
+				//xpath:el.getXPath(),
 				dynamic:el.isDynamic(),
 				locked:el.isLocked(),
 				possiblevalues:el.getItemList(),
@@ -197,11 +197,11 @@ class PromptsGETActions {
 			DateElement el = (DateElement)elem;
 			return [
 				caption:el.getCaption(),
-				dataref:el.dataReference.getName(),
+				//dataref:el.dataReference.getName(),
 				calendarname:el.getCalendarCondition().name.getName(),
 				calendarkeyword:el.getCalendarCondition().getKeyword().getName(),
-				maxvalue:el.getMaximumValue().toString(),
-				minvalue:el.getMinimumValue().toString(),
+				//maxvalue:el.getMaximumValue().toString(),
+				//minvalue:el.getMinimumValue().toString(),
 				outputformat:el.getOutputFormat(),
 			]
 		}
@@ -218,8 +218,8 @@ class PromptsGETActions {
 			NumberElement el = (NumberElement)elem;
 			return [
 				caption:el.getCaption(),
-				dataref:el.dataReference.getName(),
-				quotechar:el.getQuoteCharacter(),
+				//dataref:el.dataReference.getName(),
+				//quotechar:el.getQuoteCharacter(),
 				locked:el.isLocked(),
 				maxvalue:el.getMaxValue(),
 				minvalue:el.getMinValue(),
@@ -233,8 +233,8 @@ class PromptsGETActions {
 			RadioGroupElement el = (RadioGroupElement)elem;
 			return [
 				caption:el.getCaption(),
-				dataref:el.dataReference.getName(),
-				quotechar:el.getQuoteCharacter(),
+				//dataref:el.dataReference.getName(),
+				//quotechar:el.getQuoteCharacter(),
 				locked:el.isLocked(),
 				possiblevalues:el.getItemList(),
 				]
@@ -245,18 +245,18 @@ class PromptsGETActions {
 			return [
 				caption:el.getCaption(),
 				required:el.isValueRequired(),
-				dataref:el.dataReference.getName(),
-				quotechar:el.getQuoteCharacter(),
-				xmlkey:el.getXmlKey(),
-				xpath:el.getXPath(),
+				//dataref:el.dataReference.getName(),
+				//quotechar:el.getQuoteCharacter(),
+				//xmlkey:el.getXmlKey(),
+				//xpath:el.getXPath(),
 				locked:el.isLocked(),
 				
 				maxlength:el.getMaxLength(),
-				separator:el.getMultiSelectSeparator(),
-				regexp:el.getRegExp(),
-				ismultiline:el.isMultiline(),
+				//separator:el.getMultiSelectSeparator(),
+				//regexp:el.getRegExp(),
+				//ismultiline:el.isMultiline(),
 				ispassword:el.isShowAsPassword(),
-				isupper:el.isUpper(),
+				//isupper:el.isUpper(),
 				required:el.isValueRequired(),
 				]
 		}
@@ -266,7 +266,7 @@ class PromptsGETActions {
 			TimeElement el = (TimeElement)elem;
 			return [
 				caption:el.getCaption(),
-				dataref:el.dataReference.getName(),
+				//dataref:el.dataReference.getName(),
 				maxvalue:el.getMaximumValue().toString(),
 				minvalue:el.getMinimumValue().toString(),
 				]
@@ -276,11 +276,11 @@ class PromptsGETActions {
 			TimeStampElement el = (TimeStampElement)elem;
 			return [
 				caption:el.getCaption(),
-				dataref:el.dataReference.getName(),
+				//dataref:el.dataReference.getName(),
 				calendarname:el.getCalendarCondition().name.getName(),
 				calendarkeyword:el.getCalendarCondition().getKeyword().getName(),
-				maxvalue:el.getMaximumValue().toString(),
-				minvalue:el.getMinimumValue().toString(),
+				//maxvalue:el.getMaximumValue().toString(),
+				//minvalue:el.getMinimumValue().toString(),
 				outputformat:el.getOutputFormat(),
 				]
 		}
