@@ -4,9 +4,11 @@ import groovy.json.JsonSlurper;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InvalidObjectException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 
 
 
@@ -86,25 +88,22 @@ public class CommonAERequests {
 		return TaskLists;
 	}
 	
-	public static void addDependency(JobPlan object, String TaskName, String TaskPred, int TaskpredNum) throws IOException{
-		
-		// format can be ["TASKNAME","PREDECESSORNAME","STATUS"] or: ["TASKNAME(4)","PREDECESSORNAME","STATUS"] or: ["TASKNAME","PREDECESSORNAME(5)","STATUS"]
-		// => the task number isnt mandatory but is useful when the same job exists as several tasks within one same WF
-
-		
-		// Getting the Predecessor task Name and Task Number (if passed)
+	public static boolean addDependency(JobPlan object, JobPlanTask jpTask, String TaskPred, String Status, int TaskpredNum) throws IOException{
 
 		// Getting the task state.. no control here :(
-		TaskState tState = new TaskState("ANY_OK");
+		TaskState tState = new TaskState(Status);
 		
 		// handling the case where the Task Name is END (end of WF)
-		ArrayList<JobPlanTask> TaskList = new ArrayList<JobPlanTask>();
-		if(TaskName.equalsIgnoreCase("END")){
-			TaskList.add(object.getEndTask());
-		}else{
-			TaskList = getTasksFromNameAndJobPlan(object,TaskName);
-		}
+		//ArrayList<JobPlanTask> TaskList = new ArrayList<JobPlanTask>();
+		//if(TaskName.equalsIgnoreCase("END")){
+		//	TaskList.add(object.getEndTask());
+		//}else{
+		//	TaskList = getTasksFromNameAndJobPlan(object,TaskName);
+		//}
 		
+		//if(TaskList.size()==0){
+		//	return false;
+		//}
 		// handling the case where the Predecessor Task Name is START (start of WF)
 		ArrayList<JobPlanTask> PredecessorTaskList = new ArrayList<JobPlanTask>();
 		if(TaskPred.equalsIgnoreCase("START")){
@@ -113,22 +112,27 @@ public class CommonAERequests {
 			PredecessorTaskList = getTasksFromNameAndJobPlan(object,TaskPred);
 		}
 		
+		if(PredecessorTaskList.size()==0){
+			return false;
+		}
+		
 		// For each task found
-		for(int h=0;h<TaskList.size();h++){
-			JobPlanTask jptask = TaskList.get(h);
+		//for(int h=0;h<TaskList.size();h++){
+			//JobPlanTask jptask = TaskList.get(h);
 			// for each predecessor found
+			boolean FoundAPredecessor = false;
 			for(int k=0;k<PredecessorTaskList.size();k++){
 				JobPlanTask jppredecessortask = PredecessorTaskList.get(k);
 				// only create a dependency if: eithere there is no task number specified or.. if they match.
 				if(TaskpredNum == -1 || jppredecessortask.getLnr() == TaskpredNum){
 					//System.out.println("\t ++ UPDATE: Adding Dependency to: " + jptask.getTaskName()+"("+jptask.getLnr()+")" +" on: " + jppredecessortask.getTaskName()+"("+jppredecessortask.getLnr()+")" +" in Status: " +tState+ "" );
-					jptask.dependencies().addDependency(jppredecessortask,tState);
+					FoundAPredecessor = true;
+					jpTask.dependencies().addDependency(jppredecessortask,tState);
 				}
-				
-
 			}
+			return FoundAPredecessor;
 			
-		}
+		//}
 
 	}
 	
@@ -138,18 +142,26 @@ public class CommonAERequests {
 		connection.sendRequestAndWait(add);
 		if (add.getMessageBox() != null) {
 			System.out.println(" -- "+add.getMessageBox().getText().toString().replace("\n", ""));
+			return null;
 		}
 		return add.getJobPlanTask();
 	}
 	
-	public static void addTaskAtPosition(JobPlan object, String TaskName, int x, int y, Connection connection) throws IOException{
+	public static JobPlanTask addTaskAtPosition(JobPlan object, String TaskName, int x, int y, Connection connection) throws IOException{
 		
 		//System.out.println(" ++ Adding Task: "+TaskName+" at: [" + iPosX +","+iPosY+"]" );
 		JobPlanTask jptask = getTaskFromName(TaskName, connection);
-		jptask.setX(x);
-		jptask.setY(y);
-		//System.out.println("\t ++ UPDATE: Add Task to JobPlan: [ " + jptask.getTaskName() +" | " + jptask.getType() + " | {" + jptask.getX()+","+jptask.getY()+"} ]" );
-		object.addTask(jptask);
+		if(jptask!=null){
+			jptask.setX(x);
+			jptask.setY(y);
+			//System.out.println("\t ++ UPDATE: Add Task to JobPlan: [ " + jptask.getTaskName() +" | " + jptask.getType() + " | {" + jptask.getX()+","+jptask.getY()+"} ]" );
+			object.addTask(jptask);
+			return jptask;
+		}else{
+			//System.out.println("DEBUG IN JHERE!!");
+			return null;
+		}
+
 	}
 	
 	//VersionControlList imp = new VersionControlList(getUC4ObjectNameFromString(ObjName,false);
@@ -334,7 +346,7 @@ public class CommonAERequests {
 	}	
 	
 	// close an Automic Object (of any kind)
-		public static String saveAndCloseObject(UC4Object obj,Connection connection) throws IOException {
+		public static String saveAndCloseObject(UC4Object obj,Connection connection) throws IOException, InvalidObjectException {
 			SaveObject save = new SaveObject(obj);
 			connection.sendRequestAndWait(save);
 			if (save.getMessageBox() != null) {

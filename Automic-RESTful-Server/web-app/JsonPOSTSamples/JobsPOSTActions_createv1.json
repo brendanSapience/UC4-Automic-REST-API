@@ -14,36 +14,57 @@
 			{
 				"name":"WF.TASK.1",
 				"x":2,
-				"y":2,
+				"y":1,
 				"predecessors":
 				[
 					{
 						"name": "START",
-						"tasknum": 1
+						"tasknum": 1,
+						"status": "ANY_OK"
 					}
 				]
 			},
 			{
 				"name":"WF.TASK.2",
 				"x":3,
-				"y":2,
+				"y":1,
 				"predecessors":
 				[
 					{
 						"name": "WF.TASK.1",
-						"tasknum": 3
+						"tasknum": 3,
+						"status": "ANY_OK"
 					}
 				]
 			},
-			{
-				"name":"END",
+				{
+				"name":"WF.TASK.3",
 				"x":4,
 				"y":2,
 				"predecessors":
 				[
 					{
+						"name": "WF.TASK.1",
+						"tasknum": 3,
+						"status": "ANY_OK"
+					}
+				]
+			},
+			{
+				"name":"END",
+				"x":5,
+				"y":1,
+				"predecessors":
+				[
+					{
 						"name": "WF.TASK.2",
-						"tasknum": 4
+						"tasknum": 4,
+						"status": "ANY_OK"
+					},
+					{
+						"name": "WF.TASK.3",
+						"tasknum": 5,
+						"status": "ANY_OK"
 					}
 				]
 			}	
