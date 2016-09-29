@@ -67,6 +67,12 @@ public final class ConnectionManager {
 			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
 		}catch(NoRouteToHostException n){
 			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
+		}catch(IOException i){
+			if(i.getMessage().contains("Different versions")){
+				return "--MESSAGE: REST Server is compatible up to v11.2 only: " + i.getMessage();
+			}else{
+				return "--MESSAGE: " + i.getMessage();
+			}
 		}
 		
 		String PASSWORD = ''

@@ -11,6 +11,16 @@
 		"RESTadmin":true
 	},
 	{
+		"name":"AEUSDC",
+		"host":"vwagso03",
+		"dept":"AUTOMIC",
+		"araurl":"",
+		"lang":"E",
+		"ports":["2217","2218"],
+		"validity":525600,
+		"RESTadmin":true
+	},
+	{
 		"name":"AEDEV",
 		"host":"192.168.1.60",
 		"dept":"AUTOMIC",

@@ -1,16 +1,51 @@
 {
-	"type" : "<JOBS_WIN|JOBS_UNIX|JOBS_SQL|JOBS_GENERIC|JOBS_VMS|JOBS_JMX|JOBS_SIEBEL|JOBS_SAP_PI|JOBS_SAP_JAVA|JOBS_SAP_ABAP|JOBS_PS|JOBS_OS400|JOBS_OS390|JOBS_OA|JOBS_NSK|JOBS_MPE|JOBS_GCOS8|JOBS_BS2000>",
+	"type" : "<JOBP>",
 	"folder" : "0200/REST.API.TESTS",
 	"name" : "<String>",
 	"title" : "<String>",
 	"key1" : "<String>",
 	"key2" : "<String>",
-	"host" : "<String>",
-	"login" : "<String>",
 	"queue" : "<String>",
 	"status" : "<active|inactive>",
 	"genatruntime" : "<boolean>",
 	"process" : "<String>",
-	"preprocess" : "<String>",
-	"postprocess" : "<String>"
+	"tasks" :
+		[
+			{
+				"name":"WF.TASK.1",
+				"x":2,
+				"y":2,
+				"predecessors":
+				[
+					{
+						"name": "START",
+						"tasknum": 1
+					}
+				]
+			},
+			{
+				"name":"WF.TASK.2",
+				"x":3,
+				"y":2,
+				"predecessors":
+				[
+					{
+						"name": "WF.TASK.1",
+						"tasknum": 3
+					}
+				]
+			},
+			{
+				"name":"END",
+				"x":4,
+				"y":2,
+				"predecessors":
+				[
+					{
+						"name": "WF.TASK.2",
+						"tasknum": 4
+					}
+				]
+			}	
+		]	
 }

@@ -16,6 +16,10 @@ import java.util.List;
 
 
 
+
+
+
+
 import com.uc4.ara.feature.rm.CreateDeployPackage;
 
 import org.xml.sax.SAXException;
@@ -30,6 +34,9 @@ import com.uc4.api.UC4ObjectName;
 import com.uc4.api.UC4TimezoneName;
 import com.uc4.api.UC4UserName;
 import com.uc4.api.objects.IFolder;
+import com.uc4.api.objects.JobPlan;
+import com.uc4.api.objects.JobPlanTask;
+import com.uc4.api.objects.TaskState;
 import com.uc4.api.objects.UC4Object;
 import com.uc4.api.objects.UserRight.Type;
 import com.uc4.api.systemoverview.AgentListItem;
@@ -37,6 +44,7 @@ import com.uc4.communication.Connection;
 import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
 import com.uc4.communication.requests.ActivityList;
+import com.uc4.communication.requests.AddJobPlanTask;
 import com.uc4.communication.requests.AdoptTask;
 import com.uc4.communication.requests.AgentList;
 import com.uc4.communication.requests.CheckAuthorizations;
@@ -64,6 +72,85 @@ import com.uc4.communication.requests.XMLRequest;
  */
 
 public class CommonAERequests {
+	
+	public static ArrayList<JobPlanTask> getTasksFromNameAndJobPlan(JobPlan jobPlan, String TaskName) throws IOException{
+		Iterator<JobPlanTask> it = jobPlan.taskIterator();
+		ArrayList<JobPlanTask> TaskLists = new ArrayList<JobPlanTask>();
+		
+		while(it.hasNext()){
+			JobPlanTask jpt = it.next();
+			if(jpt.getTaskName().equals(TaskName)){
+				TaskLists.add(jpt);
+			}
+		}
+		return TaskLists;
+	}
+	
+	public static void addDependency(JobPlan object, String TaskName, String TaskPred, int TaskpredNum) throws IOException{
+		
+		// format can be ["TASKNAME","PREDECESSORNAME","STATUS"] or: ["TASKNAME(4)","PREDECESSORNAME","STATUS"] or: ["TASKNAME","PREDECESSORNAME(5)","STATUS"]
+		// => the task number isnt mandatory but is useful when the same job exists as several tasks within one same WF
+
+		
+		// Getting the Predecessor task Name and Task Number (if passed)
+
+		// Getting the task state.. no control here :(
+		TaskState tState = new TaskState("ANY_OK");
+		
+		// handling the case where the Task Name is END (end of WF)
+		ArrayList<JobPlanTask> TaskList = new ArrayList<JobPlanTask>();
+		if(TaskName.equalsIgnoreCase("END")){
+			TaskList.add(object.getEndTask());
+		}else{
+			TaskList = getTasksFromNameAndJobPlan(object,TaskName);
+		}
+		
+		// handling the case where the Predecessor Task Name is START (start of WF)
+		ArrayList<JobPlanTask> PredecessorTaskList = new ArrayList<JobPlanTask>();
+		if(TaskPred.equalsIgnoreCase("START")){
+			PredecessorTaskList.add(object.getStartTask());
+		}else{
+			PredecessorTaskList = getTasksFromNameAndJobPlan(object,TaskPred);
+		}
+		
+		// For each task found
+		for(int h=0;h<TaskList.size();h++){
+			JobPlanTask jptask = TaskList.get(h);
+			// for each predecessor found
+			for(int k=0;k<PredecessorTaskList.size();k++){
+				JobPlanTask jppredecessortask = PredecessorTaskList.get(k);
+				// only create a dependency if: eithere there is no task number specified or.. if they match.
+				if(TaskpredNum == -1 || jppredecessortask.getLnr() == TaskpredNum){
+					//System.out.println("\t ++ UPDATE: Adding Dependency to: " + jptask.getTaskName()+"("+jptask.getLnr()+")" +" on: " + jppredecessortask.getTaskName()+"("+jppredecessortask.getLnr()+")" +" in Status: " +tState+ "" );
+					jptask.dependencies().addDependency(jppredecessortask,tState);
+				}
+				
+
+			}
+			
+		}
+
+	}
+	
+	public static JobPlanTask getTaskFromName(String name, Connection connection) throws IOException {
+		//System.out.print("Add JobPlan task "+name+" ... "); 
+		AddJobPlanTask add = new AddJobPlanTask(new UC4ObjectName(name));
+		connection.sendRequestAndWait(add);
+		if (add.getMessageBox() != null) {
+			System.out.println(" -- "+add.getMessageBox().getText().toString().replace("\n", ""));
+		}
+		return add.getJobPlanTask();
+	}
+	
+	public static void addTaskAtPosition(JobPlan object, String TaskName, int x, int y, Connection connection) throws IOException{
+		
+		//System.out.println(" ++ Adding Task: "+TaskName+" at: [" + iPosX +","+iPosY+"]" );
+		JobPlanTask jptask = getTaskFromName(TaskName, connection);
+		jptask.setX(x);
+		jptask.setY(y);
+		//System.out.println("\t ++ UPDATE: Add Task to JobPlan: [ " + jptask.getTaskName() +" | " + jptask.getType() + " | {" + jptask.getX()+","+jptask.getY()+"} ]" );
+		object.addTask(jptask);
+	}
 	
 	//VersionControlList imp = new VersionControlList(getUC4ObjectNameFromString(ObjName,false);
 	public static void checkUserRights(String ObjName, Connection connection) throws IOException, SAXException{
