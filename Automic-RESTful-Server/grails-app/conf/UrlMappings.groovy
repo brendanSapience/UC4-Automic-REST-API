@@ -29,11 +29,12 @@ class UrlMappings {
 		"/api/awa"(controller:"AE", action : [GET:"getObjectList"])
 		"/api/awa/objects"(controller:"AE", action : [GET:"getObjectList"])
 		
+		// BSP - March 8th 2017 - removing ARA code
 		// ARA stuff
-		"/api/ara/$operation/$version/$object"(controller:{"ARA${params.object}"}, action : [GET:"router", POST:"router"])
-		"/api/ara/help/$version/$object"(controller:{"ARA${params.object}"}, action : [GET:"help", POST:"help"])
-		"/api/ara"(controller:"ARA", action : [GET:"getObjectList"])
-		"/api/ara/objects"(controller:"ARA", action : [GET:"getObjectList"])
+//		"/api/ara/$operation/$version/$object"(controller:{"ARA${params.object}"}, action : [GET:"router", POST:"router"])
+//		"/api/ara/help/$version/$object"(controller:{"ARA${params.object}"}, action : [GET:"help", POST:"help"])
+//		"/api/ara"(controller:"ARA", action : [GET:"getObjectList"])
+//		"/api/ara/objects"(controller:"ARA", action : [GET:"getObjectList"])
 		
    }
 }

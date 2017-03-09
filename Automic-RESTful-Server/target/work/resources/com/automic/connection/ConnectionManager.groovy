@@ -36,7 +36,7 @@ public final class ConnectionManager {
 	public static int DEVCLIENT = 100;
 	public static String DEVLOGIN = "ARA"; //"BSP";
 	public static String DEVDEPT = "ARA";
-	public static String DEVPWD = 'ara';
+	public static String DEVPWD = 'ARA';
 	public static char LANG = 'E';
 	public static int DEVEXPIRYPERIOD = 525600;
 	public static String DEVARAURL = "http://AETestHost/ARA";
@@ -69,7 +69,7 @@ public final class ConnectionManager {
 			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
 		}catch(IOException i){
 			if(i.getMessage().contains("Different versions")){
-				return "--MESSAGE: REST Server is compatible up to v11.2 only: " + i.getMessage();
+				return "--MESSAGE: REST Server compatibility issue with your AE Server: " + i.getMessage();
 			}else{
 				return "--MESSAGE: " + i.getMessage();
 			}
@@ -205,6 +205,7 @@ public final class ConnectionManager {
 			count: ConnectionMap.size(),
 			data: ConnectionMap.collect {k,v ->
 				["token": k, "expdate":v.getExpirationDate(), "host":v.getHost(),"user":v.getUser(),"client":v.getClient(),"dept":v.getDept(), "created" : v.getCreationDate()]
+				//["token": k, "expdate":v.getExpirationDate(), "host":v.getHost(),"user":v.getUser(),"client":v.getClient(),"dept":v.getDept(),"pwd":v.getPassword(), "created" : v.getCreationDate()]
 			}
 		  ]
 

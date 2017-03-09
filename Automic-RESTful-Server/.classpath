@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="lib" path="C:/Users/brend/Google Drive/Development/Libraries/uc4v12.0.0.jar"/>
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="src" path="src/groovy"/>
 	<classpathentry kind="src" path="grails-app/conf"/>
@@ -145,9 +146,7 @@
 			<accessrule kind="nonaccessible" pattern="grails-plugin-log4j-2.4.4.jar"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_11"/>
-	<classpathentry kind="lib" path="C:/Automic/APIs/dm-tool.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bsp/Google Drive/Automic/Tech Lab/Developement/APIS/Automic/v12/uc4v12.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brend/Google Drive/Development/Libraries/dm-tool.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="target-eclipse/classes"/>
 </classpath>

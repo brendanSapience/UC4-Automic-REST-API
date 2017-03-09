@@ -29,6 +29,7 @@ import com.uc4.communication.requests.ModifyTaskState
 import com.uc4.communication.requests.QueryAutoforecast
 import com.uc4.communication.requests.QuitTask
 import com.uc4.communication.requests.RecalculateAutoForecast
+import com.uc4.communication.requests.RemoveJobPlanBreakPoint
 import com.uc4.communication.requests.Report
 import com.uc4.communication.requests.RestartTask
 import com.uc4.communication.requests.ResumeTask
@@ -77,12 +78,80 @@ class ActivitiesGETActions {
 	public static def childstats(String version, params,Connection conn,request, grailsattr){return "childstats${version}"(params,conn)}
 	public static def activatorstats(String version, params,Connection conn,request, grailsattr){return "activatorstats${version}"(params,conn)}
 	public static def addbreak(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1562,"Task breakpoint added.")}
-	public static def delbreak(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1562,1700,"Task breakpoint removed.")}
+	// Fix - March 2017
+	//public static def delbreak(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1562,1700,"Task breakpoint removed.")}
+	public static def delbreak(String version, params,Connection conn,request, grailsattr){return "delbreak${version}"(params,conn)}
 	public static def addskip(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1922,"Task deactivated / skipped.")}
 	public static def delskip(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1922,1700,"Task reactivated / unskipped.")}
 	public static def go(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1545,"Task Go Now Ok.")}
 	
-	
+	/**
+	 * @purpose del breakpoint
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	 public static def delbreakv1(params,Connection conn) {
+ 
+		 def AllParamMap = [:]
+		 AllParamMap = [
+			 'required_parameters': ['runid (format: runid= < integer >'],
+			 'optional_parameters': [],
+			 'optional_filters': [],
+			 'required_methods': [],
+			 'optional_methods': ['usage']
+			 ]
+ 
+		 String FILTERS = params.filters;
+		 String METHOD = params.method;
+		 
+		 // Helper Methods
+		 if(METHOD == "usage"){
+			 JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			 return json
+			 //render(text: json, contentType: "text/json", encoding: "UTF-8")
+		 }else{
+ 
+				 if(MiscUtils.checkParams(AllParamMap, params)){
+					 
+					 String RUNIDASSTR = params.runid;
+					 int RUNID = RUNIDASSTR.toInteger();
+ 
+					 RemoveJobPlanBreakPoint req = new RemoveJobPlanBreakPoint(RUNID);
+			 
+					 XMLRequest res = CommonAERequests.sendSyncRequest(conn,req,false);
+					 boolean ERRORFOUND=false;
+					 if(req.getMessageBox()!=null && req.getMessageBox().getText().contains("error")){
+						ERRORFOUND = true; 
+					 }
+					 if(res == null && ERRORFOUND){
+						 JsonBuilder json = new JsonBuilder(
+							 [
+								 status: "error",
+								 message: req.getMessageBox().getText(),
+								 
+								 msgnumber:  req.getMessageBox().getNumber().toString()
+							 ])
+						 return json
+					 }else if(res == null && !ERRORFOUND){
+						 JsonBuilder json = new JsonBuilder(
+							 [
+								 status: "success",
+								 message: req.getMessageBox().getText(),
+								 
+								 msgnumber:  req.getMessageBox().getNumber().toString()
+							 ])
+						 return json
+					 }
+					 else{
+						 JsonBuilder json = new JsonBuilder([status: "success", message: "Breakpoint Removed."])
+						 return json
+					 }
+				 }else{
+					  return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+				  }
+		 }
+	 }
+	 
 	/**
 	 * @purpose change task state
 	 * @return JsonBuilder object
