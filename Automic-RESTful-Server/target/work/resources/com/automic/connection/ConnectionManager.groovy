@@ -30,11 +30,11 @@ public final class ConnectionManager {
 	// main HashMap containing all ConnectionPoolItems
 	public static HashMap<String, ConnectionPoolItem> ConnectionMap = new HashMap<String, ConnectionPoolItem>();
 
-	
+	// the following is only used in Development mode (to avoid having to specify credentials
 	public static String DEVHOST = "AETestHost";
 	public static int DEVPORT = 2217;
 	public static int DEVCLIENT = 100;
-	public static String DEVLOGIN = "ARA"; //"BSP";
+	public static String DEVLOGIN = "ARA";
 	public static String DEVDEPT = "ARA";
 	public static String DEVPWD = 'ARA';
 	public static char LANG = 'E';
@@ -56,14 +56,10 @@ public final class ConnectionManager {
 		Connection conn = null;
 		//should try the list of ports
 		try{ 
-			//println "DEBUG : " + credentials.getAEHostnameOrIp() +":"+credentials.getAECPPort()
 			conn = Connection.open(credentials.getAEHostnameOrIp(), credentials.getAECPPort());
 		}catch (UnresolvedAddressException e){
-			//System.out.println(" -- ERROR: Could Not Resolve Host or IP: "+credentials.getAEHostnameOrIp());
 			return "--MESSAGE: Could Not Resolve Host or IP: "+credentials.getAEHostnameOrIp()
 		}catch (ConnectException c){
-			//System.out.println(" -- ERROR: Could Not Connect to Host: " + credentials.getAEHostnameOrIp());
-			//System.out.println(" --     Hint: is the host or IP reachable?");
 			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
 		}catch(NoRouteToHostException n){
 			return "--MESSAGE: Could Not Reach Host or IP: "+credentials.getAEHostnameOrIp()
@@ -87,7 +83,6 @@ public final class ConnectionManager {
 		
 		if(sess.getMessageBox()!=null){
 			return "--MESSAGE: " + sess.getMessageBox(); 
-			//return null;
 		}
 		
 		SessionIdentifierGenerator sig = new SessionIdentifierGenerator();
@@ -114,7 +109,7 @@ public final class ConnectionManager {
 		return CONNTOKEN;
 		
 	}
-	//Clear token / Connection pool
+	//Clear token / Connection pool except for the initiator of the request
 	public static boolean clearAllTokens(String initiatorToken){
 		ArrayList<String> TokensToClear = new ArrayList<String>()
 		
@@ -139,7 +134,7 @@ public final class ConnectionManager {
 		}
 	}
 	
-	// Check the status of a token: no token or Valid or expired or inexistant. should be a private method?
+	// Check the status of a token: no token or Valid or expired or inexistent. should be a private method?
 	private static int checkTokenValidity(String token) throws IOException, ParseException{
 		if(token == null || token == ""){
 			return -1;
@@ -187,16 +182,16 @@ public final class ConnectionManager {
 	}
 	
 	// this is more of a debug method.. it isnt used anywhere actively.
-	public static void showConnectionPoolContent(){
-		 Set set = ConnectionMap.entrySet();
-	      Iterator iterator = set.iterator();
-	      while(iterator.hasNext()) {
-	         Map.Entry mentry = (Map.Entry)iterator.next(); 
-	         //System.out.print("Token: "+ mentry.getKey());
-	         ConnectionPoolItem c1 = (ConnectionPoolItem)mentry.getValue();
-	        // System.out.println("\t Exp Date: "+ c1.ExpirationDate);
-	      }
-	}
+//	public static void showConnectionPoolContent(){
+//		 Set set = ConnectionMap.entrySet();
+//	      Iterator iterator = set.iterator();
+//	      while(iterator.hasNext()) {
+//	         Map.Entry mentry = (Map.Entry)iterator.next(); 
+//	         //System.out.print("Token: "+ mentry.getKey());
+//	         ConnectionPoolItem c1 = (ConnectionPoolItem)mentry.getValue();
+//	        // System.out.println("\t Exp Date: "+ c1.ExpirationDate);
+//	      }
+//	}
 
 	// returns a JSON formatted message with all ConnectionMap Hash info
 	public static JsonBuilder getJSONFromConnectionPoolContent(){

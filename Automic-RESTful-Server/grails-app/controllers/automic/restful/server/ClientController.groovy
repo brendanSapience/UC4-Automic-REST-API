@@ -86,8 +86,8 @@ class ClientController {
 				// otherwise it needs to be caught
 					try{
 						myRes = actionClass."${OPERATION}"(VERSION,params,conn,request,grailsAttributes);
-					}catch(MissingMethodException){
-						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
+					}catch(MissingMethodException m){
+						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION, details: m.getMessage()])
 					}
 				}
 				render(text:  myRes, contentType: "text/json", encoding: "UTF-8")

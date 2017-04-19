@@ -9,21 +9,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-import com.uc4.ara.feature.rm.CreateDeployPackage;
-
 import org.xml.sax.SAXException;
 
 import com.uc4.api.InvalidUC4NameException;
@@ -204,6 +189,18 @@ public class CommonAERequests {
 		}else{
 			return imp;
 		}
+	}
+	
+	public static String checkUC4ObjectName(String name){
+		UC4ObjectName objName = null;
+		try{
+				objName = new UC4ObjectName(name);
+			
+		} catch (InvalidUC4NameException e){
+			return e.getMessage();
+			
+		}
+		return "";
 	}
 	
 	public static UC4ObjectName getUC4ObjectNameFromString(String name,boolean isTZ){

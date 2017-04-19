@@ -110,8 +110,8 @@ class AllController {
 							render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 						}
 					
-					}catch(MissingMethodException e){
-						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION])
+					}catch(MissingMethodException m){
+						myRes = new JsonBuilder([status: "error", message: "an error occured for operation "+OPERATION+" in version "+VERSION, details: m.getMessage()])
 						render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 					}
 				}

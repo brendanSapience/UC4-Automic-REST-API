@@ -2,5 +2,9 @@
 /automic/
 /com/
 /grails/
+/hibernate/
+/hibernate.cfg.xml
+/javascripts/
 /org/
+/spring/
 /uc4rest/

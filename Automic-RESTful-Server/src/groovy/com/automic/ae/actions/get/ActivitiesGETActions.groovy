@@ -416,6 +416,12 @@ class ActivitiesGETActions {
 				if(MiscUtils.checkParams(AllParamMap, params)){
 					String OBJNAME = params.name;
 					
+					// Check that the parameter passed is a valid UC4ObjectName
+					String IsUC4ObjectNameOk = CommonAERequests.checkUC4ObjectName(OBJNAME);
+					if(!IsUC4ObjectNameOk.equals("")){
+						return CommonJSONRequests.renderErrorAsJSON("Object Name is Invalid: "+IsUC4ObjectNameOk);
+					}
+					
 					ExecuteObject req = new ExecuteObject(new UC4ObjectName(OBJNAME));
 					req.allowImmediateStart(true);
 					
@@ -447,7 +453,6 @@ class ActivitiesGETActions {
 							[
 								status: "error",
 								message: req.getMessageBox().getText(),
-								
 								msgnumber:  req.getMessageBox().getNumber().toString()
 							])
 						return json

@@ -146,7 +146,6 @@
 			<accessrule kind="nonaccessible" pattern="grails-plugin-log4j-2.4.4.jar"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/brend/Google Drive/Development/Libraries/dm-tool.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="target-eclipse/classes"/>
 </classpath>

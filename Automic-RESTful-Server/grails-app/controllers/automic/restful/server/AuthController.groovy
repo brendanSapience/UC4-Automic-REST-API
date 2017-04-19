@@ -61,9 +61,9 @@ class AuthController {
 				boolean ClassFound = true;
 				try{
 					actionClass = this.class.getClassLoader().loadClass(RootPackage+HTTPMETHOD.toLowerCase()+"."+OBJECT+HTTPMETHOD+"Actions");
-				}catch (ClassNotFoundException c){
+				}catch (ClassNotFoundException m){
 					ClassFound = false;
-					myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION ])
+					myRes = new JsonBuilder([status: "error", message: "Method "+HTTPMETHOD+" is not supported for Object: "+OBJECT + " and operation: " +OPERATION, details: m.getMessage() ])
 					render(text:  myRes, contentType: "text/json", encoding: "UTF-8")
 				}
 				if(ClassFound){
