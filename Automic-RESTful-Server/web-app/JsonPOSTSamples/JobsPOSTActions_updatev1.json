@@ -40,6 +40,15 @@
 		"genatruntime" : "<boolean>",
 		"process" : "<Regex: expression to Match>,<String: new value>",
 		"preprocess" : "<Regex: expression to Match>,<String: new value>",
-		"postprocess" : "<Regex: expression to Match>,<String: new value>"
+		"postprocess" : "<Regex: expression to Match>,<String: new value>",
+		
+		"db_connname" : "<String: new value>",
+		"db_servername" : "<String: new value>",
+		"db_dbname" : "<String: new value>",
+        "ra_values" :
+    	[
+     		{"<xml attribute name, ex: responseToJobLog>":"<String: new value, ex: true>"},
+			{"<xml attribute name, ex: responseToJobLog>":"<String: new value, ex: true>"}
+    	]
 	}
 }

@@ -1,15 +1,20 @@
 package com.automic.spec
 
 import com.uc4.api.InvalidUC4NameException
+import com.uc4.api.Template
 import com.uc4.api.UC4HostName
 import com.uc4.api.UC4ObjectName
+import com.uc4.api.objects.AttributesSQL
 import com.uc4.api.objects.CustomAttribute
 import com.uc4.api.objects.Job;
 import com.uc4.api.objects.UC4Object
+import com.uc4.api.objects.OCVPanel.CITValue
 import com.uc4.communication.Connection;
 import com.automic.objects.CommonAERequests;
 import com.automic.objects.AEFolderRequests;
 import com.automic.utils.*
+import org.codehaus.groovy.grails.web.json.JSONArray
+import org.codehaus.groovy.grails.web.json.JSONObject
 
 class JOBSSpecCreate {
 	public static def CreateObject(Connection connection, JsonUpdates,boolean Commit){
@@ -22,11 +27,14 @@ class JOBSSpecCreate {
 		if(TEMPLATE == null || TEMPLATE.equals("")){return CommonJSONRequests.renderErrorAsJSON("template in JSON request body should contain a type")}
 		if(FOLDER == null || FOLDER.equals("")){return CommonJSONRequests.renderErrorAsJSON("template in JSON request body should contain a folder")}
 		
-		if(CommonAERequests.convertStringToTemplate(TEMPLATE) == null){
+		
+		Template TemplateObj = CommonAERequests.getTemplateFromName(connection,TEMPLATE);
+		if(TemplateObj == null){
 			// return error on template passed
-			return CommonJSONRequests.renderErrorAsJSON("template in JSON request body has an incorrect value")
+			return CommonJSONRequests.renderErrorAsJSON("template in JSON request body could not be found in target environment")
 			
 		}
+		TEMPLATE = TemplateObj.getTemplateName();
 		if(AEFolderRequests.getFolderByFullPathName(FOLDER,connection)==null){
 			// return error on folder name passed
 			return CommonJSONRequests.renderErrorAsJSON("folder in JSON request body cannot be found on AE system")
@@ -40,12 +48,10 @@ class JOBSSpecCreate {
 		}
 		
 		UC4Object obj
-	//	if(Commit){
-			String r = CommonAERequests.reclaimObject(NAME,connection)
-			obj = CommonAERequests.openObject(connection,NAME,false)
-//		}else{
-//			obj = CommonAERequests.openObject(connection,NAME,true)
-//		}
+
+		String r = CommonAERequests.reclaimObject(NAME,connection)
+		obj = CommonAERequests.openObject(connection,NAME,false)
+
 		
 		if(obj == null){return CommonJSONRequests.renderErrorAsJSON("Object created but not updated (it couldnt be opened)")}
 		
@@ -90,9 +96,41 @@ class JOBSSpecCreate {
 			if(STATUS.equals("active")){job.header().setActive(true)}
 			if(STATUS.equals("inactive")){job.header().setActive(false)}
 		}
+		// For SQL Jobs Specifically
+		if(job.getType().equals("JOBS_SQL")){
+			AttributesSQL attr = (AttributesSQL) job.hostAttributes();
+			String CONNNAME = JsonUpdates.db_connname;
+			String DBNAME = JsonUpdates.db_dbname;
+			String SERVERNAME = JsonUpdates.db_servername;
+			if(CONNNAME != null && !CONNNAME.equals("")){attr.setConnection(new UC4ObjectName(CONNNAME))}
+			if(DBNAME != null && !DBNAME.equals("")){attr.setDatabaseName(DBNAME)}
+			if(SERVERNAME != null && !SERVERNAME.equals("")){attr.setDatabaseServer(SERVERNAME)}
+		}
+		
+		// For CIT/RA Jobs Specifically
+		if(job.getType().equals("JOBS_CIT")){
+			
+			// subjobtype is in job.getRAJobType()
+			HashMap<String, String> UpdateValuesHash = new HashMap<>();
+			JSONArray ValueList = JsonUpdates.ra_values;
+			for(int i=0;i<ValueList.size();i++){
+				JSONObject valueJSONObj = (JSONObject) ValueList.get(i);
+				String myKey = valueJSONObj.keys().next();
+				String myVal = valueJSONObj.get(myKey);
+				UpdateValuesHash.put(myKey,myVal);
+			}
+			
+			Iterator<CITValue> ItValues  = job.ocvValues().iterator();
+			while(ItValues.hasNext()){
+				CITValue val = ItValues.next();
+				if(UpdateValuesHash.containsKey(val.getXmlName())){
+					val.setValue(UpdateValuesHash.get(val.getXmlName()));
+				}
+			}
+			
+		}
 		
 		if(Commit){
-			//println "Saving Object: " + it.getName()
 			CommonAERequests.saveAndCloseObject(job,connection)
 		}
 		else{

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="lib" path="C:/Users/brend/Google Drive/Development/Libraries/uc4v12.0.0.jar"/>
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="src" path="src/groovy"/>
 	<classpathentry kind="src" path="grails-app/conf"/>
@@ -141,11 +140,10 @@
 			<attribute name="org.grails.ide.eclipse.core.SOURCE_FOLDER" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.grails.ide.eclipse.core.CLASSPATH_CONTAINER">
-		<accessrules>
-			<accessrule kind="nonaccessible" pattern="grails-plugin-log4j-2.4.4.jar"/>
-		</accessrules>
-	</classpathentry>
+	<classpathentry kind="con" path="org.grails.ide.eclipse.core.CLASSPATH_CONTAINER"/>
+	<classpathentry kind="con" path="GROOVY_DSL_SUPPORT"/>
+	<classpathentry kind="lib" path="C:/Automic/GIT/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Automic/GIT/uc4_12.0.jar"/>
 	<classpathentry kind="output" path="target-eclipse/classes"/>
 </classpath>

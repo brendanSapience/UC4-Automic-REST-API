@@ -39,9 +39,8 @@ class AEController {
 			count: ObjectList.length,
 			objects: ObjectList.collect {name: it}
 		  ]
-
+		
 		def jsonres = new JsonBuilder(data)
 		render(text: jsonres, contentType: "text/json", encoding: "UTF-8")
-		
 	}
 }

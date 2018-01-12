@@ -48,6 +48,7 @@ import com.uc4.communication.requests.ResetOpenFlag;
 import com.uc4.communication.requests.SaveObject;
 import com.uc4.communication.requests.SearchObject;
 import com.uc4.communication.requests.TaskDetails;
+import com.uc4.communication.requests.TemplateList;
 import com.uc4.communication.requests.VersionControlList;
 import com.uc4.communication.requests.XMLRequest;
 
@@ -245,8 +246,9 @@ public class CommonAERequests {
 	}
 	
 	public static String createObject(String name, String templateName, String FolderName,Connection connection) throws IOException{
-
-		Template template = convertStringToTemplate(templateName);
+		// Fix: ability to create RA Objects
+		//Template template = convertStringToTemplate(templateName);
+		Template template = getTemplateFromName(connection, templateName);
 		if ( template == null){
 			return " -- Error! Template Name " + templateName +" Does Not Seem To Match Any Existing Template..";
 		}else{
@@ -465,6 +467,29 @@ public class CommonAERequests {
 		return tasks;
 	}
 
+	public static IFolder getRootFolder(Connection conn) throws IOException{
+		FolderTree tree = new FolderTree();
+		conn.sendRequestAndWait(tree);
+		return tree.root();		
+	}
+	
+	public static TemplateList getTemplateList(Connection conn) throws IOException{
+		IFolder RootFolder = getRootFolder(conn);
+		TemplateList req = new TemplateList(RootFolder);
+		conn.sendRequestAndWait(req);
+		return req;
+	}
+	
+	public static Template getTemplateFromName(Connection conn, String TemplateName) throws IOException{
+
+		TemplateList list = getTemplateList(conn);
+		Iterator<Template> it = list.iterator();
+		while(it.hasNext()){
+			Template t = it.next();
+		}
+		Template objTemplate = list.getTemplate(TemplateName);
+		return objTemplate;
+	}
 	// List is incomplete.. add as necessary!!
 	public static Template convertStringToTemplate(String s){
 		

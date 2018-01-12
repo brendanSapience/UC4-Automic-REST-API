@@ -45,6 +45,8 @@ class AuthController {
 		String OBJECT = params.object.toString().toLowerCase().capitalize(); //Makes sure we have camel case on the Object Name
 		String HTTPMETHOD = request.method;
 		
+		
+		
 		if(request.getHeader("Token")){TOKEN = request.getHeader("Token")};
 		
 			boolean NeedToken = true;
@@ -69,6 +71,7 @@ class AuthController {
 				if(ClassFound){
 				
 					if(OPERATION.equalsIgnoreCase("login")){
+
 						def ConnectonFile = grailsAttributes.getApplicationContext().getResource(ConnectionSettingsFileName).getFile()
 						myRes = actionClass."${OPERATION}"(VERSION,params,ConnectonFile,request);
 					}else{

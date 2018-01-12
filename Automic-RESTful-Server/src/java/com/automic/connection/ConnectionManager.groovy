@@ -31,7 +31,7 @@ public final class ConnectionManager {
 	public static HashMap<String, ConnectionPoolItem> ConnectionMap = new HashMap<String, ConnectionPoolItem>();
 
 	// the following is only used in Development mode (to avoid having to specify credentials
-	public static String DEVHOST = "AETestHost";
+	public static String DEVHOST = "localhost";
 	public static int DEVPORT = 2217;
 	public static int DEVCLIENT = 100;
 	public static String DEVLOGIN = "ARA";
@@ -39,7 +39,7 @@ public final class ConnectionManager {
 	public static String DEVPWD = 'ARA';
 	public static char LANG = 'E';
 	public static int DEVEXPIRYPERIOD = 525600;
-	public static String DEVARAURL = "http://AETestHost/ARA";
+	public static String DEVARAURL = "http://localhost/ARA";
 	
 	public ConnectionManager(){ 
 		// leave empty
@@ -55,6 +55,7 @@ public final class ConnectionManager {
 	public static String connectToClient(AECredentials credentials, int ValidityMinutes,boolean IsAdmin, String ARAUrl) throws IOException{ 
 		Connection conn = null;
 		//should try the list of ports
+		
 		try{ 
 			conn = Connection.open(credentials.getAEHostnameOrIp(), credentials.getAECPPort());
 		}catch (UnresolvedAddressException e){

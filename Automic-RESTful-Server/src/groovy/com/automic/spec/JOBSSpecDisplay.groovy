@@ -7,6 +7,7 @@ import com.uc4.api.VersionControlListItem
 import com.uc4.api.objects.CustomAttribute
 import com.uc4.api.objects.Job;
 import com.uc4.api.objects.UC4Object
+import com.uc4.api.objects.OCVPanel.CITValue
 import com.uc4.communication.Connection;
 import com.uc4.communication.requests.VersionControlList
 import com.automic.objects.CommonAERequests;
@@ -19,6 +20,16 @@ class JOBSSpecDisplay {
 		VersionControlList vcl = new VersionControlList(CommonAERequests.getUC4ObjectNameFromString(job.getName(),false));
 		CommonAERequests.sendSyncRequest(conn,vcl,false);
 		Iterator<VersionControlListItem> iterator = vcl.iterator()
+		def additionalInfo = {}
+		if(job.getType().equals("JOBS_CIT")){
+			Iterator<CITValue> ItValues  = job.ocvValues().iterator();
+			additionalInfo = 
+				ItValues.collect {[
+					key:it.getXmlName(),
+					value: it.getValue()
+				]}
+			
+		}
 		
 		def versionsData = 
 			 iterator.collect {[
@@ -52,6 +63,7 @@ class JOBSSpecDisplay {
 				 preprocess:job.getPreProcess(),
 				 postprocess: job.getPostProcess(),
 				 versions: versionsData,
+				 additional: additionalInfo
 				 ]
 		  ]
 

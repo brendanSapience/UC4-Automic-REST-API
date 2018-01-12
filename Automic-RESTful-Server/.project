@@ -26,7 +26,7 @@
 		<link>
 			<name>.link_to_grails_plugins</name>
 			<type>2</type>
-			<location>C:/Users/brend/Documents/git/work/UC4-Automic-REST-API/Automic-RESTful-Server/target/work/plugins</location>
+			<location>C:/Automic/GIT/UC4-Automic-REST-API/Automic-RESTful-Server/target/work/plugins</location>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -2,10 +2,14 @@ package com.automic.spec
 
 import com.uc4.api.UC4HostName
 import com.uc4.api.UC4ObjectName
+import com.uc4.api.objects.AttributesSQL
 import com.uc4.api.objects.CustomAttribute
 import com.uc4.api.objects.Job
 import com.uc4.api.objects.ObjectValues
+import com.uc4.api.objects.OCVPanel.CITValue
 import groovy.json.JsonBuilder
+import org.codehaus.groovy.grails.web.json.JSONArray
+import org.codehaus.groovy.grails.web.json.JSONObject
 import com.automic.utils.CommonJSONRequests
 import com.automic.utils.MiscUtils
 
@@ -14,11 +18,11 @@ class JOBSSpecUpdates {
 	public static def UpdateObject(Job obj,JsonUpdates,boolean Commit){
 		
 		
-		Iterator<CustomAttribute> myIt = obj.header.customAttributeIterator();
-		while(myIt.hasNext()){
-			CustomAttribute c = myIt.next();
-			println "DEBUG:"+c.getName()+":"+c.getValue();
-		}
+//		Iterator<CustomAttribute> myIt = obj.header.customAttributeIterator();
+//		while(myIt.hasNext()){
+//			CustomAttribute c = myIt.next();
+//			println "DEBUG:"+c.getName()+":"+c.getValue();
+//		}
 		
 		
 		if(JsonUpdates.status != null && JsonUpdates.status.equalsIgnoreCase("active")){obj.header().setActive(true);}
@@ -106,6 +110,41 @@ class JOBSSpecUpdates {
 			String FinalValueTarget = obj.getPostProcess().replaceAll(args[0], args[1])
 			obj.setPostProcess(FinalValueTarget);
 		}
+		
+		// For SQL Jobs Specifically
+		if(obj.getType().equals("JOBS_SQL")){
+			AttributesSQL attr = (AttributesSQL) obj.hostAttributes();
+			String CONNNAME = JsonUpdates.db_connname;
+			String DBNAME = JsonUpdates.db_dbname;
+			String SERVERNAME = JsonUpdates.db_servername;
+			if(CONNNAME != null && !CONNNAME.equals("")){attr.setConnection(new UC4ObjectName(CONNNAME))}
+			if(DBNAME != null && !DBNAME.equals("")){attr.setDatabaseName(DBNAME)}
+			if(SERVERNAME != null && !SERVERNAME.equals("")){attr.setDatabaseServer(SERVERNAME)}
+		}
+		
+		// For CIT/RA Jobs Specifically
+		if(obj.getType().equals("JOBS_CIT")){
+			
+			// subjobtype is in job.getRAJobType()
+			HashMap<String, String> UpdateValuesHash = new HashMap<>();
+			JSONArray ValueList = JsonUpdates.ra_values;
+			for(int i=0;i<ValueList.size();i++){
+				JSONObject valueJSONObj = (JSONObject) ValueList.get(i);
+				String myKey = valueJSONObj.keys().next();
+				String myVal = valueJSONObj.get(myKey);
+				UpdateValuesHash.put(myKey,myVal);
+			}
+			
+			Iterator<CITValue> ItValues  = obj.ocvValues().iterator();
+			while(ItValues.hasNext()){
+				CITValue val = ItValues.next();
+				if(UpdateValuesHash.containsKey(val.getXmlName())){
+					val.setValue(UpdateValuesHash.get(val.getXmlName()));
+				}
+			}
+			
+		}
+		
 	}
 	
 

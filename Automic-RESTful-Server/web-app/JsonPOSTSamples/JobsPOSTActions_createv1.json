@@ -1,72 +1,20 @@
 {
-	"type" : "<JOBP>",
-	"folder" : "0200/REST.API.TESTS",
-	"name" : "<String>",
-	"title" : "<String>",
-	"key1" : "<String>",
-	"key2" : "<String>",
-	"queue" : "<String>",
-	"status" : "<active|inactive>",
-	"genatruntime" : "<boolean>",
-	"process" : "<String>",
-	"tasks" :
-		[
-			{
-				"name":"WF.TASK.1",
-				"x":2,
-				"y":1,
-				"predecessors":
-				[
-					{
-						"name": "START",
-						"tasknum": 1,
-						"status": "ANY_OK"
-					}
-				]
-			},
-			{
-				"name":"WF.TASK.2",
-				"x":3,
-				"y":1,
-				"predecessors":
-				[
-					{
-						"name": "WF.TASK.1",
-						"tasknum": 3,
-						"status": "ANY_OK"
-					}
-				]
-			},
-				{
-				"name":"WF.TASK.3",
-				"x":4,
-				"y":2,
-				"predecessors":
-				[
-					{
-						"name": "WF.TASK.1",
-						"tasknum": 3,
-						"status": "ANY_OK"
-					}
-				]
-			},
-			{
-				"name":"END",
-				"x":5,
-				"y":1,
-				"predecessors":
-				[
-					{
-						"name": "WF.TASK.2",
-						"tasknum": 4,
-						"status": "ANY_OK"
-					},
-					{
-						"name": "WF.TASK.3",
-						"tasknum": 5,
-						"status": "ANY_OK"
-					}
-				]
-			}	
-		]	
+  "type" : "JOBS_WIN",
+  "folder" : "0100/LAB",
+  "name" : "MY.AUTO.CREATED.JOB.2",
+  "title" : "",
+  "host" : "WIN01",
+  "login" : "LOGIN.GENERAL",
+  "queue" : "CLIENT_QUEUE",
+  "status" : "inactive",
+  "genatruntime" : true,
+  "process" : "echo \"running!\"\nping 127.0.0.1\n echo \"job done!\"",
+  "preprocess" : "echo preprocess here",
+  "postprocess" : "echo post process here",
+  "ra_values" :
+    [
+     {"uriOverride":"http://hello.com"},
+     {"requestReports":"true"},
+     {"responseToJobLog":"true"}
+    ]
 }
