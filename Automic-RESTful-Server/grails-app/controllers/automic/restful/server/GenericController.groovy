@@ -37,11 +37,10 @@ class GenericController {
 //		def Version = grailsAttributes.getGrailsApplication().
 		
 		def data = [
-			name: "Rest API for Automic Platform (Workload & Release Automation)",
-			version: "0.3",
+			name: "Rest API for Automic Platform (Workload Automation & Service Orchestration)",
+			version: "0.5",
 			tag: "Beta",
 			awaurl: "/api/awa/objects",
-			araurl: "/api/ara/objects",
 		  ]
 
 		def jsonres = new JsonBuilder(data)

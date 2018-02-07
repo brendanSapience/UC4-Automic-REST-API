@@ -12,6 +12,7 @@ import java.util.List;
 import org.xml.sax.SAXException;
 
 import com.uc4.api.InvalidUC4NameException;
+import com.uc4.api.QueueStatus;
 import com.uc4.api.SearchResultItem;
 import com.uc4.api.Task;
 import com.uc4.api.TaskFilter;
@@ -23,10 +24,12 @@ import com.uc4.api.UC4UserName;
 import com.uc4.api.objects.IFolder;
 import com.uc4.api.objects.JobPlan;
 import com.uc4.api.objects.JobPlanTask;
+import com.uc4.api.objects.Queue;
 import com.uc4.api.objects.TaskState;
 import com.uc4.api.objects.UC4Object;
 import com.uc4.api.objects.UserRight.Type;
 import com.uc4.api.systemoverview.AgentListItem;
+import com.uc4.api.systemoverview.QueueListItem;
 import com.uc4.communication.Connection;
 import com.uc4.communication.IResponseHandler;
 import com.uc4.communication.TimeoutException;
@@ -43,7 +46,10 @@ import com.uc4.communication.requests.FolderTree;
 import com.uc4.communication.requests.GenericStatistics;
 import com.uc4.communication.requests.GetSessionTZ;
 import com.uc4.communication.requests.ImportObject;
+import com.uc4.communication.requests.ModifyQueue;
+import com.uc4.communication.requests.ModifyQueueStatus;
 import com.uc4.communication.requests.OpenObject;
+import com.uc4.communication.requests.QueueList;
 import com.uc4.communication.requests.ResetOpenFlag;
 import com.uc4.communication.requests.SaveObject;
 import com.uc4.communication.requests.SearchObject;
@@ -361,7 +367,6 @@ public class CommonAERequests {
 			}
 		}	
 	public static UC4Object openObject(Connection connection, String name, boolean readOnly) throws IOException {
-		//Say(" \t ++ Opening object: "+name);
 		UC4ObjectName objName = null;
 		if (name.indexOf('/') != -1) objName = new UC4UserName(name);
 		else if (name.indexOf('-')  != -1);
@@ -374,7 +379,11 @@ public class CommonAERequests {
 			System.err.println(" -- "+open.getMessageBox().toString().replace("\n", ""));
 			return null;
 		}
+		//open.getUC4Object().getName()
 		return open.getUC4Object();
+	}
+	public static Queue getQueue(UC4Object obj){
+		return (Queue) obj;
 	}
 	
 	public static String getSessionTZ(Connection connection) throws TimeoutException, IOException{
@@ -393,7 +402,7 @@ public class CommonAERequests {
 
 		
 		if (req.getMessageBox() != null) {
-			//System.out.println(" -- "+req.getMessageBox().getText().replace("\n", ""));
+			System.out.println(" -- "+req.getMessageBox().getText().replace("\n", ""));
 			return null;
 		}
 		
@@ -416,7 +425,7 @@ public class CommonAERequests {
 		connection.sendRequest(req, resHandler);
 		
 		if (req.getMessageBox() != null) {
-			if(verbose){System.out.println(" -- "+req.getMessageBox().getText().toString().replace("\n", ""));}
+			//if(verbose){System.out.println(" -- "+req.getMessageBox().getText().toString().replace("\n", ""));}
 			return null;
 		}
 		return req;
@@ -456,6 +465,46 @@ public class CommonAERequests {
 	return results;
 	}
 	
+	public static ArrayList<QueueListItem> getQueueList(Connection conn) throws IOException {		
+		QueueList req = new QueueList();
+		CommonAERequests.sendSyncRequest(conn, req, false);
+		
+		Iterator<QueueListItem> it =  req.iterator();
+		ArrayList<QueueListItem> results = new ArrayList<QueueListItem>();
+		while(it.hasNext()){
+			QueueListItem item = it.next();
+			results.add(item);
+		}
+	
+	return results;
+	}
+	public static String ChangeQueueStatus(Connection conn, String QueueName,QueueStatus status) throws TimeoutException, IOException{
+		UC4ObjectName queueName;
+		try{
+			queueName = new UC4ObjectName(QueueName);
+		}catch (InvalidUC4NameException e){
+			return "Invalid Queue Name";
+		}
+		ModifyQueueStatus req = new ModifyQueueStatus(queueName,status);
+		
+		CommonAERequests.sendSyncRequest(conn, req, false);
+		if (req.getMessageBox() != null){
+			return req.getMessageBox().getText();
+		}else{
+			return null;
+		}
+	}
+	public static QueueListItem getQueueItem2(Connection conn, String QueueName) throws TimeoutException, IOException{
+		ArrayList<QueueListItem> queueList = getQueueList(conn);
+		for(int i=0;i<queueList.size();i++){
+			QueueListItem queue = queueList.get(i);
+			if(queue.getName().equalsIgnoreCase(QueueName)){
+				return queue;
+			}
+		}
+		return null;
+	}
+
 	public static List<Task> getActivityWindowContent(Connection conn, TaskFilter taskFilter) throws IOException {		
 		ActivityList req = new ActivityList(taskFilter);
 		CommonAERequests.sendSyncRequest(conn, req, false);

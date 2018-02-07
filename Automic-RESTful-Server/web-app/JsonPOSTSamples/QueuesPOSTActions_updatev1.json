@@ -1,0 +1,8 @@
+{
+	"maxslots":345,
+	"priority":012,
+	"considerERT":true,
+	"title":"new queue title",
+	"arch1":"key 1",
+	"arch2":"key 2"
+}
