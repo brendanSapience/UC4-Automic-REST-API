@@ -1,0 +1,28 @@
+{
+	"runid":123234,
+	"prompts" : 
+		[
+     		{
+				"name": "PRPT.AC.1",
+     			"elements": [
+        			{
+          				"variable": "NEWLOGIN1#",
+          				"value": "MyLogin"
+        			},
+        			{
+          				"variable": "NEWPWD1#",
+          				"value": "--108A48537B3C573668A70CFB1C77492C8A"
+        			}
+     			]
+			},
+			{
+				"name": "PRPT.AC.2",
+     			"elements": [
+        			{
+          				"variable": "MYVAR1#",
+          				"value": "myValue!"
+        			}
+     			]
+			}
+		]
+}

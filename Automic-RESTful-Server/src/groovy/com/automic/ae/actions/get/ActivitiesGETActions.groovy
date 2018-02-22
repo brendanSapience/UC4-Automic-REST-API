@@ -1,5 +1,7 @@
 package com.automic.ae.actions.get
 
+import java.util.HashMap;
+
 import com.automic.DisplayFilters
 import com.uc4.api.AutoForecastItem
 import com.uc4.api.DateTime
@@ -37,6 +39,7 @@ import com.uc4.communication.requests.RollbackTask
 import com.uc4.communication.requests.SearchObject
 import com.uc4.communication.requests.SuspendTask
 import com.uc4.communication.requests.TaskDetails
+import com.uc4.communication.requests.TaskPromptSetNames
 import com.uc4.communication.requests.UnblockJobPlanTask
 import com.uc4.communication.requests.UnblockWorkflow
 import com.uc4.communication.requests.XMLRequest
@@ -84,7 +87,9 @@ class ActivitiesGETActions {
 	public static def addskip(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1922,"Task deactivated / skipped.")}
 	public static def delskip(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1922,1700,"Task reactivated / unskipped.")}
 	public static def go(String version, params,Connection conn,request, grailsattr){return "changetaskstate${version}"(params,conn,1700,1545,"Task Go Now Ok.")}
+	public static def adopt(String version, params,Connection conn,request, grailsattr){return "adopt${version}"(params,conn)}
 	
+
 	/**
 	 * @purpose del breakpoint
 	 * @return JsonBuilder object

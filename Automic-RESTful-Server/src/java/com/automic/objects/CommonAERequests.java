@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InvalidObjectException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import com.uc4.api.QueueStatus;
 import com.uc4.api.SearchResultItem;
 import com.uc4.api.Task;
 import com.uc4.api.TaskFilter;
+import com.uc4.api.TaskPromptSetName;
 import com.uc4.api.Template;
 import com.uc4.api.UC4HostName;
 import com.uc4.api.UC4ObjectName;
@@ -24,6 +26,7 @@ import com.uc4.api.UC4UserName;
 import com.uc4.api.objects.IFolder;
 import com.uc4.api.objects.JobPlan;
 import com.uc4.api.objects.JobPlanTask;
+import com.uc4.api.objects.PromptElement;
 import com.uc4.api.objects.Queue;
 import com.uc4.api.objects.TaskState;
 import com.uc4.api.objects.UC4Object;
@@ -54,6 +57,8 @@ import com.uc4.communication.requests.ResetOpenFlag;
 import com.uc4.communication.requests.SaveObject;
 import com.uc4.communication.requests.SearchObject;
 import com.uc4.communication.requests.TaskDetails;
+import com.uc4.communication.requests.TaskPromptSetContent;
+import com.uc4.communication.requests.TaskPromptSetNames;
 import com.uc4.communication.requests.TemplateList;
 import com.uc4.communication.requests.VersionControlList;
 import com.uc4.communication.requests.XMLRequest;
@@ -80,6 +85,45 @@ public class CommonAERequests {
 		return TaskLists;
 	}
 	
+	public static TaskPromptSetNames getTaskPromptsetNames(int RunID, Connection connection) throws TimeoutException, IOException{
+		TaskPromptSetNames req = new TaskPromptSetNames(RunID);
+		connection.sendRequestAndWait(req);
+		return req;
+		
+	}
+	
+	public static String adoptTask(int RunID, Connection connection) throws TimeoutException, IOException{
+		AdoptTask adopt = new AdoptTask(RunID);
+		connection.sendRequestAndWait(adopt);
+		if (adopt.getMessageBox() != null) {
+			return adopt.getMessageBox().getText().toString().replace("\n", "");
+		}
+		return null;
+	}
+	public static HashMap<String,HashMap<String,String>> showPromptSetContent(TaskPromptSetNames prptNames, int RunID, Connection connection) throws TimeoutException, IOException{
+		// getting all prompts
+		// Holder of ALL values for all prompts
+		HashMap<String,HashMap<String,String>> AllPrptsValues = new HashMap<String,HashMap<String,String>>();
+		
+		Iterator<TaskPromptSetName> it0 = prptNames.iterator();
+		while(it0.hasNext()){
+			HashMap<String,String> PrptValues = new HashMap<String,String>();
+			TaskPromptSetName tName = it0.next();
+			//System.out.println("\t %% Promptset Found:" + tName);
+			
+			TaskPromptSetContent req = new TaskPromptSetContent(tName, RunID);
+			
+			Iterator<PromptElement> it1 = req.iterator();
+			while(it1.hasNext()){
+				PromptElement elmt = it1.next();
+				//System.out.println("\t %% [Variable Name | Variable Value]: "+" [ "+elmt.getVariable()+" | "+elmt.getValue()+" ]");
+				PrptValues.put(elmt.getVariable(),elmt.getValue());
+			}
+			AllPrptsValues.put(tName.getName().getName(), PrptValues);
+		}
+		return AllPrptsValues;
+		
+	}
 	public static boolean addDependency(JobPlan object, JobPlanTask jpTask, String TaskPred, String Status, int TaskpredNum) throws IOException{
 
 		// Getting the task state.. no control here :(
