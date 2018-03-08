@@ -15,6 +15,7 @@ import org.xml.sax.SAXException;
 import com.uc4.api.InvalidUC4NameException;
 import com.uc4.api.QueueStatus;
 import com.uc4.api.SearchResultItem;
+import com.uc4.api.StatisticSearchItem;
 import com.uc4.api.Task;
 import com.uc4.api.TaskFilter;
 import com.uc4.api.TaskPromptSetName;
@@ -430,7 +431,7 @@ public class CommonAERequests {
 		return (Queue) obj;
 	}
 	
-	public static String getSessionTZ(Connection connection) throws TimeoutException, IOException{
+	public static UC4TimezoneName getSessionTZ(Connection connection) throws TimeoutException, IOException{
 		GetSessionTZ reqTZ = new GetSessionTZ();
 		connection.sendRequestAndWait(reqTZ);
 
@@ -438,7 +439,7 @@ public class CommonAERequests {
 			
 			return null;
 		}
-		return reqTZ.getTimeZone().getDisplayName();
+		return reqTZ.getName();
 	}
 	public static XMLRequest sendSyncRequest(Connection connection, XMLRequest req, boolean verbose) throws TimeoutException, IOException{
 
@@ -522,6 +523,27 @@ public class CommonAERequests {
 	
 	return results;
 	}
+	
+	public static ArrayList<Task> getStatusFromRunid(Connection conn, int Runid, String ObjName) throws TimeoutException, IOException{
+		
+		TaskFilter filter = new TaskFilter();
+		filter.setObjectName(ObjName);
+		ActivityList r = new ActivityList(filter);
+
+		CommonAERequests.sendSyncRequest(conn, r, false);
+		
+		Iterator<Task> it = r.iterator();
+		ArrayList<Task> allres = new ArrayList<Task>();
+		while(it.hasNext()){
+			Task item = it.next();
+			if(item.getRunID() == Runid){
+				allres.add(item);
+			}
+		}
+
+		return allres;
+	}
+	
 	public static String ChangeQueueStatus(Connection conn, String QueueName,QueueStatus status) throws TimeoutException, IOException{
 		UC4ObjectName queueName;
 		try{

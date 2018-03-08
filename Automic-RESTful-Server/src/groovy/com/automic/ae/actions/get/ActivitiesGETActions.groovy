@@ -434,6 +434,7 @@ class ActivitiesGETActions {
 					DateTime LogicalDate = DateTime.now();
 					boolean ManualRelease = false;
 					String Alias = null;
+					
 					UC4TimezoneName Tz= CommonAERequests.getSessionTZ(conn);
 					boolean IsDateSpecified = false;
 					
