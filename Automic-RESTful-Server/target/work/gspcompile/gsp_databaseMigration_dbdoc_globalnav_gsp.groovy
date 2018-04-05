@@ -24,7 +24,7 @@ printHtmlPart(3)
 expressionOut.print(createLink(action: 'dbdoc_stylesheet_css'))
 printHtmlPart(4)
 })
-invokeTag('captureHead','sitemesh',6,[:],1)
+invokeTag('captureHead','sitemesh',7,[:],1)
 printHtmlPart(5)
 createTagBody(1, {->
 printHtmlPart(6)
@@ -41,7 +41,7 @@ printHtmlPart(11)
 expressionOut.print(createLink(action: 'recent'))
 printHtmlPart(12)
 })
-invokeTag('captureBody','sitemesh',23,['bgcolor':("white")],1)
+invokeTag('captureBody','sitemesh',35,['bgcolor':("white")],1)
 printHtmlPart(13)
 }
 public static final Map JSP_TAGS = new HashMap()
@@ -49,7 +49,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1515013717074L
+public static final long LAST_MODIFIED = 1522965810680L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'html'

@@ -24,12 +24,18 @@ import com.uc4.api.UC4HostName;
 import com.uc4.api.UC4ObjectName;
 import com.uc4.api.UC4TimezoneName;
 import com.uc4.api.UC4UserName;
+import com.uc4.api.objects.ConsoleEvent;
+import com.uc4.api.objects.DatabaseEvent;
+import com.uc4.api.objects.EstimatedRuntime;
+import com.uc4.api.objects.FileEvent;
 import com.uc4.api.objects.IFolder;
 import com.uc4.api.objects.JobPlan;
 import com.uc4.api.objects.JobPlanTask;
+import com.uc4.api.objects.Notification;
 import com.uc4.api.objects.PromptElement;
 import com.uc4.api.objects.Queue;
 import com.uc4.api.objects.TaskState;
+import com.uc4.api.objects.TimeEvent;
 import com.uc4.api.objects.UC4Object;
 import com.uc4.api.objects.UserRight.Type;
 import com.uc4.api.systemoverview.AgentListItem;
@@ -595,6 +601,36 @@ public class CommonAERequests {
 		return req;
 	}
 	
+	public static EstimatedRuntime getERT(UC4Object obj) {
+		
+		if(obj.getType().equalsIgnoreCase("EVNT_DB")){return ((DatabaseEvent) obj).runtime().estimatedRuntime();}
+		if(obj.getType().equalsIgnoreCase("EVNT_CONS")){return ((ConsoleEvent) obj).runtime().estimatedRuntime();}
+		if(obj.getType().equalsIgnoreCase("EVNT_TIME")){return ((TimeEvent) obj).runtime().estimatedRuntime();}
+		if(obj.getType().equalsIgnoreCase("EVNT_FILE")){return ((FileEvent) obj).runtime().estimatedRuntime();}
+		
+		if(obj.getType().startsWith("CALL")){return ((Notification) obj).runtime().estimatedRuntime();}
+		
+		if(obj.getType().equalsIgnoreCase("JOBF")){return ((com.uc4.api.objects.FileTransfer) obj).runtime().estimatedRuntime();}
+		if(obj.getType().equalsIgnoreCase("JOBP")){
+			if(obj.getClass().getSimpleName().equals("WorkflowLoop")){
+				return ((com.uc4.api.objects.WorkflowLoop) obj).runtime().estimatedRuntime();
+			}
+			if(obj.getClass().getSimpleName().equals("WorkflowIF")){
+				return ((com.uc4.api.objects.WorkflowIF) obj).runtime().estimatedRuntime();
+			}
+			if(obj.getClass().getSimpleName().equals("JobPlan")){
+				return ((com.uc4.api.objects.JobPlan) obj).runtime().estimatedRuntime();
+			}
+		}
+		
+		if(obj.getType().startsWith("JOBS")){return ((com.uc4.api.objects.Job) obj).runtime().estimatedRuntime();}
+		
+		if(obj.getType().startsWith("JSCH")){return ((com.uc4.api.objects.Schedule) obj).runtime().estimatedRuntime();}
+		if(obj.getType().startsWith("SCRI")){return ((com.uc4.api.objects.Script) obj).runtime().estimatedRuntime();}
+
+		return null;
+	}
+
 	public static Template getTemplateFromName(Connection conn, String TemplateName) throws IOException{
 
 		TemplateList list = getTemplateList(conn);

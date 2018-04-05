@@ -10,6 +10,8 @@ import com.uc4.communication.requests.GenericStatistics
 import com.uc4.communication.requests.ObjectStatistics
 import com.uc4.communication.requests.SearchObject
 import com.uc4.api.InvalidUC4NameException
+import com.uc4.api.objects.EstimatedRuntime
+import com.uc4.api.objects.UC4Object
 import groovy.json.JsonBuilder
 
 import com.automic.DisplayFilters
@@ -31,6 +33,7 @@ class StatisticsGETActions {
 	
 	public static def search(String version, params,Connection conn,request,grailsAttributes){return "search${version}"(params,conn)}
 	public static def get(String version, params,Connection conn,request,grailsAttributes){return "get${version}"(params,conn)}
+	public static def ert(String version, params,Connection conn,request,grailsAttributes){return "ert${version}"(params,conn)}
 	
 	/**
 	 * @purpose get statistics from object 
@@ -80,6 +83,70 @@ class StatisticsGETActions {
 			}
 		}
 	}
+	
+	/**
+	 * @purpose get ert from object
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def ertv1(params,Connection conn) {
+		def AllParamMap = [:]
+		AllParamMap = [
+			'required_parameters': ['name (format: name= < String: Object Name >'],
+			'optional_parameters': [],
+			'optional_filters': [],
+			'required_methods': [],
+			'optional_methods': ['usage']
+			]
+		
+		String FILTERS = params.filters;
+		String METHOD = params.method;
+				
+		// Helper Methods
+		if(METHOD == "usage"){
+			JsonBuilder json = CommonJSONRequests.getSupportedThingsAsJSONFormat(AllParamMap);
+			return json
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+		}else{
+			if(MiscUtils.checkParams(AllParamMap, params)){
+				String OBJNAME = params.name;
+				UC4ObjectName UC4ObjName;
+					try{
+						UC4ObjName = new UC4ObjectName(OBJNAME);
+					}catch(InvalidUC4NameException i){
+						return CommonJSONRequests.renderErrorAsJSON("Invalid Object Name: " + i.getMessage())
+					}
+					UC4Object myObject = CommonAERequests.openObject(conn, UC4ObjName.toString(), true);
+					
+					EstimatedRuntime ert = CommonAERequests.getERT(myObject);
+
+					def data = [
+						ert_is_seconds: ert.getCurrentERT(),
+						fiexed_value: ert.getFixedValue(),
+						Ignore_diff_min_runs:ert.getIgnoreDiffMinRuns(),
+						Ignore_diff_min_percent:ert.getIgnoreDiffPercent(),
+						last_runs:ert.getLastRuns(),
+						last_runs_percent:ert.getLastRunsPercent(),
+						is_dynamic_method_adaptive:ert.isDynamicMethodAdaptive(),
+						is_dynamic_method_average:ert.isDynamicMethodAverage(),
+						is_dynamic_method_linear:ert.isDynamicMethodLinear(),
+						is_dynamic_method_max_value:ert.isDynamicMethodMaxValue(),
+						is_ignore_difference:ert.isIgnoreDifference(),
+						method_default:ert.isMethodDefault(),
+						method_dynamic:ert.isMethodDynamic(),
+						method_fixed_value:ert.isMethodFixedValue()
+					  ]
+			
+					def json = new JsonBuilder(data)
+
+				return json
+							
+			}else{
+				return CommonJSONRequests.renderErrorAsJSON("mandatory parameters missing.");
+			}
+		}
+	}
+	
 	
 	/**
 	 * @purpose search statistics (Period window) against filters

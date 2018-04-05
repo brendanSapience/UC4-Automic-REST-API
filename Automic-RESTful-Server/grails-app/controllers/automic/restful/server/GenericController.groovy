@@ -38,7 +38,7 @@ class GenericController {
 		
 		def data = [
 			name: "Rest API for Automic Platform (Workload Automation & Service Orchestration)",
-			version: "0.5",
+			version: "1.1",
 			tag: "Beta",
 			awaurl: "/api/awa/objects",
 		  ]

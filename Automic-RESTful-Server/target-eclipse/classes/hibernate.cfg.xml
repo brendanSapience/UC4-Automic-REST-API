@@ -6,13 +6,8 @@
 <hibernate-configuration>
 
 	<session-factory>
-	<!--
-		<mapping package='com.books' />
-
-		<mapping class='com.books.Book' />
-
-		<mapping resource='someresource.hbm.xml'/>
-	-->
+		<!-- <mapping package='com.books' /> <mapping class='com.books.Book' /> 
+			<mapping resource='someresource.hbm.xml'/> -->
 	</session-factory>
 
 </hibernate-configuration>
