@@ -10,6 +10,15 @@
 		"RESTadmin":true
 	},
 	{
+		"name":"AEPROD0",
+		"host":"localhost",
+		"dept":"UC",
+		"lang":"E",
+		"ports":["2217","2218"],
+		"validity":525600,
+		"RESTadmin":true
+	},
+	{
 		"name":"AEUSDC",
 		"host":"vwagso03",
 		"dept":"AUTOMIC",

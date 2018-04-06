@@ -16,6 +16,7 @@ import com.uc4.communication.requests.ActivityList
 import com.uc4.communication.requests.AdoptTask
 import com.uc4.communication.requests.CancelTask
 import com.uc4.communication.requests.DeactivateTask
+import com.uc4.communication.requests.DeleteObject
 import com.uc4.communication.requests.DisconnectHost
 import com.uc4.communication.requests.ExecuteObject
 import com.uc4.communication.requests.GenericStatistics
@@ -23,6 +24,7 @@ import com.uc4.communication.requests.GetChangeLog
 import com.uc4.communication.requests.GetComments
 import com.uc4.communication.requests.GetSessionTZ
 import com.uc4.communication.requests.QuitTask
+import com.uc4.communication.requests.RenewTransferKey
 import com.uc4.communication.requests.Report
 import com.uc4.communication.requests.RestartTask
 import com.uc4.communication.requests.ResumeTask
@@ -58,6 +60,129 @@ class AgentsGETActions {
 	public static def quit(String version, params,Connection conn,request, grailsattr){return "quit${version}"(params,conn)}
 	public static def disconnect(String version, params,Connection conn,request, grailsattr){return "disconnect${version}"(params,conn)}
 	public static def show(String version, params,Connection conn,request, grailsattr){return "show${version}"(params,conn)}
+	public static def delete(String version, params,Connection conn,request, grailsattr){return "delete${version}"(params,conn)}
+	public static def renewkey(String version, params,Connection conn,request, grailsattr){return "renewkey${version}"(params,conn)}
+	
+	/**
+	 * @purpose renew Transfer Key for an Agent
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def renewkeyv1(params,Connection conn){
+	
+	def SupportedThings = [:]
+			SupportedThings = [
+				'required_parameters': ['name (format: name=<String> Agent Name)'],
+				'optional_parameters': [],
+				'optional_filters': [
+				],
+				'required_methods': [],
+				'optional_methods': ['usage']
+				]
+		
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+		String NAMEASSTR = params.name;
+		
+		JsonBuilder json;
+		
+		// Helper Methods
+		if(METHOD == "usage"){
+			json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+			return json
+		}else{
+			
+			// check mandatory stuff here
+			if(MiscUtils.checkParams(SupportedThings, params)){
+				
+				UC4HostName agentName
+				
+				try{
+					agentName = new UC4HostName(NAMEASSTR);
+				}catch(InvalidUC4NameException i){
+					return CommonJSONRequests.renderErrorAsJSON("Invalid Agent Name: " + i.getMessage())
+				}
+				AgentListItem myItem = CommonAERequests.getAgentListItemByName(NAMEASSTR,conn);
+				if(myItem==null){
+					return CommonJSONRequests.renderErrorAsJSON("Agent Could not be found in Client 0.")
+				}
+				RenewTransferKey req = new RenewTransferKey(myItem);
+				CommonAERequests.sendSyncRequest(conn, req, false);
+
+				if(req.getMessageBox()!=null){
+					return CommonJSONRequests.renderErrorAsJSON("Transfer Key could not be renewed: "+req.getMessageBox().getText())
+				}
+				
+				return CommonJSONRequests.renderOKAsJSON("Transfer Key Renewal Sent.")
+				
+			}else{
+					json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+					return json
+			}
+		
+		}
+	}
+	/**
+	 * @purpose delete an agent
+	 * @return JsonBuilder object
+	 * @version v1
+	 */
+	public static def deletev1(params,Connection conn){
+	
+	def SupportedThings = [:]
+			SupportedThings = [
+				'required_parameters': ['name (format: name=<String> Agent Name)'],
+				'optional_parameters': [],
+				'optional_filters': [
+				],
+				'required_methods': [],
+				'optional_methods': ['usage']
+				]
+		
+		String FILTERS = params.filters;
+		String TOKEN = params.token;
+		String METHOD = params.method;
+		String NAMEASSTR = params.name;
+		
+		JsonBuilder json;
+		
+		// Helper Methods
+		if(METHOD == "usage"){
+			json = CommonJSONRequests.getSupportedThingsAsJSONFormat(SupportedThings);
+			//render(text: json, contentType: "text/json", encoding: "UTF-8")
+			return json
+		}else{
+			
+			// check mandatory stuff here
+			if(MiscUtils.checkParams(SupportedThings, params)){
+				
+				UC4HostName agentName
+				
+				try{
+					agentName = new UC4HostName(NAMEASSTR);
+				}catch(InvalidUC4NameException i){
+					return CommonJSONRequests.renderErrorAsJSON("Invalid Agent Name: " + i.getMessage())
+				}
+				
+				DeleteObject req1 = new DeleteObject(agentName);		
+				CommonAERequests.sendSyncRequest(conn, req1, false);
+				
+				if(req1.getMessageBox()!=null){
+					return CommonJSONRequests.renderErrorAsJSON("Agent Could not be Deleted: "+req1.getMessageBox().getText())
+				}
+				
+				return CommonJSONRequests.renderOKAsJSON("Agent Deleted.")
+				
+			}else{
+					json = new JsonBuilder([status: "error", message: "missing mandatory parameters"])
+					return json
+			}
+		
+		}
+	}
+	
 	
 	/**
 	 * @purpose start an agent

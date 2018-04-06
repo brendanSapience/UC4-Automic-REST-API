@@ -33,10 +33,10 @@ public final class ConnectionManager {
 	// the following is only used in Development mode (to avoid having to specify credentials
 	public static String DEVHOST = "localhost";
 	public static int DEVPORT = 2217;
-	public static int DEVCLIENT = 100;
-	public static String DEVLOGIN = "ARA";
-	public static String DEVDEPT = "ARA";
-	public static String DEVPWD = 'ARA';
+	public static int DEVCLIENT = 0;
+	public static String DEVLOGIN = "UC";
+	public static String DEVDEPT = "UC";
+	public static String DEVPWD = 'Un1ver$e';
 	public static char LANG = 'E';
 	public static int DEVEXPIRYPERIOD = 525600;
 	public static String DEVARAURL = "http://localhost/ARA";
