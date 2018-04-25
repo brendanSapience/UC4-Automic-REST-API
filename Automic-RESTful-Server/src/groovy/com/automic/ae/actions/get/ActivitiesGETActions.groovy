@@ -495,9 +495,10 @@ class ActivitiesGETActions {
 		def AllParamMap = [:]
 		AllParamMap = [
 			'required_parameters': [],
-			'optional_parameters': [],
+			'optional_parameters': ['sort (format: sort_by=starttime or sort_by=endtime or sort_by=activationtime)','order (format: order=normal or order=reverse)'],
 			'optional_filters': ['name (format: filters=[name:DEM.*])','status (format: filters=[status:1900])','key1 (format: filters=[key1:*.*]','key2 (format: filters=[key2:*.*]',
-				'queue (format: filters=[queue:*])','activation (format: filters=[activation:YYYYMMDDHHMM-YYYYMMDDHHMM])','host (format: filters=[host:WIN01*])',
+				'queue (format: filters=[queue:*])'
+				,'activation (format: filters=[activation:YYYYMMDDHHMM-YYYYMMDDHHMM])','host (format: filters=[host:WIN01*])',
 				'parentrunid (format: filters=[parentrunid:12345678901100])','toprunid (format: filters=[toprunid:12345678901100])',
 				'user (format: filters=[user:*])','platform (format: filters=[platform:WIN|UNIX])','type (format: filters=[type:JOBF|JOBS])',
 				'exkey1 (format: filters=[exkey1])','exkey2 (format: filters=[exkey2])','exhost (format: filters=[exhost])',
@@ -507,6 +508,8 @@ class ActivitiesGETActions {
 			'optional_methods': ['usage']
 			]
 		
+		String SORTBY = params.sort_by;
+		String ORDER = params.order;
 		String FILTERS = params.filters;
 		String TOKEN = params.token;
 		String METHOD = params.method;
@@ -637,9 +640,25 @@ class ActivitiesGETActions {
 						}
 					}
 				}
-				
-				
-				List<Task> TaskList = CommonAERequests.getActivityWindowContent(conn,taskFilter);
+				List<Task> TaskList = new ArrayList<Task>();
+
+				if (ORDER=="reverse"){
+					if (SORTBY.equalsIgnoreCase("activationtime")){
+						TaskList = CommonAERequests.getActivityWindowContentSortedByActivationTime(conn,taskFilter,true);
+					}else if(SORTBY.equalsIgnoreCase("endtime")){
+						TaskList = CommonAERequests.getActivityWindowContentSortedByEndTime(conn,taskFilter,true);
+					}else{
+						TaskList = CommonAERequests.getActivityWindowContentSortedByStartTime(conn,taskFilter,true);
+					}
+				}else{
+					if (SORTBY.equalsIgnoreCase("activationtime")){
+						TaskList = CommonAERequests.getActivityWindowContentSortedByActivationTime(conn,taskFilter,false);
+					}else if(SORTBY.equalsIgnoreCase("endtime")){
+						TaskList = CommonAERequests.getActivityWindowContentSortedByEndTime(conn,taskFilter,false);
+					}else{
+						TaskList = CommonAERequests.getActivityWindowContentSortedByStartTime(conn,taskFilter,false);
+					}
+				}
 				
 				JsonBuilder json = CommonJSONRequests.getActivityListAsJSONFormat(conn,TaskList);
 				return json

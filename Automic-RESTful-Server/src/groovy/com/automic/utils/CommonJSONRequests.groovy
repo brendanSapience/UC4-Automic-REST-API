@@ -235,13 +235,6 @@ class CommonJSONRequests {
 	}
 	
 	public static JsonBuilder getActivityListAsJSONFormat(Connection conn, List<Task> ObjList){
-//		Task tsk = ObjList.get(0);
-//		tsk.;
-//		List<PropertyValue> propvals = tsk.getMetaPropertyValues();
-//		for(PropertyValue p : propvals){
-//			println "Debug: " + p.getName() +":"+ p.getType().toString()+":"+p.getValue().toString()
-//		}
-		
 		
 		def data = [
 			status: OKSTATUS,

@@ -6,12 +6,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InvalidObjectException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 import org.xml.sax.SAXException;
 
+import com.uc4.api.DateTime;
 import com.uc4.api.InvalidUC4NameException;
 import com.uc4.api.QueueStatus;
 import com.uc4.api.SearchResultItem;
@@ -587,6 +590,42 @@ public class CommonAERequests {
 		}
 		return tasks;
 	}
+	
+	public static List<Task> getActivityWindowContentSortedByStartTime(Connection conn, TaskFilter taskFilter, boolean ReverseOrder) throws IOException {		
+		List<Task> ListOfdTasks = getActivityWindowContent(conn, taskFilter);
+		
+		Comparator comp = new SortByStartTime();
+		Comparator compRev = new SortByStartTime().reversed();
+		
+		if(ReverseOrder){Collections.sort(ListOfdTasks, compRev);}
+		if(!ReverseOrder){Collections.sort(ListOfdTasks, comp);}
+		
+		return ListOfdTasks;
+	}
+	
+	public static List<Task> getActivityWindowContentSortedByEndTime(Connection conn, TaskFilter taskFilter, boolean ReverseOrder) throws IOException {		
+		List<Task> ListOfdTasks = getActivityWindowContent(conn, taskFilter);
+		
+		Comparator comp = new SortByEndTime();
+		Comparator compRev = new SortByEndTime().reversed();
+		
+		if(ReverseOrder){Collections.sort(ListOfdTasks, compRev);}
+		if(!ReverseOrder){Collections.sort(ListOfdTasks, comp);}
+		
+		return ListOfdTasks;
+	}
+	
+	public static List<Task> getActivityWindowContentSortedByActivationTime(Connection conn, TaskFilter taskFilter, boolean ReverseOrder) throws IOException {		
+		List<Task> ListOfdTasks = getActivityWindowContent(conn, taskFilter);
+		
+		Comparator comp = new SortByActivationTime();
+		Comparator compRev = new SortByActivationTime().reversed();
+		
+		if(ReverseOrder){Collections.sort(ListOfdTasks, compRev);}
+		if(!ReverseOrder){Collections.sort(ListOfdTasks, comp);}
+		
+		return ListOfdTasks;
+	}
 
 	public static IFolder getRootFolder(Connection conn) throws IOException{
 		FolderTree tree = new FolderTree();
@@ -726,3 +765,21 @@ public class CommonAERequests {
 	}
 	
 }
+
+class SortByStartTime implements Comparator<Task>{
+    public int compare(Task a, Task b){return a.getStartTime().compareTo(b.getStartTime());}
+}
+
+class SortByEndTime implements Comparator<Task>{
+    public int compare(Task a, Task b){return a.getEndTime().compareTo(b.getEndTime());}
+}
+
+class SortByActivationTime implements Comparator<Task>{
+    public int compare(Task a, Task b){return a.getActivationTime().compareTo(b.getActivationTime());}
+}
+
+
+
+
+
+
