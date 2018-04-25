@@ -1,5 +1,8 @@
 # UC4-Automic-REST-API
 
+Built with Groovy/Grails Tool Suite (GGTS), v3.6.4 / java 8
+
+
 Full documentation here: 
 
 [https://github.com/brendanSapience/UC4-Automic-REST-API-Delivery/blob/master/Automic%20REST%20API%20Documentation.pdf]
