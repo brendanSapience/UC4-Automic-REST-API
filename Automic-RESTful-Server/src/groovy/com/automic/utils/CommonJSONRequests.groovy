@@ -245,7 +245,10 @@ class CommonJSONRequests {
 				 runid:it.runID, 
 				 parent:it.parentRunID, 
 				 user:it.userName, 
-				 starttime:it.startTime.toString(), 
+				 starttime:it.startTime.toString(),
+				 endtime:it.endTime.toString(),
+				 runtime:it.runtime,
+				 activationtime:it.activationTime.toString(),
 				 priority:it.priority, 
 				 status:it.status,
 				 statuscode:it.statusCode, 
@@ -255,8 +258,7 @@ class CommonJSONRequests {
 				// meta:it.getMetaPropertyValues().get(0).getName(),
 				 version:CommonAERequests.getTaskDetails(it.runID,conn).findByName("Version"),//Version
 				 login:CommonAERequests.getTaskDetails(it.runID,conn).findByName("Login"),
-				 endtime:it.endTime.toString(), 
-				 runtime:it.runtime,
+
 				 consumption:it.consumption, 
 				 cputime:it.cpuTime, 
 				 host:it.host, 

@@ -26,6 +26,8 @@ class UrlMappings {
 		// AE & AWA stuff
 		"/api/awa/$operation/$version/$object"(controller:{"${params.object}"}, action : [GET:"router", POST:"router"])
 		"/api/awa/help/$version/$object"(controller:{"${params.object}"}, action : [GET:"help", POST:"help"])
+		
+		
 		"/api/awa"(controller:"AE", action : [GET:"getObjectList"])
 		"/api/awa/objects"(controller:"AE", action : [GET:"getObjectList"])
 		

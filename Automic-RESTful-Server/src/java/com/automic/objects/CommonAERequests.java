@@ -580,52 +580,18 @@ public class CommonAERequests {
 		return null;
 	}
 
-	public static List<Task> getActivityWindowContent(Connection conn, TaskFilter taskFilter) throws IOException {		
+	public static ArrayList<Task> getActivityWindowContent(Connection conn, TaskFilter taskFilter) throws IOException {		
 		ActivityList req = new ActivityList(taskFilter);
 		CommonAERequests.sendSyncRequest(conn, req, false);
 		
-		List<Task> tasks = new ArrayList<Task>();
+		ArrayList<Task> tasks = new ArrayList<Task>();
 		for (Task t : req) {
 			tasks.add(t);
 		}
 		return tasks;
 	}
 	
-	public static List<Task> getActivityWindowContentSortedByStartTime(Connection conn, TaskFilter taskFilter, boolean ReverseOrder) throws IOException {		
-		List<Task> ListOfdTasks = getActivityWindowContent(conn, taskFilter);
-		
-		Comparator comp = new SortByStartTime();
-		Comparator compRev = new SortByStartTime().reversed();
-		
-		if(ReverseOrder){Collections.sort(ListOfdTasks, compRev);}
-		if(!ReverseOrder){Collections.sort(ListOfdTasks, comp);}
-		
-		return ListOfdTasks;
-	}
-	
-	public static List<Task> getActivityWindowContentSortedByEndTime(Connection conn, TaskFilter taskFilter, boolean ReverseOrder) throws IOException {		
-		List<Task> ListOfdTasks = getActivityWindowContent(conn, taskFilter);
-		
-		Comparator comp = new SortByEndTime();
-		Comparator compRev = new SortByEndTime().reversed();
-		
-		if(ReverseOrder){Collections.sort(ListOfdTasks, compRev);}
-		if(!ReverseOrder){Collections.sort(ListOfdTasks, comp);}
-		
-		return ListOfdTasks;
-	}
-	
-	public static List<Task> getActivityWindowContentSortedByActivationTime(Connection conn, TaskFilter taskFilter, boolean ReverseOrder) throws IOException {		
-		List<Task> ListOfdTasks = getActivityWindowContent(conn, taskFilter);
-		
-		Comparator comp = new SortByActivationTime();
-		Comparator compRev = new SortByActivationTime().reversed();
-		
-		if(ReverseOrder){Collections.sort(ListOfdTasks, compRev);}
-		if(!ReverseOrder){Collections.sort(ListOfdTasks, comp);}
-		
-		return ListOfdTasks;
-	}
+
 
 	public static IFolder getRootFolder(Connection conn) throws IOException{
 		FolderTree tree = new FolderTree();
@@ -764,18 +730,80 @@ public class CommonAERequests {
 		return null;
 	}
 	
+	public static ArrayList<Task> getActivityWindowContentSortedByStartTime(Connection conn, TaskFilter taskFilter, boolean ReverseOrder) throws IOException {		
+		ArrayList<Task> ListOfdTasks = getActivityWindowContent(conn, taskFilter);
+		
+		//if(ReverseOrder){Collections.sort(ListOfdTasks, new SortByStartTime());}
+		//if(!ReverseOrder){Collections.sort(ListOfdTasks, new SortByStartTime().reversed());}
+		
+		Collections.sort(ListOfdTasks, new SortByStartTime());
+		if(ReverseOrder){Collections.reverse(ListOfdTasks);}
+		
+		return ListOfdTasks;
+	}
+	
+	public static ArrayList<Task> getActivityWindowContentSortedByEndTime(Connection conn, TaskFilter taskFilter, boolean ReverseOrder) throws IOException {		
+		ArrayList<Task> ListOfdTasks = getActivityWindowContent(conn, taskFilter);
+		
+		//if(ReverseOrder){Collections.sort(ListOfdTasks, new SortByEndTime());}
+		//if(!ReverseOrder){Collections.sort(ListOfdTasks, new SortByEndTime());}
+		Collections.sort(ListOfdTasks, new SortByEndTime());
+		if(ReverseOrder){Collections.reverse(ListOfdTasks);}
+		
+		return ListOfdTasks;
+	}
+	
+	public static ArrayList<Task> getActivityWindowContentSortedByActivationTime(Connection conn, TaskFilter taskFilter, boolean ReverseOrder) throws IOException {		
+		ArrayList<Task> ListOfdTasks = getActivityWindowContent(conn, taskFilter);
+
+		Collections.sort(ListOfdTasks, new SortByActivationTime());
+		if(ReverseOrder){Collections.reverse(ListOfdTasks);}
+		
+		
+		return ListOfdTasks;
+	}
 }
 
 class SortByStartTime implements Comparator<Task>{
-    public int compare(Task a, Task b){return a.getStartTime().compareTo(b.getStartTime());}
+    public int compare(Task a, Task b){
+    	if(a.getStartTime() == null || b.getStartTime() == null) {
+    		System.out.println("DEBUG Start Time Null!");
+    	}
+    	if(a.getStartTime()== null && b.getStartTime() == null){return 0;}
+    	if(a.getStartTime()!= null && b.getStartTime() == null){return -1;}
+    	if(a.getStartTime()== null && b.getStartTime() != null){return 1;}
+    	if(a.getStartTime()!= null && b.getStartTime() != null){return a.getStartTime().compareTo(b.getStartTime());}
+    	return 0;
+    }
 }
 
 class SortByEndTime implements Comparator<Task>{
-    public int compare(Task a, Task b){return a.getEndTime().compareTo(b.getEndTime());}
+    public int compare(Task a, Task b){
+    	if(a.getEndTime() == null || b.getEndTime() == null) {
+    		System.out.println("DEBUG End Time Null!");
+    	}
+    	if(a.getEndTime()==null && b.getEndTime() == null){return 0;}
+    	if(a.getEndTime()!=null && b.getEndTime() == null){return -1;}
+    	if(a.getEndTime()==null && b.getEndTime() != null){return 1;}
+    	if(a.getEndTime()!=null && b.getEndTime() != null){return a.getEndTime().compareTo(b.getEndTime());}
+    	return 0;
+    }
 }
 
 class SortByActivationTime implements Comparator<Task>{
-    public int compare(Task a, Task b){return a.getActivationTime().compareTo(b.getActivationTime());}
+    public int compare(Task a, Task b){
+    	// 0 is equal
+    	// -1 is a is before b
+    	// +1 is b is before a
+    	if(a.getActivationTime() == null || b.getActivationTime() == null) {
+    		System.out.println("DEBUG Act Time Null!");
+    	}
+    	if(a.getActivationTime()==null && b.getActivationTime() == null){return 0;}
+    	if(a.getActivationTime()!=null && b.getActivationTime() == null){return -1;}
+    	if(a.getActivationTime()==null && b.getActivationTime() != null){return 1;}
+    	if(a.getActivationTime()!=null && b.getActivationTime() != null){return a.getActivationTime().compareTo(b.getActivationTime());}
+    	return 0;
+    }
 }
 
 

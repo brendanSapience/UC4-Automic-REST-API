@@ -507,9 +507,17 @@ class ActivitiesGETActions {
 			'required_methods': [],
 			'optional_methods': ['usage']
 			]
+		String SORTBY = "starttime"
+		String ORDER = "normal"
 		
-		String SORTBY = params.sort_by;
-		String ORDER = params.order;
+		if (params.sort_by != null && !params.sort_by.equals("")){
+			SORTBY = params.sort_by
+		}
+
+		if (params.order != null && !params.order.equals("")){
+			ORDER = params.order
+		}
+		
 		String FILTERS = params.filters;
 		String TOKEN = params.token;
 		String METHOD = params.method;
@@ -599,19 +607,7 @@ class ActivitiesGETActions {
 								}
 						}
 				}
-//				TaskDetails details = CommonAERequests.getTaskDetails(1357217,conn);
-//				details.setArchiveDetail();
-//				Iterator<DetailGroup> it = details.groupIterator();
-//				while(it.hasNext()){
-//					DetailGroup grp = it.next();
-//					LinkedHashMap<String,String> hash = grp.getDetails();
-//					for(int i=0;i<hash.keySet().size();i++){
-//		
-//						println "DEBUG:"+ hash.keySet()[i]+":"+hash.get(hash.keySet()[i]);
-//		
-//					}
-//		
-//				}
+
 				if(dispFilters.doesKeyExistInFilter("type")){
 	
 					taskFilter.unselectAllObjects();
@@ -642,21 +638,25 @@ class ActivitiesGETActions {
 				}
 				List<Task> TaskList = new ArrayList<Task>();
 
-				if (ORDER=="reverse"){
+				if (ORDER.equalsIgnoreCase("reverse")){
 					if (SORTBY.equalsIgnoreCase("activationtime")){
 						TaskList = CommonAERequests.getActivityWindowContentSortedByActivationTime(conn,taskFilter,true);
 					}else if(SORTBY.equalsIgnoreCase("endtime")){
 						TaskList = CommonAERequests.getActivityWindowContentSortedByEndTime(conn,taskFilter,true);
+					}else if (SORTBY.equalsIgnoreCase("starttime")){
+						TaskList = CommonAERequests.getActivityWindowContentSortedByStartTime(conn,taskFilter,false);
 					}else{
-						TaskList = CommonAERequests.getActivityWindowContentSortedByStartTime(conn,taskFilter,true);
+						TaskList = CommonAERequests.getActivityWindowContent(conn,taskFilter);
 					}
 				}else{
 					if (SORTBY.equalsIgnoreCase("activationtime")){
 						TaskList = CommonAERequests.getActivityWindowContentSortedByActivationTime(conn,taskFilter,false);
 					}else if(SORTBY.equalsIgnoreCase("endtime")){
 						TaskList = CommonAERequests.getActivityWindowContentSortedByEndTime(conn,taskFilter,false);
-					}else{
+					}else if (SORTBY.equalsIgnoreCase("starttime")){
 						TaskList = CommonAERequests.getActivityWindowContentSortedByStartTime(conn,taskFilter,false);
+					}else{
+						TaskList = CommonAERequests.getActivityWindowContent(conn,taskFilter);
 					}
 				}
 				
